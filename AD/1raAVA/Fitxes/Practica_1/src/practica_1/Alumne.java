@@ -26,7 +26,7 @@ public class Alumne implements Comparable<Alumne> {
      */
     public int compareTo(Alumne o) {
 
-        int resultado = 0;
+        int resultado = -1;
         if (this.percentatge > o.percentatge) {
             resultado = 1 ;
         }else if(this.percentatge == o.percentatge){
