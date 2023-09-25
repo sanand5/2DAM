@@ -1,5 +1,0 @@
-nom = input("Nombre : ")
-apellido = input("Apellidos : ")
-edad = input("Edad : ")
-ciudad = input("Ciudad de nacimiento : ")
-print("Buenas tardes,", nom, apellido, "tienes", edad,"años", "y vives en", ciudad)

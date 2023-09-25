@@ -1,5 +1,0 @@
-a = int(input("numero a : "))
-b = int(input("numero b : "))
-print("Su suma es", a+b)
-print("Su resta es", a-b)
-print("Su multiplicacion es", a+b)

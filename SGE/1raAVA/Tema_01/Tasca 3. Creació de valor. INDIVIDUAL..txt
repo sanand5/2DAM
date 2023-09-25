@@ -1,0 +1,46 @@
+Exemples de META i OBJECTIU per a una empresa:
+
+META:
+a. Augmentar les vendes d'una linea de productes
+b. Reduir el consum elèctric
+c. Millorar la rapidesa dels envios de l'empresa
+
+OBJECTIU:
+a. Posicionar-se dels en el sector de la tecnologia.
+b. Disminuir la contaminació que creen la creació dels productes
+c. Expandir-se internacionalment
+
+2. Escriu tres exemples en el que la diferencia entre eficàcia i eficiència quede clara.
+
+a. Eficiència en la gestió del temps: Una persona pot ser eficient en la gestió del seu temps, acabant-ho tot, però no serà eficaç si no compleix les tasques més urgents.
+b. Eficàcia en la medicina: Un metge pot ser eficaç en detectar una malaltia, però no ser eficient si utilitza proves costoses i innecessàries.
+c. Eficiència en la indústria: Una fàbrica pot ser eficient en la producció de productes poc costosos, però no ser eficaç si els productes ixen defectuosos.
+
+3. Amb els apunts del temari al punt 4. Estrucutura d'una empresa realitza una taula amb la funció de cada nivell de la piràmide.
+Alta direcció -> Defineix els objectius al llarg terme
+Càrrecs entremitjos -> S'encarreguen de gestionar el seu departament per a complir els objectius
+Càrrecs operatius -> Dissenyen els processos i les funcions
+Treballadors sense càrrecs -> Treballadors que executen ordres.
+
+4. Què es el Datawarehouse? Què és el Datamart? Així doncs, quina és la diferència fonamental? De què els pot servir a les empreses per a millorar el seu negoci?
+Un Data Warehouse és un magatzem electrònic on generalment una empresa o organització manté una gran quantitat d'informació.
+http://www.powerdata.es/data-warehouse
+
+Un data mart és un sistema d'emmagatzematge de dades que conté informació específica de la unitat de negoci d'una organització.
+https://aws.amazon.com/es/what-is/data-mart/
+
+La diferència fonamental és que el datawarehouse és una base de dades més centralitzada i amb tot tipus d'informació, en canvi, el data mart és una base de dades més menuda i amb dades més específiques.
+
+Utilitats
+- Millorar la presa de decisions
+- Optimització de l'eficiència operativa
+- Anàlisi de tendències i previsió per a futur.
+
+5. Què es el Big Data?Com ho poden aprofitar les empreses?
+Big Data és un terme que descriu el gran volum de dades, tant estructurats com no estructurats, que inunden els negocis cada dia. El que importa amb el Big Data és el que les organitzacions fan amb les dades.
+http://www.powerdata.es/big-data
+
+Les empreses ho poden aprofitar fent anàlisis amb aquest tipus d'informació per a millorar la seua empresa, fer anuncis personalitzats i fer previsions per a futur.
+
+6. Què és el Internet of Things?
+Internet of Things es refereix als dispositius quotidians que no necessàriament requereixen tindre internet integrat, però pot millorar la nostra vida diària. Per exemple, una nevera no és un dispositiu que necessàriament ha de tindre accés a internet, però pot millorar la nostra vida, ja que pot informar-nos dels productes que ens falten, entre altres coses. De manera similar, les llums de casa es poden programar per encendre's a una hora específica o apagar-se de manera remota, cosa que també pot millorar la nostra comoditat.
