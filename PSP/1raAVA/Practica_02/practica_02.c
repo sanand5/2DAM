@@ -8,7 +8,7 @@ int main() {
     int retorno = 0;
     pid_t pid;
     char mensajeHijo[] = "Papa ven a por mi";
-    char buffer[20];
+    char buffer[17];
 
     // Crear el pipe
     
@@ -26,16 +26,18 @@ int main() {
             break;
         case 0:
             // Hijo
-            close(fd[0]); // Cierra el descriptor de entrada/lectura
+            close(fd[0]); //Cierro la lectura
             write(fd[1], mensajeHijo, strlen(mensajeHijo)); // Escribe en pipe
+            close(fd[1]); //Cierra la escriture
             printf("El hijo envía el mensaje al padre...\n");
             break;
         default:
             // Padre
-            close(fd[1]); // Cierra el descriptor de salida/escritura
-            read(fd[0], buffer, sizeof(buffer));
-            printf("El padre recibe el mensaje del HIJO: %s\n", buffer);
             wait(NULL);
+            close(fd[1]); 
+            read(fd[0], buffer, sizeof(buffer));
+            close(fd[0]); 
+            printf("El padre recibe el mensaje del HIJO: %s\n", buffer);
             break;
     }
 

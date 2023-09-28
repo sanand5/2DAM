@@ -1,0 +1,20 @@
+1. ¿Cuál es la debilidad de un sistema informático?
+   Es hackeable.
+
+2. ¿Qué es el Blockchain?
+   Una cadena de bloques que contiene información; cada bloque contiene diferentes tipos de información.
+
+3. ¿Por cuántos elementos está formado cada bloque?
+   Está formado por 3 elementos:
+   - Información
+   - El Hash: número de identificación del bloque
+   - El Hash del bloque anterior
+
+4. ¿Qué elemento hace que los bloques estén conectados?
+   El hash del bloque anterior.
+
+5. ¿Por qué el Blockchain es inhackeable?
+   Porque muchos "ojos" están mirando, es decir, si algo cambia, ese bloque queda anulado, ya que cada bloque tiene el hash del anterior.
+
+6. Los usuarios que deciden crear nuevos bloques... reciben el nombre de...
+   Los mineros.

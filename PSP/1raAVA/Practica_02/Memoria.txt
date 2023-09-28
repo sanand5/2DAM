@@ -1,0 +1,3 @@
+Para que:
+
+Para practicar los aprendido sobre procesos, así como la creación del pipe, [descripcion pipe] y repasar lo aprendido con fork(), tambien para utilizar las funciones read() y write() que son [descripcion].
