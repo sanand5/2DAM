@@ -15,7 +15,7 @@ int main() {
     if (pipe(fd) == -1)
     {
         printf("### Error : No se ha podido crear la tuberia ###");
-        retorno = -1;
+        retorno = -1; 
     }
     
     pid = fork();
@@ -37,7 +37,7 @@ int main() {
             close(fd[1]); 
             read(fd[0], buffer, sizeof(buffer));
             close(fd[0]); 
-            printf("El padre recibe el mensaje del HIJO: %s\n", buffer);
+            printf("El padre recibe el mensaje del hijo: %s\n", buffer);
             break;
     }
 
