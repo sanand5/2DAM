@@ -104,7 +104,7 @@ public class Moduls {
         if (posModul != -1 || posNia != -1) {
             Modul m = list.get(posModul);
             Alumne matriculat = Alumnes.list.get(posNia); //alumne no trobat
-            matriculat.matriculasList.add(new Matricula(m));
+            //matriculat.matriculasList.add(new Matricula(m));
         } else {
             System.out.println("Error: El modul o el nia no s'han trobat");
         }

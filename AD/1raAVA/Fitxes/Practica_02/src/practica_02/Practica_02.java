@@ -22,6 +22,7 @@ public class Practica_02 {
         Scanner sc = new Scanner(System.in);
         Alumnes alumnesList = new Alumnes();
         Moduls modulsList = new Moduls();
+        Matriculas m = new Matriculas();
         boolean repit = true;
         while (repit) {
             System.out.println("""
@@ -39,6 +40,7 @@ public class Practica_02 {
                 case 2 ->
                     modulsList.menu();
                 case 3 -> {//TODO
+                    m.menu();
                 }
                 default ->
                     throw new AssertionError();
