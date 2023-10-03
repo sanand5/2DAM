@@ -4,21 +4,34 @@
  */
 package practica_02;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author andre
  */
 public class Alumne {
-    String nom, cognmos, nia, DataNaixement;
-    Matricula matricula;
+    String nom, nia;
+    
+    static ArrayList<Modul> modulsList;
 
-    public Alumne(String nom, String cognmos, String nia, String DataNaixement) {
+
+    public Alumne(String nom, String nia) {
         this.nom = nom;
-        this.cognmos = cognmos;
         this.nia = nia;
-        this.DataNaixement = DataNaixement;
+        modulsList = new ArrayList<>();
     }
     
+    public static int buscarModul(String nom) {
+        int retorno = -1;
+        for (int i = 0; i < modulsList.size();
+                i++) {
+            if (modulsList.get(i).nom.equals(nom)) {
+                retorno = i;
+            }
+        }
+        return retorno;
+    }
     
 
     

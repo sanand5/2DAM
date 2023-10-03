@@ -9,15 +9,13 @@ package practica_02;
  * @author andre
  */
 public class Modul {
-    String nom;
-    Alumne alumne;
-    Double nota;
 
-    public Modul(String nom, Alumne alumne) {
+    String nom;
+    Matricula m;
+
+    public Modul(String nom) {
         this.nom = nom;
-        this.alumne = alumne;
+        m = new Matricula();
     }
-    
-    
-    
+
 }

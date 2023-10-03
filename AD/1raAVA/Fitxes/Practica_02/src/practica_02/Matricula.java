@@ -4,38 +4,28 @@
  */
 package practica_02;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author andre
  */
 public class Matricula {
-    ArrayList<Modul> moduls = new ArrayList();
-    Alumne alumne;
-    Boolean alta = false;
 
-    public Matricula(Alumne alumne) {
-        this.alumne = alumne;
-    }
+    double notes[] = new double[4];
 
-    public void donarAlta() {
-        alta = true;
+    public Matricula() {
     }
     
-    public void donarBaiza() {
-        alta = false;
-    }
-    
-    public void insertarModul(Modul m) {
-        moduls.add(m);
+    public Matricula(double a, double b, double c) {
+        notes[0] = a;
+        notes[1] = b;
+        notes[2] = c;
+        notes[3] = (a + b + c) / 3;
     }
 
-    @Override
-    public String toString() {
-        return "Matricula{" + "moduls=" + moduls + ", alumne=" + alumne + ", alta=" + alta + '}';
+    public void setNotes(double nota, int pos) {
+        this.notes[pos] = nota;
+        //TODO vuic fer un for o un wh per a que comprove que si les 3 notes estan ficades que asigna la mitjana
     }
     
-    
-    
+
 }
