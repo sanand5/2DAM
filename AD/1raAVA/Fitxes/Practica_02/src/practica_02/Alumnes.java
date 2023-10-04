@@ -22,31 +22,30 @@ public class Alumnes {
         try {
             boolean repetir = true;
             while (repetir) {
-                repetir = false;
-                System.out.println("""
+                System.out.print("""
                                    Menu Alumne
                                    (0) Salir
                                    (1) Alta
                                    (2) Baixa
                                    (3) Llista
-                                   """);
+                                   
+                                   ?""");
                 menu = sc.nextInt();
-                if (menu < 0 || menu > 3) {
-                    System.out.println("Deus introduir un valor dins del rang");
-                    repetir = true;
-                    break;
-                }
                 switch (menu) {
-                    case 0 ->
+                    case 0 -> {
                         System.out.println("Has ixit del menu Alumnes");
+                        repetir = false;
+                    }
                     case 1 ->
                         alta();
                     case 2 ->
                         baixa();
                     case 3 ->
                         mostrarLista();
-                    default ->
-                        System.out.println("Eixa opció no existeix, tornaras al menu principal");
+                    case -1 ->
+                        test();
+                    default -> 
+                        System.out.println("Deus introduir un valor valid");
                 }
             }
         } catch (InputMismatchException e) {
@@ -69,7 +68,7 @@ public class Alumnes {
         String nia = sc.nextLine();
         if (buscarNia(nia) == -1) {
             list.add(new Alumne(nom, nia));
-        }else {
+        } else {
             System.out.println("El alumne ja existeix");
         }
     }
@@ -77,8 +76,14 @@ public class Alumnes {
     public void baixa() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nia: ");
-        list.remove(buscarNia(sc.nextLine())); //Todo comprovar que la funcion remove esta bien para eliminar entidades en un arraylist
-        //TODO mirar que pasa si no esta en la llista
+        int pos = buscarNia(sc.nextLine()); //TODO excepcion
+        if (pos == -1) {
+            System.out.println("Error: El alumne no existeix");
+        } else {
+            list.get(pos).eliminar();
+            list.remove(pos); //Todo comprovar que la funcion remove esta bien para eliminar entidades en un arraylist
+        }
+
     }
 
     public static int buscarNia(String nia) {
@@ -91,4 +96,56 @@ public class Alumnes {
         }
         return retorno;
     }
+
+    public void test() { //Falta comprobar si el alumne escriu el que no toca
+        //Donar de alta
+        System.out.println("Donar de alta a un alumne");
+        String nom = "Andreu Sanz";
+        String nia = "10813358";
+        if (buscarNia(nia) == -1) {
+            list.add(new Alumne(nom, nia));
+        } else {
+            System.out.println("El alumne ja existeix");
+        }
+        mostrarLista();
+        System.out.println("Donar de alta a una altra alumna");
+        nom = "Laura Llorens";
+        nia = "4562187124";
+        if (buscarNia(nia) == -1) {
+            list.add(new Alumne(nom, nia));
+        } else {
+            System.out.println("El alumne ja existeix");
+        }
+        mostrarLista();
+        System.out.println("Probocar Error perque el alumne ja existeix");
+        nom = "Andreu Sanz";
+        nia = "10813358";
+        if (buscarNia(nia) == -1) {
+            list.add(new Alumne(nom, nia));
+        } else {
+            System.out.println("El alumne ja existeix");
+        }
+        mostrarLista();
+        //Donar de baixa
+        System.out.println("Eliminem a Andreu Sanz");
+        int pos;
+        pos = buscarNia("10813358");
+        if (pos == -1) {
+            System.out.println("Error: El alumne no existeix");
+        } else {
+            list.get(pos).eliminar();
+            list.remove(pos);
+        }
+        mostrarLista();
+        System.out.println("Intentem eliminar a un alumne que no existeix");
+        pos = buscarNia("10813358");
+        if (pos == -1) {
+            System.out.println("Error: El alumne no existeix");
+        } else {
+            list.get(pos).eliminar();
+            list.remove(pos);
+        }
+        mostrarLista();
+    }
+
 }

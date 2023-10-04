@@ -10,8 +10,9 @@ package practica_02;
  */
 public class Matricula {
 
+    
+    
     double notes[] = new double[4];
-
     public Matricula() {
     }
     
@@ -19,12 +20,12 @@ public class Matricula {
         notes[0] = a;
         notes[1] = b;
         notes[2] = c;
-        notes[3] = (a + b + c) / 3;
+        notes[3] = (a + b + c) / (notes.length-1);
     }
 
     public void setNotes(double nota, int pos) {
         this.notes[pos] = nota;
-        //TODO vuic fer un for o un wh per a que comprove que si les 3 notes estan ficades que asigna la mitjana
+        notes[3] = (notes[0] + notes[1] + notes[2]) / (notes.length-1);
     }
     
 

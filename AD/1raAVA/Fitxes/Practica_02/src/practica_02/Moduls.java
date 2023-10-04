@@ -22,24 +22,25 @@ public class Moduls {
         try {
             boolean repetir = true;
             while (repetir) {
-                repetir = false;
-                System.out.println("""
+                
+                System.out.print("""
                                    Menu Modul
                                    (0) Salir
                                    (1) Alta
                                    (2) Baixa
                                    (3) Llista
                                    (4) Matricular Alumen 
+                                   
+                                   ?
                                    """); 
                 menu = sc.nextInt();
-                if (menu < 0 || menu > 4) {
-                    System.out.println("Deus introduir un valor dins del rang");
-                    repetir = true;
-                    break;
-                }
                 switch (menu) {
-                    case 0 ->
+                    case -1 ->
+                        test();
+                    case 0 ->{
+                        repetir = false;
                         System.out.println("Has ixit del menu Moduls");
+                    }
                     case 1 ->
                         alta();
                     case 2 ->
@@ -49,7 +50,7 @@ public class Moduls {
                     case 4 ->
                         matricularAlumne2();
                     default ->
-                        System.out.println("Eixa opció no existeix, tornaras al menu principal");
+                        System.out.println("Deus introduir un valor valid");
                 }
             }
         } catch (InputMismatchException e) {
@@ -86,6 +87,7 @@ public class Moduls {
         if (pos == -1) {
             System.out.println("Error: El modul no s'ha trobat");
         } else {
+            list.get(pos).eliminar();
             list.remove(pos); //Todo comprovar que la funcion remove esta bien para eliminar entidades en un arraylist
         }//TODO compravar si no trova el modul lo que retorna
     }
@@ -121,10 +123,10 @@ public class Moduls {
 
         int posModul = buscarModul(modul);
         int posNia = Alumnes.buscarNia(nia);
-        if (posModul != -1 || posNia != -1) {
-            Modul m = list.get(posModul);
+        if (posModul != -1 && posNia != -1) {
+            Modul m = new Modul(modul);
             Alumne matriculat = Alumnes.list.get(posNia);
-            matriculat.modulsList.add(m);
+            matriculat.modulsList.add(m); //TODO comprobar per a con clabar a un alumen en el mateix modul varies vegades
         } else {
             System.out.println("Error: El modul o el alumne no s'han trobat");
         }
@@ -140,5 +142,132 @@ public class Moduls {
             }
         }
         return retorno;
+    }
+    
+    public void test() {
+        //ALta
+        System.out.println("Mostrar llista buida");
+        mostrarLista();
+        
+        System.out.println("Afegir un modul a la llista");
+        String nom = "Matematiques";
+        if (buscarModul(nom) == -1) {
+            list.add(new Modul(nom));
+        } else {
+            System.out.println("El modul ja existeix");
+        }
+        mostrarLista();
+        System.out.println("Afegir un modul ja existent a la llista");
+        nom = "Matematiques";
+        if (buscarModul(nom) == -1) {
+            list.add(new Modul(nom));
+        } else {
+            System.out.println("El modul ja existeix");
+        }
+        mostrarLista();
+        System.out.println("Afegir 3 moduls a la llista");
+        nom = "Castella";
+        if (buscarModul(nom) == -1) {
+            list.add(new Modul(nom));
+        } else {
+            System.out.println("El modul ja existeix");
+        }
+        nom = "Valencia";
+        if (buscarModul(nom) == -1) {
+            list.add(new Modul(nom));
+        } else {
+            System.out.println("El modul ja existeix");
+        }
+        nom = "Angles";
+        if (buscarModul(nom) == -1) {
+            list.add(new Modul(nom));
+        } else {
+            System.out.println("El modul ja existeix");
+        }
+        mostrarLista();
+        
+        //Baixa
+        System.out.println("Eliminar modul");
+        int pos = buscarModul("Matematiques");
+        if (pos == -1) {
+            System.out.println("Error: El modul no s'ha trobat");
+        } else {
+            list.get(pos).eliminar();
+            list.remove(pos);
+        }
+        System.out.println("Eliminar modul que no existeix");
+        pos = buscarModul("Matematiques");
+        if (pos == -1) {
+            System.out.println("Error: El modul no s'ha trobat");
+        } else {
+            list.get(pos).eliminar();
+            list.remove(pos);
+        }
+        
+        //Matricular alumne
+        System.out.println("Afegir un alumne a un modul");
+        String nia = "4562187124";
+        String modul = "Valencia";
+        int posModul, posNia;
+        posModul = buscarModul(modul);
+        posNia = Alumnes.buscarNia(nia);
+        if (posModul != -1 || posNia != -1) {
+            Modul m = new Modul(modul);
+            Alumne matriculat = Alumnes.list.get(posNia);
+            matriculat.modulsList.add(m); 
+        } else {
+            System.out.println("Error: El modul o el alumne no s'han trobat");
+        }
+        System.out.println("Nia no existeix");
+        nia = "4562123424234214";
+        modul = "Valencia";
+        posModul = buscarModul(modul);
+        posNia = Alumnes.buscarNia(nia);
+        if (posModul != -1 && posNia != -1) {
+            Modul m = new Modul(modul);
+            Alumne matriculat = Alumnes.list.get(posNia);
+            matriculat.modulsList.add(m); 
+        } else {
+            System.out.println("Error: El modul o el alumne no s'han trobat");
+        }
+        System.out.println("Modul no existeix");
+        nia = "4562187124";
+        modul = "Vasdffdsfdsafdsaflencia";
+        posModul = buscarModul(modul);
+        posNia = Alumnes.buscarNia(nia);
+        if (posModul != -1 && posNia != -1) {
+            Modul m = new Modul(modul);
+            Alumne matriculat = Alumnes.list.get(posNia);
+            matriculat.modulsList.add(m); 
+        } else {
+            System.out.println("Error: El modul o el alumne no s'han trobat");
+        }
+        System.out.println("Afegir un alumne a varios moduls");
+         nia = "4562187124";
+         modul = "Castella";
+       
+        posModul = buscarModul(modul);
+        posNia = Alumnes.buscarNia(nia);
+        if (posModul != -1 && posNia != -1) {
+            Modul m = new Modul(modul);
+            Alumne matriculat = Alumnes.list.get(posNia);
+            matriculat.modulsList.add(m); 
+        } else {
+            System.out.println("Error: El modul o el alumne no s'han trobat");
+        }
+        System.out.println("Angles");
+        modul = "Angles";
+       
+        posModul = buscarModul(modul);
+        posNia = Alumnes.buscarNia(nia);
+        if (posModul != -1 && posNia != -1) {
+            Modul m = new Modul(modul);
+            Alumne matriculat = Alumnes.list.get(posNia);
+            matriculat.modulsList.add(m); 
+        } else {
+            System.out.println("Error: El modul o el alumne no s'han trobat");
+        }
+        Alumnes.list.get(0).mostrar();
+        
     }
 }

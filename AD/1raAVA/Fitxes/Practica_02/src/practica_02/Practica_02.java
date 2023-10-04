@@ -32,27 +32,40 @@ public class Practica_02 {
                            (3) Avaluar
                            """);
             System.out.print("Que vols fer: ");
-            switch (sc.nextInt()) { //TODO caso  default
-                case 0 ->
-                    repit = false;
-                case 1 ->
-                    alumnesList.menu();
-                case 2 ->
-                    modulsList.menu();
-                case 3 -> {//TODO
-                    m.menu();
+            int menu;
+            try {
+                menu = sc.nextInt();
+                switch (menu) {
+
+                    case 0 ->
+                        repit = false;
+                    case 1 ->
+                        alumnesList.menu();
+                    case 2 ->
+                        modulsList.menu();
+                    case 3 -> //TODO
+                        m.menu();
+                    default -> {
+                        System.out.println("Deus de introduir un valor valid");
+                    }
+
                 }
-                default ->
-                    throw new AssertionError();
+            } catch (InputMismatchException e) {
+                repit = true;
+                sc.next();
             }
-            
+
         }
 
     }
-
 }
 /*
 TODO
+- Excepcions tipiques
 - Crec que ni ha una funcio que te busca en un arraylist
+- Que diferencia hay entre qualificar i modificar
+- Falta modificat
+- Si un alumne es matricula de un modul i despes eixe modul se elimina s'ha de eliminar del modul de el alumne
+- Crec que no me guarda les notes en els alumnes
 
-*/
+ */

@@ -5,6 +5,8 @@
 package practica_02;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 public class Alumne {
     String nom, nia;
     
-    static ArrayList<Modul> modulsList;
+    ArrayList<Modul> modulsList;
 
 
     public Alumne(String nom, String nia) {
@@ -22,7 +24,7 @@ public class Alumne {
         modulsList = new ArrayList<>();
     }
     
-    public static int buscarModul(String nom) {
+    public int buscarModul(String nom) {
         int retorno = -1;
         for (int i = 0; i < modulsList.size();
                 i++) {
@@ -33,6 +35,26 @@ public class Alumne {
         return retorno;
     }
     
+    public void mostrar() {
+        System.out.printf("""
+                           %s / %s
+                           """, nom, nia);
+        for (int i = 0; i < modulsList.size(); i++) {
+            Modul m = modulsList.get(i);
+            Matricula ma = m.m;
+            double n[] = ma.notes;
+            System.out.printf("\t %s: %.2f - %.2f - %.2f - %.2f%n", m.nom, n[0], n[1], n[2], n[3]);
+        }
+    }
+    
+    public void eliminar() {
+        try {
+            this.finalize();
+        } catch (Throwable ex) {//TODO mensaje
+            Logger.getLogger(Alumne.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     
     
