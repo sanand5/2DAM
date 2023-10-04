@@ -47,7 +47,7 @@ public class Alumne {
         }
     }
     
-    public void eliminar() {
+    public void eliminar() {//fuera
         try {
             this.finalize();
         } catch (Throwable ex) {//TODO mensaje
