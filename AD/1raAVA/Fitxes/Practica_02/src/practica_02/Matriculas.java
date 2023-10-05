@@ -5,7 +5,6 @@
 package practica_02;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 /**
  *
@@ -13,19 +12,18 @@ import java.util.Scanner;
  */
 public class Matriculas {
 
+    ReadClient rc = new ReadClient();
+
     public void menu() {
-        Scanner sc = new Scanner(System.in);
         int menu = 0;
         try {
-            //Pedir datos alumno
-            System.out.print("Nia del alumne: ");
-            String nia = sc.nextLine();//TODO inputmismach
-            System.out.print("Modul a qualificar: ");
-            String modul = sc.nextLine();//TODO inputmismach
+            // TODO Pedir datos alumno
+            String nia = rc.pedirString("Nia del alumne: ");
+            String modul = rc.pedirString("Modul a qualificar: ");
             Alumne a = Alumnes.list.get(Alumnes.buscarNia(nia));
             int posModul = a.buscarModul(modul);
             Matricula matr = a.modulsList.get(posModul).m;
-            
+
             boolean repetir = true;
             while (repetir) {
 
@@ -34,11 +32,8 @@ public class Matriculas {
                                    (0) Salir
                                    (1) Qualificar
                                    (2) Modificar
-                                   (3) Traure bolletí de notes
-                                   
-                                   ?
-                                   """);
-                menu = sc.nextInt();
+                                   (3) Traure bolletí de notes""");
+                menu = rc.pedirInteger("?");
                 switch (menu) {
                     case 0:
                         repetir = false;
@@ -54,39 +49,30 @@ public class Matriculas {
                         mostrar();
                         break;
                     default:
-                        System.out.println(Colors.ANSI_YELLOW+"Deus introduir un valor valid");
+                        System.out.println(Colors.ANSI_YELLOW + "Deus introduir un valor valid");
                 }
             }
         } catch (InputMismatchException e) {
-            System.out.println(Colors.ANSI_YELLOW+"Deus introduir un numero");
+            System.out.println(Colors.ANSI_YELLOW + "Deus introduir un numero");
             menu();
         }
     }
 
     public void qualificar(Matricula matr) {//TODO buffer
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Quantes notes vols afegir: ");
-        int cant = sc.nextInt(); //TODO inputmismach
-
-        ;
-
+        int cant = rc.pedirInteger("Quantes notes vols afegir: ");
         for (int i = 0; i < cant; i++) {
-            System.out.print("Nota a afegir: ");
-            double nota = sc.nextDouble();
+            double nota = rc.pedirDoubleEntre(10, 0, "Nota a afegir: ");
             matr.addNota(nota);
         }
     }
 
-    public static void modificar(Matricula matr) {
-        Scanner sc = new Scanner(System.in);
+    public void modificar(Matricula matr) { //TODO era static
+
         matr.mostrarNotes();
-        System.out.print("Quina nota vols afegir: ");
-        int pos = sc.nextInt()-1; //TODO input mismach
-        System.out.print("Disme la nota que vols ficar: ");
-        double nota = sc.nextDouble();//TODO input mismach
+        int pos = rc.pedirInteger("Quina nota vols afegir: ")-1;
+        double nota = rc.pedirDoubleEntre(10, 0, "Disme la nota que vols ficar: ");
         matr.setNota(nota, pos);
-        
+
     }
 
     public void mostrar() {

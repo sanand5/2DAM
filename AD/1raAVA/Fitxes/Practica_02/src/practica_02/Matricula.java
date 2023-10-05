@@ -14,8 +14,6 @@ import java.util.ArrayList;
  */
 public class Matricula {
 
-    
-    
     //double notes[] = new double[4];
     private ArrayList<Double> notes;
 
@@ -43,8 +41,7 @@ public class Matricula {
             System.out.printf("%02d.- %d", i+1, notes.get(i));
         }
     }
-    
-    
+
     private void updateMitjana() {
         double sumatorio=0;
         for (int i = 0; i < notes.size(); i++) {
@@ -52,7 +49,4 @@ public class Matricula {
         }
         this.mitjana = sumatorio/notes.size();
     }
-    
-    
-
 }

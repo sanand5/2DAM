@@ -14,10 +14,10 @@ import java.util.Scanner;
  */
 public class Alumnes {
 
-    static ArrayList<Alumne> list = new ArrayList<>();
+    static ArrayList<Alumne> list = new ArrayList<>(); //TODO es estatic
+    ReadClient rc = new ReadClient();
 
     public void menu() {
-        Scanner sc = new Scanner(System.in);
         int menu = 0;
         try {
             boolean repetir = true;
@@ -27,10 +27,8 @@ public class Alumnes {
                                    (0) Salir
                                    (1) Alta
                                    (2) Baixa
-                                   (3) Llista
-                                   
-                                   ?""");
-                menu = sc.nextInt();
+                                   (3) Llista""");
+                menu = rc.pedirInteger("?");
                 switch (menu) {
                     case 0 -> {
                         System.out.println("Has ixit del menu Alumnes");
@@ -61,11 +59,8 @@ public class Alumnes {
     }
 
     public void alta() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nom: ");
-        String nom = sc.nextLine();
-        System.out.print("NIA: ");
-        String nia = sc.nextLine();
+        String nom = rc.pedirString("Nom: ");
+        String nia = rc.pedirString("NIA: ");
         if (buscarNia(nia) == -1) {
             list.add(new Alumne(nom, nia));
         } else {
@@ -74,9 +69,7 @@ public class Alumnes {
     }
 
     public void baixa() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nia: ");
-        int pos = buscarNia(sc.nextLine()); //TODO excepcion
+        int pos = buscarNia(rc.pedirString("Nia: ")); //TODO excepcion
         if (pos == -1) {
             System.out.println(Colors.ANSI_RED+"Error: El alumne no existeix");
         } else {

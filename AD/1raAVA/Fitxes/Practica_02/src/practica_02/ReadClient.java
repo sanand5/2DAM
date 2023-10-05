@@ -5,6 +5,7 @@
 package practica_02;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -19,13 +20,13 @@ public class ReadClient {
         sc = new Scanner(System.in);
     }
 
-    public int pedirInteger() {
+    public int pedirInteger(String msg) {
         int num = 0;
         boolean repit;
         do {
             repit = false;
             try {
-                System.out.print(Colors.ANSI_BLACK + "Disme un numero enter: ");
+                System.out.print(Colors.ANSI_BLACK + msg);
                 num = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println(Colors.ANSI_YELLOW + "Err: Deus introduir un numero enter");
@@ -36,13 +37,13 @@ public class ReadClient {
         return num;
     }
 
-    public double pedirDouble() {
+    public double pedirDouble(String msg) {
         double num = 0;
         boolean repit;
         do {
             repit = false;
             try {
-                System.out.print(Colors.ANSI_BLACK + "Disme un numero: ");
+                System.out.print(Colors.ANSI_BLACK + msg);
                 num = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println(Colors.ANSI_YELLOW + "Err: Deus introduir un numero");
@@ -53,13 +54,13 @@ public class ReadClient {
         return num;
     }
 
-    public double pedirDoubleEntre(double max, double min) {
+    public double pedirDoubleEntre(double max, double min, String msg) {
         double num = 0;
         boolean repit;
         do {
             repit = false;
             try {
-                System.out.print(Colors.ANSI_BLACK + "Disme un numero: ");
+                System.out.print(Colors.ANSI_BLACK + msg);
                 num = sc.nextInt();
                 if (min > num || max < num) {
                     repit = true;
@@ -73,15 +74,15 @@ public class ReadClient {
         return num;
     }
 
-    public String pedirString() {
+    public String pedirString(String msg) {
         String str = null;
         boolean repit;
         do {
-            System.out.print(Colors.ANSI_BLACK);
+            System.out.print(Colors.ANSI_BLACK + msg);
             repit = false;
             try {
                 str = sc.nextLine();
-            } catch (Exception e) {
+            } catch (NoSuchElementException e) {//TODO excepcion
                 System.out.println(Colors.ANSI_YELLOW + "Err: Deus introduir un text");
                 sc.next();//TODO comprovar el buffer
                 repit = true;
@@ -89,5 +90,4 @@ public class ReadClient {
         } while (repit);
         return str;
     }
-
 }

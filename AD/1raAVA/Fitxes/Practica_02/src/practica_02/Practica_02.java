@@ -30,10 +30,8 @@ public class Practica_02 {
                            (0) Eixir
                            (1) Menu alumnes
                            (2) Menu Modul
-                           (3) Avaluar
-                           """);
-            System.out.println("Que vols fer? ");
-            int menu = rc.pedirInteger();
+                           (3) Avaluar""");
+            int menu = rc.pedirInteger("?");
             switch (menu) {
 
                 case 0 ->
@@ -62,5 +60,6 @@ TODO
 - Falta modificat
 - Si un alumne es matricula de un modul i despes eixe modul se elimina s'ha de eliminar del modul de el alumne
 - Crec que no me guarda les notes en els alumnes
+- Mirar lo de el static en el main de les llistes per a les clases
 
  */

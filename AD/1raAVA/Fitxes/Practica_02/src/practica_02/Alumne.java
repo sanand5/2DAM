@@ -13,16 +13,13 @@ import java.util.ArrayList;
  */
 public class Alumne {
     String nom, nia;
-    
     ArrayList<Modul> modulsList;
-
-
+    
     public Alumne(String nom, String nia) {
         this.nom = nom;
         this.nia = nia;
         modulsList = new ArrayList<>();
     }
-    
     public int buscarModul(String nom) {
         int retorno = -1;
         for (int i = 0; i < modulsList.size();
@@ -33,7 +30,6 @@ public class Alumne {
         }
         return retorno;
     }
-    
     public void mostrar() {
         System.out.printf("""
                            %s / %s
@@ -43,11 +39,5 @@ public class Alumne {
             Matricula ma = m.m;
             ma.mostrarNotes(); //TODO mostrar en gions en una altra funció
         }
-    }
-
-
-    
-    
-    
-    
+    }   
 }
