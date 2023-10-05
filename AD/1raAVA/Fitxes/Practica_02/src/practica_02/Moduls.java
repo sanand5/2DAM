@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 /**
  *
  * @author andre
@@ -50,18 +51,18 @@ public class Moduls {
                     case 4 ->
                         matricularAlumne2();
                     default ->
-                        System.out.println("Deus introduir un valor valid");
+                        System.out.println(Colors.ANSI_YELLOW+"Deus introduir un valor valid");
                 }
             }
         } catch (InputMismatchException e) {
-            System.out.println("Deus introduir un numero");
+            System.out.println(Colors.ANSI_YELLOW+"Deus introduir un numero");
             menu();
         }
     }
 
     public void mostrarLista() {
         if (list.isEmpty()) {
-            System.out.println("No hi han moduls");
+            System.out.println(Colors.ANSI_YELLOW+"No hi han moduls");
         } else {
             for (int i = 0; i < list.size(); i++) {
                 System.out.println(i + 1 + ". " + list.get(i).nom);
@@ -76,7 +77,7 @@ public class Moduls {
         if (buscarModul(nom) == -1) {
             list.add(new Modul(nom));
         } else {
-            System.out.println("El modul ja existeix");
+            System.out.println(Colors.ANSI_YELLOW+"El modul ja existeix");
         }
     }
 
@@ -85,9 +86,8 @@ public class Moduls {
         System.out.print("Nom: ");
         int pos = buscarModul(sc.nextLine());
         if (pos == -1) {
-            System.out.println("Error: El modul no s'ha trobat");
+            System.out.println(Colors.ANSI_RED+"Error: El modul no s'ha trobat");
         } else {
-            list.get(pos).eliminar();
             list.remove(pos); //Todo comprovar que la funcion remove esta bien para eliminar entidades en un arraylist
         }//TODO compravar si no trova el modul lo que retorna
     }
@@ -108,7 +108,7 @@ public class Moduls {
             Alumne matriculat = Alumnes.list.get(posNia); //alumne no trobat
             //matriculat.matriculasList.add(new Matricula(m));
         } else {
-            System.out.println("Error: El modul o el nia no s'han trobat");
+            System.out.println(Colors.ANSI_RED+"Error: El modul o el nia no s'han trobat");
         }
 
     }
@@ -128,7 +128,7 @@ public class Moduls {
             Alumne matriculat = Alumnes.list.get(posNia);
             matriculat.modulsList.add(m); //TODO comprobar per a con clabar a un alumen en el mateix modul varies vegades
         } else {
-            System.out.println("Error: El modul o el alumne no s'han trobat");
+            System.out.println(Colors.ANSI_RED+"Error: El modul o el alumne no s'han trobat");
         }
 
     }
@@ -192,7 +192,6 @@ public class Moduls {
         if (pos == -1) {
             System.out.println("Error: El modul no s'ha trobat");
         } else {
-            list.get(pos).eliminar();
             list.remove(pos);
         }
         System.out.println("Eliminar modul que no existeix");
@@ -200,7 +199,7 @@ public class Moduls {
         if (pos == -1) {
             System.out.println("Error: El modul no s'ha trobat");
         } else {
-            list.get(pos).eliminar();
+            
             list.remove(pos);
         }
         

@@ -5,8 +5,7 @@
 package practica_02;
 
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -42,19 +41,10 @@ public class Alumne {
         for (int i = 0; i < modulsList.size(); i++) {
             Modul m = modulsList.get(i);
             Matricula ma = m.m;
-            double n[] = ma.notes;
-            System.out.printf("\t %s: %.2f - %.2f - %.2f - %.2f%n", m.nom, n[0], n[1], n[2], n[3]);
+            ma.mostrarNotes(); //TODO mostrar en gions en una altra funció
         }
     }
-    
-    public void eliminar() {//fuera
-        try {
-            this.finalize();
-        } catch (Throwable ex) {//TODO mensaje
-            Logger.getLogger(Alumne.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+
 
     
     

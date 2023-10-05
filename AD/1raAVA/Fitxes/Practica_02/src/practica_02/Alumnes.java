@@ -45,11 +45,11 @@ public class Alumnes {
                     case -1 ->
                         test();
                     default -> 
-                        System.out.println("Deus introduir un valor valid");
+                        System.out.println(Colors.ANSI_YELLOW+"Deus introduir un valor valid");
                 }
             }
         } catch (InputMismatchException e) {
-            System.out.println("Deus introduir un numero");
+            System.out.println(Colors.ANSI_YELLOW+"Deus introduir un numero");
             menu();
         }
     }
@@ -69,7 +69,7 @@ public class Alumnes {
         if (buscarNia(nia) == -1) {
             list.add(new Alumne(nom, nia));
         } else {
-            System.out.println("El alumne ja existeix");
+            System.out.println(Colors.ANSI_YELLOW+"El alumne ja existeix");
         }
     }
 
@@ -78,9 +78,8 @@ public class Alumnes {
         System.out.print("Nia: ");
         int pos = buscarNia(sc.nextLine()); //TODO excepcion
         if (pos == -1) {
-            System.out.println("Error: El alumne no existeix");
+            System.out.println(Colors.ANSI_RED+"Error: El alumne no existeix");
         } else {
-            list.get(pos).eliminar();
             list.remove(pos); //Todo comprovar que la funcion remove esta bien para eliminar entidades en un arraylist
         }
 
@@ -133,7 +132,6 @@ public class Alumnes {
         if (pos == -1) {
             System.out.println("Error: El alumne no existeix");
         } else {
-            list.get(pos).eliminar();
             list.remove(pos);
         }
         mostrarLista();
@@ -142,7 +140,6 @@ public class Alumnes {
         if (pos == -1) {
             System.out.println("Error: El alumne no existeix");
         } else {
-            list.get(pos).eliminar();
             list.remove(pos);
         }
         mostrarLista();

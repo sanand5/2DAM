@@ -4,8 +4,6 @@
  */
 package practica_02;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,14 +18,6 @@ public class Modul {
         this.nom = nom;
         m = new Matricula();
     }
-    
-    public void eliminar() {
-        
-        try {
-            this.finalize();
-        } catch (Throwable ex) {
-            Logger.getLogger(Modul.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
 
 }

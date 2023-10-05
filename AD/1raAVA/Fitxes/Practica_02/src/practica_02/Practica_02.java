@@ -4,7 +4,6 @@
  */
 package practica_02;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +22,9 @@ public class Practica_02 {
         Alumnes alumnesList = new Alumnes();
         Moduls modulsList = new Moduls();
         Matriculas m = new Matriculas();
+        ReadClient rc = new ReadClient();
         boolean repit = true;
+
         while (repit) {
             System.out.println("""
                            (0) Eixir
@@ -31,28 +32,22 @@ public class Practica_02 {
                            (2) Menu Modul
                            (3) Avaluar
                            """);
-            System.out.print("Que vols fer: ");
-            int menu;
-            try {
-                menu = sc.nextInt();
-                switch (menu) {
+            System.out.println("Que vols fer? ");
+            int menu = rc.pedirInteger();
+            switch (menu) {
 
-                    case 0 ->
-                        repit = false;
-                    case 1 ->
-                        alumnesList.menu();
-                    case 2 ->
-                        modulsList.menu();
-                    case 3 -> //TODO
-                        m.menu();
-                    default -> {
-                        System.out.println("Deus de introduir un valor valid");
-                    }
-
+                case 0 ->
+                    repit = false;
+                case 1 ->
+                    alumnesList.menu();
+                case 2 ->
+                    modulsList.menu();
+                case 3 -> //TODO
+                    m.menu();
+                default -> {
+                    System.out.println(Colors.ANSI_YELLOW + "Deus de introduir un valor valid");
                 }
-            } catch (InputMismatchException e) {
-                repit = true;
-                sc.next();
+
             }
 
         }

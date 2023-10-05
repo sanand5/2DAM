@@ -1,0 +1,13 @@
+04/10/23
+- installar ubuntu server: ./server.png
+- instalar openssh-server: ./openserver.png
+- Salio un error porque en ubuntu server 22 el comando esta desactualizado: ./Error.png
+
+05/10/23
+- Correción de error
+	- Descargar winscp: 
+		- Hacer ping: ./ping.png
+		- Conectar servidor: ./winscp.png
+	- instalar odoo con el archivo installodoo.sh: ./active.png
+	- ver conexion desde el navegador: ./odoo.png
+

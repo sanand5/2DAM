@@ -4,6 +4,10 @@
  */
 package practica_02;
 
+
+import java.util.ArrayList;
+
+
 /**
  *
  * @author andre
@@ -12,21 +16,43 @@ public class Matricula {
 
     
     
-    double notes[] = new double[4];
+    //double notes[] = new double[4];
+    private ArrayList<Double> notes;
+
+    double mitjana;
+    
     public Matricula() {
+        notes = new ArrayList<>();
     }
     
-    public Matricula(double a, double b, double c) {
-        notes[0] = a;
-        notes[1] = b;
-        notes[2] = c;
-        notes[3] = (a + b + c) / (notes.length-1);
+    public void addNota(double n) { //TODO que pugues afegir mes de una amb ...
+        notes.add(n);
+        updateMitjana();
     }
-
-    public void setNotes(double nota, int pos) {
-        this.notes[pos] = nota;
-        notes[3] = (notes[0] + notes[1] + notes[2]) / (notes.length-1);
+    public void setNota(double nota, int pos) {
+        notes.set(pos, nota);
+        updateMitjana();
+        System.out.println(Colors.ANSI_GREEN+"La nota s'ha modificat");
     }
+    public void delNota(int pos) {//TODO que pugues eliminar mes de una amb ...
+        notes.remove(pos);
+        updateMitjana();
+    }
+    public void mostrarNotes() {
+        for (int i = 0; i < notes.size(); i++) {
+            System.out.printf("%02d.- %d", i+1, notes.get(i));
+        }
+    }
+    
+    
+    private void updateMitjana() {
+        double sumatorio=0;
+        for (int i = 0; i < notes.size(); i++) {
+            sumatorio += notes.get(i);
+        }
+        this.mitjana = sumatorio/notes.size();
+    }
+    
     
 
 }
