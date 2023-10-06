@@ -30,7 +30,7 @@ public class Practica_02 {
             int menu = rc.pedirInteger("?");
             switch (menu) {
 
-                case -1 ->
+                case 0 ->
                     repit = false;
                 case 1 ->
                     alumnesList.menu();

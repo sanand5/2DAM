@@ -1,0 +1,15 @@
+Que:
+	La feina consisteix a crear una estructura bàsica que en permetrà, una volta finalitzat el curs, tindre una aplicació que ens permetera gestionar un centre 	de formació. Aquesta primera practica consistira en crear un sistema bàsic que permetrà donar de alta i matricular alumnes en mòduls, crear eixos mòduls i, 	una volta fet això, de poder avaluar, ficar notes a eixos mòduls (almenys 3 notes)
+	De moment treballarem a memòria, no escriurem a disc.
+
+Para que:
+	Para tener la base del programa, ya que vamos a trabajar en este proyecto durante todo el curso, además para ver realmente cuánto sabemos de Java, ya que 	es un proyecto largo y con un cierto nivel de complicación. También es útil para aprender a organizarnos para otros proyectos realmente grandes y aprender 	a gestionar el uso de diferentes tipos de clases más genéricas.
+
+Pseudocodigo:
+Como:
+
+
+
+Conclusión:
+
+

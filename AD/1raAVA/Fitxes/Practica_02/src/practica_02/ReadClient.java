@@ -81,9 +81,8 @@ public class ReadClient {
                     Colors.warMsg("No pots deixar un camp buit");
                 }
                 
-            } catch (NoSuchElementException e) {//TODO excepcion
+            } catch (NoSuchElementException e) {
                 Colors.errMsg("Deus introduir un text");
-//                sc.next();//TODO comprovar el buffer
                 repit = true;
             }
         } while (repit);
