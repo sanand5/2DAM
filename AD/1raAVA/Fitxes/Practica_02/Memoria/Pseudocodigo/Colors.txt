@@ -1,0 +1,29 @@
+Clase Colors:
+    Constantes:
+        - WHITE_ANSI = "\u001B[37m"
+        - RESET_ANSI = "\u001B[0m"
+        - BLACK_ANSI = "\u001B[30m"
+        - RED_ANSI = "\u001B[31m"
+        - GREEN_ANSI = "\u001B[32m"
+        - CYAN_ANSI = "\u001B[36m"
+        - YELLOW_ANSI = "\u001B[33m"
+        - BLUE_ANSI = "\u001B[34m"
+        - PURPLE_ANSI = "\u001B[35m"
+
+        - BLACK_BACKGROUND_ANSI = "\u001B[40m"
+        - RED_BACKGROUND_ANSI = "\u001B[41m"
+        - GREEN_BACKGROUND_ANSI = "\u001B[42m"
+        - YELLOW_BACKGROUND_ANSI = "\u001B[43m"
+        - BLUE_BACKGROUND_ANSI = "\u001B[44m"
+        - PURPLE_BACKGROUND_ANSI = "\u001B[45m"
+        - CYAN_BACKGROUND_ANSI = "\u001B[46m"
+        - WHITE_BACKGROUND_ANSI = "\u001B[47m"
+
+    Método errMsg(msg):
+        Imprimir "Error: " seguido de msg con el color RED_ANSI y luego RESET_ANSI
+
+    Método warMsg(msg):
+        Imprimir "War: " seguido de msg con el color CYAN_ANSI y luego RESET_ANSI
+
+    Método okMsg(msg):
+        Imprimir "OK: " seguido de msg con el color GREEN_ANSI y luego RESET_ANSI

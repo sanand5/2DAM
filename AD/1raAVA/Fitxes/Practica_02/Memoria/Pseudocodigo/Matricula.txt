@@ -1,0 +1,41 @@
+Clase Matricula:
+    Atributos:
+        - notes (lista de números decimales para almacenar las notas)
+        - mitjana (número decimal para almacenar la media de las notas)
+    
+    Constructor Matricula():
+        Inicializar la lista de notas (notes) como una lista vacía
+    
+    Método addNota(n):
+        Agregar la nota (n) a la lista de notas
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método setNota(nota, pos):
+        Establecer la nota en la posición (pos) de la lista de notas como (nota)
+        Mostrar un mensaje de éxito
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método delNota(pos):
+        Eliminar la nota en la posición (pos) de la lista de notas
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método mostrarNotes(lista):
+        Si la lista de notas no está vacía:
+            Si lista es verdadero:
+                Para cada nota en la lista de notas:
+                    Mostrar el índice + 1 y la nota con formato
+            De lo contrario:
+                Para cada nota en la lista de notas (excepto la última):
+                    Mostrar la nota con formato + " - "
+                Mostrar la media (mitjana) con formato en color púrpura y luego en color blanco
+            Devolver 0
+        De lo contrario:
+            Mostrar un mensaje de advertencia indicando que el alumno no tiene notas
+            Devolver -1
+    
+    Método updateMitjana():
+        Inicializar sumatorio como 0
+        Para cada nota en la lista de notas:
+            Sumar la nota a sumatorio
+        Calcular la media (mitjana) como el cociente de sumatorio entre el tamaño de la lista de notas
+        Mostrar un mensaje de éxito indicando que la media se ha actualizado
