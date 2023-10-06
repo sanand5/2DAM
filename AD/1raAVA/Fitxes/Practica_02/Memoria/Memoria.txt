@@ -3,7 +3,7 @@ Que:
 	De moment treballarem a memòria, no escriurem a disc.
 
 Para que:
-	Para tener la base del programa, ya que vamos a trabajar en este proyecto durante todo el curso, además para ver realmente cuánto sabemos de Java, ya que 	es un proyecto largo y con un cierto nivel de complicación. También es útil para aprender a organizarnos para otros proyectos realmente grandes y aprender 	a gestionar el uso de diferentes tipos de clases más genéricas.
+	Para tener la base del programa, ya que vamos a trabajar en este proyecto durante todo el curso, además para ver realmente cuánto sabemos de Java, ya que 		es un proyecto largo y con un cierto nivel de complicación. También es útil para aprender a organizarnos para otros proyectos realmente grandes y aprender 		a gestionar el uso de diferentes tipos de clases más genéricas.
 
 Pseudocodigo:
 Como:
@@ -11,5 +11,4 @@ Como:
 
 
 Conclusión:
-
 
