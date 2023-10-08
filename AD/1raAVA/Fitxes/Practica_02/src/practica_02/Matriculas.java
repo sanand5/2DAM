@@ -18,8 +18,8 @@ public class Matriculas {
         int posNia = Practica_02.alumnesList.buscarNia(nia);
         if (posNia != -1) {
             Alumne a = Practica_02.alumnesList.list.get(posNia);
-            String modul = rc.pedirString("Modul a qualificar: ");
-            int posModul = a.buscarModul(modul);
+            String modul = rc.pedirString("Mòdul a qualificar: ");
+            int posModul = Practica_02.modulsList.buscarModul(modul, a.modulsList);
             if (posModul != -1) {
                 Matricula matr = a.modulsList.get(posModul).matr;
                 boolean repetir = true;
@@ -50,7 +50,7 @@ public class Matriculas {
                     }
                 }
             } else {
-                Colors.errMsg("No es posible avaluar al alumne perque no esta donat de alta en eixe modul");
+                Colors.errMsg("No es posible avaluar al alumne perque no esta donat de alta en eixe Mòdul");
             }
 
         } else {
@@ -77,7 +77,7 @@ public class Matriculas {
     }
 
     public void mostrar() {
-        //TODO sout "llista de matricules"
+        System.out.println("### Bolletí de notes ###");
         for (int i = 0; i < Practica_02.alumnesList.list.size(); i++) {
             Practica_02.alumnesList.list.get(i).mostrar();
         }

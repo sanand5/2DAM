@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package practica_02;
+package practica_03;
 
 import java.util.ArrayList;
+import iohelpers.*;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Moduls {
     
-    ArrayList<Modul> list = new ArrayList<>();
+    ArrayList<String> list = new ArrayList<>();
     ReadClient rc = new ReadClient();
     
     public void menu() {
@@ -30,7 +31,7 @@ public class Moduls {
             switch (menu) {
                 case 0 -> {
                     repetir = false;
-                    System.out.println("Has ixit del menu MòdulS");
+                    System.out.println("Has ixit del menu Mòdul");
                 }
                 case 1 ->
                     alta();
@@ -50,68 +51,64 @@ public class Moduls {
     
     public void mostrarLista() {
         if (list.isEmpty()) {
-            Colors.warMsg("No hi han mÒduls");
+            Colors.warMsg("No hi han mòduls");
         } else {
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(i + 1 + ". " + list.get(i).nom);
+                System.out.println(i + 1 + ". " + list.get(i));
             }
         }
     }
     
     private void alta() {
-        rc.bufferClear();
-        String nom = rc.pedirString("Nom del mÒdul: ");
+        String nom = rc.pedirString("Nom del mòdul: ");
         if (buscarModul(nom) == -1) {
-            list.add(new Modul(nom));
+            list.add(nom);
             Colors.okMsg(String.format("%s s'ha donat de alta", nom));
         } else {
-            Colors.errMsg("El mÒdul ja existeix");
+            Colors.errMsg("El mòdul ja existeix");
         }
     }
     
     private void baixa() {
-        rc.bufferClear();
-        String modul = rc.pedirString("Nom del mÒdul: ");
+        String modul = rc.pedirString("Nom del mòdul: ");
         int pos = buscarModul(modul);
         if (pos != -1) {
             list.remove(pos);
-            Colors.okMsg("El mÒdul s'ha eliminat");
+            Colors.okMsg("El mòdul s'ha eliminat");
             desmatricularAlumnes(modul);
             Colors.okMsg("Els alumnes s'han actualitzat");
         } else {
-            Colors.errMsg("El mÒdul no s'ha trobat");
+            Colors.errMsg("El mòdul no s'ha trobat");
         }
     }
     
     private void matricularAlumne() {
-        rc.bufferClear();
         String nia = rc.pedirString("Nia del alumne: ");
-        String modul = rc.pedirString("Nom del modul: ");
+        String modul = rc.pedirString("Nom del mòdul: ");
         
         int posModul = buscarModul(modul);
-        int posNia = Practica_02.alumnesList.buscarNia(nia);
+        int posNia = practica_03.alumnesList.buscarNia(nia);
         if (posModul != -1 && posNia != -1) { //El modul o el alumne no existeixen
-            Alumne matriculat = Practica_02.alumnesList.list.get(posNia);
+            Alumne matriculat = practica_03.alumnesList.list.get(posNia);
             if (buscarModul(modul, matriculat.modulsList) == -1) { // El modul existeix en la llista del alumne
                 Modul m = new Modul(modul);
                 matriculat.modulsList.add(m);
-                Colors.okMsg("El alumne s'ha matriculat en el mÒdul " + m.nom);
+                Colors.okMsg("El alumne s'ha matriculat en el mòdul " + m.nom);
             } else {
-                Colors.errMsg("El alumne ja esta matricular a aquest mÒdul");
+                Colors.errMsg("El alumne ja esta matricular a aquest mòdul");
             }
         } else {
-            Colors.errMsg("El mÒdul o el alumne no s'han trobat");
+            Colors.errMsg("El mòdul o el alumne no s'han trobat");
         }
         
     }
     
     private void desmatricularAlumnes(String modul) {
-        ArrayList<Alumne> list = Practica_02.alumnesList.list;
-        for (int i = 0; i < list.size(); i++) {
-            Alumne matriculat = list.get(i);
+        ArrayList<Alumne> listAlumnes = practica_03.alumnesList.list;
+        for (int i = 0; i < listAlumnes.size(); i++) {
+            Alumne matriculat = listAlumnes.get(i);
             int posModul = buscarModul(modul, matriculat.modulsList);
             if (posModul != -1) {
-                Modul m = matriculat.modulsList.get(i);
                 matriculat.modulsList.remove(posModul);
             }
         }
@@ -122,7 +119,7 @@ public class Moduls {
         int retorno = -1;
         for (int i = 0; i < list.size();
                 i++) {
-            if (list.get(i).nom.equals(nom)) {
+            if (list.get(i).equals(nom)) {
                 retorno = i;
             }
         }

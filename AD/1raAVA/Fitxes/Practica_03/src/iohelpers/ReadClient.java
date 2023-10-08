@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package practica_02;
+package iohelpers;
 
 
 import java.util.InputMismatchException;
@@ -21,9 +21,9 @@ public class ReadClient {
         sc = new Scanner(System.in);
     }
     
-    public void bufferClear() {
-        sc.nextLine();
-    }
+//    public void bufferClear() {
+//        sc.nextLine();
+//    }
 
     public int pedirInteger(String msg) {
         int num = 0;
@@ -32,11 +32,11 @@ public class ReadClient {
             repit = false;
             try {
                 System.out.print(msg);
-                num = sc.nextInt();
+                num = Integer.parseInt(sc.nextLine());
                 
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException | NumberFormatException e) {
                 Colors.warMsg("Deus introduir un número enter");
-                sc.next();
+//                sc.next();
                 repit = true;
             }
         } while (repit);
@@ -52,14 +52,14 @@ public class ReadClient {
             repit = false;
             try {
                 System.out.print(msg);
-                num = sc.nextDouble();
+                num = Double.parseDouble(sc.nextLine());
                 if ((min != null && num < min) || (max != null && num > max)) {
                     rang = min + " - " + max ;
                     Colors.warMsg("Deus introduir un número entre " + rang);
                     repit = true;
                 }
-            } catch (InputMismatchException e) {
-                sc.next();
+            } catch (InputMismatchException | NumberFormatException | NullPointerException e) {
+//                sc.next();
                 Colors.warMsg("Deus introduir un número");
                 repit = true;
             }

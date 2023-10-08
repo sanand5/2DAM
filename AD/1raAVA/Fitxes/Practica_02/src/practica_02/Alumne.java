@@ -18,16 +18,6 @@ public class Alumne {
         this.nia = nia;
         modulsList = new ArrayList<>();
     }
-    public int buscarModul(String nom) {
-        int retorno = -1;
-        for (int i = 0; i < modulsList.size();
-                i++) {
-            if (modulsList.get(i).nom.equals(nom)) {
-                retorno = i;
-            }
-        }
-        return retorno;
-    }
     public void mostrar() {
         System.out.printf("""
                            %s / %s
