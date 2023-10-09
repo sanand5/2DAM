@@ -33,8 +33,11 @@ public class Alumnes {
                     System.out.println("Has ixit del menu Alumnes");
                     repetir = false;
                 }
-                case 1 ->
-                    alta();
+                case 1 -> {
+                    String nom = Alumne.pedirName();
+                    String nia = Alumne.pedirNia();
+                    alta(nom, nia);
+                }
                 case 2 ->
                     baixa();
                 case 3 ->
@@ -53,21 +56,19 @@ public class Alumnes {
         }
     }
 
-    private void alta() {
-//        rc.bufferClear();
-        String nom = Alumne.pedirName();
-        String nia = Alumne.pedirNia();
+    public int alta(String nom, String nia) {
+
         if (buscarNia(nia) == -1) {
             list.add(new Alumne(nom, nia));
             Colors.okMsg(String.format("S'ha donat de alta ha %s amb NIA: %s", nom, nia));
         } else {
             Colors.warMsg("El alumne ja existeix");
         }
-
+        
+        return list.size()-1;
     }
 
     private void baixa() {
-//        rc.bufferClear();
         int pos = buscarNia(Alumne.pedirNia());
         if (pos == -1) {
             Colors.errMsg("El alumne no existeix");
@@ -87,5 +88,6 @@ public class Alumnes {
         }
         return retorno;
     }
+    
 
 }

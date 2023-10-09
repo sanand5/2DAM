@@ -15,50 +15,50 @@ public class Matriculas {
     ReadClient rc = new ReadClient();
 
     public void menu() {
-
         int menu;
-        Matricula matr = crearMatricula();
-
-        if (matr != null) {
-            boolean repetir = true;
-            while (repetir) {
-                System.out.println("""
+        boolean repetir = true;
+        while (repetir) {
+            System.out.println("""
                                    Menu Avaluar
                                    (0) Salir
                                    (1) Qualificar
                                    (2) Modificar
                                    (3) Traure bolletí de notes""");
-                menu = rc.pedirInteger("?");
-                switch (menu) {
-                    case 0:
-                        repetir = false;
-                        System.out.println("Has ixit del menu Avaluar");
-                        break;
-                    case 1:
-                        qualificar(matr);
-                        break;
-                    case 2:
-                        modificar(matr);
-                        break;
-                    case 3:
-                        mostrar();
-                        break;
-                    default:
-                        Colors.warMsg("Deus introduir un valor valid");
-                }
+            menu = rc.pedirInteger("?");
+            switch (menu) {
+                case 0:
+                    repetir = false;
+                    System.out.println("Has ixit del menu Avaluar");
+                    break;
+                case 1:
+                    qualificar(dades());
+                    break;
+                case 2:
+                    modificar(dades());
+                    break;
+                case 3:
+                    mostrar();
+                    break;
+                default:
+                    Colors.warMsg("Deus introduir un valor valid");
             }
 
         }
 
     }
 
-    private Matricula crearMatricula() {
-        Matricula matr = null;
+    public Matricula dades() {
         String nia = Alumne.pedirNia();
+        String modul = rc.pedirString("Mòdul a qualificar: ");
+        Matricula matr = enlazarMatricula(nia, modul);
+        return matr;
+    }
+
+    public Matricula enlazarMatricula(String nia, String modul) {
+        Matricula matr = null;
         int posNia = practica_03.alumnesList.buscarNia(nia);
         if (posNia != -1) {
             Alumne a = practica_03.alumnesList.list.get(posNia);
-            String modul = rc.pedirString("Mòdul a qualificar: ");
             int posModul = practica_03.modulsList.buscarModul(modul, a.modulsList);
             if (posModul != -1) {
                 matr = a.modulsList.get(posModul).matr;
@@ -82,7 +82,7 @@ public class Matriculas {
 
     private void modificar(Matricula matr) {
         if (matr.mostrarNotes(true) != -1) {
-            int pos = rc.pedirInteger("Quina nota vols afegir: ") - 1;
+            int pos = rc.pedirInteger("Disme la posició de la nota que vols modificar: ") - 1;
             double nota = rc.pedirDouble("Disme la nota que vols ficar: ", 0.0, 10.0);
             matr.setNota(nota, pos);
         }

@@ -6,11 +6,13 @@ package practica_03;
 
 import java.util.ArrayList;
 import iohelpers.*;
+
 /**
  *
  * @author andre
  */
 public class Matricula {
+
     private ArrayList<Double> notes;
     double mitjana;
 
@@ -18,8 +20,10 @@ public class Matricula {
         notes = new ArrayList<>();
     }
 
-    public void addNota(double n) { //TODO que pugues afegir mes de una amb ...
-        notes.add(n);
+    public void addNota(double ... nota) {
+        for (double n : nota) {
+        notes.add(n);    
+        }
         updateMitjana();
     }
 
@@ -29,7 +33,7 @@ public class Matricula {
         updateMitjana();
     }
 
-    public void delNota(int pos) {//TODO que pugues eliminar mes de una amb ...
+    public void delNota(int pos) {
         notes.remove(pos);
         updateMitjana();
     }

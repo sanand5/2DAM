@@ -12,10 +12,10 @@ import iohelpers.*;
  * @author andre
  */
 public class Moduls {
-    
+
     ArrayList<String> list = new ArrayList<>();
     ReadClient rc = new ReadClient();
-    
+
     public void menu() {
         int menu = 0;
         boolean repetir = true;
@@ -26,29 +26,34 @@ public class Moduls {
                                    (1) Alta
                                    (2) Baixa
                                    (3) Llista
-                                   (4) Matricular Alumen""");
+                                   (4) Matricular Alumne""");
             menu = rc.pedirInteger("?");
             switch (menu) {
                 case 0 -> {
                     repetir = false;
                     System.out.println("Has ixit del menu Mòdul");
                 }
-                case 1 ->
-                    alta();
+                case 1 -> {
+                    String nom = rc.pedirString("Nom del mòdul: ");
+                    alta(nom);
+                }
                 case 2 ->
                     baixa();
                 case 3 ->
                     mostrarLista();
-                case 4 ->
-                    matricularAlumne();
+                case 4 -> {
+                    String nia = Alumne.pedirNia();
+                    String modul = rc.pedirString("Nom del mòdul: ");
+                    matricularAlumne(nia, modul);
+                }
                 default -> {
                     Colors.warMsg("Deus introduir un valor valid");
                 }
             }
         }
-        
+
     }
-    
+
     public void mostrarLista() {
         if (list.isEmpty()) {
             Colors.warMsg("No hi han mòduls");
@@ -58,17 +63,19 @@ public class Moduls {
             }
         }
     }
-    
-    private void alta() {
-        String nom = rc.pedirString("Nom del mòdul: ");
-        if (buscarModul(nom) == -1) {
-            list.add(nom);
-            Colors.okMsg(String.format("%s s'ha donat de alta", nom));
-        } else {
-            Colors.errMsg("El mòdul ja existeix");
+
+    public void alta(String... nom) {
+        for (String name : nom) {
+            if (buscarModul(name) == -1) {
+                list.add(name);
+                Colors.okMsg(String.format("%s s'ha donat de alta", name));
+            } else {
+                Colors.errMsg("El mòdul ja existeix");
+            }
         }
+
     }
-    
+
     private void baixa() {
         String modul = rc.pedirString("Nom del mòdul: ");
         int pos = buscarModul(modul);
@@ -81,11 +88,8 @@ public class Moduls {
             Colors.errMsg("El mòdul no s'ha trobat");
         }
     }
-    
-    private void matricularAlumne() {
-        String nia = rc.pedirString("Nia del alumne: ");
-        String modul = rc.pedirString("Nom del mòdul: ");
-        
+
+    public void matricularAlumne(String nia, String modul) {
         int posModul = buscarModul(modul);
         int posNia = practica_03.alumnesList.buscarNia(nia);
         if (posModul != -1 && posNia != -1) { //El modul o el alumne no existeixen
@@ -100,9 +104,9 @@ public class Moduls {
         } else {
             Colors.errMsg("El mòdul o el alumne no s'han trobat");
         }
-        
+
     }
-    
+
     private void desmatricularAlumnes(String modul) {
         ArrayList<Alumne> listAlumnes = practica_03.alumnesList.list;
         for (int i = 0; i < listAlumnes.size(); i++) {
@@ -112,9 +116,9 @@ public class Moduls {
                 matriculat.modulsList.remove(posModul);
             }
         }
-        
+
     }
-    
+
     public int buscarModul(String nom) {
         int retorno = -1;
         for (int i = 0; i < list.size();
@@ -125,7 +129,7 @@ public class Moduls {
         }
         return retorno;
     }
-    
+
     public int buscarModul(String nom, ArrayList<Modul> list) {
         int retorno = -1;
         for (int i = 0; i < list.size();

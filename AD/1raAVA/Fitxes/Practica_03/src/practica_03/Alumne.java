@@ -35,27 +35,37 @@ public class Alumne {
             ma.mostrarNotes(false);
         }
     }
-    
-    private static String comprabarDatos(String matches, String msg, String msgErr) { //TODO comprovar bucle
-        String str = null;
+
+    public static boolean comprabarDatos(String str, boolean option, String msgErr) { //option = name or nia
         boolean correcto = false;
-        while (!correcto) {
-            str = rc.pedirString(msg);
-            if (str.matches(matches)) {
-                correcto = true;
-            } else {
-                Colors.warMsg(msgErr);
-                correcto = false;
-            }
+        String matches;
+        if (option) {
+            matches = "\\D*";
+        } else {
+            matches = "\\d{8}";
         }
-        return str;
+
+        if (str.matches(matches)) {
+            correcto = true;
+        } else {
+            Colors.warMsg(msgErr);
+            correcto = false;
+        }
+        return correcto;
     }
-    
+
     public static String pedirName() {
-        return comprabarDatos("\\D*", "Nom del alumne: ", "El nom no pot contindre números");
+        String name;
+        do {
+            name = rc.pedirString("Nom del alumne: ");
+        } while (!comprabarDatos(name, true, "El nom no pot contindre números"));
+        return name;
     }
-    
+
     public static String pedirNia() {
-        return comprabarDatos("\\d{8}", "Nia del alumne: ", "El han de ser sols 8 números");
-    }
+        String nia;
+        do {
+            nia = rc.pedirString("Nia del alumne: ");
+        } while (!comprabarDatos(nia, false, "El han de ser sols 8 números"));
+        return nia;    }
 }
