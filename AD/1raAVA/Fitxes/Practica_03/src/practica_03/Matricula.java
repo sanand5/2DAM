@@ -68,4 +68,14 @@ public class Matricula {
         this.mitjana = sumatorio / notes.size();
         Colors.okMsg("La mitjana s'ha actualitzat");
     }
+    
+    public String fromString() {
+        String obj = "";
+        for (int i = 0; i < notes.size(); i++) {
+            obj += notes.get(i)+" ";
+        }
+        
+        return obj;
+        
+    }
 }

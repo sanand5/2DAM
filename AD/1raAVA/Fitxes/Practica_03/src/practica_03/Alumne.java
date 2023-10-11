@@ -68,4 +68,14 @@ public class Alumne {
             nia = rc.pedirString("Nia del alumne: ");
         } while (!comprabarDatos(nia, false, "El han de ser sols 8 números"));
         return nia;    }
+    
+    public String fromString() {
+        String obj="";
+        obj += nom + ";" + nia + "{\n";
+        for (int i = 0; i < modulsList.size(); i++) {
+            obj += modulsList.get(i).nom + ";" + modulsList.get(i).matr.fromString() + "\n";
+        }
+        obj += "}\n";
+        return obj;
+    }
 }

@@ -27,6 +27,17 @@ public class practica_03 {
     static Matriculas matriculas = new Matriculas();
 
     public static void main(String[] args) {
+//      carregarModuls();
+//      carregarAlumnes();
+        normal();
+        escribir(alumnesList.list.get(1),true);
+        
+    }
+
+    /**
+     * Esta funcio simplement serveix per a que en el main puga fer proves
+     */
+    public static void normal() {
         ReadClient rc = new ReadClient();
         boolean repit = true;
         carregarModuls();
@@ -57,7 +68,7 @@ public class practica_03 {
 
     public static void carregarModuls() {
         try {
-            File AlumnosList = new File("Files/ModulsList.txt");
+            File AlumnosList = new File("./Files/ModulsList.txt");
             Scanner list = new Scanner(new FileReader(AlumnosList));
             ArrayList<String> moduls = new ArrayList<>();
             while (list.hasNextLine()) {
@@ -73,7 +84,7 @@ public class practica_03 {
         }
     }
 
-    public static void carregarAlumnes() {
+    public static void carregarAlumnes() {//TODO mirar com reduir esta funció
         try {
             File AlumnosList = new File("Files/AlumnosList.txt");
             Scanner list = new Scanner(new FileReader(AlumnosList));
@@ -83,7 +94,7 @@ public class practica_03 {
                 if (ln.contains("{")) {
                     String[] dades = ln.split(";");
                     String nom = dades[0];
-                    String nia = dades[1].substring(0, dades[1].length() - 2);
+                    String nia = dades[1].substring(0, dades[1].length() - 1);
                     boolean nomOk = Alumne.comprabarDatos(nom, true, "El format de nom per a " + nom + " es incorrecte.");
                     boolean niaOk = Alumne.comprabarDatos(nia, false, "El format de NIA per al NIA: " + nia + " es incorrecte.");
                     if (nomOk && niaOk) {
@@ -128,24 +139,60 @@ public class practica_03 {
             Colors.errMsg("Alguns alumnes no s'han pogut carregar");
         }
     }
-    
-    public static void escribir(String msg, boolean option) {
+
+    /**
+     * La idea de esta funcio es que borre el objecte del ficher i fique el
+     * objecte actualitzat
+     *
+     * @param alu el objecte a modificar
+     * @param option si el objecte es un modul o un alumne
+     */
+    public static void escribir(Alumne alu, boolean option) {
+
         String path;
         if (option) {
-            path = "Files/AlumnosList.txt";
-        }else {
-            path = "Files/ModulsList.txt";
+            path = "./Files/AlumnosListTest.txt";
+        } else {
+            path = "./Files/ModulsListTest.txt";
         }
         try {
-            File fl = new File(path);
-            FileWriter fr = new FileWriter(fl, true); // TODO comprovar que era lo de true false asi
-            fr.write(msg + "\n");
-            System.out.println(msg);
-            fr.close();
+
+            File AlumnosList = new File(path);
+            Scanner sclist = new Scanner(new FileReader(AlumnosList));
+            boolean stop = false;
+            String strAlumnosList = "";
+            String rm;
+            while (!stop) {
+                if (sclist.hasNextLine()) {
+                    String alumno = sclist.nextLine();
+                    if (alumno.contains(alu.nia)) {
+                        strAlumnosList += alu.fromString();
+                        do {
+                            rm = sclist.nextLine();
+                            Colors.warMsg(rm);
+                        } while (!rm.contains("}"));
+                    } else {
+                        strAlumnosList += alumno +"\n";
+                    }
+                }else {
+                    stop = true;
+                }
+            }
             
+            System.out.println(strAlumnosList);
+            FileWriter fr = new FileWriter(AlumnosList, false);
+            fr.write(strAlumnosList);
+            fr.close();
+
         } catch (Exception e) {
         }
-        
+
     }
 
 }
+/**
+ * TODO
+ * Fer lo de una clase pare per a Alumnes, Moduls i matricules
+ * No antenc perque el buffer del escanner mel guarda o algo aixina
+ * 
+ */

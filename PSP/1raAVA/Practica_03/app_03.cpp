@@ -1,7 +1,17 @@
-class MiClase
+#include <iostream>
+using namespace std;
+class Ejecuta
 {
 public:
-    int miDato;
+    Ejecuta(string comand){}
+
+    int ejecutar(){
+        
+    }
+    int main(){
+
+    }
+
     
 };  
 
