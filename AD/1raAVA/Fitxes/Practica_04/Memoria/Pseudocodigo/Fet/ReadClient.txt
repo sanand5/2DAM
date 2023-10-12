@@ -1,0 +1,44 @@
+Clase ReadClient:
+    Atributos:
+        - sc (objeto de tipo Scanner para leer desde la consola)
+
+    Constructor ReadClient():
+        Inicializar el atributo sc con un nuevo objeto de tipo Scanner vinculado a la entrada estándar (System.in)
+
+    Método bufferClear():
+        Leer y descartar la línea vacía del búfer de entrada
+
+    Método pedirInteger(msg):
+        Repetir mientras repit sea verdadero:
+            Establecer repit como falso
+            Mostrar el mensaje msg
+            Intentar leer un número entero desde la entrada estándar y almacenarlo en la variable num
+            Si se produce una excepción InputMismatchException:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número entero
+                Descartar la entrada incorrecta llamando a sc.next()
+                Establecer repit como verdadero
+        Devolver num (el número entero leído)
+
+    Método pedirDouble(msg, min, max):
+        Repetir mientras repit sea verdadero:
+            Establecer repit como falso
+            Mostrar el mensaje msg
+            Intentar leer un número decimal desde la entrada estándar y almacenarlo en la variable num
+            Si se produce una excepción InputMismatchException:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número decimal
+                Descartar la entrada incorrecta llamando a sc.next()
+                Establecer repit como verdadero
+            Si min y/o max no son nulos y num está fuera del rango [min, max]:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número dentro del rango [min, max]
+                Establecer repit como verdadero
+        Devolver num (el número decimal leído)
+
+    Método pedirString(msg):
+        Repetir mientras repit sea verdadero:
+            Mostrar el mensaje msg
+            Establecer repit como falso
+            Intentar leer una línea de texto desde la entrada estándar y almacenarla en la variable str
+            Si str es nulo o una cadena vacía:
+                Mostrar un mensaje de advertencia indicando que no se pueden dejar campos vacíos
+                Establecer repit como verdadero
+        Devolver str (la cadena de texto leída)

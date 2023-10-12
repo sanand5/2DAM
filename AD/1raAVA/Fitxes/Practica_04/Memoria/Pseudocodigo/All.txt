@@ -1,0 +1,379 @@
+Clase Colors:
+    Constantes:
+        - WHITE_ANSI = "\u001B[37m"
+        - RESET_ANSI = "\u001B[0m"
+        - BLACK_ANSI = "\u001B[30m"
+        - RED_ANSI = "\u001B[31m"
+        - GREEN_ANSI = "\u001B[32m"
+        - CYAN_ANSI = "\u001B[36m"
+        - YELLOW_ANSI = "\u001B[33m"
+        - BLUE_ANSI = "\u001B[34m"
+        - PURPLE_ANSI = "\u001B[35m"
+
+        - BLACK_BACKGROUND_ANSI = "\u001B[40m"
+        - RED_BACKGROUND_ANSI = "\u001B[41m"
+        - GREEN_BACKGROUND_ANSI = "\u001B[42m"
+        - YELLOW_BACKGROUND_ANSI = "\u001B[43m"
+        - BLUE_BACKGROUND_ANSI = "\u001B[44m"
+        - PURPLE_BACKGROUND_ANSI = "\u001B[45m"
+        - CYAN_BACKGROUND_ANSI = "\u001B[46m"
+        - WHITE_BACKGROUND_ANSI = "\u001B[47m"
+
+    Método errMsg(msg):
+        Imprimir "Error: " seguido de msg con el color RED_ANSI y luego RESET_ANSI
+
+    Método warMsg(msg):
+        Imprimir "War: " seguido de msg con el color CYAN_ANSI y luego RESET_ANSI
+
+    Método okMsg(msg):
+        Imprimir "OK: " seguido de msg con el color GREEN_ANSI y luego RESET_ANSI
+
+
+Clase ReadClient:
+    Atributos:
+        - sc (objeto de tipo Scanner para leer desde la consola)
+
+    Constructor ReadClient():
+        Inicializar el atributo sc con un nuevo objeto de tipo Scanner vinculado a la entrada estándar (System.in)
+
+    Método bufferClear():
+        Leer y descartar la línea vacía del búfer de entrada
+
+    Método pedirInteger(msg):
+        Repetir mientras repit sea verdadero:
+            Establecer repit como falso
+            Mostrar el mensaje msg
+            Intentar leer un número entero desde la entrada estándar y almacenarlo en la variable num
+            Si se produce una excepción InputMismatchException:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número entero
+                Descartar la entrada incorrecta llamando a sc.next()
+                Establecer repit como verdadero
+        Devolver num (el número entero leído)
+
+    Método pedirDouble(msg, min, max):
+        Repetir mientras repit sea verdadero:
+            Establecer repit como falso
+            Mostrar el mensaje msg
+            Intentar leer un número decimal desde la entrada estándar y almacenarlo en la variable num
+            Si se produce una excepción InputMismatchException:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número decimal
+                Descartar la entrada incorrecta llamando a sc.next()
+                Establecer repit como verdadero
+            Si min y/o max no son nulos y num está fuera del rango [min, max]:
+                Mostrar un mensaje de advertencia indicando que se debe introducir un número dentro del rango [min, max]
+                Establecer repit como verdadero
+        Devolver num (el número decimal leído)
+
+    Método pedirString(msg):
+        Repetir mientras repit sea verdadero:
+            Mostrar el mensaje msg
+            Establecer repit como falso
+            Intentar leer una línea de texto desde la entrada estándar y almacenarla en la variable str
+            Si str es nulo o una cadena vacía:
+                Mostrar un mensaje de advertencia indicando que no se pueden dejar campos vacíos
+                Establecer repit como verdadero
+        Devolver str (la cadena de texto leída)
+
+
+Clase Matricula:
+    Atributos:
+        - notes (lista de números decimales para almacenar las notas)
+        - mitjana (número decimal para almacenar la media de las notas)
+    
+    Constructor Matricula():
+        Inicializar la lista de notas (notes) como una lista vacía
+    
+    Método addNota(n):
+        Agregar la nota (n) a la lista de notas
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método setNota(nota, pos):
+        Establecer la nota en la posición (pos) de la lista de notas como (nota)
+        Mostrar un mensaje de éxito
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método delNota(pos):
+        Eliminar la nota en la posición (pos) de la lista de notas
+        Llamar al método updateMitjana() para actualizar la media
+    
+    Método mostrarNotes(lista):
+        Si la lista de notas no está vacía:
+            Si lista es verdadero:
+                Para cada nota en la lista de notas:
+                    Mostrar el índice + 1 y la nota con formato
+            De lo contrario:
+                Para cada nota en la lista de notas (excepto la última):
+                    Mostrar la nota con formato + " - "
+                Mostrar la media (mitjana) con formato en color púrpura y luego en color blanco
+            Devolver 0
+        De lo contrario:
+            Mostrar un mensaje de advertencia indicando que el alumno no tiene notas
+            Devolver -1
+    
+    Método updateMitjana():
+        Inicializar sumatorio como 0
+        Para cada nota en la lista de notas:
+            Sumar la nota a sumatorio
+        Calcular la media (mitjana) como el cociente de sumatorio entre el tamaño de la lista de notas
+        Mostrar un mensaje de éxito indicando que la media se ha actualizado
+
+
+Clase Modul:
+    Atributos:
+        - nom (cadena de texto para almacenar el nombre del módulo)
+        - matr (objeto de tipo Matricula para gestionar las calificaciones)
+
+    Constructor Modul(nom):
+        Inicializar el atributo nom con el valor de nom
+        Inicializar el atributo matr como un nuevo objeto de tipo Matricula()
+
+
+Clase Alumne:
+    Atributos:
+        - nom (cadena de texto)
+        - nia (cadena de texto)
+        - modulsList (lista de objetos de tipo Modul)
+    
+    Constructor Alumne(nom, nia):
+        Inicializar el atributo nom con el valor de nom
+        Inicializar el atributo nia con el valor de nia
+        Inicializar la lista modulsList como una lista vacía
+    
+    Método buscarModul(nomModul):
+        retorno = -1
+        Para cada elemento i en modulsList:
+            Si modulsList[i].nom es igual a nomModul:
+                Asignar i a retorno
+                Romper el bucle
+        Devolver retorno
+    
+    Método mostrar():
+        Imprimir "Nombre: " seguido de nom
+        Imprimir "NIA: " seguido de nia
+        Para cada módulo m en modulsList:
+            Imprimir el nombre del módulo m.nom seguido de ": "
+            Llamar al método mostrarNotes(false) del objeto m.matr (asumiendo que matr es un atributo de tipo Matricula)
+
+
+Clase Alumnes:
+    Atributos:
+        - list (lista de objetos de tipo Alumne)
+        - rc (objeto de tipo ReadClient)
+    
+    Método menu():
+        Repetir mientras repetir sea verdadero:
+            Mostrar el menú de Alumnes:
+                (0) Salir
+                (1) Alta
+                (2) Baja
+                (3) Lista
+            Leer la opción del usuario y almacenarla en menu
+            Según el valor de menu:
+                Caso 0:
+                    Mostrar "Has salido del menú Alumnes"
+                    Establecer repetir como falso
+                Caso 1:
+                    Llamar al método alta()
+                Caso 2:
+                    Llamar al método baixa()
+                Caso 3:
+                    Llamar al método mostrarLista()
+                De lo contrario:
+                    Mostrar un mensaje de error indicando que se debe introducir un valor válido
+    
+    Método mostrarLista():
+        Para cada alumno en la lista:
+            Mostrar el índice + 1, nombre y NIA del alumno
+    
+    Método alta():
+        Limpiar el buffer de entrada
+        Leer el nombre del alumno y almacenarlo en nom
+        Leer el NIA del alumno y almacenarlo en nia
+        Si buscarNia(nia) es igual a -1:
+            Agregar un nuevo objeto Alumne a la lista con el nombre y NIA proporcionados
+            Mostrar un mensaje de éxito
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el alumno ya existe
+    
+    Método baixa():
+        Limpiar el buffer de entrada
+        Leer el NIA del alumno y almacenarlo en nia
+        Obtener la posición del alumno en la lista usando buscarNia(nia)
+        Si la posición es igual a -1:
+            Mostrar un mensaje de error indicando que el alumno no existe
+        De lo contrario:
+            Eliminar el alumno de la lista
+            Mostrar un mensaje de éxito
+    
+    Método buscarNia(nia):
+        Inicializar retorno como -1
+        Para cada alumno en la lista:
+            Si el NIA del alumno es igual a nia:
+                Establecer retorno como la posición del alumno en la lista
+        Devolver retorno
+
+
+Clase Moduls:
+    Atributos:
+        - list (lista de objetos de tipo Modul)
+        - rc (objeto de tipo ReadClient)
+    
+    Método menu():
+        Repetir mientras repetir sea verdadero:
+            Mostrar el menú de Modul:
+                (0) Salir
+                (1) Alta
+                (2) Baja
+                (3) Lista
+                (4) Matricular Alumno
+            Leer la opción del usuario y almacenarla en menu
+            Según el valor de menu:
+                Caso 0:
+                    Establecer repetir como falso
+                    Mostrar "Has salido del menú Moduls"
+                Caso 1:
+                    Llamar al método alta()
+                Caso 2:
+                    Llamar al método baja()
+                Caso 3:
+                    Llamar al método mostrarLista()
+                Caso 4:
+                    Llamar al método matricularAlumne()
+                De lo contrario:
+                    Mostrar un mensaje de advertencia indicando que se debe introducir un valor válido
+    
+    Método mostrarLista():
+        Si la lista de módulos está vacía:
+            Mostrar un mensaje de advertencia indicando que no hay módulos
+        De lo contrario:
+            Para cada módulo en la lista de módulos:
+                Mostrar el índice + 1 y el nombre del módulo
+    
+    Método alta():
+        Limpiar el buffer de entrada
+        Leer el nombre del módulo desde la entrada del usuario y almacenarlo en nom
+        Si buscarModul(nom) es igual a -1:
+            Agregar un nuevo objeto Modul a la lista con el nombre proporcionado
+            Mostrar un mensaje de éxito
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el módulo ya existe
+    
+    Método baja():
+        Limpiar el buffer de entrada
+        Leer el nombre del módulo desde la entrada del usuario y almacenarlo en modul
+        Obtener la posición del módulo en la lista de módulos usando buscarModul(modul)
+        Si la posición es diferente de -1:
+            Eliminar el módulo de la lista de módulos
+            Mostrar un mensaje de éxito
+            Llamar al método desmatricularAlumnes(modul) para eliminar a los alumnos matriculados en ese módulo
+            Mostrar un mensaje de éxito indicando que los alumnos se han actualizado
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el módulo no se ha encontrado
+    
+    Método matricularAlumne():
+        Limpiar el buffer de entrada
+        Leer el NIA del alumno desde la entrada del usuario y almacenarlo en nia
+        Leer el nombre del módulo desde la entrada del usuario y almacenarlo en modul
+        Obtener la posición del módulo en la lista de módulos usando buscarModul(modul)
+        Obtener la posición del alumno en la lista de alumnos usando buscarNia(nia)
+        Si el módulo y el alumno existen:
+            Obtener el objeto Alumne correspondiente al alumno
+            Si el módulo no existe en la lista de módulos del alumno:
+                Crear un nuevo objeto Modul con el nombre proporcionado
+                Agregar el módulo a la lista de módulos del alumno
+                Mostrar un mensaje de éxito
+            De lo contrario:
+                Mostrar un mensaje de error indicando que el alumno ya está matriculado en ese módulo
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el módulo o el alumno no se han encontrado
+    
+    Método desmatricularAlumnes(modul):
+        Para cada alumno en la lista de alumnos:
+            Obtener la posición del módulo en la lista de módulos del alumno usando buscarModul(modul, alumno.modulsList)
+            Si la posición es diferente de -1:
+                Eliminar el módulo de la lista de módulos del alumno
+
+
+
+Clase Matriculas:
+    Atributos:
+        - rc (objeto de tipo ReadClient para lectura de entrada)
+    
+    Método menu():
+        Leer el NIA del alumno desde la entrada del usuario y almacenarlo en nia
+        Obtener la posición del alumno en la lista de alumnos usando buscarNia(nia)
+        Si posNia es diferente de -1:
+            Obtener el objeto Alumne correspondiente al alumno
+            Leer el nombre del módulo desde la entrada del usuario y almacenarlo en modul
+            Obtener la posición del módulo en la lista de módulos del alumno usando buscarModul(modul)
+            Si posModul es diferente de -1:
+                Obtener el objeto Matricula correspondiente al módulo del alumno
+                Repetir mientras repetir sea verdadero:
+                    Mostrar el menú de Avaluar:
+                        (0) Salir
+                        (1) Qualificar
+                        (2) Modificar
+                        (3) Mostrar boletín de notas
+                    Leer la opción del usuario y almacenarla en menu
+                    Según el valor de menu:
+                        Caso 0:
+                            Establecer repetir como falso
+                            Mostrar "Has salido del menú Avaluar"
+                        Caso 1:
+                            Llamar al método qualificar(matr)
+                        Caso 2:
+                            Llamar al método modificar(matr)
+                        Caso 3:
+                            Llamar al método mostrar()
+                        De lo contrario:
+                            Mostrar un mensaje de advertencia indicando que se debe introducir un valor válido
+            De lo contrario:
+                Mostrar un mensaje de error indicando que el alumno no está inscrito en ese módulo
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el alumno no existe
+    
+    Método qualificar(matr):
+        Leer la cantidad de notas a agregar desde la entrada del usuario y almacenarla en cant
+        Para cada nota en el rango de 1 hasta cant (inclusive):
+            Leer la nota desde la entrada del usuario y almacenarla en nota
+            Llamar al método addNota(nota) de matr para agregar la nota
+            Mostrar un mensaje de éxito
+    
+    Método modificar(matr):
+        Si matr.mostrarNotes(true) no devuelve -1:
+            Leer la posición de la nota a modificar desde la entrada del usuario y restar 1 para obtener la posición real en la lista
+            Leer la nueva nota desde la entrada del usuario y almacenarla en nota
+            Llamar al método setNota(nota, pos) de matr para modificar la nota
+
+
+Clase Practica_02:
+    Atributos:
+        - alumnesList (objeto de tipo Alumnes)
+        - modulsList (objeto de tipo Moduls)
+    
+    Método main(args):
+        Crear un objeto de tipo ReadClient llamado rc
+        Crear un objeto de tipo Matriculas llamado matriculas
+        Inicializar la variable repit como verdadera
+        
+        Repetir mientras repit sea verdadero:
+            Mostrar el menú principal:
+                (0) Salir
+                (1) Menu Alumnes
+                (2) Menu Modul
+                (3) Avaluar
+            Leer la opción del usuario y almacenarla en menu
+            
+            Según el valor de menu:
+                Caso 0:
+                    Establecer repit como falso
+                    Mostrar "Has salido de la aplicación"
+                Caso 1:
+                    Llamar al método menu() de alumnesList (Menú de Alumnes)
+                Caso 2:
+                    Llamar al método menu() de modulsList (Menú de Moduls)
+                Caso 3:
+                    Llamar al método menu() de matriculas (Menú de Avaluar)
+                De lo contrario:
+                    Mostrar un mensaje de advertencia indicando que se debe introducir un valor válido
+

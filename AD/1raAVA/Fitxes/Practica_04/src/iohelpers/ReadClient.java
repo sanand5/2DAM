@@ -13,6 +13,8 @@ import java.util.Scanner;
  * @author 2DAM_Sanz_Andreu
  */
 public class ReadClient {
+
+    //TECLADO
     public int pedirInteger(String msg) {
         Scanner sc = new Scanner(System.in);
         int num = 0;
@@ -25,6 +27,7 @@ public class ReadClient {
 
             } catch (InputMismatchException | NumberFormatException e) {
                 Colors.warMsg("Deus introduir un número enter");
+//                sc.next();
                 repit = true;
             }
         } while (repit);
@@ -83,4 +86,42 @@ public class ReadClient {
         System.gc();
         return str;
     }
+    
+    //FICHEROS: Segurament no me servixguen
+    /*
+    public File createFile(String path) {
+        File f = null;
+        try {
+            f = new File(path);
+        } catch (NullPointerException e) {
+            Colors.errMsg("El ficher no s'ha trobat");//TODO msg no apropiat
+        }
+        return f;
+        
+    }
+    
+    public FileWriter writeFile(File fl) {
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(fl, true);
+        } catch (FileNotFoundException e) {
+            Colors.errMsg("El ficher " + fl.getPath() + " no s'ha trobat");
+        } catch (IOException e){
+            Colors.errMsg("La escritura del ficher no ha sigut posible");
+        }
+        return fr;
+    }
+
+    public Scanner readFile(String path) {
+        Scanner sc = null;
+        try {
+            File file = new File(path);
+            sc = new Scanner(new FileReader(file));
+
+        } catch (FileNotFoundException e) {
+            Colors.errMsg("El ficher " + path + " no s'ha trobat");
+        }
+        return sc;
+    }
+*/
 }

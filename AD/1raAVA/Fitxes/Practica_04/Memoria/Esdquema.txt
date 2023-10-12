@@ -1,0 +1,31 @@
+Fichero: Lista de alumnos
+
+nombre, nia { 
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+}
+nombre, nia { 
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+}
+nombre, nia { 
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+nomModul, n n n;
+}
+
+Fichero: Lista de modulosç
+NomModul
+NomModul
+NomModul
+NomModul
+NomModul
+NomModul
+NomModul
+NomModul
+

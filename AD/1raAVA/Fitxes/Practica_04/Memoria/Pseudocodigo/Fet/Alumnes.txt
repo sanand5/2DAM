@@ -1,0 +1,56 @@
+Clase Alumnes:
+    Atributos:
+        - list (lista de objetos de tipo Alumne)
+        - rc (objeto de tipo ReadClient)
+    
+    Método menu():
+        Repetir mientras repetir sea verdadero:
+            Mostrar el menú de Alumnes:
+                (0) Salir
+                (1) Alta
+                (2) Baja
+                (3) Lista
+            Leer la opción del usuario y almacenarla en menu
+            Según el valor de menu:
+                Caso 0:
+                    Mostrar "Has salido del menú Alumnes"
+                    Establecer repetir como falso
+                Caso 1:
+                    Llamar al método alta()
+                Caso 2:
+                    Llamar al método baixa()
+                Caso 3:
+                    Llamar al método mostrarLista()
+                De lo contrario:
+                    Mostrar un mensaje de error indicando que se debe introducir un valor válido
+    
+    Método mostrarLista():
+        Para cada alumno en la lista:
+            Mostrar el índice + 1, nombre y NIA del alumno
+    
+    Método alta():
+        Limpiar el buffer de entrada
+        Leer el nombre del alumno y almacenarlo en nom
+        Leer el NIA del alumno y almacenarlo en nia
+        Si buscarNia(nia) es igual a -1:
+            Agregar un nuevo objeto Alumne a la lista con el nombre y NIA proporcionados
+            Mostrar un mensaje de éxito
+        De lo contrario:
+            Mostrar un mensaje de error indicando que el alumno ya existe
+    
+    Método baixa():
+        Limpiar el buffer de entrada
+        Leer el NIA del alumno y almacenarlo en nia
+        Obtener la posición del alumno en la lista usando buscarNia(nia)
+        Si la posición es igual a -1:
+            Mostrar un mensaje de error indicando que el alumno no existe
+        De lo contrario:
+            Eliminar el alumno de la lista
+            Mostrar un mensaje de éxito
+    
+    Método buscarNia(nia):
+        Inicializar retorno como -1
+        Para cada alumno en la lista:
+            Si el NIA del alumno es igual a nia:
+                Establecer retorno como la posición del alumno en la lista
+        Devolver retorno

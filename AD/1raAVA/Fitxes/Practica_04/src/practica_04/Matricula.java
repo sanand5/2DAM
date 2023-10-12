@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package practica_03;
+package practica_04;
 
 import java.util.ArrayList;
 import iohelpers.*;
@@ -46,8 +46,10 @@ public class Matricula {
     
     @Override
     public String toString() {
-        int posModul = practica_03.modulsList.buscarModul(idMdoul);
-        String nomModul = practica_03.modulsList.list.get(posModul).nom;
+        int posModul = practica_04.modulsList.buscarModul(idMdoul);
+        //String nomModul = practica_04.modulsList.list.get(posModul).nom;
+        Modul modul =(Modul) Alumnes.leerFicher(practica_04.MODULS_PATH).get(posModul);
+        String nomModul = modul.nom;
         String matricula = "";
         matricula += nomModul + ": ";
         for (int i = 0; i < notes.size(); i++) {

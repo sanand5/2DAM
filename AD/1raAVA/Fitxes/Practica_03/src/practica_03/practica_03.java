@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -22,25 +22,18 @@ public class practica_03 {
      * @param args the command line arguments
      */
     static Alumnes alumnesList = new Alumnes();
+    static final String ALUMNES_PATH = "./Files/AlumnesList.txt";
     static Moduls modulsList = new Moduls();
-    static Matriculas matriculas = new Matriculas();
+    static final String MODULS_PATH = "./Files/ModulsList.txt";
+    static Matriculas matriculasList = new Matriculas();
+    static final String MATRICULES_PATH = "./Files/MatriculesList.txt";
 
     public static void main(String[] args) {
-//      carregarModuls();
-//      carregarAlumnes();
-        normal();
-        escribir(alumnesList.list.get(1),true);
-        
-    }
-
-    /**
-     * Esta funcio simplement serveix per a que en el main puga fer proves
-     */
-    public static void normal() {
+        carregar(ALUMNES_PATH, true);
+        carregar(MODULS_PATH, false);
+        carregarMatricules();
         ReadClient rc = new ReadClient();
         boolean repit = true;
-        carregarModuls();
-        carregarAlumnes();
         while (repit) {
             System.out.println("""
                            (0) Eixir
@@ -57,141 +50,100 @@ public class practica_03 {
                 case 2 ->
                     modulsList.menu();
                 case 3 ->
-                    matriculas.menu();
+                    matriculasList.menu();
                 default -> {
                     Colors.warMsg("Deus de introduir un valor valid");
                 }
             }
         }
+        escribir(alumnesList.fromString(), ALUMNES_PATH);
+        escribir(modulsList.fromString(), MODULS_PATH);
+        escribir(matriculasList.fromString(), MATRICULES_PATH);
+
     }
 
-    public static void carregarModuls() {
+    public static void carregar(String path, boolean modo) {
         try {
-            File AlumnosList = new File("./Files/ModulsList.txt");
-            Scanner list = new Scanner(new FileReader(AlumnosList));
-            ArrayList<String> moduls = new ArrayList<>();
+            File fl = new File(path);
+            Scanner list = new Scanner(new FileReader(fl));
             while (list.hasNextLine()) {
-                int i = 0;
                 String ln = list.nextLine();
-                moduls.add(ln);
+                String entidades[] = ln.split(";");
+                for (String entidadString : entidades) {
+                    String entidad[] = entidadString.split(",");
+                    if (modo) { //TODO cambiar de forma
+                        alumnesList.alta(entidad[0], entidad[1]);
+                    } else {
+                        modulsList.alta(entidad[0], entidad[1]);
+                    }
+                }
             }
-            modulsList.alta(moduls.toArray(String[]::new));
+            fl = null;
+            list.close();
+            list = null;
         } catch (FileNotFoundException e) {
             Colors.errMsg("Fallo en el ficher");
         } catch (Exception e) {
-            Colors.errMsg("Alguns alumnes no s'han pogut carregar");
+            Colors.errMsg("Alguna cosa a ixit malament");
         }
     }
 
-    public static void carregarAlumnes() {//TODO mirar com reduir esta funció
+    public static void carregarMatricules() {
         try {
-            File AlumnosList = new File("Files/AlumnosList.txt");
-            Scanner list = new Scanner(new FileReader(AlumnosList));
-
+            File fl = new File(MATRICULES_PATH);
+            Scanner list = new Scanner(new FileReader(fl));
             while (list.hasNextLine()) {
                 String ln = list.nextLine();
-                if (ln.contains("{")) {
-                    String[] dades = ln.split(";");
-                    String nom = dades[0];
-                    String nia = dades[1].substring(0, dades[1].length() - 1);
-                    boolean nomOk = Alumne.comprabarDatos(nom, true, "El format de nom per a " + nom + " es incorrecte.");
-                    boolean niaOk = Alumne.comprabarDatos(nia, false, "El format de NIA per al NIA: " + nia + " es incorrecte.");
-                    if (nomOk && niaOk) {
-                        alumnesList.alta(nom, nia); //Afegit alumne a la llista
-                        boolean repit = true;
-                        while (repit && list.hasNextLine()) {
-                            ln = list.nextLine();
-                            if (!("".equals(ln)) && !ln.contains("}")) {
-                                try {
-                                    String[] ModNot = ln.split(";");
-                                    String modul = ModNot[0];
-                                    modulsList.matricularAlumne(nia, modul); //Matricula del Alumne creada
-                                    Matricula matr = matriculas.enlazarMatricula(nia, modul); //Matricula creada
-                                    String[] notesString = ModNot[1].split(" ");
-                                    for (String notes : notesString) {//Notes del modul del alumne afegides
-                                        try {
-                                            matr.addNota(Double.valueOf(notes));
-                                        } catch (NumberFormatException e) {
-                                            Colors.errMsg("El format de la nota registrada " + notes + " es incorrecte");
-                                        }
-                                    }
-                                } catch (NullPointerException e) {
-                                    Colors.errMsg("Fallo en el mòdul");
-                                }
-                            } else {
-                                repit = false;
+                String entidades[] = ln.split(";");
+                for (String entidadString : entidades) {
+                    String entidad[] = entidadString.split(",");
+                    String nia = entidad[0];
+                    String idModul = entidad[1];
+                    boolean niaExist = (alumnesList.buscarNia(nia) != -1);
+                    boolean modulExist = (modulsList.buscarModul(idModul) != -1);
+                    if (niaExist && modulExist) {
+                        Matricula matr = modulsList.matricularAlumne(entidad[0], entidad[1]);
+                        String[] notes = entidad[2].split(" ");
+                        for (String note : notes) {
+                            try {
+                                double nota = Double.parseDouble(note);
+                                matr.addNota(nota);
+                            } catch (NumberFormatException e) {
+                                Colors.errMsg("La nota no te el format correcte");
                             }
                         }
-                    } else {//TODO comprovar que aso funciona
-                        while (list.nextLine().contains("}")) {
-                        }
-                        Colors.errMsg("El alumne amb \"NIA\": " + nia + " no s'ha pogut registarar.");
+                    } else {
+                        Colors.errMsg("El alumne amb nia " + nia + " o el modul amb id " + idModul + " no existeixen");
                     }
-
                 }
-
             }
+            fl = null;
             list.close();
+            list = null;
         } catch (FileNotFoundException e) {
             Colors.errMsg("Fallo en el ficher");
         } catch (Exception e) {
-            Colors.errMsg("Alguns alumnes no s'han pogut carregar");
+            Colors.errMsg("Alguna cosa a ixit malament");
         }
     }
 
-    /**
-     * La idea de esta funcio es que borre el objecte del ficher i fique el
-     * objecte actualitzat
-     *
-     * @param alu el objecte a modificar
-     * @param option si el objecte es un modul o un alumne
-     */
-    public static void escribir(Alumne alu, boolean option) {
-
-        String path;
-        if (option) {
-            path = "./Files/AlumnosListTest.txt";
-        } else {
-            path = "./Files/ModulsListTest.txt";
-        }
+    public static void escribir(String list, String path) {
         try {
+            File fl = new File(path);
+            FileWriter fw = new FileWriter(fl, false);
+            fw.write(list);
 
-            File AlumnosList = new File(path);
-            Scanner sclist = new Scanner(new FileReader(AlumnosList));
-            boolean stop = false;
-            String strAlumnosList = "";
-            String rm;
-            while (!stop) {
-                if (sclist.hasNextLine()) {
-                    String alumno = sclist.nextLine();
-                    if (alumno.contains(alu.nia)) {
-                        strAlumnosList += alu.fromString();
-                        do {
-                            rm = sclist.nextLine();
-                            Colors.warMsg(rm);
-                        } while (!rm.contains("}"));
-                    } else {
-                        strAlumnosList += alumno +"\n";
-                    }
-                }else {
-                    stop = true;
-                }
-            }
-            
-            System.out.println(strAlumnosList);
-            FileWriter fr = new FileWriter(AlumnosList, false);
-            fr.write(strAlumnosList);
-            fr.close();
+            fl = null;
+            fw.close();
+            fw = null;
 
+        } catch (IOException e) {
+            Colors.errMsg("Alguna cosa a ixit malament en el fitcher");
         } catch (Exception e) {
+            Colors.errMsg("Alguna cosa a ixit malament");
         }
 
     }
 
+    
 }
-/**
- * TODO
- * Fer lo de una clase pare per a Alumnes, Moduls i matricules
- * No antenc perque el buffer del escanner mel guarda o algo aixina
- * 
- */
