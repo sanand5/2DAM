@@ -1,0 +1,31 @@
+Clase practica_04:
+    Atributos:
+        - alumnesList (Instancia de Alumnes)
+        - ALUMNES_PATH (Ruta del archivo de lista de alumnos)
+        - modulsList (Instancia de Moduls)
+        - MODULS_PATH (Ruta del archivo de lista de módulos)
+        - matriculasList (Instancia de Matriculas)
+        - MATRICULES_PATH (Ruta del archivo de lista de matrículas)
+
+    Método main(args: Arreglo de Strings):
+        rc = Nueva instancia de ReadClient
+        repit = Verdadero
+        Mientras repit sea Verdadero:
+            Mostrar el menú principal:
+                - (0) Salir
+                - (1) Menu Alumnes
+                - (2) Menu Mòdul
+                - (3) Avaluar
+            Leer la selección del usuario en 'menu'
+            Según 'menu':
+                Caso 0:
+                    repit = Falso
+                Caso 1:
+                    Llamar al método menu() de 'alumnesList'
+                Caso 2:
+                    Llamar al método menu() de 'modulsList'
+                Caso 3:
+                    Llamar al método menu() de 'matriculasList'
+                Predeterminado:
+                    Mostrar "Debes introducir un valor válido"
+

@@ -1,0 +1,76 @@
+Clase Moduls extiende Mantenibles:
+    Atributos:
+        - rc (Instancia de ReadClient)
+
+    Método menu():
+        menu = 0
+        repetir = Verdadero
+        Mientras repetir sea Verdadero:
+            Mostrar el menú:
+                - (0) Salir
+                - (1) Alta
+                - (2) Baixa
+                - (3) Llista
+                - (4) Matricular Alumne
+            Leer la selección del usuario en 'menu'
+            Según 'menu':
+                Caso 0:
+                    repetir = Falso
+                    Mostrar "Has salido del menú Mòdul"
+                Caso 1:
+                    nom = rc.pedirString("Nom del mòdul: ")
+                    alta(nom)
+                Caso 2:
+                    baixa(MODULS_PATH)
+                Caso 3:
+                    super.mostrarLista(MODULS_PATH)
+                Caso 4:
+                    nia = Mantenible.pedirId()
+                    idModul = Mantenible.pedirId()
+                    matricularAlumne(nia, idModul, Matriculas.leerFicher())
+                Predeterminado:
+                    Mostrar "Debes introducir un valor válido"
+
+    Método alta(modul: Arreglo de Strings)
+        list = super.leerFicher(MODULS_PATH)
+        Para cada nombre en modul:
+            Si super.buscarList(nombre, MODULS_PATH, Falso) es -1:
+                idAleatorio = generarId()
+                list.add(new Modul(nombre, idAleatorio))
+                Mostrar nombre + " se ha dado de alta"
+            Sino:
+                Mostrar "El módulo ya existe"
+        super.escribir(super.fromString(list), MODULS_PATH)
+
+    Método generarId(): String
+        min = 10000000
+        max = 99999999
+        random = Generar un número aleatorio en el rango (min, max)
+        Devolver el número aleatorio como una cadena de texto
+
+    Método baixa(path: String)
+        list = leerFicher(path)
+        pos = buscarList(Mantenible.pedirId(), path, Verdadero)
+        Si pos es -1:
+            Mostrar "El módulo no existe"
+        Sino:
+            desmatricularAlumnes(list.get(pos).id, Matriculas.leerFicher())
+            list.remove(pos)
+            Mostrar "El módulo se ha dado de baja correctamente"
+        Escribir fromString(list) en 'path'
+
+    Método matricularAlumne(nia: String, idModul: String, list: ArrayList de Matricula): Matricula
+        matrs = list
+        matrs.add(new Matricula(nia, idModul))
+        super.escribir(Matriculas.paraString(list), MATRICULES_PATH)
+        Devolver la última matrícula agregada en 'matrs'
+
+    Método desmatricularAlumnes(idModul: String, list: ArrayList de Matricula)
+        matrList = list
+        matrSize = Tamaño de matrList
+        i = 0
+        Mientras i sea menor que matrSize:
+            matr = matrList.get(i)
+            Si matr.idMdoul es igual a idModul:
+                matrList.remove(matr)
+            Incrementar i en 1

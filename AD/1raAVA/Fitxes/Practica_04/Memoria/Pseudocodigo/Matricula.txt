@@ -1,0 +1,59 @@
+Clase Matricula:
+    Atributos:
+        - notes (ArrayList de Double) 
+        - mitjana (Double)
+        - idMdoul (String)
+        - nia (String)
+
+    Constructor Matricula(nia: String, idMdoul: String):
+        Asignar idMdoul a this.idMdoul
+        Asignar nia a this.nia
+        Inicializar notes como un nuevo ArrayList de Double
+
+    Método addNota(nota: Double...):
+        Para cada nota en nota:
+            Agregar nota a la lista notes
+        Llamar a updateMitjana para actualizar la mitjana
+
+    Método addNota(nota: Double):
+        Agregar nota a la lista notes
+        Llamar a updateMitjana para actualizar la mitjana
+
+    Método setNota(nota: Double, pos: Entero):
+        Establecer la nota en la posición pos en la lista notes como nota
+        Mostrar mensaje de éxito
+        Llamar a updateMitjana para actualizar la mitjana
+
+    Método delNota(pos: Entero):
+        Eliminar la nota en la posición pos de la lista notes
+        Llamar a updateMitjana para actualizar la mitjana
+
+    Método toString():
+        Obtener la posición del módulo en la lista de módulos usando idMdoul
+        Obtener el nombre del módulo
+        Crear una cadena 'matricula' que incluye el nombre del módulo y las notas
+        Devolver 'matricula' con la mitjana destacada en púrpura
+
+    Método mostrarNotes(lista: Boolean):
+        Si la lista de notas no está vacía:
+            Si lista es verdadero:
+                Para cada nota en notes:
+                    Mostrar el índice y la nota
+            Si no:
+                Para cada nota en notes:
+                    Mostrar la nota seguida de un guión y espacio
+                Mostrar la mitjana en púrpura
+            Devolver 0
+        De lo contrario:
+            Mostrar un mensaje de advertencia
+            Devolver -1
+
+    Método updateMitjana():
+        Calcular la suma de todas las notas en la lista notes y dividirla por la cantidad de notas para obtener la mitjana
+        Mostrar un mensaje de éxito
+
+    Método fromString():
+        Crear una cadena 'obj' que contiene nia, idMdoul y las notas
+        Devolver 'obj'
+
+Fin Clase

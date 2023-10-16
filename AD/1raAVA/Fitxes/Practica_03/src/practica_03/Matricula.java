@@ -24,8 +24,6 @@ public class Matricula {
         this.notes = new ArrayList<>();
     }
     
-    
-   
     public void addNota(double ... nota) {
         for (double n : nota) {
         notes.add(n);    

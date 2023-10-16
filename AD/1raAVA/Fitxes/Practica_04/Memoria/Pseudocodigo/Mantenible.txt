@@ -1,0 +1,47 @@
+Clase Mantenible:
+    Atributos:
+        - nom (String)
+        - id (String)
+        - rc (Instancia de ReadClient, declarada como estática)
+
+    Constructor Mantenible(nom: String, id: String):
+        Asignar nom a this.nom
+        Asignar id a this.id
+
+    Método estático pedirNom(): // Solicita un nombre
+        nom = ""
+        Hacer:
+            Leer el nombre desde el usuario y asignarlo a 'nom'
+        Mientras comprabarDatos(nom, Verdadero, "El nom no puede contener números") sea Falso
+        Devolver nom
+
+    Método estático pedirId(): // Solicita una identificación (ID)
+        id = ""
+        Hacer:
+            Leer la identificación (ID) desde el usuario y asignarla a 'id'
+        Mientras comprabarDatos(id, Falso, "El ID debe contener exactamente 8 números") sea Falso
+        Devolver id
+
+    Método estático comprabarDatos(str: String, option: Boolean, msgErr: String): // Comprueba si una cadena cumple con ciertos criterios
+        correcto = Falso
+        matches = ""
+        Si option es Verdadero:
+            matches = "\\D*" // Acepta cualquier cosa que no sea un número
+        Sino:
+            matches = "\\d{8}" // Debe contener exactamente 8 dígitos numéricos
+
+        Si str coincide con matches:
+            correcto = Verdadero
+        Sino:
+            Mostrar mensaje de advertencia 'msgErr'
+            correcto = Falso
+        Devolver correcto
+
+    Método toString():
+        Devolver la representación de la instancia como una cadena en el formato "nombre - ID"
+
+    Método fromString():
+        Crear una cadena 'obj' que contiene el nombre y la ID separados por una coma
+        Devolver 'obj'
+
+Fin Clase

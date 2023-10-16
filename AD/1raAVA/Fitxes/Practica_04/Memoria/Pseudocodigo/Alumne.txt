@@ -1,0 +1,9 @@
+Clase Alumne extiende Mantenible:
+    Atributos:
+        - nom (String)
+        - id (String)
+    
+    Constructor Alumne(nom: String, id: String):
+        Llamar al constructor de Mantenible con los argumentos nom y id
+    
+Fin Clase

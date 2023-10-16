@@ -1,0 +1,67 @@
+Clase abstracta Mantenibles:
+    Métodos:
+        - leerFicher(path: String): ArrayList de Mantenible
+            list = Lista vacía de Mantenible
+            fl = Archivo
+            sc = Scanner
+            Intentar:
+                fl = Crear un objeto Archivo con la ruta 'path'
+                sc = Crear un objeto Scanner para leer el archivo
+                Mientras sc tiene líneas:
+                    Leer una línea 'ln' del archivo
+                    Dividir 'ln' en 'entidades' utilizando ';'
+                    Para cada 'entidadString' en 'entidades':
+                        Dividir 'entidadString' en 'entidad' utilizando ','
+                        Crear un nuevo objeto Mantenible con entidad[0] y entidad[1] y agregarlo a 'list'
+                Fin Mientras
+                Cerrar sc
+            Capturar FileNotFoundException:
+                Mostrar mensaje de error "Fallo en el archivo"
+            Capturar Exception:
+                Mostrar mensaje de error "Algo ha salido mal"
+            Finalmente:
+                Limpiar fl y sc
+            Devolver 'list'
+
+        - escribir(str: String, path: String)
+            fl = Archivo
+            fw = FileWriter
+            Intentar:
+                fl = Crear un objeto Archivo con la ruta 'path'
+                fw = Crear un objeto FileWriter con el archivo, modo de escritura y sin apéndice
+                Escribir 'str' en el archivo
+                Cerrar fw
+            Capturar IOException:
+                Mostrar mensaje de error "Algo ha salido mal en el archivo"
+            Capturar Exception:
+                Mostrar mensaje de error "Algo ha salido mal"
+            Finalmente:
+                Limpiar fl y fw
+
+        - buscarList(str: String, path: String, modo: Boolean): Entero
+            list = leerFicher(path)
+            retorno = -1
+            Para cada índice 'i' y objeto 'm' en 'list':
+                Si 'modo' es Verdadero:
+                    Asignar 'buscar' como 'm.id'
+                Sino:
+                    Asignar 'buscar' como 'm.nom'
+                Si 'buscar' es igual a 'str':
+                    Asignar 'i' a 'retorno'
+            Devolver 'retorno'
+
+        - mostrarLista(path: String)
+            list = leerFicher(path)
+            Para cada índice 'i' y objeto 'm' en 'list':
+                Mostrar 'i + 1' y 'm.toString()'
+
+        - fromString(list: ArrayList de Mantenible): String
+            objs = ""
+            Para cada índice 'i' en 'list':
+                Concatenar 'list.get(i).fromString()' y ';' a 'objs'
+            Devolver 'objs'
+
+    Métodos abstractos (a ser implementados por las subclases):
+        - fromString(): String
+
+Fin Clase

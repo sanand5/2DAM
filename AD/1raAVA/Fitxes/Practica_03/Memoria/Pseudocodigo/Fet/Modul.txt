@@ -1,9 +1,0 @@
-Clase Modul:
-    Atributos:
-        - nom (cadena de texto para almacenar el nombre del módulo)
-        - matr (objeto de tipo Matricula para gestionar las calificaciones)
-
-    Constructor Modul(nom):
-        Inicializar el atributo nom con el valor de nom
-        Inicializar el atributo matr como un nuevo objeto de tipo Matricula()
-

@@ -1,0 +1,48 @@
+Clase Alumnes extiende Mantenibles:
+    Atributos:
+        - rc (Instancia de ReadClient)
+
+    Método menu():
+        menu = 0
+        repetir = Verdadero
+        Mientras repetir sea Verdadero:
+            Mostrar el menú:
+                - (0) Salir
+                - (1) Alta
+                - (2) Baixa
+                - (3) Llista
+            Leer la selección del usuario en 'menu'
+            Según 'menu':
+                Caso 0:
+                    Mostrar "Has salido del menú Alumnes"
+                    repetir = Falso
+                Caso 1:
+                    Pedir el nombre y la ID del alumno
+                    Llamar al método 'alta' con el nombre, ID, lista y ruta de almacenamiento
+                Caso 2:
+                    Llamar al método 'baixa' con la ruta de almacenamiento de alumnos
+                Caso 3:
+                    Llamar a 'mostrarLista' con la ruta de almacenamiento de alumnos
+                Predeterminado:
+                    Mostrar un mensaje de advertencia
+
+    Método alta(nom: String, id: String, list: ArrayList de Mantenible, path: String):
+        Si buscarList(id, path, Verdadero) devuelve -1:
+            Agregar un nuevo objeto 'Alumne' con el nombre y la ID a la lista 'list'
+            Mostrar un mensaje de éxito con el nombre y la ID
+        De lo contrario:
+            Mostrar un mensaje de advertencia
+        Escribir 'list' en el archivo en la ruta 'path'
+        Devolver el tamaño de la lista menos 1
+
+    Método baixa(path: String):
+        Obtener la lista de alumnos desde el archivo en la ruta 'path'
+        Buscar la posición de la ID ingresada en la lista
+        Si la posición es -1:
+            Mostrar un mensaje de error
+        De lo contrario:
+            Eliminar el alumno de la lista en la posición encontrada
+            Mostrar un mensaje de éxito
+        Escribir la lista actualizada en el archivo en la ruta 'path'
+
+Fin Clase

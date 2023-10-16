@@ -1,45 +1,39 @@
 Que:
-La feina consisteix a crear una estructura bàsica que en permetrà, una volta finalitzat el curs, tindre una aplicació que ens permetera gestionar un centre de formació. Aquesta primera practica consistira en crear un sistema bàsic que permetrà donar de alta i matricular alumnes en mòduls, crear eixos mòduls i, una volta fet això, de poder avaluar, ficar notes a eixos mòduls (almenys 3 notes)
-De moment treballarem a memòria, no escriurem a disc.
+Partint de la Practica anterior, corregint les errades que hi hagen, en coneixeries.
 
-Para que:
-Per a tindre la base del programa, ja que anem a treballar en aquest projecte durant tot el curs, a més a més per a veure realment quant sabem de Java, ja que és un projecte llarg i amb un cert nivell de complicació. També és útil per a aprendre a organitzar-nos per a altres projectes realment grans i aprendre a gestionar l'ús de diferents tipus de classes més genèriques.
+    afix la capacitat d'emmagatzemament en fitxer
+    afix la capacitat de carregar en fitxer
+
+En aquesta practica es farà la lectura i escriptura en bloc
 
 Pseudocodigo:
 
 Como:
 
-En primer lloc, començaré parlant de les meues classes generals:
+En primer lloc, començaré diguent que les meus clases generals Colors i ReadClient, son iguals que en la practica anterior, pero estan en un altre paquet.
 
-Sobre la meua classe 'Colors', simplement es tracta d'una classe on es troben les variables per definir un color en la consola. A més, tinc tres funcions per escriure per la consola segons el tipus de missatge que siga: un error (roig), un warning (cian) o un ok (verd). El groc es representa com cian ja que en una consola amb fons blanc és més complicat llegir el warning.
+La classe Alumne té dos variables: nom, nia (totes dues cadenes de text) i despres te un metode comprobar datos que comproba amb un matchis si el string que demana com ha parametre complix un dels dos requisits per a que siga valid. Les funcions pedirName i pedirNia, serveixen per a demanar el nom o el nia per pantalla i fer us de la funció comprobarDatos per ha saber si el demanat per pantalla cumpleix els requisits, sino torna a demanar el nom o el nia. I les funcions toString i fromString que retornen les dades de el objecte segons un format.
 
-La meua classe 'ReadClient' és una classe que serveix per llegir el teclat del client i gestionar els possibles errors. En el constructor de la classe, assigna a 'sc', de tipus 'Scanner', un objecte 'Scanner'. En general, les funcions d'aquesta classe sempre demanen una cadena, que és el missatge que li dóna a l'usuari per saber quin tipus de dada ha d'introduir. Totes elles gestionen les seues pròpies excepcions.
+La classe Modul te com ha variables nom i id, amb dos costrucotrs, un que demana tant el nom com el id i l'altre que sols demana el nom i genera un id automatic amb la funcio generarId de la propia clase. també te les funcions pedirId que demana un id i comproba que segueix un format amb un matches per a que sols puguen i aure 8 numeros. i per últim la funció fromString que retorna les dades seguent un format.
 
-'pedirInteger' demana un número enter i no deixa de demanar-lo fins que siga un valor vàlid, després retorna aqueix enter.
-'pedirDouble' demana un número, però amb la peculiaritat que té dues variables d'entrada addicionals: el màxim i el mínim. Això significa que si l'usuari introdueix un número fora d'aquest rang, se li tornarà a demanar un número. Si aquests dos valors són 'null', llavors no existeix aqueix rang.
-'pedirString' li demana una cadena a l'usuari.
-'bufferClear' neteja el buffer amb un 'sc.nextLine'.
+La meua classe Matricula es mols similar a la de la pratica anterior, la unica diferencia es que a part de el ArrayList de notas i la mitjana, també guarde el nia i el id del modul, també he afegit el metode fromString.
 
-Tinc una classe anomenada 'Matricula'. Aquesta classe té un ArrayList de números decimals anomenat 'notes' i 'mitjana', que és de tipus decimal. Aquesta classe té diferents mètodes:
+La meua classe Alumnes també es prou similar ha la practica 2 les uniques diferencies mes descatrable es que ara la meua funcio per a donar de alta un alumne te com a parametres de entrada el nom i el nia per a que he resulte mes facil la carrag de alumnes y també he afegit el metode fromString.
 
-'updateMitjana' suma totes les notes de 'notes' i calcula la mitjana per assignar-la a la variable 'mitjana'.
-'addNota' afig una nota (número decimal que es proporciona com a paràmetre) a 'notes' i crida a 'updateMitjana'.
-'setNota' canvia una nota per una altra que es proporciona com a paràmetre d'entrada i crida a 'updateMitjana'.
-'delNota' elimina una nota de 'notes' que es proporciona com a paràmetre d'entrada i crida a 'updateMitjana'.
-'mostrarNotes' mostra tot el contingut de 'notes' i retorna -1 si 'notes' està buit. Aquest mètode també pot rebre un booleà com a paràmetre per determinar si es vol mostrar la llista en format vertical o horitzontal.
+En la meua funcio Moduls he afegit un altre tipos de funcio alta per a que cree automaticament un id del modul y el metode fromString
 
-La classe 'Modul' té una variable 'nom' que es sol·licita en crear l'objecte i una variable 'matricula' de tipus 'Matricula' que s'instancia en el constructor.
+La funcio Matriculas te algunes noves funcions com dades, que comprova si les dades son correctes i si no les torna a demanar. La funcio enlazarMatricula que demana un nia y un id i retorna una matricula de la llista de matricules, una nova funció qualificar que te com a parametre de entrada la matricula i un array de notes y el metode fromString.
 
-La classe 'Alumne' té tres variables: 'nom', 'nia' (totes dues cadenes de text) i 'modulsList' (un ArrayList de tipus 'Modul'). El seu constructor rep 'nom' i 'nia' com a paràmetres i assigna 'modulsList' com un ArrayList. El mètode 'mostrar' mostra el nom i el nia de l'alumne i les notes de cada mòdul de forma horitzontal.
+En la meua clase principal he afegit unes variables final, que son els path de els fichers i tres funcions, dos de elles sencarreguen de carregar les dades y una altra escriu en els fichers.
+La funció carrega() te com ha paramerte de entrada un path al ficher de on vol carregar i un boolean que li indica en el arraylist on vol carregar. carregar() llig la unica linea del ficher la separa en ";" i la guarda en un array que trona a separar eb "," i segons el boolean carrega en la arrayList de moduls o la de alumnes.
 
-La classe 'Alumnes' té com a variables un ArrayList de tipus 'Alumne' anomenat 'llista' i un objecte de tipus 'ReadClient' anomenat 'rc'. Aquesta classe té diverses funcions: La funció 'menú' serveix per guiar a l'usuari sobre les possibilitats que pot fer. Aquesta funció és un menú amb 4 opcions: eixir, donar d'alta, donar de baixa o veure la llista d'alumnes. L'opció un crida al mètode 'alta()', que sol·licita el nia i el nom de l'alumne i l'afegeix a l'ArrayList. La segona opció crida al mètode 'baixa()', que sol·licita el nia de l'alumne i l'elimina de l'ArrayList. La tercera opció crida a 'mostrarLlista', que mostra tots els alumnes. També hi ha una altra funció 'buscarNia' que serveix per buscar el nia d'un alumne a l'ArrayList i retorna la posició de l'ArrayList o -1 si no es troba.
+carregarMatricules(), fa el mateix pero aplicat al format de les matricules ja que les notes estan separades entre " " i el nia i el idModul en "," i entre matricules ";".
 
-La classe 'Mòduls' és molt similar a la classe 'Alumnes', amb la diferència que aquesta classe també pot matricular un alumne en un mòdul amb la funció 'matricularAlumne'. Aquesta funció sol·licita el nia de l'alumne i el nom del mòdul per assignar un objecte de tipus mòdul a l'ArrayList de mòduls de l'alumne. També té una funció anomenada 'desmatricularAlumnes()' que s'executa quan es dona de baixa un mòdul. Aquesta funció elimina el mòdul especificat pels paràmetres d'entrada en cadascun dels alumnes existents. En la funció 'buscarMòdul', hi ha dues variants: una que només sol·licita el nom del mòdul a buscar i una altra que sol·licita el mòdul i la llista en la qual buscar. S'utilitza per buscar a la llista d'un alumne en particular.
+El metode escribir() demana una String de el contingut nou i antic i actualitzat i el ficher on es vol guardar, per a escriure en ell el string.
 
-La classe 'Matrícules' té només una variable, un objecte del tipus 'ReadClient'. Aquesta classe també disposa d'una funció 'menú()', però en aquesta funció primer es sol·liciten les dades de l'alumne i del mòdul per a crear un objecte de tipus 'Matrícula'. Això és degut a que en les 3 opcions del menú, 2 d'elles sol·liciten els mateixos valors, i en la tercera opció no se sol·licita cap valor. Això pot canviar en el futur a causa de les modificacions que vull fer. Dins del menú, tens l'opció de 'qualificar', que crida a la funció 'qualificar()'. Aquesta funció sol·licita la quantitat de notes a afegir i després demana les notes per afegir-les a la matrícula de l'alumne. La segona opció és 'modificar', que modifica una nota. La tercera opció mostra les matricules de tots els alumnes.
+Al comencament de la clase principal cride a les dos funcions carregar i al final cride a el metode escribir introduint-li la funcio del objecte que vuic guardar, fromString i el path de on ho vuic guardar.
 
-La meua classe principal es diu 'Pràctica_02' i té dues variables estàtiques: 'alumnesLlista' i 'mòdulsLlista', que són objectes de les seues respectives classes. Després tenim la funció principal on instanciem un objecte de tipus 'ReadClient', un objecte de tipus 'Matrícules', i una variable boleana 'repetir' per a repetir el menú. He creat un bucle 'while' amb la condició de la variable 'repetir'. Dins d'aquest bucle, es mostra el menú principal, es llig l'opció de l'usuari i s'assigna a la seua respectiva opció en el 'switch'. Excepte en el cas que l'opció siga 0 i el programa acabe, el 'switch' dirigeix l'usuari al menú d'alumnes, mòduls o matrícules. Si no es tracta de cap d'aquests casos, es mostra un missatge d'advertència i es repeteix el bucle 'while'. Aquest menú és molt semblant en totes les classes.
 
 Conclusión:
 
-En conclusió, aquesta pràctica m'ha sigut de gran utilitat per repassar àmpliament la programació en Java. A més, la creació de les classes 'ReadClient' i 'Colors' em serà de molta ajuda en futures pràctiques. Espere no haver de corregir molts errors en aquest codi en particular. També confie en què les pròximes pràctiques no siguen tan extenses com aquesta i que, donat que en les següents només s'han de modificar parts del codi, no haja de fer canvis significatius ni dedicar-hi moltes hores.
+En conclusió, aquesta pràctica m'ha sigut de gran utilitat per repassar àmpliament la programació de fichers en Java. Aquesta practica m'ha costat molt de temps de fer degut a que he tingut que cambiar les relacions de les meues Matricules, Moduls i Alumnes.

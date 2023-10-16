@@ -5,12 +5,6 @@
 package practica_04;
 
 import iohelpers.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -57,8 +51,3 @@ public class practica_04 {
     }
     
 }
-
-/**
- * TODO
- * Vuic fer una clsae que englobe Matriculas, Alumnes, Moduls ; [Alumne, Modul, Matricula]Esta ns
- */

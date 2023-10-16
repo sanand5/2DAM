@@ -6,6 +6,7 @@ package practica_04;
 
 import java.util.ArrayList;
 import iohelpers.*;
+import static practica_04.practica_04.MODULS_PATH;
 
 /**
  *
@@ -23,41 +24,42 @@ public class Matricula {
         this.nia = nia;
         this.notes = new ArrayList<>();
     }
-    
-    
-   
-    public void addNota(double ... nota) {
+
+    public void addNota(double ...nota) {
         for (double n : nota) {
-        notes.add(n);    
+            notes.add(n);
         }
         updateMitjana();
     }
-   
+
+    public void addNota(double nota) {
+        notes.add(nota);
+        updateMitjana();
+    }
+
     public void setNota(double nota, int pos) {
         notes.set(pos, nota);
         Colors.okMsg("La nota s'ha modificat");
         updateMitjana();
     }
-   
+
     public void delNota(int pos) {
         notes.remove(pos);
         updateMitjana();
     }
-    
+
     @Override
     public String toString() {
-        int posModul = practica_04.modulsList.buscarModul(idMdoul);
-        //String nomModul = practica_04.modulsList.list.get(posModul).nom;
-        Modul modul =(Modul) Alumnes.leerFicher(practica_04.MODULS_PATH).get(posModul);
-        String nomModul = modul.nom;
-        String matricula = "";
-        matricula += nomModul + ": ";
+        int posModul = Mantenibles.buscarList(idMdoul, MODULS_PATH, true);
+        Mantenible modul = Mantenibles.leerFicher(MODULS_PATH).get(posModul);
+        String matricula = modul.nom + ": ";
         for (int i = 0; i < notes.size(); i++) {
-            matricula +=  notes.get(i) + " ";
+            matricula += notes.get(i) + " ";
         }
-        matricula += Colors.PURPLE_ANSI+mitjana+Colors.WHITE_ANSI;
+        matricula += Colors.PURPLE_ANSI + mitjana + Colors.RESET_ANSI;
         return matricula;
     }
+
     public int mostrarNotes(boolean lista) {
         int retorno;
         if (!notes.isEmpty()) {
@@ -69,7 +71,7 @@ public class Matricula {
                 for (int i = 0; i < notes.size(); i++) {
                     System.out.printf("%.2f - ", notes.get(i));
                 }
-                System.out.printf(Colors.PURPLE_ANSI + "%.2f%n" + Colors.WHITE_ANSI, mitjana);
+                System.out.printf(Colors.PURPLE_ANSI + "%.2f%n" + Colors.RESET_ANSI, mitjana);
             }
             retorno = 0;
         } else {
@@ -79,7 +81,7 @@ public class Matricula {
         return retorno;
 
     }
-    
+
     public void updateMitjana() {
         double sumatorio = 0;
         for (int i = 0; i < notes.size(); i++) {
@@ -88,14 +90,14 @@ public class Matricula {
         this.mitjana = sumatorio / notes.size();
         Colors.okMsg("La mitjana s'ha actualitzat");
     }
-    
+
     public String fromString() {
-        String obj = nia+","+idMdoul+",";
+        String obj = nia + "," + idMdoul + ",";
         for (int i = 0; i < notes.size(); i++) {
-            obj += notes.get(i)+" ";
+            obj += notes.get(i) + " ";
         }
-        
+
         return obj;
-        
+
     }
 }

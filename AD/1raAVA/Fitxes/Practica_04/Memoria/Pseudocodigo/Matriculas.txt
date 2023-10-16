@@ -1,0 +1,92 @@
+Clase Matriculas extiende Mantenibles:
+    Atributos:
+        - rc (Instancia de ReadClient)
+
+    Método menu():
+        menu = 0
+        repetir = Verdadero
+        Mientras repetir sea Verdadero:
+            Matricula matr
+            ArrayList<Matricula> list
+            Mostrar el menú:
+                - (0) Salir
+                - (1) Qualificar
+                - (2) Modificar
+                - (3) Traure bolletí de notes
+            Leer la selección del usuario en 'menu'
+            Según 'menu':
+                Caso 0:
+                    repetir = Falso
+                    Mostrar "Has salido del menú Avaluar"
+                Caso 1:
+                    list = leerFicher()
+                    matr = dades(list)
+                    Si matr no es nulo:
+                        qualificar(matr)
+                    Escribir paraString(list) en MATRICULES_PATH
+                Caso 2:
+                    list = leerFicher()
+                    matr = dades(list)
+                    Si matr no es nulo:
+                        modificar(matr)
+                    Escribir paraString(list) en MATRICULES_PATH
+                Caso 3:
+                    mostrar()
+                Predeterminado:
+                    Mostrar "Debes introducir un valor válido"
+
+    Método dades(list: ArrayList de Matricula): Matricula
+        matr = nulo
+        Si la lista no está vacía:
+            ok = Falso
+            Hacer:
+                nia = Mantenible.pedirId()
+                idModul = Mantenible.pedirId()
+                matr = enlazarMatricula(nia, idModul, list)
+                Si matr no es nulo:
+                    ok = Verdadero
+                    Mostrar "Datos correctos"
+                Sino:
+                    Mostrar "Datos incorrectos"
+            Mientras ok sea Falso
+        Sino:
+            Mostrar "No hay matrículas registradas"
+        Devolver matr
+
+    Método enlazarMatricula(nia: String, idModul: String, list: ArrayList de Matricula): Matricula
+        matr = nulo
+        Para cada matrícula en la lista:
+            Si matrícula.nia es igual a nia y matrícula.idMdoul es igual a idModul:
+                matr = matrícula
+        Devolver matr
+
+    Método qualificar(matr: Matricula)
+        Si matr no es nulo:
+            cant = rc.pedirInteger("Cuántas notas quieres agregar: ")
+            Para i en rango(0, cant):
+                nota = rc.pedirDouble("Nota a agregar: ", 0.0, 10.0)
+                matr.addNota(nota)
+                Mostrar "La nota se ha agregado"
+    
+    Método qualificar(matr: Matricula, notes: Arreglo de Double)
+        matr.addNota(notes)
+
+    Método modificar(matr: Matricula)
+        Si matr.mostrarNotes(Verdadero) no es -1:
+            pos = rc.pedirInteger("Cuál nota quieres modificar: ") - 1
+            nota = rc.pedirDouble("Dime la nota que quieres poner: ", 0.0, 10.0)
+            matr.setNota(nota, pos)
+
+    Método mostrar()
+        list = leerFicher()
+        mostrar = "\n"
+        alumnesList = Mantenibles.leerFicher(ALUMNES_PATH)
+        Para cada índice 'i' y objeto 'alm' en 'alumnesList':
+            mostrar += alm.toString() + ": \n"
+            nia = alm.id
+            Para cada índice 'j' y objeto 'matr' en 'list':
+                Si matr.nia es igual a nia:
+                    mostrar += "\t" + matr.toString() + "\n"
+        Mostrar mostrar
+    
+    Método estát

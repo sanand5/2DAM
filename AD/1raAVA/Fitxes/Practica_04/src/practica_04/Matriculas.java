@@ -11,14 +11,14 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import static practica_04.practica_04.MATRICULES_PATH;
-import static practica_04.practica_04.alumnesList;
-import static practica_04.practica_04.modulsList;
+import static practica_04.practica_04.MODULS_PATH;
+import static practica_04.practica_04.ALUMNES_PATH;
 
 /**
  *
  * @author andre
  */
-public class Matriculas {
+public class Matriculas extends Mantenibles {
 
     ReadClient rc = new ReadClient();
 
@@ -47,7 +47,7 @@ public class Matriculas {
                     if (matr != null) {
                         qualificar(matr);
                     }
-                    Alumnes.escribir(fromString(list), MATRICULES_PATH);
+                    super.escribir(paraString(list), MATRICULES_PATH);
                     break;
                 case 2:
                     list = leerFicher();
@@ -55,7 +55,7 @@ public class Matriculas {
                     if (matr != null) {
                         modificar(matr);
                     }
-                    Alumnes.escribir(fromString(list), MATRICULES_PATH);
+                    super.escribir(paraString(list), MATRICULES_PATH);
                     break;
                 case 3:
                     mostrar();
@@ -74,8 +74,8 @@ public class Matriculas {
         if (!list.isEmpty()) {
             boolean ok = false;
             do {
-                String nia = Alumne.pedirNia();
-                String idModul = Modul.pedirId();
+                String nia = Mantenible.pedirId();
+                String idModul = Mantenible.pedirId();
                 matr = enlazarMatricula(nia, idModul, list);
                 if (matr != null) {
                     ok = true;
@@ -91,7 +91,7 @@ public class Matriculas {
     }
 
 
-    public Matricula enlazarMatricula(String nia, String idModul, ArrayList<Matricula> list) {//Compreobar escribir
+    public static Matricula enlazarMatricula(String nia, String idModul, ArrayList<Matricula> list) {//Compreobar escribir
         ArrayList<Matricula> matrs = list;
         Matricula matr = null;
         for (int i = 0; i < matrs.size(); i++) {
@@ -123,7 +123,6 @@ public class Matriculas {
         matr.addNota(notes);
     }
 
-
     private void modificar(Matricula matr) {
         if (matr.mostrarNotes(true) != -1) {
             int pos = rc.pedirInteger("Quina nota vols afegir: ") - 1;
@@ -135,11 +134,11 @@ public class Matriculas {
     public void mostrar() {
         ArrayList<Matricula> list = leerFicher();
         String mostrar = "\n";
-        ArrayList<Alumne> alumnesList = Alumnes.leerFicher(practica_04.ALUMNES_PATH);
+        ArrayList<Mantenible> alumnesList = Mantenibles.leerFicher(ALUMNES_PATH);
         for (int i = 0; i < alumnesList.size(); i++) {
-            Alumne alm = alumnesList.get(i);
+            Mantenible alm = alumnesList.get(i);
             mostrar += alm.toString() + ": \n"; //nom - nia
-            String nia = alm.nia;
+            String nia = alm.id;
             for (int j = 0; j < list.size(); j++) { //moduls + notes
                 Matricula matr = list.get(j);
                 if (matr.nia.equals(nia)) {
@@ -151,7 +150,7 @@ public class Matriculas {
     }
     
     public static ArrayList<Matricula> leerFicher() {
-        ArrayList<Matricula> matrs = new ArrayList<>();
+        ArrayList<Matricula> matrs = new ArrayList<>(); //El error es que aso esta buit
         try {
             File fl = new File(MATRICULES_PATH);
             Scanner list = new Scanner(new FileReader(fl));
@@ -162,19 +161,29 @@ public class Matriculas {
                     String entidad[] = entidadString.split(",");
                     String nia = entidad[0];
                     String idModul = entidad[1];
-                    boolean niaExist = (alumnesList.buscarNia(nia) != -1);
-                    boolean modulExist = (modulsList.buscarModul(idModul) != -1);
+                    boolean niaExist = (Mantenibles.buscarList(nia, ALUMNES_PATH, true)!= -1);
+                    boolean modulExist = (Mantenibles.buscarList(idModul, MODULS_PATH, true)!= -1);
                     if (niaExist && modulExist) {
-                        Matricula matr = modulsList.matricularAlumne(entidad[0], entidad[1], matrs);
-                        String[] notes = entidad[2].split(" ");
-                        for (String note : notes) {
+                        String notas = entidad[2];
+                        String[] notesArray = entidad[2].split(" ");
+                        double[] notes = new double[notesArray.length];
+                        for (int i = 0; i < notesArray.length; i++) {
                             try {
-                                double nota = Double.parseDouble(note);
-                                matr.addNota(nota);
+                                double n;
+                                n = Double.parseDouble(notesArray[i]);
+                                notes[i] = n;
                             } catch (NumberFormatException e) {
                                 Colors.errMsg("La nota no te el format correcte");
+                            } catch (NullPointerException e) {
+                                Colors.errMsg(e+"");
+                            } catch (Exception e) {
+                                Colors.errMsg("Alguna cosa a ixit malament");
                             }
                         }
+                        Matricula matr = new Matricula(nia, idModul);
+                        matr.addNota(notes);
+                        matrs.add(matr);
+                        
                     } else {
                         Colors.errMsg("El alumne amb nia " + nia + " o el modul amb id " + idModul + " no existeixen");
                     }
@@ -190,13 +199,15 @@ public class Matriculas {
         }
         return matrs;
     }
-
-    public static String fromString(ArrayList<Matricula> list) {
+    
+    public static String paraString(ArrayList<Matricula> matriculas) {
+        ArrayList<Matricula> list = matriculas;
         String objs = "";
         for (int i = 0; i < list.size(); i++) {
             objs += list.get(i).fromString() + ";";
         }
         return objs;
-
     }
+    
+    
 }

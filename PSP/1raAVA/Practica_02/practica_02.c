@@ -15,7 +15,7 @@ int main() {
     if (pipe(fd) == -1)
     {
         printf("### Error : No se ha podido crear la tuberia ###");
-        retorno = -1; 
+        retorno = -1;
     }
     
     pid = fork();
