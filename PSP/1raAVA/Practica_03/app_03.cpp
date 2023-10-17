@@ -1,50 +1,57 @@
-/*
-Práctica 1. Escribe una clase llamada Ejecuta que reciba como argumentos el comando
-y las opciones del comando que se quiere ejecutar.
-El programa debe crear un proceso hijo que ejecute el comando con las opciones
-correspondientes mostrando un mensaje de error en el caso de que no se realizase
-correctamente la ejecución. El padre debe esperar a que el hijo termine e informar si se
-produjo alguna anomalía en la ejecución del hijo.
-*/
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 using namespace std;
 class Ejecuta
 {
 public:
-    void ejecuta(char comand[])
+    int ejecutar(char comand[])
     {
-        if ( system(comand) == -1)
+        int retorno = system(comand);
+        if ( retorno == -1)
         {
             cout << "Error: Ha havido un error en la ejecución";
         }
+        return retorno;
     }
 };
-int main()
+int main(int argc, char *arg[])
 {
-    char comand[100];
-    pid_t pid;
-    cout << "Dime el comando:";
-    cin >> comand;
+    string rojo = "\033[1;31m";
+    string normal = "\033[0m";
+
+    if (argc != 2)
+    {
+
+        cout << rojo << "Uso: " << arg[0] << " \"<comando>\"" << normal << endl ;
+        return 1;
+    }
+    
     Ejecuta ej;
-    pid = fork();
+    pid_t pid = fork();
+    int stcomand;
     switch (pid)
     {
     case -1:
-        cout << "Error: Ha havido un error en la ejecución";
+        cout << "Error: Ha havido un error en la creacion del proceso";
         break;
-    case 0:
-        ej.ejecuta(comand);
+    case 0://Hijo
+        stcomand = ej.ejecutar(arg[1]);
         break;
-    default:
+    default://Padre
         wait(NULL);
-        cout << "Hola soy el padre";
+        if (stcomand != -1)
+        {
+            cout << "Ok: Comando ejecutado correctamente" << endl;
+        }else cout << "War: El comando no se ha ejecutado correctamente" << endl;
         break;
     }
     return 0;
 }
 
+/*
+Duda: Si el comando esta mal escrito ni un sistem = -1 ni un cath salta 
+*/
