@@ -3,15 +3,14 @@
 #include <cstdlib> // Para rand y srand
 #include <ctime>   // Para time
 #include <unistd.h>
+#include <sys/types.h> // Para fork y pipe
+#include <sys/wait.h>  //ERROR
 
-#include <stdio.h>
-#include <stdlib.h>
 
 using namespace std;
 class Juego
-
 {
-    string opciones[] = {"piedra", "papel", "tijeras"};
+    string opciones[] = {"piedra", "papel", "tijeras"}; //incomplete type is not allowed, an initializer cannot be specified for a flexible array member
     char buffer[7];
     int fd[2];
     int rondasUsuario = 0;
@@ -25,13 +24,13 @@ public:
         pid_t pid;
         int retorno = 0;
 
-        if (pipe(fd) == -1)
+        if (pipe(fd) == -1) //identifier "pipe" is undefined
         {
             printf("### Error : No se ha podido crear la tuberia ###");
             retorno = -1;
         }
         for (int ronda = 1; ronda <= 3; ronda++) {
-        pid = fork();
+        pid = fork(); //identifier "fork" is undefined
         switch (pid)
         {
         case -1:
@@ -42,7 +41,7 @@ public:
             /* code */
             break;
         default:
-            wait(NULL);
+            wait(NULL); //identifier "wait" is undefined
             break;
         }}
         mostrarResultadoFinal(rondasUsuario, rondasMaquina);
@@ -101,14 +100,12 @@ private:
             }
         }
     }
-
     bool esGanador(const string &usuario, const string &maquina)
     {
         return (usuario == "piedra" && maquina == "tijeras") ||
                (usuario == "papel" && maquina == "piedra") ||
                (usuario == "tijeras" && maquina == "papel");
     }
-
     void mostrarResultadoFinal(int rondasUsuario, int rondasMaquina) {
         cout << "Final de la partida" << endl;
         if (rondasUsuario > rondasMaquina) {
