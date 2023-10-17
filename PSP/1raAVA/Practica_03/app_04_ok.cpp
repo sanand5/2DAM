@@ -50,7 +50,7 @@ private:
     }
 
     string obtenerOpcionMaquina() {
-        srand(static_cast<unsigned>(time(nullptr)));
+        srand(unsigned(time(NULL)));
         string opciones[] = {"piedra", "papel", "tijeras"};
         return opciones[rand() % 3];
     }

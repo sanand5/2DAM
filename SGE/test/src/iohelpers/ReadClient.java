@@ -13,8 +13,6 @@ import java.util.Scanner;
  * @author 2DAM_Sanz_Andreu
  */
 public class ReadClient {
-
-    //TECLADO
     public int pedirInteger(String msg) {
         Scanner sc = new Scanner(System.in);
         int num = 0;
@@ -30,7 +28,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return num;
@@ -53,11 +50,11 @@ public class ReadClient {
                     repit = true;
                 }
             } catch (InputMismatchException | NumberFormatException | NullPointerException e) {
+//                sc.next();
                 Colors.warMsg("Deus introduir un número");
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return num;
@@ -82,7 +79,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return str;

@@ -165,7 +165,7 @@ public class Matriculas extends Mantenibles {
                     boolean modulExist = (Mantenibles.buscarList(idModul, MODULS_PATH, true)!= -1);
                     if (niaExist && modulExist) {
                         String notas = entidad[2];
-                        String[] notesArray = entidad[2].split(" ");
+                        String[] notesArray = notas.split(" ");
                         double[] notes = new double[notesArray.length];
                         for (int i = 0; i < notesArray.length; i++) {
                             try {
