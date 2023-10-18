@@ -1,0 +1,9 @@
+Que 
+Para que:
+Pseudocodigo:
+Como:
+Para empezar tengo una clase Ejecuta con una unica función pública, ejecutar que tiene como parametro de entrada un array de chars, esta función llama a una funcion llamaba system i le doy como para metro el array de chars que le he metido como parametro, si hay un error en la funcion sistem, esta me devolvera un -1 que guardo en una variable i compruebo con un if si es -1 para sacar un mensaje por pantalla.
+
+Mi funcion principal guarda el argumento entre "" metido en la terminal, comproba si la longitud de argc/*que es argc*/ es distinta de dos, si es así no tiene el formato correcto, aviso al usuario i cierro el programa. Sino, creo un objeto de tipo Ejecuta creo un proceso con la funcion fork() y declaro una variable que sera  el estado de el comando "stcomand".
+Creo un swich segun pid, que es la variable donde he guardado el retorno del fork, en caso -1 es error, en caso 0 es el hijo i llama a la funcion ejecutar de el objeto ejecuta creado anteriormente pasandole como parametro el valor introdciodo entre "", en otro caso estamos en el padre, ell espera a que el hijo termine, comprueba el retorno de la funcion ejecutar que se ha guardado en la variable stcomand anteriormente en el proceso hijo. Si es distinto de -1 significa que todo ha ido bien he improme un mensaje de ok, si no es aso imprime un mensaje de error.
+Concluion:

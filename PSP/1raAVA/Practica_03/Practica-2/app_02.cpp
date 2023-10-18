@@ -99,8 +99,6 @@ void Juego::padre()
             cout << "Opción no válida. Inténtalo de nuevo." << endl;
         }
     }
-    cout << endl
-         << buffer << endl;
     cout << "Maquina: " << buffer << endl;
     if (esGanador(userOpt, buffer))
     {

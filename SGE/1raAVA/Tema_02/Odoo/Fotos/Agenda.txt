@@ -13,3 +13,6 @@
 16:39 11/10/2023
 - postgresSQL activo: ./postgersSQL.png
 - tabla base de datos : ./basededatos.png
+17:08 18/10/2023
+- comercio electronico
+- democompra
