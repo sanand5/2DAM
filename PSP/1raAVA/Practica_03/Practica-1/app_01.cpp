@@ -32,7 +32,7 @@ int main(int argc, char *arg[])
     
     Ejecuta ej;
     pid_t pid = fork();
-    int stcomand;//status comand
+    int stcomand;
     switch (pid)
     {
     case -1:

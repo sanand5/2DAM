@@ -1,0 +1,8 @@
+1. 8069
+2. Ir al archivo de configuración i cambiar el http.port=8070
+3. Odoo utiliza PostgreSQL como su sistema gestor de base de datos predeterminado.
+4. WinSCP se utiliza para transferir archivos de forma segura entre un cliente y un servidor, y es especialmente útil en entornos de Windows para administrar servidores remotos y sincronizar datos de manera segura.
+5. El script "odooinstall.sh" se ejecuta para instalar y configurar el sistema Odoo, un ERP de código abierto. Automatiza la instalación y configuración inicial, ahorrando tiempo y estandarizando el proceso. Esto es especialmente útil en entornos empresariales donde se requiere una implementación eficiente y consistente de Odoo.
+6. La clave maestra en Odoo es una contraseña especial utilizada para acceder y gestionar todas las contraseñas almacenadas en el sistema. Su función principal es proporcionar seguridad y facilitar la gestión de contraseñas olvidadas. Los administradores pueden usarla para recuperar contraseñas de usuarios y garantizar la seguridad de los datos protegidos por contraseñas en Odoo. Es esencial para la administración de contraseñas en el sistema.
+7. 
+8. 
