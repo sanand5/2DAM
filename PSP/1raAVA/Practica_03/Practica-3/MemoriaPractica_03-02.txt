@@ -2,50 +2,6 @@ Que
 Para que:
 Para aprender más sobre el uso de procesos en C++ y sus utilidades, además de la ejecución de ejecutables desde otros programas.
 Pseudocodigo:
-mayusculas.cpp
-Función principal main
-  Si el número de argumentos de línea de comandos no es igual a 2
-    Mostrar "Uso: <nombre_programa> <palabra>"
-    Salir con código de error
-  Fin Si
-  Obtener la palabra desde el primer argumento de la línea de comandos
-  Para cada caracter en la palabra
-    Convertir el caracter a mayúsculas
-  Fin Para
-  Mostrar la palabra convertida a mayúsculas precedida por un ">" y seguida de un salto de línea
-  Retornar 0
-Fin Función
-
-
-app_03.cpp
-Clase Mayusculas
-  Función mayusculas
-    Crear un tubo (pipe) llamado "tub"
-    Crear una variable "pid" para el identificador del proceso
-    Crear un búfer "buf" de tamaño 1024
-
-    Si "pid" es menor que 0
-      Mostrar "Error: fallo en el fork()"
-    Sino si "pid" es igual a 0
-      Leer desde el extremo de lectura de "tub" y guardar la palabra en "buf"
-      Cerrar el extremo de lectura de "tub"
-      Crear una cadena que contenga el comando "./mayusculas " seguido de la palabra leída en "buf"
-      Ejecutar el comando utilizando `system`
-    De lo contrario (proceso padre)
-      Crear una variable "palabra" para almacenar la palabra ingresada por el usuario
-      Leer la palabra desde la entrada estándar
-      Convertir la palabra a una cadena de caracteres C
-      Cerrar el extremo de lectura de "tub"
-      Escribir la palabra en el extremo de escritura de "tub"
-      Cerrar el extremo de escritura de "tub"
-
-Función principal main
-  Crear una instancia de la clase Mayusculas llamada "m"
-
-  Mientras (true)
-    Llamar a la función "mayusculas" en cada iteración del bucle
-
-
 Como:
 Para empezar, en esta práctica he creado dos archivos: "mayusculas.cpp" y "app_03.cpp".
 "mayusculas.cpp" es un programa que imprime el texto introducido como parámetro en mayúsculas. El algoritmo convierte el array de caracteres introducido como parámetro en una cadena (string) para luego convertirla a mayúsculas utilizando un bucle "for" y la función "toupper", y después muestra la palabra en mayúsculas en la pantalla.
