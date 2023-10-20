@@ -1,0 +1,9 @@
+Que 
+Para que:
+Pseudocodigo:
+Como:
+Para empezar, en esta practica he creado dos archivos mayusculas.cpp y app_03.cpp.
+mayusculas.cpp es un programa que imprime el texto introducido como parametro pero en mayusculas. El algoritmo convierte el array de chars introducido como parametro en un string para luego convertirlo ha mayusculas con un for i la funcion toupper, i luego saca la palabra en mayusculas por pantalla.
+app_03.cpp tiene una clase llamada Mayusculas esta clase tiene una funcion, mayusculas(), que primero declara las variables necesarias para la creacion de un pipe i un fork, pid, buf, tub. Luego llama a la funcion fork i gestiono su posible error con un if, 
+
+Concluion:

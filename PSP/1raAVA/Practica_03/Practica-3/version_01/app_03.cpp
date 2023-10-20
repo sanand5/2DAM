@@ -10,7 +10,7 @@
 #include <errno.h>
 #include <algorithm>
 using namespace std;
-void func()
+void mayusculas()
 {
     pid_t pid;
     int tub[2];
@@ -53,7 +53,7 @@ int main(int argc, char const *argv[])
 {
     while (true)
     {
-        func();
+        mayusculas();
     }
 }
 // es molt raro perque realmente los procesos siempre empiezan por el hijo pero en la actividad pride primero el padre
