@@ -1,0 +1,9 @@
+{
+	"Random range": {
+			"prefix": "ran",
+			"body": [
+				"Random.Range($1, $2)"
+			],
+			"description": "Si son float va de $1 a $2 si son ints va de $1 a $2-1"
+		}
+}
