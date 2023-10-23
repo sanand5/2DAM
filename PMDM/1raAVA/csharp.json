@@ -10,7 +10,6 @@
 		"prefix": "OnTriggerEnter",
 		"body": [
 			"void OnTriggerEnter(Collider other){",
-
 			"}"
 		],
 		"description": "Trigger: Área que desencadena eventos cuando un objeto ingresa a ella, pero no tiene un efecto físico"
@@ -18,10 +17,22 @@
 	"OnCollisionEnter": {
 		"prefix": "OnCollisionEnter",
 		"body": [
-			"void OnCollisionEnter(Collision other){",
-				
-			"}"
+			"void OnCollisionEnter(Collision other){""}"
 		],
 		"description": "Un collider se utiliza para detectar colisiones físicas entre objetos. Esto significa que los objetos interactuarán con fuerzas de colisión"
+	},
+	"Input.GetKeyDown": {
+		"prefix": "Input.GetKeyDown",
+		"body": [
+			"Input.GetKeyDown(KeyCode.Space)"
+		],
+		"description": "Hace un evento cuando presionas una tecla"
+	},
+	"Input.GetAxis": {
+		"prefix": "Input.GetAxis",
+		"body": [
+			"Input.GetAxis(varol entre commillas)"
+		],
+		"description": "Para moverse. Horizontal, Vertical"
 	}
 }
