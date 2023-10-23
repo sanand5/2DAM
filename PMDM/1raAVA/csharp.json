@@ -1,9 +1,27 @@
 {
 	"Random range": {
-			"prefix": "ran",
-			"body": [
-				"Random.Range($1, $2)"
-			],
-			"description": "Si son float va de $1 a $2 si son ints va de $1 a $2-1"
-		}
+		"prefix": "ran",
+		"body": [
+			"Random.Range($1, $2)"
+		],
+		"description": "Si son float va de $1 a $2 si son ints va de $1 a $2-1"
+	},
+	"OnTriggerEnter": {
+		"prefix": "OnTriggerEnter",
+		"body": [
+			"void OnTriggerEnter(Collider other){",
+
+			"}"
+		],
+		"description": "Trigger: Área que desencadena eventos cuando un objeto ingresa a ella, pero no tiene un efecto físico"
+	},
+	"OnCollisionEnter": {
+		"prefix": "OnCollisionEnter",
+		"body": [
+			"void OnCollisionEnter(Collision other){",
+				
+			"}"
+		],
+		"description": "Un collider se utiliza para detectar colisiones físicas entre objetos. Esto significa que los objetos interactuarán con fuerzas de colisión"
+	}
 }
