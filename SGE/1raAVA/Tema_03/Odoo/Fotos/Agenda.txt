@@ -10,9 +10,23 @@
 		- Conectar servidor: ./winscp.png
 	- instalar odoo con el archivo installodoo.sh: ./active.png
 	- ver conexion desde el navegador: ./odoo.png
+
 16:39 11/10/2023
 - postgresSQL activo: ./postgersSQL.png
 - tabla base de datos : ./basededatos.png
+16/10/2023
+Las dos listas de materiales:	./ListaDeMateriales.png
+Las reglas de abastecimiento:	./
+Alta clientes:	./clientes.png
+Alta proveedores:	./proeedeores.png
+Poner niveles de inventario iniciales:	./productos mano.png
+Simular compra de materia prima en proveedores del apartado que se indica en la Tabla 9:	
+											 	./solicitudPresupesto.png
+												./democompra.png
+18/10/2023
+Productos tienda online:	./Comercio electronico.png
+Realización pedido desde tienda online:
+
 17:08 18/10/2023
 - comercio electronico
 - democompra
