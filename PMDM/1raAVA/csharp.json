@@ -31,8 +31,15 @@
 	"Input.GetAxis": {
 		"prefix": "Input.GetAxis",
 		"body": [
-			"Input.GetAxis(varol entre commillas)"
+			"Input.GetAxis(""$1"")"
 		],
 		"description": "Para moverse. Horizontal, Vertical"
+	},
+	"InvokeRpeating": {
+		"prefix": "inv",
+		"body": [
+			"InvokeRepeating(""$1"", $2, $3);"
+		],
+		"description": "funcion, tiempo de espera, intervalo de tiempo"
 	}
 }
