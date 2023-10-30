@@ -22,14 +22,12 @@ Alta proveedores:	./proeedeores.png
 Poner niveles de inventario iniciales:	./productos mano.png
 Simular compra de materia prima en proveedores del apartado que se indica en la Tabla 9:	
 											 	./solicitudPresupesto.png
-												./democompra.png
+											
+
 18/10/2023
 Productos tienda online:	./Comercio electronico.png
-Realización pedido desde tienda online: ./democompra?????
+Realización pedido desde tienda online: ./democompra.png
 
-17:08 18/10/2023
-- comercio electronico
-- democompra
 23/10/2023
 puntodeventa.png
 odeventa2.png

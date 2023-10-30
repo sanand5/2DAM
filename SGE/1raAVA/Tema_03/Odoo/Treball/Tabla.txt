@@ -1,0 +1,6 @@
+name,is_company,company_name,country_id,state_id,zip,city,street,street2,phone,mobile,email,vat
+Juan Pérez Gómez,1,Energía Solar S.A.,US,CA,90001,Los Angeles,123 Main St,,(123) 456-7890,(987) 654-3210,proveedor1@email.com,US1234567890
+María Rodríguez López,1,Baterías del Sol S.L.,ES,MAD,28001,Madrid,456 Sun St,,(456) 789-0123,(321) 654-9870,proveedor2@email.com,ES987654321
+John Smith,1,Green Energy Corp,UK,ENG,E1 6AN,London,789 Solar Rd,,(789) 012-3456,(210) 987-6543,proveedor3@email.com,UK123456789
+Andreas Müller,1,SunPower GmbH,DE,BY,80331,Munich,567 Renewable Ave,,(567) 890-1234,(654) 321-0987,proveedor4@email.com,DE987654321
+Luisa Fernández,1,EcoSolar Pty Ltd,AU,NSW,2000,Sydney,234 Clean Energy St,,(234) 567-8901,(543) 210-8765,proveedor5@email.com,AU123456789
