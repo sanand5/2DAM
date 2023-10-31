@@ -1,0 +1,16 @@
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.Form1.resources
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.vbproj.GenerateResource.cache
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.AssemblyInfoInputs.cache
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.AssemblyInfo.vb
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.vbproj.CoreCompileInputs.cache
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\bin\Debug\net6.0-windows\Actividad7.exe
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\bin\Debug\net6.0-windows\Actividad7.deps.json
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\bin\Debug\net6.0-windows\Actividad7.runtimeconfig.json
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\bin\Debug\net6.0-windows\Actividad7.dll
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\bin\Debug\net6.0-windows\Actividad7.pdb
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.dll
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\refint\Actividad7.dll
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.pdb
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\Actividad7.genruntimeconfig.cache
+C:\Users\2DAM_Sanz_Andreu\VisualStudio\Actividad7\obj\Debug\net6.0-windows\ref\Actividad7.dll
