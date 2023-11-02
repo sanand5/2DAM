@@ -2,19 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package practica_01;
+package practica_01v3;
+import iohelpers.ReadClient;
 
 /**
  *
- * @author 2DAM_Sanz_Andreu
+ * @author andre
  */
-public class Practica_01 {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Practica_01v3 {
     public static void main(String[] args) {
-        // TODO code application logic here
         
     }
     

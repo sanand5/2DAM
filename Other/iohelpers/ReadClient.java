@@ -87,16 +87,4 @@ public class ReadClient {
         System.gc();
         return str;
     }
-    
-    public float segundos(float segundos) {
-        return segundos*1000;
-    }
-    
-    public double randomDouble(double max, double min) {
-        return (Math.random() * (max - min + 1) + min);
-    }
-    
-    public int randomInt(int max, int min) {
-        return (int) (Math.random() * (max - min + 1) + min);
-    }
 }
