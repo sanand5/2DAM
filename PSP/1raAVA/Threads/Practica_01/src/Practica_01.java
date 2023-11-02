@@ -37,7 +37,6 @@ class Parking {
             }
         }
     }
-
     public void mostrarEstadoParking() {
         System.out.println("Plazas libres: " + plazasDisponibles);
         System.out.print("Parking: ");
@@ -62,7 +61,8 @@ class Coche extends Thread {
         while (true) {
             boolean aparcado = parking.entrarParking(cocheID);
             if (aparcado) {
-                try {//TODO: El tiempo de espera es muy corto
+                try {
+                    // TODO: El tiempo de espera es muy corto
                     Thread.sleep(1000 + new Random().nextInt(3000)); // Tiempo aleatorio en el parking
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
