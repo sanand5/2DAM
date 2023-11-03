@@ -30,7 +30,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return num;
@@ -57,7 +56,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return num;
@@ -82,7 +80,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         sc = null;
         System.gc();
         return str;
