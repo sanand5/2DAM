@@ -34,7 +34,7 @@ public class Coche extends Thread{
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            parking.desaparcar(plaza, cocheID);
+            parking.salir(plaza, cocheID);
         }
     }
 }

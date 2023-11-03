@@ -10,18 +10,18 @@ package Practica_01;
  */
 public class Parking {
     private int[] plazas;
-    private int numeroPlazas;
+    private int nPlazas;
 
-    public Parking(int numeroPlazas) {
-        this.numeroPlazas = numeroPlazas;
-        plazas = new int[numeroPlazas];
-        for (int i = 0; i < numeroPlazas; i++) { //Cada plaza = 0
+    public Parking(int nPlazas) {
+        this.nPlazas = nPlazas;
+        plazas = new int[nPlazas];
+        for (int i = 0; i < nPlazas; i++) { //Cada plaza = 0
             plazas[i] = 0;
         }
     }
 
     public synchronized int aparcar(int cocheID) {
-        while (numeroPlazas == 0) {
+        while (nPlazas == 0) {
             try {
                 System.out.println("Coche " + cocheID + " esperando para entrar al parking.");
                 wait();
@@ -32,21 +32,21 @@ public class Parking {
 
         int plaza = buscarPlazaLibre();
         plazas[plaza] = cocheID;
-        numeroPlazas--;
+        nPlazas--;
 
         System.out.println("ENTRADA: Coche " + cocheID + " aparca en plaza " + plaza);
-        System.out.println("Plazas libres: " + numeroPlazas);
+        System.out.println("Plazas libres: " + nPlazas);
         System.out.println("Parking: " + toString());
         System.out.println();
         return plaza;
     }
 
-    public synchronized void desaparcar(int plaza, int cocheID) {
+    public synchronized void salir(int plaza, int cocheID) {
         plazas[plaza] = 0;
-        numeroPlazas++;
+        nPlazas++;
 
         System.out.println("SALIDA: Coche " + cocheID + " sale de plaza " + plaza);
-        System.out.println("Plazas libres: " + numeroPlazas);
+        System.out.println("Plazas libres: " + nPlazas);
         System.out.println("Parking: " + toString());
         System.out.println();
 
