@@ -51,6 +51,7 @@ Partial Class Form1
         tb_calc.Name = "tb_calc"
         tb_calc.Size = New Size(131, 39)
         tb_calc.TabIndex = 0
+        tb_calc.TextAlign = HorizontalAlignment.Right
         ' 
         ' bt_01
         ' 
