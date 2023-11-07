@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="multiplicationTable">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/multiplicationTable/multiplicationTable.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
