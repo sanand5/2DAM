@@ -1,8 +1,13 @@
 Todo:
-  - Memoria
-  - TPV 
-
-Done: 
+  ✔ Memoria 
+    ✔ Conclusión/Descripción empresa creativa y divertida.
+    ✔ Justificación 
+    ✔ Índice dinámico con todos los puntos.
+    ✔ Faltas de ortografía
+    ✔ Número de páginas 
+    ✔ [apellido_nombre].pdf
+    ✔ Portada
+    ✔ Expresión escrita
   ✔ Millorar paguina web 
   ✔ Reglas de abastecimiento
   ✔ Modulo extra
@@ -10,9 +15,10 @@ Done:
   ✔ Marketing por SMS 
   ✔ Encuestas 
   ✔ e-Comerce: hacer una compra online
-
+      
 Cancelled: 
   ✘ e-Comerce: codigo promocional  
+  ✘ TPV
   ✘ Crear una cuneta no funciona [internal server error] 
 
 1.  (Presentar de manera original el trabajo
