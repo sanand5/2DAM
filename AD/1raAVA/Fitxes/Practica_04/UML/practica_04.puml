@@ -1,0 +1,115 @@
+@startuml
+
+!define classBackgroundColor #FFD700
+!define abstractClassBackgroundColor #F0E68C
+
+skinparam class {
+    BackgroundColor classBackgroundColor
+    BorderColor #8B0000
+    ArrowColor #8B0000
+    FontColor #8B0000
+}
+
+skinparam abstractclass {
+    BackgroundColor abstractClassBackgroundColor
+    BorderColor #8B0000
+    ArrowColor #8B0000
+    FontColor #8B0000
+}
+
+class Mantenible {
+    - nom: String
+    - id: String
+    + rc: ReadClient
+    + Mantenible(nom: String, id: String)
+    + pedirNom(): String
+    + pedirId(): String
+    + comprabarDatos(str: String, option: boolean, msgErr: String): boolean
+    + toString(): String
+    + fromString(): String
+}
+
+class Alumne {
+    + Alumne(nom: String, id: String)
+}
+
+class Modul {
+    + Modul(nom: String, id: String)
+}
+
+class Matricula {
+    - notes: ArrayList<Double>
+    - mitjana: double
+    - idMdoul: String
+    - nia: String
+    + Matricula(nia: String, idMdoul: String)
+    + addNota(nota: double...)
+    + addNota(nota: double)
+    + setNota(nota: double, pos: int)
+    + delNota(pos: int)
+    + toString(): String
+    + mostrarNotes(lista: boolean): int
+    + updateMitjana()
+    + fromString(): String
+}
+
+class Mantenibles {
+    + leerFicher(path: String): ArrayList<Mantenible>
+    + escribir(str: String, path: String)
+    + buscarList(str: String, path: String, modo: boolean): int
+    + mostrarLista(path: String)
+    + fromString(list: ArrayList<Mantenible>): String
+}
+
+class Alumnes {
+    - rc: ReadClient
+    + menu()
+    + alta(nom: String, id: String, list: ArrayList<Mantenible>, path: String): int
+    + baixa(path: String)
+    + matricularAlumne(nia: String, idModul: String, list: ArrayList<Matricula>): Matricula
+    + desmatricularAlumnes(idModul: String, list: ArrayList<Matricula>)
+}
+
+class Moduls {
+    - rc: ReadClient
+    + menu()
+    + alta(modul: String...)
+    + generarId(): String
+    + baixa(path: String)
+}
+
+class Matriculas {
+    - rc: ReadClient
+    + menu()
+    + dades(list: ArrayList<Matricula>): Matricula
+    + enlazarMatricula(nia: String, idModul: String, list: ArrayList<Matricula>): Matricula
+    + qualificar(matr: Matricula)
+    + qualificar(matr: Matricula, notes: double[])
+    + modificar(matr: Matricula)
+    + mostrar()
+    + leerFicher(): ArrayList<Matricula>
+    + paraString(matriculas: ArrayList<Matricula>): String
+}
+
+class practica_04 {
+    - alumnesList: Alumnes
+    - ALUMNES_PATH: String
+    - modulsList: Moduls
+    - MODULS_PATH: String
+    - matriculasList: Matriculas
+    - MATRICULES_PATH: String
+    + main(args: String[])
+}
+
+Mantenible <|-- Alumne
+Mantenible <|-- Modul
+Mantenible <|-- Matricula
+Mantenibles <|-- Alumnes
+Mantenibles <|-- Moduls
+Mantenibles <|-- Matriculas
+
+practica_04 -down-> Alumnes
+practica_04 -down-> Moduls
+practica_04 -down-> Matriculas
+
+@enduml

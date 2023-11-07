@@ -3,13 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package practica_04;
-
-
-/**
- *
- * @author andre
- */
 public class Alumne extends Mantenible{
+
 
     public Alumne(String nom, String id) {
         super(nom, id);
