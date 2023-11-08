@@ -1,8 +1,14 @@
 Todo:
   - Presentación
-    - Excel productos
-    - Video Google server
+    ✔ Excel productos 
+    - Video Google Server
     - Preparar explicacion empresa
+      1. Explicacion de que es la empresa
+      2. Mostrar productos, clientes, empleados y proveedores
+      3. Mostrar modulos extra
+      4. Explicacion de excel, importante modo desarrolador
+      5. Intentar crear maquina virtual de Odoo en Google Cloud Platform
+
     - Preparar paguina web
 
   ✔ Memoria 

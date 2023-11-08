@@ -1,0 +1,5 @@
+Name;Can be Sold;Can be Purchased;Product Type;Cost;Product Category;Internal Reference
+Panel solar de 100W;VERDADERO;VERDADERO;Storable Product;75;All / Saleable / Panel Solar;PAN56789
+Panel solar de 200W;VERDADERO;VERDADERO;Storable Product;130;All / Saleable / Panel Solar;PAN67890
+Inversor de onda sinusoidal pura de 1000W;VERDADERO;VERDADERO;Storable Product;150;All / Saleable / Inversor;INV78901
+Inversor de onda cuadrada de 500W;VERDADERO;VERDADERO;Storable Product;90;All / Saleable / Inversor;INV89012
