@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class CuentaBancaria {
     private int saldo;
 
@@ -60,6 +62,8 @@ class OperacionHipoteca extends Thread {
     }
 }
 
+
+
 class OperacionLuz extends Thread {
     private CuentaBancaria cuenta;
 
@@ -112,10 +116,28 @@ class OperacionRetiradaEfectivo extends Thread {
     }
 }
 
+/**
+ * Esta clase se encarga de finalizar el programa.
+ */
+class salir extends Thread {
+    @Override
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("c")) {
+                //En principio el sistem exit no lo devmos gastar, la otra manera seria esperar a que los hilos en ejecucion terminen o finalizar cada hilo que quede
+                System.exit(0);
+            }
+        }
+    }
+}
+
 public class SimuladorCuentaBancaria {
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria(4000);
-
+        salir salirThread = new salir();
+        salirThread.start();
         while (true) {
             OperacionNomina nominaThread = new OperacionNomina(cuenta);
             OperacionHipoteca hipotecaThread = new OperacionHipoteca(cuenta);
@@ -131,17 +153,6 @@ public class SimuladorCuentaBancaria {
             comprasThread.start();
             retiradaThread.start();
 
-            // Esperar a que todos los hilos terminen antes de continuar con el siguiente bucle
-            try {
-                nominaThread.join();
-                hipotecaThread.join();
-                luzThread.join();
-                aguaThread.join();
-                comprasThread.join();
-                retiradaThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
