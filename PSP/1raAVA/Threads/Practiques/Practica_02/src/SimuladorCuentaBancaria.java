@@ -7,16 +7,16 @@ class CuentaBancaria {
         this.saldo = saldoInicial;
     }
 
-    public synchronized void realizarIngreso(String concepto, int cantidad, int tiempoEspera) {
+    public synchronized void Ingresar(String concepto, int cantidad, int tiempoEspera) {
         saldo += cantidad;
-        System.out.println("Op. #" + obtenerNumeroOperacion() + ": Ingreso " + concepto + ": +" + cantidad + " €");
+        System.out.println("Op. #" + obtenerNumeroOp() + ": Ingreso " + concepto + ": +" + cantidad + " €");
         System.out.println(">> Saldo actual: " + saldo + " €");
         dormir(tiempoEspera);
     }
 
-    public synchronized void realizarCobro(String concepto, int cantidad, int tiempoEspera) {
+    public synchronized void Cobrar(String concepto, int cantidad, int tiempoEspera) {
         saldo -= cantidad;
-        System.out.println("Op. #" + obtenerNumeroOperacion() + ": Cobro " + concepto + ": -" + cantidad + " €");
+        System.out.println("Op. #" + obtenerNumeroOp() + ": Cobro " + concepto + ": -" + cantidad + " €");
         System.out.println(">> Saldo actual: " + saldo + " €");
         dormir(tiempoEspera);
     }
@@ -25,108 +25,108 @@ class CuentaBancaria {
         try {
             Thread.sleep(tiempo);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 
-    private static int numeroOperacion = 1;
+    private static int numeroOp = 1;
 
-    private static synchronized int obtenerNumeroOperacion() {
-        return numeroOperacion++;
+    private static synchronized int obtenerNumeroOp() {
+        return numeroOp++;
     }
 }
 
-class OperacionNomina extends Thread {
+class OpNomina extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionNomina(CuentaBancaria cuenta) {
+    public OpNomina(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarIngreso("nómina", 1200, 3000);
+        cuenta.Ingresar("nómina", 1200, 3000);
     }
 }
 
-class OperacionHipoteca extends Thread {
+class OpHipoteca extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionHipoteca(CuentaBancaria cuenta) {
+    public OpHipoteca(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarCobro("hipoteca", 400, 3000);
+        cuenta.Cobrar("hipoteca", 400, 3000);
     }
 }
 
 
 
-class OperacionLuz extends Thread {
+class OpLuz extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionLuz(CuentaBancaria cuenta) {
+    public OpLuz(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarCobro("luz", 40, 3000);
+        cuenta.Cobrar("luz", 40, 3000);
     }
 }
 
-class OperacionAgua extends Thread {
+class OpAgua extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionAgua(CuentaBancaria cuenta) {
+    public OpAgua(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarCobro("agua", 30, 3000);
+        cuenta.Cobrar("agua", 30, 3000);
     }
 }
 
-class OperacionCompras extends Thread {
+class OpCompras extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionCompras(CuentaBancaria cuenta) {
+    public OpCompras(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarCobro("compras", 50, 1000);
+        cuenta.Cobrar("compras", 50, 1000);
     }
 }
 
-class OperacionRetiradaEfectivo extends Thread {
+class OpRetiradaEfectivo extends Thread {
     private CuentaBancaria cuenta;
 
-    public OperacionRetiradaEfectivo(CuentaBancaria cuenta) {
+    public OpRetiradaEfectivo(CuentaBancaria cuenta) {
         this.cuenta = cuenta;
     }
 
     @Override
     public void run() {
-        cuenta.realizarCobro("retirada efectivo", 20, 300);
+        cuenta.Cobrar("retirada efectivo", 20, 300);
     }
 }
 
 /**
  * Esta clase se encarga de finalizar el programa.
  */
-class salir extends Thread {
+class Salir extends Thread {
     @Override
     public void run() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("c")) {
-                //En principio el sistem exit no lo devmos gastar, la otra manera seria esperar a que los hilos en ejecucion terminen o finalizar cada hilo que quede
+                //En principio el system exit no lo debemos gastar, la otra manera sería esperar a que los hilos en ejecución terminen o finalizar cada hilo que quede
                 System.exit(0);
             }
         }
@@ -136,15 +136,15 @@ class salir extends Thread {
 public class SimuladorCuentaBancaria {
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria(4000);
-        salir salirThread = new salir();
+        Salir salirThread = new Salir();
         salirThread.start();
         while (true) {
-            OperacionNomina nominaThread = new OperacionNomina(cuenta);
-            OperacionHipoteca hipotecaThread = new OperacionHipoteca(cuenta);
-            OperacionLuz luzThread = new OperacionLuz(cuenta);
-            OperacionAgua aguaThread = new OperacionAgua(cuenta);
-            OperacionCompras comprasThread = new OperacionCompras(cuenta);
-            OperacionRetiradaEfectivo retiradaThread = new OperacionRetiradaEfectivo(cuenta);
+            OpNomina nominaThread = new OpNomina(cuenta);
+            OpHipoteca hipotecaThread = new OpHipoteca(cuenta);
+            OpLuz luzThread = new OpLuz(cuenta);
+            OpAgua aguaThread = new OpAgua(cuenta);
+            OpCompras comprasThread = new OpCompras(cuenta);
+            OpRetiradaEfectivo retiradaThread = new OpRetiradaEfectivo(cuenta);
 
             nominaThread.start();
             hipotecaThread.start();
