@@ -116,33 +116,20 @@ public class SimuladorCuentaBancaria {
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria(4000);
 
-        while (true) {
-            OperacionNomina nominaThread = new OperacionNomina(cuenta);
-            OperacionHipoteca hipotecaThread = new OperacionHipoteca(cuenta);
-            OperacionLuz luzThread = new OperacionLuz(cuenta);
-            OperacionAgua aguaThread = new OperacionAgua(cuenta);
-            OperacionCompras comprasThread = new OperacionCompras(cuenta);
-            OperacionRetiradaEfectivo retiradaThread = new OperacionRetiradaEfectivo(cuenta);
+        OperacionNomina nominaThread = new OperacionNomina(cuenta);
+        OperacionHipoteca hipotecaThread = new OperacionHipoteca(cuenta);
+        OperacionLuz luzThread = new OperacionLuz(cuenta);
+        OperacionAgua aguaThread = new OperacionAgua(cuenta);
+        OperacionCompras comprasThread = new OperacionCompras(cuenta);
+        OperacionRetiradaEfectivo retiradaThread = new OperacionRetiradaEfectivo(cuenta);
 
+        for (int i = 0; i < 10; i++) {
             nominaThread.start();
             hipotecaThread.start();
             luzThread.start();
             aguaThread.start();
             comprasThread.start();
             retiradaThread.start();
-
-            // Esperar a que todos los hilos terminen antes de continuar con el siguiente bucle
-            try {
-                nominaThread.join();
-                hipotecaThread.join();
-                luzThread.join();
-                aguaThread.join();
-                comprasThread.join();
-                retiradaThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
-
