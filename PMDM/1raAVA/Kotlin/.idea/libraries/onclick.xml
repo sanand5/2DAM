@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="onclick">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Ejemplos/onclick/onclick.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

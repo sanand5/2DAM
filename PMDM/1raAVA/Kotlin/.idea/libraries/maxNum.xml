@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maxNum">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/maxnum/maxNum.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

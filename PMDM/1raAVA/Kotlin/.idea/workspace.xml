@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4227043-856c-452e-a39e-acc772510024" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../Other/PlantillaMemoria.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Other/PlantillaMemoria.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Procesos/Practica_03/.idea/Practica_03.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Procesos/Practica_03/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Procesos/Practica_03/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Procesos/Practica_03/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Procesos/Practica_03/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/.idea/Practiques.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/Practica_01.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/templateLanguages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/Memoria/Memoria.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/Memoria/SimuladorCuentaBancaria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../SGE/1raAVA/Tema_03/Odoo/Treball/Fotos/Captures/Agenda.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../10813358.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../AD/1raAVA/ORM/DB/DB-2.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AD/1raAVA/ORM/DB/DB-1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../AD/1raAVA/ORM/DB/DB-1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../AD/1raAVA/ORM/untitled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../AD/1raAVA/ORM/untitled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/.idea/Ejemplo3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/app.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/out/production/Ejemplo3/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/out/production/Ejemplo3/.idea/Ejemplo3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/out/production/Ejemplo3/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/out/production/Ejemplo3/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/Ejemplo3/out/production/Ejemplo3/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/animales/animales.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/ejemplo 2/ejemplo2.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/generic.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/hello/hello.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/hello/hello.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/src/main/kotlin/Main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled/untitled.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/src/main/kotlin/Main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled1/untitled1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/src/main/kotlin/Main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/kotlinTestIntelli/untitled2/untitled2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/lambda/lambda.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/lambda/lambda.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/maxnum/maxNum.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/maxnum/maxNum.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/multiplicationTable/multiplicationTable.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/multiplicationTable/multiplicationTable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/onclick/onclick.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/onclick/onclick.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/operations/operations.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/hello.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/lambda.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/maxNum.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/multiplicationTable.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/onclick.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/.idea/libraries/school.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/Ejemplos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/hello/hello.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/lambda/lambda.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/maxnum/maxNum.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/multiplicationTable/multiplicationTable.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/onclick/onclick.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/libraries/school.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/school.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/out/production/Ejemplos/school/school.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/person/person.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/libraries/school.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/school.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/school.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ejemplos/school/school.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/Memoria/memoria2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Coche.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Coche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Parking.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Parking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Practica_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_01/src/Practica_01/Practica_01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/src/SimuladorCuentaBancaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PSP/1raAVA/Threads/Practiques/Practica_02/src/SimuladorCuentaBancaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PSP/README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2XzR5cvWnQtlR6bifDrCr4IFBIZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/2DAM_Sanz_Andreu/Documents/2DAM/PMDM/1raAVA/Kotlin/Ejemplos/school&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4227043-856c-452e-a39e-acc772510024" name="Changes" comment="" />
+      <created>1699629739652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699629739652</updated>
+    </task>
+    <servers />
+  </component>
+</project>
