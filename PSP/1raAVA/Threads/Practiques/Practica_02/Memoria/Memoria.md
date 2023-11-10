@@ -1,6 +1,7 @@
 # Memoria Practica II Threads
 ## Que 
   <div style="text-align: justify;">
+
   Se desea realizar una clase CuentaBancaria que simulará las Opes que se realizan en una cuenta. Para ello, crearemos diferentes hilos, cada uno de ellos con un tipo de operación.
   Además, como cada operación tiene diferentes frecuencias, también deberíamos indicar, cuánto tiempo deben dormir después de cada ejecución del hilo, quedando así:
 
@@ -17,7 +18,8 @@
 
 ## Para que
   <div style="text-align: justify;">
-    Esta actividad tiene como objetivo proporcionar un aprendizaje básico sobre la utilización de hilos en Java. A través de esta práctica, exploramos de manera sencilla cómo trabajar con threads y comprender su funcionamiento. Esta práctica es útil, ya que nos brinda una introducción básica pero más abanzada que la anterior de cómo los hilos operan y las diferentes formas en que pueden ser utilizados y aplicados.
+
+  Esta actividad tiene como objetivo proporcionar un aprendizaje básico sobre la utilización de hilos en Java. A través de esta práctica, exploramos de manera sencilla cómo trabajar con threads y comprender su funcionamiento. Esta práctica es útil, ya que nos brinda una introducción básica pero más abanzada que la anterior de cómo los hilos operan y las diferentes formas en que pueden ser utilizados y aplicados.
   </div>
   <div style="page-break-before:always"></div>
 
@@ -25,6 +27,7 @@
   #### CuentaBancaria
     Crear clase CuentaBancaria
         Inicializar saldo con saldoInicial
+        Crear variable estática privada numeroOp inicializada en 1
         Crear método Ingresar(concepto, cantidad, tiempoEspera)
             Incrementar saldo en cantidad
             Imprime los datos de la operación
@@ -37,7 +40,6 @@
             Dormir en tiempoEspera
         Crear método privado dormir(tiempo)
             Intentar dormir en tiempo
-        Crear variable estática privada numeroOp inicializada en 1
         Crear método estático privado obtenerNumeroOp()
             Devolver numeroOp y luego incrementarlo
     
@@ -54,7 +56,8 @@
         Crear constructor que recibe una cuenta
         Crear método run()
             Llamar a cuenta.Cobrar con parámetros "hipoteca", 400, 3000
-    
+  <div style="page-break-before:always"></div>
+
   #### OpLuz
     Crear clase OpLuz que extiende Thread
         Crear variable privada cuenta de tipo CuentaBancaria
@@ -82,15 +85,7 @@
         Crear constructor que recibe una cuenta
         Crear método run()
             Llamar a cuenta.Cobrar con parámetros "retirada efectivo", 20, 300
-
-  #### Salir
-    Crear clase Salir que extiende Thread
-        Crear método run()
-            Crear scanner sc para entrada estándar
-            Mientras sea verdad
-                Leer entrada del usuario
-                Si la entrada es "c"
-                    Salir del programa
+<div style="page-break-before:always"></div>
 
   #### SimuladorCuentaBancaria
     Crear clase SimuladorCuentaBancaria
@@ -101,16 +96,26 @@
           Loop infinito
               Crear hilos para cada operación: nominaThread, hipotecaThread, luzThread, aguaThread, comprasThread, retiradaThread
               Iniciar cada hilo
-  <div style="page-break-before:always"></div>
 
 ## Como
   <div style="text-align: justify;">
-  
 
+  #### Clase CuentaBancaria:
+  Esta clase tiene una variable privada que representa el saldo de la cuenta y una variable estática y privada que hace referencia al número de operación. Para instanciar un objeto de cuenta bancaria, necesitas una variable que haga referencia al saldo de la cuenta. Esta clase cuenta con tres funciones **synchronized**: **ingresar** y **cobrar**. Ambas funciones comparten los mismos parámetros de entrada: el concepto, la cantidad a operar y el tiempo de espera para el hilo. Ambas funciones realizan operaciones de suma o resta, muestran un mensaje por pantalla con información sobre la operación, llaman al método **obtenerNumeroOp** para obtener el ID de la operación, y el saldo actual, finalmente suspenden la ejecución del hilo mediante la función **dormir**.
+
+  La función **obtenerNumeroOp** también es **synchronized** y estática para evitar condiciones de carrera y asegurar que cada hilo tenga un ID de operación único. Esta función incrementa en uno la variable que hace referencia al número de operación.
+
+  La función **dormir** acepta un parámetro de entrada que indica el tiempo durante el cual el hilo debe estar inactivo. Esta función suspende el hilo utilizando el método sleep y gestiona posibles excepciones que puedan surgir durante la pausa del hilo.
+
+  #### Clases de Operaciones:  
+  Se han implementado clases separadas para cada tipo de operación (**OpNomina**, **OpHipoteca**, etc.). Cada clase extiende la clase Thread y tiene una referencia a la instancia de **CuentaBancaria** sobre la cual se realizarán las operaciones. La ejecución de cada hilo está definida en el método run, donde se llama a los métodos **ingresar** o **cobrar** de la cuenta.  
+
+  #### Clase SimuladorCuentaBancaria:  
+  Esta clase solo contiene el metodo principal donde se crea una instancia de CuentaBancaria con un saldo inicial de 4000 euros. Se inicia un hilo Salir para permitir al usuario finalizar el programa. Luego, en un bucle infinito, se crean instancias de cada tipo de operación y se inician sus hilos.
   </div>
 
 ## Conclusión
   <div style="text-align: justify;">
-  Esta práctica ha sido útil para aprender a programar con hilos en Java. 
+  Esta práctica ha sido útil para aprender a programar con hilos en Java. Este programa proporciona una simulación básica de operaciones bancarias concurrentes. 
   </div>
 

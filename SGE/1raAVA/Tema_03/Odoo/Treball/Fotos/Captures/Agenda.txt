@@ -1,0 +1,328 @@
+Actua como  un experto en java threads. Te voy ha dar un enunciado, su programa y su memoria de ejemplo y quiero que con otro enunciado y su codigo me crees la memoria segun el ejemplo.
+
+Este es el enunciado de el primer ejercicio:
+Se desea realizar una clase llamada Parking que reciba el número de plazas del parking y el número de coches que tiene el sistema.
+
+Se deben crear tantos threads como coches hayan. El parking dispondrá de una única entrada y una única salida. En la entrada de vehículos habrá un dispositivo de control que permitia o oimpida el acceso de los mismos al parking, dependiendo del estado actual del mismo (plazas de aparcamiento disponibles).
+
+Los tiempos de espera de los vehículos dentro del párking son aleatorios. En el momento en el que un vehículo sale del párking, notifica al dispositivo de control el número de plaza que tenía asignada y se libera la plaza que estuviera ocupando, quedando así estas nuevamente disponibles. Un vehículo que ha salido del párking esperará un tiempo aleatorio para volver a entrar nuevamente en el mismo. Por tanto, los vehículos estarán entrando y saliendo indefinidamente del párking.
+
+Es importante que se diseñar el programa de tal forma que se asegure que, antes o después, un vehículo que permanece esperando a la entrada del párking entrará en el mismo (no se produzca inanición).
+
+Este es el mi codigo de el primer ejercicio:
+import iohelpers.ReadClient;
+class Coche extends Thread{
+    private int cocheID;
+    private Parking parking;
+
+    public Coche(int cocheID, Parking parking) {
+        this.cocheID = cocheID;
+        this.parking = parking;
+    }
+    
+    @Override
+    public void run() {
+        int min = 1000, max = 5000;
+        while (true) {
+            try {
+                int random = (int) (Math.random() * (max - min + 1) + min);
+                sleep(random);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            int plaza = parking.aparcar(cocheID);
+            try {
+                int random = (int) (Math.random() * (max - min + 1) + min);
+                sleep(random);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            parking.salir(plaza, cocheID);
+        }
+    }
+}
+
+class Parking {
+    private int[] plazas;
+    private int nPlazas;
+
+    public Parking(int nPlazas) {
+        this.nPlazas = nPlazas;
+        plazas = new int[nPlazas];
+        for (int i = 0; i < nPlazas; i++) { //Cada plaza = 0
+            plazas[i] = 0;
+        }
+    }
+
+    public synchronized int aparcar(int cocheID) {
+        while (nPlazas == 0) {
+            try {
+                System.out.println("Coche " + cocheID + " esperando para entrar al parking.");
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        int plaza = buscarPlazaLibre();
+        plazas[plaza] = cocheID;
+        nPlazas--;
+
+        System.out.println("ENTRADA: Coche " + cocheID + " aparca en plaza " + plaza);
+        System.out.println("Plazas libres: " + nPlazas);
+        System.out.println("Parking: " + toString());
+        System.out.println();
+        return plaza;
+    }
+
+    public synchronized void salir(int plaza, int cocheID) {
+        plazas[plaza] = 0;
+        nPlazas++;
+
+        System.out.println("SALIDA: Coche " + cocheID + " sale de plaza " + plaza);
+        System.out.println("Plazas libres: " + nPlazas);
+        System.out.println("Parking: " + toString());
+        System.out.println();
+
+        notify();
+    }
+
+    private int buscarPlazaLibre() {
+        for (int i = 0; i < plazas.length; i++) {
+            if (plazas[i] == 0) {
+                return i;
+            }
+        }
+        return -1; // Plazas no disponibles
+    }
+
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < plazas.length; i++) {
+            result += "[" + (plazas[i] > 0 ? plazas[i] : "0") + "] ";
+        }
+        return result;
+    }
+}
+
+public class Practica_01 {
+    public static void main(String[] args) {
+        ReadClient rc = new ReadClient();
+        int nCoches = rc.pedirInteger("Numero de coches: ");
+        int nPlazas = rc.pedirInteger("Numero de plazas: ");
+        Parking parking = new Parking(nPlazas);
+        for (int i = 1; i <= nCoches; i++) {
+            Coche coche = new Coche(i, parking);
+            coche.start();
+        }
+    }
+    
+}
+Esta es la memoria del primer ejercicio
+## Para que
+<div style="text-align: justify;">
+Esta actividad tiene como objetivo proporcionar un aprendizaje básico sobre la utilización de hilos en Java. A través de esta práctica, exploramos de manera sencilla cómo trabajar con threads y comprender su funcionamiento. Esta práctica es útil, ya que nos brinda una introducción básica a cómo los hilos operan y las diferentes formas en que pueden ser utilizados y aplicados.
+
+## Como
+<div style="text-align: justify;">
+Este programa consta de tres clases que simulan la gestión de un estacionamiento con múltiples coches. A continuación, se detalla la funcionalidad de cada una de las clases:
+
+#### Parking
+Comenzando por mi clase "Parking", representa el estacionamiento y gestiona la disponibilidad de plazas para los coches. Esta tiene dos variables generales: el número de plazas del parking y un array de enteros que me servirá para saber qué plazas están ocupadas por los coches.
+El constructor de "Parking" recibe como parámetro el número de plazas. Luego, asigna al array de plazas la longitud correspondiente al número de plazas y establece cada una de las posiciones del array en 0.
+Tengo dos funciones synchronized:
+"aparcar": Esta función es pública y devuelve la plaza donde ha aparcado el coche. Recibe como parámetro el ID de un coche, comprueba si el coche tiene una plaza donde aparcar y, si la hay, aparca. Si no hay plazas disponibles, el hilo espera hasta que pueda aparcar. Para aparcar, asigna el ID a una posición del array que esté disponible utilizando la función "buscarPlazaLibre()" e imprime que el coche ha podido aparcar. Finalmente, devuelve la plaza donde ha aparcado.
+"salir()": Esta función no devuelve nada y tiene como parámetros de entrada la plaza donde está aparcado el coche y su ID. Guarda en la posición donde estaba aparcado el coche el valor 0, informa por pantalla y, además, llama a la función "notify()" que despierta a otros coches en espera.
+La función "buscarPlazaLibre()" comprueba si hay alguna posición igual a 0 en el array y devuelve su posiciónm sino devuelve -1.
+Finalmente, la función "toString()" imprime el array.
+#### Coche  
+Mi clase "Coche" tiene dos variables generales: "CocheID" (la identificación del vehículo) y "Parking" al que está asignado, con un constructor que recibe ambas variables. Además, esta clase extiende "Thread" para poder utilizar su única función "run()".
+En la función "run" heredada de "Thread", declaro dos variables que son simplemente valores límite para la función "Math.random()". Luego, creo un bucle while infinito. Dentro de este bucle, primero hago que el hilo espere un tiempo aleatorio definido anteriormente utilizando la función "sleep()", y gestiono cualquier posible error que pueda ocurrir durante la espera, para que en caso de error, el hilo pueda detenerse adecuadamente.
+Después de la espera, llamo a la función "aparcar" del objeto "Parking", pasándole el ID del coche, y guardo su valor de retorno en una variable. Esto me permite luego llamar a la función "salir". Antes de llamar a la función "salir", espero nuevamente un tiempo aleatorio y, en esta ocasión, llamo a la función "salir()", pasando como parámetros la plaza y el ID del vehículo.
+#### Main
+En mi clase principal "Practica_01", que contiene la función principal, solicito al usuario el número de coches y el número de plazas utilizando las funciones del objeto de tipo "ReadClient", como se explica en las prácticas de Acceso a Datos.
+Luego, creo un objeto "Parking" con un número máximo de plazas asignadas por el usuario.
+Finalmente, creo un bucle "for" con un máximo igual al número de coches, donde en cada iteración creo un objeto de tipo "Coche" y llamo a su función "start". De esta manera, estoy creando y lanzando un hilo por cada coche.
+</div>
+
+## Conclusión
+<div style="text-align: justify;">
+Esta práctica ha sido útil para aprender a programar con hilos en Java. También he explorado distintas formas de hacerlo en Internet, como el uso de semáforos y la interfaz "Runnable". Sin embargo, al final me decidí por esta forma porque la encontré la más sencilla y fácil de usar.
+</div>
+
+Este es el enunciado del segundo ejercicio:
+Se desea realizar una clase CuentaBancaria que simulará las Opes que se realizan en una cuenta. Para ello, crearemos diferentes hilos, cada uno de ellos con un tipo de operación.
+  Además, como cada operación tiene diferentes frecuencias, también deberíamos indicar, cuánto tiempo deben dormir después de cada ejecución del hilo, quedando así:
+
+  - Nómina::ingreso::1200::3000 (concepto, Op, cantidad, tiempo_espera)
+  - Hipoteca::cobro::400::3000
+  - Luz::cobro::40::3000
+  - Agua::cobro::30::3000
+  - Compras::cobro::50::1000
+  - Retirada efectivo::cobro::20::300
+
+  Al inicializar el programa, se deberá indicar el saldo actual de nuestra cuenta.
+  Cada operación de ingreso o cobro deberá tener un número de operación que se irá incrementando.
+  Para evitar la condición de carrera, se deben sincronizar aquellas secciones que consideréis críticas mediante el uso de synchronized en métodos o sentencias.
+Este es mi codigo de el segundo ejercicio:
+import java.util.Scanner;
+
+class CuentaBancaria {
+    private int saldo;
+
+    public CuentaBancaria(int saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    public synchronized void Ingresar(String concepto, int cantidad, int tiempoEspera) {
+        saldo += cantidad;
+        System.out.println("Op. #" + obtenerNumeroOp() + ": Ingreso " + concepto + ": +" + cantidad + " €");
+        System.out.println(">> Saldo actual: " + saldo + " €");
+        dormir(tiempoEspera);
+    }
+
+    public synchronized void Cobrar(String concepto, int cantidad, int tiempoEspera) {
+        saldo -= cantidad;
+        System.out.println("Op. #" + obtenerNumeroOp() + ": Cobro " + concepto + ": -" + cantidad + " €");
+        System.out.println(">> Saldo actual: " + saldo + " €");
+        dormir(tiempoEspera);
+    }
+
+    private void dormir(int tiempo) {
+        try {
+            Thread.sleep(tiempo);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    private static int numeroOp = 1;
+
+    private static synchronized int obtenerNumeroOp() {
+        return numeroOp++;
+    }
+}
+
+class OpNomina extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpNomina(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Ingresar("nómina", 1200, 3000);
+    }
+}
+
+class OpHipoteca extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpHipoteca(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Cobrar("hipoteca", 400, 3000);
+    }
+}
+
+
+
+class OpLuz extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpLuz(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Cobrar("luz", 40, 3000);
+    }
+}
+
+class OpAgua extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpAgua(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Cobrar("agua", 30, 3000);
+    }
+}
+
+class OpCompras extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpCompras(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Cobrar("compras", 50, 1000);
+    }
+}
+
+class OpRetiradaEfectivo extends Thread {
+    private CuentaBancaria cuenta;
+
+    public OpRetiradaEfectivo(CuentaBancaria cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    @Override
+    public void run() {
+        cuenta.Cobrar("retirada efectivo", 20, 300);
+    }
+}
+
+/**
+ * Esta clase se encarga de finalizar el programa.
+ */
+class Salir extends Thread {
+    @Override
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("c")) {
+                //En principio el system exit no lo debemos gastar, la otra manera sería esperar a que los hilos en ejecución terminen o finalizar cada hilo que quede
+                System.exit(0);
+            }
+        }
+    }
+}
+
+public class SimuladorCuentaBancaria {
+    public static void main(String[] args) {
+        CuentaBancaria cuenta = new CuentaBancaria(4000);
+        Salir salirThread = new Salir();
+        salirThread.start();
+        while (true) {
+            OpNomina nominaThread = new OpNomina(cuenta);
+            OpHipoteca hipotecaThread = new OpHipoteca(cuenta);
+            OpLuz luzThread = new OpLuz(cuenta);
+            OpAgua aguaThread = new OpAgua(cuenta);
+            OpCompras comprasThread = new OpCompras(cuenta);
+            OpRetiradaEfectivo retiradaThread = new OpRetiradaEfectivo(cuenta);
+
+            nominaThread.start();
+            hipotecaThread.start();
+            luzThread.start();
+            aguaThread.start();
+            comprasThread.start();
+            retiradaThread.start();
+
+        }
+    }
+}
+
+
+Creame la memoria de el segundo ejercicio sin el pseudocodigo:

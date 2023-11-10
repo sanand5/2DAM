@@ -1,11 +1,16 @@
+import java.util.Scanner;
+
 class CuentaBancaria {
     private int saldo;
     private static int numeroOp = 1;
-
+    
     public CuentaBancaria(int saldoInicial) {
         this.saldo = saldoInicial;
     }
-
+    private static synchronized int obtenerNumeroOp() {
+        return numeroOp++;
+    }
+//TODO: metodos ingresar, cobrar, con minuscula
     public synchronized void Ingresar(String concepto, int cantidad, int tiempoEspera) {
         saldo += cantidad;
         System.out.println("Op. #" + obtenerNumeroOp() + ": Ingreso " + concepto + ": +" + cantidad + " €");
@@ -28,9 +33,6 @@ class CuentaBancaria {
         }
     }
 
-    private static synchronized int obtenerNumeroOp() {
-        return numeroOp++;
-    }
 }
 
 class OpNomina extends Thread {
@@ -113,9 +115,28 @@ class OpRetiradaEfectivo extends Thread {
     }
 }
 
+/**
+ * Esta clase se encarga de finalizar el programa.
+ */
+class Salir extends Thread {
+    @Override
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            String input = sc.nextLine();
+            if (input.equalsIgnoreCase("c")) {
+                //En principio el system exit no lo debemos gastar, la otra manera sería esperar a que los hilos en ejecución terminen o finalizar cada hilo que quede
+                System.exit(0);
+            }
+        }
+    }
+}
+
 public class SimuladorCuentaBancaria {
     public static void main(String[] args) {
         CuentaBancaria cuenta = new CuentaBancaria(4000);
+        Salir salirThread = new Salir();
+        salirThread.start();
         while (true) {
             OpNomina nominaThread = new OpNomina(cuenta);
             OpHipoteca hipotecaThread = new OpHipoteca(cuenta);
