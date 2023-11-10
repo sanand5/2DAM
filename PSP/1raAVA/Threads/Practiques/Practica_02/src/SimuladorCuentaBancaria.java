@@ -59,8 +59,6 @@ class OpHipoteca extends Thread {
     }
 }
 
-
-
 class OpLuz extends Thread {
     private CuentaBancaria cuenta;
 
@@ -130,7 +128,6 @@ public class SimuladorCuentaBancaria {
             aguaThread.start();
             comprasThread.start();
             retiradaThread.start();
-
         }
     }
 }

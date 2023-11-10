@@ -85,7 +85,7 @@
         Crear constructor que recibe una cuenta
         Crear método run()
             Llamar a cuenta.Cobrar con parámetros "retirada efectivo", 20, 300
-<div style="page-break-before:always"></div>
+  <div style="page-break-before:always"></div>
 
   #### SimuladorCuentaBancaria
     Crear clase SimuladorCuentaBancaria
@@ -116,6 +116,6 @@
 
 ## Conclusión
   <div style="text-align: justify;">
-  Esta práctica ha sido útil para aprender a programar con hilos en Java. Este programa proporciona una simulación básica de operaciones bancarias concurrentes. 
+  Esta práctica ha sido útil para aprender a programar con hilos en Java. Este programa proporciona una simulación básica de operaciones bancarias concurrentes.
   </div>
 
