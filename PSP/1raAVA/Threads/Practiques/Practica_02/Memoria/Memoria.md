@@ -34,89 +34,61 @@
             Imprime el saldo actual
             Dormir en tiempoEspera
         Crear método Cobrar(concepto, cantidad, tiempoEspera)
-            Decrementar saldo en cantidad
-            Imprime los datos de la operación
-            Imprime el saldo actual
-            Dormir en tiempoEspera
+            Crear variable saldoCobrado y asignar (saldo - cantidad <= 0)
+            Si saldoCobrado es verdadero y concepto coincide con compras o retirada efectivo
+                Imprimir que la operación ha sido denegada
+                Dormir por tiempoEspera
+            Sino
+                Decrementar saldo por cantidad
+                Imprime los datos de la operación
+                Imprime el saldo actual
+                Dormir por tiempoEspera
         Crear método privado dormir(tiempo)
             Intentar dormir en tiempo
         Crear método estático privado obtenerNumeroOp()
             Devolver numeroOp y luego incrementarlo
     
-  #### OpNomina
-    Crear clase OpNomina que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
+  #### Transaccion
+    Crear clase Transaccion que extiende Thread
+        Crear variables privadas cuenta, operacion, concepto, cantidad, tiempoEspera
+        Crear constructor que recibe cuenta, operacion, concepto, cantidad, tiempoEspera
         Crear método run()
-            Llamar a cuenta.Ingresar con parámetros "nómina", 1200, 3000
-    
-  #### OpHipoteca
-    Crear clase OpHipoteca que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
-        Crear método run()
-            Llamar a cuenta.Cobrar con parámetros "hipoteca", 400, 3000
-  <div style="page-break-before:always"></div>
-
-  #### OpLuz
-    Crear clase OpLuz que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
-        Crear método run()
-            Llamar a cuenta.Cobrar con parámetros "luz", 40, 3000
-    
-  #### OpAgua
-    Crear clase OpAgua que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
-        Crear método run()
-            Llamar a cuenta.Cobrar con parámetros "agua", 30, 3000
-    
-  #### OpCompras
-    Crear clase OpCompras que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
-        Crear método run()
-            Llamar a cuenta.Cobrar con parámetros "compras", 50, 1000
-    
-  #### OpRetiradaEfectivo
-    Crear clase OpRetiradaEfectivo que extiende Thread
-        Crear variable privada cuenta de tipo CuentaBancaria
-        Crear constructor que recibe una cuenta
-        Crear método run()
-            Llamar a cuenta.Cobrar con parámetros "retirada efectivo", 20, 300
+            Si la operación es "ingreso"
+                Llamar a cuenta.Ingresar con los parámetros correspondientes
+            Sino, si la operación es "cobro"
+                Llamar a cuenta.Cobrar con los parámetros correspondientes
   <div style="page-break-before:always"></div>
 
   #### SimuladorCuentaBancaria
     Crear clase SimuladorCuentaBancaria
-      En el método principal (main)
-          Crear una cuenta bancaria con saldo inicial de 4000
-          Crear un hilo Salir llamado salirThread
-          Iniciar salirThread
-          Loop infinito
-              Crear hilos para cada operación: nominaThread, hipotecaThread, luzThread, aguaThread, comprasThread, retiradaThread
-              Iniciar cada hilo
+        Crear método main()
+            Crear una cuenta bancaria con saldo inicial de 4000
+            Loop infinito
+                Crear hilos Transaccion para cada operación con los parámetros respectivos
+                Iniciar cada hilo
 
 ## Como
   <div style="text-align: justify;">
 
   #### Clase CuentaBancaria:
-  Esta clase tiene una variable privada que representa el saldo de la cuenta y una variable estática y privada que hace referencia al número de operación. Para instanciar un objeto de cuenta bancaria, necesitas una variable que haga referencia al saldo de la cuenta. Esta clase cuenta con tres funciones **synchronized**: **ingresar** y **cobrar**. Ambas funciones comparten los mismos parámetros de entrada: el concepto, la cantidad a operar y el tiempo de espera para el hilo. Ambas funciones realizan operaciones de suma o resta, muestran un mensaje por pantalla con información sobre la operación, llaman al método **obtenerNumeroOp** para obtener el ID de la operación, y el saldo actual, finalmente suspenden la ejecución del hilo mediante la función **dormir**.
+  Esta clase tiene una variable privada que representa el saldo de la cuenta y una variable estática y privada que hace referencia al número de operación. Para instanciar un objeto de cuenta bancaria, necesitas una variable que haga referencia al saldo de la cuenta. Esta clase cuenta con tres funciones **synchronized**: **ingresar** y **cobrar**. Ambas funciones comparten los mismos parámetros de entrada: el concepto, la cantidad a operar y el tiempo de espera para el hilo. Ambas funciones realizan operaciones de suma o resta, muestran un mensaje por pantalla con información sobre la operación, llaman al método **obtenerNumeroOp** para obtener el ID de la operación, y el saldo actual, finalmente suspenden la ejecución del hilo mediante la función **dormir**, a excepción de la función **cobrar** que si no tienes suficiente saldo en la cuenta denega la operacion
 
   La función **obtenerNumeroOp** también es **synchronized** y estática para evitar condiciones de carrera y asegurar que cada hilo tenga un ID de operación único. Esta función incrementa en uno la variable que hace referencia al número de operación.
 
   La función **dormir** acepta un parámetro de entrada que indica el tiempo durante el cual el hilo debe estar inactivo. Esta función suspende el hilo utilizando el método sleep y gestiona posibles excepciones que puedan surgir durante la pausa del hilo.
 
-  #### Clases de Operaciones:  
-  Se han implementado clases separadas para cada tipo de operación (**OpNomina**, **OpHipoteca**, etc.). Cada clase extiende la clase Thread y tiene una referencia a la instancia de **CuentaBancaria** sobre la cual se realizarán las operaciones. La ejecución de cada hilo está definida en el método run, donde se llama a los métodos **ingresar** o **cobrar** de la cuenta.  
+  #### Clase Transaccion
+  Se ha implementado una clase para hacer las operaciones, esta clase extiende de **Thread** y tiene una referencia a la instancia de **CuentaBancario** sobre la cual se realizarán las operaciones. La ejecución de cada hilo está definida en el método run, donde se llama a los métodos **ingresar** o **cobrar** de la cuenta según lo definido en el parametro **operacion**.  
+
 
   #### Clase SimuladorCuentaBancaria:  
-  Esta clase solo contiene el metodo principal donde se crea una instancia de CuentaBancaria con un saldo inicial de 4000 euros. Se inicia un hilo Salir para permitir al usuario finalizar el programa. Luego, en un bucle infinito, se crean instancias de cada tipo de operación y se inician sus hilos.
+  Esta clase solo contiene el metodo principal donde se crea una instancia de CuentaBancaria con un saldo inicial de 4000 euros. Luego, en un bucle infinito, se crean instancias de Transaccion para cada concepto y se inician sus hilos.
   </div>
+  <div style="page-break-before:always"></div>
 
 ## Conclusión
   <div style="text-align: justify;">
 
-  Esta práctica ha sido útil para aprender a programar con hilos en Java. Me ha servido bastante para ver la utilización de la sincronicación
+  Esta práctica ha sido útil para aprender a programar con hilos en Java y la utilización del modificador **synchronized**. Ha sido bastante interesante ver cómo funcionan los métodos **synchronized** ya que nos permiten hacer que un hilo no ejecute la función si esta está siendo utilizada por otro hilo. He "jugado" un poco con este modificador, si se me permite la expresión, y me ha resultado bastante curioso. También implementé en una versión anterior de este programa una función que, cuando ponía por la terminal 'c', el programa se paraba utilizando el modificador **synchronized**. Por eso digo que me ha parecido interesante. Me parece un buen ejercicio para ver el funcionamiento de los hilos.
   </div>
 

@@ -13,6 +13,7 @@ class Student(id: Int, name: String, surname: String, age: Int, val level: Strin
     }
 }
 
+
 class Teacher(id: Int, name: String, surname: String, age: Int, val center: String, val school: HighSchool) :
     Person(id, name, surname, age) {
     override fun toString(): String {
@@ -44,33 +45,14 @@ fun main() {
         println(list.get(i - 1))
     }
 
-    //TODO: hacer que en el mapa se guarden la lista de alumnos que pertenecen a cada escuela
-    val mapa: MutableMap<String, MutableList<Student>> = mutableMapOf()
-
-    // Iterar sobre la lista de estudiantes y asignarlos a la escuela correspondiente en el mapa
-    for (student in list) {
-        val schoolName = student.school.nombre
-        when (schoolName) {
-            "IES MARIA ENRIQUEZ" -> mapa.getOrPut(schoolName) { mutableListOf() }.add(student)
-            "IES AUSIAS MARC" -> mapa.getOrPut(schoolName) { mutableListOf() }.add(student)
-            "IES RAQUEL RIVAS" -> mapa.getOrPut(schoolName) { mutableListOf() }.add(student)
-            "IES TIRANT LO BLANC" -> mapa.getOrPut(schoolName) { mutableListOf() }.add(student)
+    val mapaGroupby = list.groupBy { it.school.nombre }
+    for ((nombreEscuela, alumnos) in mapaGroupby) {
+        println("${alumnos.size} alumnos en $nombreEscuela")
+    }
+    for ((nombreEscuela, alumnos) in mapaGroupby) {
+        println("----------$nombreEscuela----------")
+        for (i in 0..alumnos.size - 1) {
+            println("${alumnos[i].id}, ${alumnos[i].name} ${alumnos[i].surname}, age:  ${alumnos[i].age}, level: ${alumnos[i].level}, school: ${alumnos[i].level}")
         }
     }
-
-    println("IES MARIA ENRIQUEZ -> ${mapa["IES MARIA ENRIQUEZ"]?.size}")
-    println("IES AUSIAS MARC -> ${mapa["IES AUSIAS MARC"]?.size}")
-    println("IES RAQUEL RIVAS -> ${mapa["IES RAQUEL RIVAS"]?.size}")
-    println("IES TIRANT LO BLANC -> ${mapa["IES TIRANT LO BLANC"]?.size}")
-
-    // Imprimir el contenido del mapa
-    println("----------IES MARIA ENRIQUEZ----------")
-    mapa["IES MARIA ENRIQUEZ"]?.forEach { println(it) }
-    println("----------IES AUSIAS MARC----------")
-    mapa["IES AUSIAS MARC"]?.forEach { println(it) }
-    println("----------IES RAQUEL RIVAS----------")
-    mapa["IES RAQUEL RIVAS"]?.forEach { println(it) }
-    println("----------IES TIRANT LO BLANC----------")
-    mapa["IES TIRANT LO BLANC"]?.forEach { println(it) }
-
 }
