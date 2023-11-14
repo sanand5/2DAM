@@ -1,52 +1,5 @@
 import java.util.*
 
-class ReadClient(private val scanner: Scanner = Scanner(System.`in`)) {
-
-    fun pedirDouble(msg: String): Double {
-        print(msg)
-        while (true) {
-            try {
-                val input = scanner.nextLine()
-                return input.toDouble()
-            } catch (e: NumberFormatException) {
-                println("¡Error! Ingrese un número decimal válido.")
-                print(msg)
-            }
-        }
-    }
-
-    fun pedirInt(msg: String): Int {
-        print(msg)
-        while (true) {
-            try {
-                val input = scanner.nextLine()
-                return input.toInt()
-            } catch (e: NumberFormatException) {
-                println("¡Error! Ingrese un número entero válido.")
-                print(msg)
-            }
-        }
-    }
-
-    fun pedirIntEnRango(msg: String, rangoInicio: Int, rangoFin: Int): Int {
-        var valorInt = pedirInt(msg)
-        while (valorInt !in rangoInicio..rangoFin) {
-            println("¡Error! Ingrese un número entero en el rango ($rangoInicio, $rangoFin).")
-            valorInt = pedirInt(msg)
-        }
-        return valorInt
-    }
-
-    fun pedirString(msg: String): String {
-        print(msg)
-        return scanner.nextLine()
-    }
-
-    // Cerrar el Scanner al finalizar
-    fun cerrarScanner() {
-        scanner.close()
-    }
-}
 
 open class Producto(
     val id: Int,
@@ -55,14 +8,16 @@ open class Producto(
     var precio: Double
 )
 
-class PrdFisico(id: Int, nombre: String, tipo: String, precio: Double, var peso: Double) : Producto(id, nombre, tipo, precio){
+class PrdFisico(id: Int, nombre: String, tipo: String, precio: Double, var peso: Double) :
+    Producto(id, nombre, tipo, precio) {
     val formato = "FISICO"
     override fun toString(): String {
         return "$id; $formato; $nombre; $tipo; $peso g; $precio €"
     }
 }
 
-class PrdDigital(id: Int, nombre: String, tipo: String, precio: Double, var fsize: Double) : Producto(id, nombre, tipo, precio){
+class PrdDigital(id: Int, nombre: String, tipo: String, precio: Double, var fsize: Double) :
+    Producto(id, nombre, tipo, precio) {
     val formato = "DIGITAL"
     override fun toString(): String {
         return "$id; $formato; $nombre; $tipo; $fsize MB; $precio €"
@@ -78,7 +33,7 @@ fun addList() {
     val nombre = rc.pedirString("Ingrese el nombre del producto: ")
 
     var tipo = rc.pedirString("Ingrese el tipo de producto (LIBROS/CD/PINTURA/SOFTWARE/DVD): ").uppercase()
-    while (!tipo.matches(tiposProductoRgx)){
+    while (!tipo.matches(tiposProductoRgx)) {
         println("¡Error! Ingrese un tipo de producto válido.")
         tipo = rc.pedirString("Ingrese el tipo de producto (LIBROS/CD/PINTURA/SOFTWARE/DVD): ").uppercase()
     }
@@ -99,19 +54,75 @@ fun addList() {
 fun OrdenarProductos(): List<Producto> {
     return productsList.sortedBy { it.id }
 }
-fun mostrarProductos(){
+
+fun mostrarProductos() {
     val list = OrdenarProductos()
     list.forEach { println(it) }
 
 }
-fun mostrarProductosFiltro(tipo: String): Unit {
-    if (tipo.matches(tiposProductoRgx)){
 
-    }else{
+fun comprobarCampo(campo: String): Boolean {
+    var retorno = false
+    when (campo) {
+        "ID" -> {
+            retorno = true
+        }
+
+        "NOMBRE" -> {
+            retorno = true
+        }
+
+        "TIPO" -> {
+            retorno = true
+        }
+
+        "PRECIO" -> {
+            retorno = true
+        }
+
+        "PESO" -> {
+            retorno = true
+        }
+
+        "FSIZE" -> {
+            retorno = true
+        }
+    }
+    return retorno
+}
+
+fun filtrarProducots(campo: String, valor: String): List<Producto> {
+    return when (campo) {
+        "ID" -> productsList.filter { it.id.toString() == valor }
+        "NOMBRE" -> productsList.filter { it.nombre == valor }
+        "TIPO" -> productsList.filter { it.tipo == valor }
+        "PRECIO" -> {
+            //TODO: hacer que puedan ser . o ,
+            productsList.filter { it.precio.toString() == valor }
+        }
+        "PESO" -> productsList.filter { it is PrdFisico && it.peso.toString() == valor }
+        "FSIZE" -> productsList.filter { it is PrdDigital && it.fsize.toString() == valor }
+        else -> {
+            //TODO>plantear la opcion de que devuelva el mismo array para quitarme la funcion  mostrarProductos()
+            println("¡Error! Ingrese un campo válido.")
+            emptyList()
+        }
+    }
+}
+fun mostrarproducto(list: List<Producto>): Unit {
+    list.forEach { println(it) }
+}
+
+
+fun mostrarProductosFiltro(tipo: String): Unit {
+    if (tipo.matches(tiposProductoRgx)) {
+
+    } else {
         println("¡Error! Ingrese un tipo de producto válido.")
     }
 
 }
+
 //TODO: comprobar que esto funciona
 val tiposProductos = arrayOf("LIBROS", "CD", "PINTURA", "SOFTWARE", "DVD")
 val orden = {
@@ -124,14 +135,34 @@ val tiposProductoRgx = Regex("($orden())")
 val tipoFisico = "FISICO"
 val tipoDigital = "DIGITAL"
 val productsList = mutableListOf<Producto>()
-fun main(args: Array<String>) {
-    for (i in 1..5) {
-        val productoFisico = PrdFisico(i, "ProductoFisico$i", tiposProductos[ (Math.random() * tiposProductos.size).toInt() ],  10.0 * i,  100.0 * i)
-        productsList.add(productoFisico)
 
-        val productoDigital = PrdDigital(i + 5, "ProductoDigital$i", tipoDigital, 5.0 * i, 50.0 * i)
+
+fun main(args: Array<String>) {
+    //Crear y Mostrar productos
+    crearProductos()
+    mostrarProductos()
+    // Mostrar detalles de producto
+    mostrarproducto(filtrarProducots("TIPO", "DVD"))
+    //TODO: filtyrar productos crec que no va bé
+}
+
+fun crearProductos(): Unit {
+    for (i in 1..5) {
+        val productoFisico = PrdFisico(
+            i+0,
+            "ProductoFisico$i",
+            tiposProductos[(Math.random() * tiposProductos.size).toInt()]+"",
+            10.0 * i,
+            100.0 * i
+        )
+        productsList.add(productoFisico)
+        val productoDigital = PrdDigital(
+            i + 5,
+            "ProductoDigital$i",
+            tiposProductos[(Math.random() * tiposProductos.size).toInt()]+"",
+            5.0 * i,
+            50.0 * i
+        )
         productsList.add(productoDigital)
     }
-    println(tiposProductoRgx.toString())
-    mostrarProductos()
 }
