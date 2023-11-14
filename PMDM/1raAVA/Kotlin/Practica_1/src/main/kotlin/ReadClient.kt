@@ -1,8 +1,9 @@
 import java.util.*
 
-class ReadClient(private val scanner: Scanner = Scanner(System.`in`)) {
+class ReadClient() {
 
     fun pedirDouble(msg: String): Double {
+        val scanner = Scanner(System.`in`)
         print(msg)
         while (true) {
             try {
@@ -13,19 +14,22 @@ class ReadClient(private val scanner: Scanner = Scanner(System.`in`)) {
                 print(msg)
             }
         }
+        scanner.close()
     }
 
     fun pedirInt(msg: String): Int {
-        print(msg)
+        val scanner = Scanner(System.`in`)
+        println(msg)
         while (true) {
             try {
                 val input = scanner.nextLine()
                 return input.toInt()
             } catch (e: NumberFormatException) {
                 println("¡Error! Ingrese un número entero válido.")
-                print(msg)
+                println(msg)
             }
         }
+        scanner.close()
     }
 
     fun pedirIntEnRango(msg: String, rangoInicio: Int, rangoFin: Int): Int {
@@ -38,12 +42,13 @@ class ReadClient(private val scanner: Scanner = Scanner(System.`in`)) {
     }
 
     fun pedirString(msg: String): String {
-        print(msg)
-        return scanner.nextLine().uppercase()
-    }
-
-    // Cerrar el Scanner al finalizar
-    fun cerrarScanner() {
+        val scanner = Scanner(System.`in`)
+        var userInput: String
+        do {
+            println(msg)
+            userInput = scanner.nextLine().uppercase()
+        } while (userInput.trim().isEmpty())  // Repite la solicitud mientras el string esté vacío
         scanner.close()
+        return userInput
     }
 }
