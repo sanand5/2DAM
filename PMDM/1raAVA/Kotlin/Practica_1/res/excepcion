@@ -1,0 +1,112 @@
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+2
+################ TOTAL LISTA #################
+1; FISICO; Libro de Ciencia; LIBROS; 500.0 g; 20.0 €
+2; FISICO; CD de Música; CD; 150.0 g; 15.0 €
+3; FISICO; Pintura Abstracta; PINTURA; 2.5 g; 50.0 €
+4; DIGITAL; Software de Edición; SOFTWARE; 500.0 MB; 30.0 €
+5; DIGITAL; Película en HD; DVD; 4.2 MB; 10.0 €
+6; DIGITAL; Libro Digital; LIBROS; 2.0 MB; 15.0 €
+7; FISICO; Pintura Abstracta; LIBROS; 2.5 g; 50.0 €
+
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+3
+1. Mostrar por Nombre
+2. Mostrar por Tipo
+3. Mostrar por Precio
+4. Mostrar por ID
+Dame un valor entre 1-4
+2
+################ TOTAL LISTA POR TIPO #################
+2; FISICO; CD de Música; CD; 150.0 g; 15.0 €
+5; DIGITAL; Película en HD; DVD; 4.2 MB; 10.0 €
+1; FISICO; Libro de Ciencia; LIBROS; 500.0 g; 20.0 €
+6; DIGITAL; Libro Digital; LIBROS; 2.0 MB; 15.0 €
+7; FISICO; Pintura Abstracta; LIBROS; 2.5 g; 50.0 €
+3; FISICO; Pintura Abstracta; PINTURA; 2.5 g; 50.0 €
+4; DIGITAL; Software de Edición; SOFTWARE; 500.0 MB; 30.0 €
+
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+4
+1. Filtrar por ID
+2. Filtrar por Nombre
+3. Filtrar por Tipo
+4. Filtrar por Precio
+Dame un valor entre 1-4
+1
+Dime el ID del producto:
+8
+################ PRODUCTO CON ID: 8  #################
+¡Error! No se han encontrado productos
+
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+3
+1. Mostrar por Nombre
+2. Mostrar por Tipo
+3. Mostrar por Precio
+4. Mostrar por ID
+Dame un valor entre 1-4
+1
+################ TOTAL LISTA POR NOMBRE #################
+2; FISICO; CD de Música; CD; 150.0 g; 15.0 €
+6; DIGITAL; Libro Digital; LIBROS; 2.0 MB; 15.0 €
+1; FISICO; Libro de Ciencia; LIBROS; 500.0 g; 20.0 €
+5; DIGITAL; Película en HD; DVD; 4.2 MB; 10.0 €
+3; FISICO; Pintura Abstracta; PINTURA; 2.5 g; 50.0 €
+7; FISICO; Pintura Abstracta; LIBROS; 2.5 g; 50.0 €
+4; DIGITAL; Software de Edición; SOFTWARE; 500.0 MB; 30.0 €
+
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+4
+1. Filtrar por ID
+2. Filtrar por Nombre
+3. Filtrar por Tipo
+4. Filtrar por Precio
+Dame un valor entre 1-4
+3
+Dime el tipo del producto:
+libRos
+################ PRODUCTOS CON TIPO: LIBROS  #################
+1; FISICO; Libro de Ciencia; LIBROS; 500.0 g; 20.0 €
+6; DIGITAL; Libro Digital; LIBROS; 2.0 MB; 15.0 €
+7; FISICO; Pintura Abstracta; LIBROS; 2.5 g; 50.0 €
+
+1. Añadir Producto
+2. Mostrar todo
+3. Mostrar por campo
+4. Filtrar
+5. Calcular
+Dame un valor entre 1-5
+Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at ReadClient.pedirInt(ReadClient.kt:25)
+	at ReadClient.pedirIntEnRango(ReadClient.kt:36)
+	at Menu.menu(Menu.kt:10)
+	at MainKt.main(Main.kt:56)
+
+Process finished with exit code 1

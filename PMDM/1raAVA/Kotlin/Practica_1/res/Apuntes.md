@@ -30,6 +30,6 @@
 9. salir
 
 ## TODO
-comprobar ids  
+comprobar ids  @done
 hacer clase inventario
 Comprobar todo
