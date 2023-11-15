@@ -1,26 +1,26 @@
-// Crear un mapa de productos y trabajar desde ahí
 fun addList() {
     val rc = ReadClient()
-    val forma = rc.pedirIntEnRango("Dime si es un producto físico(0) o digital(1): ", 0, 1)
-    var id = rc.pedirInt("Ingrese el id del producto: ")
+    val forma = rc.pedirIntEnRango("Tell me if it's a physical product (0) or digital (1):", 0, 1)
+    var id = rc.pedirInt("Enter the product ID:")
     /*var idRep = false
     productsList.forEach(){if (it.id == id){ idRep = true; return@forEach} }*/
     while (productsList.any {it.id == id}){
-        id = rc.pedirInt("Ya existe un producto con este id, ingrese otro: ")
+        id = rc.pedirInt("A product with this ID already exists, please enter another one:")
     }
-    val nombre = rc.pedirString("Ingrese el nombre del producto: ")
-    var tipo = rc.pedirString("Ingrese el tipo de producto (LIBROS/CD/PINTURA/SOFTWARE/DVD): ").uppercase()
+    val nombre = rc.pedirString("Enter the product name:")
+    var tipo = rc.pedirString("Enter the product type $tiposString:").uppercase()
     while (!tipo.matches(tiposProductoRgx)) {
-        println("¡Error! Ingrese un tipo de producto válido.")
-        tipo = rc.pedirString("Ingrese el tipo de producto (LIBROS/CD/PINTURA/SOFTWARE/DVD): ").uppercase()
+        println("Error! Please enter a valid product type.")
+        tipo = rc.pedirString("Enter the product type $tiposString:").uppercase()
     }
-    val precio = rc.pedirDouble("Ingrese el precio del producto (en euros): ")
+    //val objTipo = Tipo.values().find{it.name == tipo}
+    val precio = rc.pedirDouble("Enter the product price (in euros):")
     if (forma == 0) {
-        val peso = rc.pedirDouble("Ingrese el peso del producto (en gramos): ")
+        val peso = rc.pedirDouble("Enter the product weight (in grams):")
         val producto = PrdFisico(id, nombre, tipo, precio, peso)
         productsList.add(producto)
     } else {
-        val fsize = rc.pedirDouble("Ingrese el tamaño del producto (en MB): ")
+        val fsize = rc.pedirDouble("Enter the product size (in MB):")
         val producto = PrdDigital(id, nombre, tipo, precio, fsize)
         productsList.add(producto)
     }
@@ -31,15 +31,14 @@ fun mostrarproducto(msg: String, list: List<Producto>) {
         println("######################## $msg ######################## ")
         list.forEach { println(it) }
     } else {
-        println("¡Error! No se han encontrado productos")
+        println("Error! No products found.")
     }
     print("#########################")
     repeat(msg.length) { print("#") } /* msg.forEach { print("#")}  */
     print("#########################")
     println()
 }
-
-//TODO: esto no funciona
+//todo ENUM CLASS
 val tiposProductos = arrayOf("LIBROS", "CD", "PINTURA", "SOFTWARE", "DVD")
 val orden = {
     var tipos = "("
@@ -47,6 +46,9 @@ val orden = {
     tipos.removeSuffix("|") // Elimina el último "|"
     tipos += ")"
     tipos
+}
+val tiposString = {
+    Tipo.values().joinToString("/")
 }
 val tiposProductoRgx = Regex(orden())
 val productsList = mutableListOf<Producto>()
@@ -61,12 +63,12 @@ fun main() {
 }
 
 fun crearProductos() {
-    productsList.add(PrdFisico(1, "Libro de Ciencia", "LIBROS", 20.0, 500.0))
+    /*productsList.add(PrdFisico(1, "Libro de Ciencia", "LIBROS", 20.0, 500.0))
     productsList.add(PrdFisico(2, "CD de Música", "CD", 15.0, 150.0))
     productsList.add(PrdFisico(3, "Pintura Abstracta", "PINTURA", 50.0, 2.5))
 
     productsList.add(PrdDigital(4, "Software de Edición", "SOFTWARE", 30.0, 500.0))
     productsList.add(PrdDigital(5, "Película en HD", "DVD", 10.0, 4.2))
     productsList.add(PrdDigital(6, "Libro Digital", "LIBROS", 15.0, 2.0))
-    productsList.add(PrdFisico(7, "Pintura Abstracta", "LIBROS", 50.0, 2.5))
+    productsList.add(PrdFisico(7, "Pintura Abstracta", "LIBROS", 50.0, 2.5))*/
 }

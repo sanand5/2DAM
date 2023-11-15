@@ -4,11 +4,11 @@
 <hibernate-configuration>
    <session-factory>
       <!-- JDBC Database connection settings -->
-   <property name="connection.url">jdbc:mysql://10.0.219.14:3306/10813358_test</property>
+   <property name="connection.url">jdbc:mysql://mi_ip:3306/tu_base_de_datos</property>
 
-   <property name="connection.username">10813358</property>
+   <property name="connection.username">tu_usuario</property>
 
-   <property name="connection.password">10813358</property>
+   <property name="connection.password">tu_contraseña</property>
 
    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 

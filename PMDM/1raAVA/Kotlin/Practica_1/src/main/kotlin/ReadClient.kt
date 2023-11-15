@@ -8,7 +8,7 @@ class ReadClient(private val scanner: Scanner = Scanner(System.`in`)) {
             print(msg)
             userInput = scanner.nextLine()
             userInput = userInput.uppercase()
-        } while (userInput.trim().isEmpty())  // Repite la solicitud mientras el string esté vacío
+        } while (userInput.trim().isEmpty())
         return userInput
     }
 

@@ -2,35 +2,82 @@ class Menu(private val rc: ReadClient = ReadClient()) {
     fun menu() {
         println(
             """
-        0. Salir
-        1. Añadir Producto
-        2. Mostrar todo
-        3. Mostrar por campo
-        4. Filtrar
-        5. Calcular
+            1. Add a new product
+            2. Show ALL the products details
+            3. Show details of a given product name
+            4. Show the details of a given product typo of products
+            5. Modify the price of a product
+            6. Show products above/below a given price 
+            7. Calculate total SUM of all products
+            8. Calculate SUM of a given type of products
+            9. Sort the list of products by ...
+            0. EXIT
         """.trimIndent()
         )
         val option = rc.pedirIntEnRango("? ", 1, 5)
         println()
         when (option) {
-            0 -> exit = true
             1 -> addList()
-            2 -> mostrarproducto("TOTAL LISTA", productsList.sortedBy { it.id })
-            3 -> menuPorCampo()
-            4 -> menuFiltrar()
-            5 -> menuCalcular()
+            2 -> mostrarproducto("TOTAL LIST", productsList.sortedBy { it.id })
+            3 -> {
+                val nombre = rc.pedirString("Enter the product name:")
+                val list = productsList.filter { it.nombre == nombre }
+                if (list.isNotEmpty()) {
+                    mostrarproducto(
+                        "PRODUCTS WITH NAME: $nombre",
+                        list
+                    )
+                }else{
+                    println("No products found with that name!")
+                }
+            }
+            4 -> {
+                val tipo = pedirTipo()
+                mostrarproducto(
+                    "PRODUCTS WITH TYPE: $tipo",
+                    productsList.filter { it.tipo.toString() == tipo })
+            }
+            5 -> productsList.filter {
+                it.id == rc.pedirInt("Enter the product ID:")
+            }.get(0).precio += rc.pedirDouble("Enter the price to ADD for the product (in euros):")
+            6 -> {
+                println("0. EXIT")
+                println("1. Greater than...")
+                println("2. Less than...")
+                val rango = rc.pedirIntEnRango("? ", 0, 2)
+                var precio = 0.0
+                if (rango != 0) { precio = rc.pedirDouble("Enter the base price:") }
+                when (rango) {
+                    0 -> {}
+                    1 -> mostrarproducto(
+                        "PRODUCTS PRICE GREATER THAN $precio",
+                        productsList.filter { it.precio >= precio })
+
+                    2 -> mostrarproducto(
+                        "PRODUCTS PRICE LESS THAN $precio",
+                        productsList.filter { it.precio <= precio })
+                }
+            }
+            7 -> println("The total value of the products is: ${productsList.fold(0.0) { total, product -> total + product.precio }} €")
+            8 -> {
+                val tipo = pedirTipo()
+                println("The total value of products of type $tipo is: ${productsList
+                    .filter { it.tipo.toString() == tipo }
+                    .fold(0.0) { total, product -> total + product.precio }} €")
+            }
+            9 -> menuPorCampo()
+            0 -> exit = true
         }
     }
-
     private fun menuPorCampo() {
-        println("0. Salir")
-        println("1. Mostrar por Nombre")
-        println("2. Mostrar por Tipo")
-        println("3. Mostrar por Precio")
-        println("4. Mostrar por ID")
+        println("0. EXIT")
+        println("1. Show by Name")
+        println("2. Show by Type")
+        println("3. Show by Price")
+        println("4. Show by ID")
         var option = rc.pedirIntEnRango("? ", 0, 4)
         if (option != 0 && rc.pedirIntEnRango(
-                "En que orden quieres mostrar los productos (0)Ascendente o (1)Descendente: ",
+                "In which order do you want to display the products? (0) Ascending or (1) Descending:",
                 0,
                 1
             ) == 0
@@ -40,83 +87,24 @@ class Menu(private val rc: ReadClient = ReadClient()) {
         }
         when (option) {
             0 -> {}
-            1 -> mostrarproducto("TOTAL LISTA POR NOMBRE ASCENDENTE", productsList.sortedBy { it.nombre })
-            2 -> mostrarproducto("TOTAL LISTA POR TIPO ASCENDENTE", productsList.sortedBy { it.tipo })
-            3 -> mostrarproducto("TOTAL LISTA POR PRECIO ASCENDENTE", productsList.sortedBy { it.precio })
-            4 -> mostrarproducto("TOTAL LISTA POR ID ASCENDENTE", productsList.sortedBy { it.id })
-            5 -> mostrarproducto("TOTAL LISTA POR NOMBRE DESCENDENTE", productsList.sortedByDescending { it.nombre })
-            6 -> mostrarproducto("TOTAL LISTA POR TIPO DESCENDENTE", productsList.sortedByDescending { it.tipo })
-            7 -> mostrarproducto("TOTAL LISTA POR PRECIO DESCENDENTE", productsList.sortedByDescending { it.precio })
-            8 -> mostrarproducto("TOTAL LISTA POR ID DESCENDENTE", productsList.sortedByDescending { it.id })
+            1 -> mostrarproducto("TOTAL LIST BY NAME ASCENDING", productsList.sortedBy { it.nombre })
+            2 -> mostrarproducto("TOTAL LIST BY TYPE ASCENDING", productsList.sortedBy { it.tipo })
+            3 -> mostrarproducto("TOTAL LIST BY PRICE ASCENDING", productsList.sortedBy { it.precio })
+            4 -> mostrarproducto("TOTAL LIST BY ID ASCENDING", productsList.sortedBy { it.id })
+            5 -> mostrarproducto("TOTAL LIST BY NAME DESCENDING", productsList.sortedByDescending { it.nombre })
+            6 -> mostrarproducto("TOTAL LIST BY TYPE DESCENDING", productsList.sortedByDescending { it.tipo })
+            7 -> mostrarproducto("TOTAL LIST BY PRICE DESCENDING", productsList.sortedByDescending { it.precio })
+            8 -> mostrarproducto("TOTAL LIST BY ID DESCENDING", productsList.sortedByDescending { it.id })
         }
     }
 
-    private fun menuFiltrar() {
-        println("0. Salir")
-        println("1. Filtrar por ID")
-        println("2. Filtrar por Nombre")
-        println("3. Filtrar por Tipo")
-        println("4. Filtrar por Precio")
-        val option = rc.pedirIntEnRango("? ", 0, 4)
-        when (option) {
-            0 -> {}
-            1 -> {
-                val id = rc.pedirInt("Dime el ID del producto: ")
-                //TODO: gestionar que si la lista esta vacia
-                mostrarproducto(
-                    "PRODUCTO CON ID: $id ",
-                    productsList.filter { it.id == id })
-            }
-
-            2 -> {
-                val nombre = rc.pedirString("Dime el nombre del producto: ")
-                mostrarproducto(
-                    "PRODUCTOS CON NOMBRE: $nombre ",
-                    productsList.filter { it.nombre == nombre })
-            }
-
-            3 -> {//TODO: comprobar tipo
-                val tipo = rc.pedirString("Dime el tipo del producto: ")
-                mostrarproducto(
-                    "PRODUCTOS CON TIPO: $tipo ",
-                    productsList.filter { it.tipo == tipo })
-            }
-
-            4 -> {
-                println("0. Salir")
-                println("1. Mayor que...")
-                println("2. Menor de...")
-                val rango = rc.pedirIntEnRango("? ", 0, 2)
-                var precio = 0.0
-                if (rango != 0) { precio = rc.pedirDouble("Dime el precio base: ") }
-                when (rango) {
-                    0 -> {}
-                    1 -> mostrarproducto(
-                        "PRODUCTOS PRECIO MAYOR QUE: $precio",
-                        productsList.filter { it.precio > precio })
-
-                    2 -> mostrarproducto(
-                        "PRODUCTOS PRECIO MENOR QUE: $precio",
-                        productsList.filter { it.precio < precio })
-                }
-            }
+    private fun pedirTipo(): String {
+        var tipo = rc.pedirString("Enter the product type: $tiposString: ")
+        while (!tipo.matches(tiposProductoRgx)){
+            println("Error! Please enter a valid product type.")
+            tipo = rc.pedirString("Enter the product type: $tiposString: ")
         }
-    }
-
-    private fun menuCalcular() {
-        println("0. Salir")
-        println("1. Sumatorio total")
-        println("2. Sumatorio por tipo")
-        val option = rc.pedirIntEnRango("? ", 0, 2)
-        when (option) {
-            0 -> {}
-            1 -> println("El valor total de los productos es: ${productsList.fold(0.0) { total, product -> total + product.precio }} €")
-            2 -> {
-                productsList.groupBy { it.tipo }.forEach {
-                    println("El total de los productos del tipo ${it.key} son: ${it.value.fold(0.0) { total, product -> total + product.precio }} €")
-                }
-            }
-        }
+        return tipo
     }
 
 }

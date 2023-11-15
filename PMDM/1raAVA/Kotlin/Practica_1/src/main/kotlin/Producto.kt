@@ -4,6 +4,10 @@ open class Producto(
     var tipo: String,
     var precio: Double
 )
+enum class Tipo{
+    Book,DVD,CD,Software, Painting
+
+}
 
 class PrdFisico(id: Int, nombre: String, tipo: String, precio: Double, var peso: Double) :
     Producto(id, nombre, tipo, precio) {
