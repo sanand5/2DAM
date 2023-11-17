@@ -24,8 +24,24 @@
 0. SALIR
 
 ## TODO
- - Implementar un mapa con llaves id valor producto¿?
- - Implementar que se detecte automaticamente si es un producto fisico o digital
- - implementar que para tipo tambien pueda ser fisico o digital
- - los souts de productos que sean lo cojan de el array @done
+- pedir double da igual punto o coma
+ - Mirar lo del enum class @done
+ - Implementar que se detecte automáticamente si es un producto fisico o digital @done
+ - Diferencia entre entries y values (creo que es lo mismo pero se recomienda usar entries) @done
+ - implementar todo en inglés @done
+ - Implementar clase inventario @done
+ - Los souts de productos que sean lo cojan del array @done
  - Cambiar idioma strings @done
+ - Implementar un mapa con llaves id valor producto @canceled
+ - implementar que para filtrar también pueda ser físico o digital @?canceled
+
+
+## ReadClient class
+Functions 
+ - pedirString(boolean null)
+ - pedirInt
+ - pedirDouble
+ - pedirIntPositivo
+ - pedirIntRango
+ - pedirDoublePositivo
+ - pedirDoubleRango
