@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animales>
+    <vertebrados>
+        <peces>
+            <oseos>
+                <trucha>Carlos</trucha>
+                <sardina>Ana</sardina>
+            </oseos>
+            <cartilaginoso>Juan</cartilaginoso>
+        </peces>
+        <anfibios>Luis</anfibios>
+        <reptiles>
+            <ofidios>Marta</ofidios>
+            <sauricos>Juan</sauricos>
+            <cocodrilianos>Isabel</cocodrilianos>
+            <quelonios>Pablo</quelonios>
+        </reptiles>
+        <mamiferos>
+            <monotremas>Laura</monotremas>
+            <placenteros>Raul</placenteros>
+            <marsupiales>Sofia</marsupiales>
+        </mamiferos>
+        <aves>David</aves>
+    </vertebrados>
+    <invertebrados>
+        <antropodos>
+            <insectos>
+                <moscas>Carolina</moscas>
+                <mariposas>Fernando</mariposas>
+            </insectos>
+        </antropodos>
+        <moluscos>Carlos</moluscos>
+        <gusanos>Miguel</gusanos>
+    </invertebrados>
+</animales>

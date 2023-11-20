@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Preguntas</title>
+
+    <style>
+        .respuesta-incorrecta {
+            color: red;
+        }
+
+        .respuesta-correcta {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Formulario de Preguntas</h1>
+
+    <form id="miFormulario">
+
+        <fieldset>
+            <legend>Pregunta 1: ¿Cuál es la capital de Francia?</legend>
+            <label>
+                <input type="radio" name="pregunta1" value="paris" onchange="actualizarEstilos('pregunta1')"> París
+            </label>
+            <label>
+                <input type="radio" name="pregunta1" value="berlin" onchange="actualizarEstilos('pregunta1')"> Berlín
+            </label>
+            <label>
+                <input type="radio" name="pregunta1" value="madrid" onchange="actualizarEstilos('pregunta1')"> Madrid
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Pregunta 2: ¿Cuántos lados tiene un triángulo?</legend>
+            <label>
+                <input type="radio" name="pregunta2" value="3" onchange="actualizarEstilos('pregunta2')"> 3
+            </label>
+            <label>
+                <input type="radio" name="pregunta2" value="4" onchange="actualizarEstilos('pregunta2')"> 4
+            </label>
+            <label>
+                <input type="radio" name="pregunta2" value="5" onchange="actualizarEstilos('pregunta2')"> 5
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Pregunta 3: ¿Cuál es la capital de Japón?</legend>
+            <label>
+                <input type="radio" name="pregunta3" value="seul" onchange="actualizarEstilos('pregunta3')"> Seúl
+            </label>
+            <label>
+                <input type="radio" name="pregunta3" value="tokio" onchange="actualizarEstilos('pregunta3')"> Tokio
+            </label>
+            <label>
+                <input type="radio" name="pregunta3" value="beijing" onchange="actualizarEstilos('pregunta3')"> Pekín
+            </label>
+        </fieldset>
+
+        <button type="button" onclick="verificarRespuestas()">Verificar Respuestas</button>
+        <button type="button" onclick="limpiarRespuestas()">Limpiar Respuestas</button>
+
+        <div id="resultado"></div>
+
+    </form>
+
+    <script>
+        function verificarRespuestas() {
+            // Desmarcar todas las opciones incorrectas y correctas
+            var opciones = document.querySelectorAll('.respuesta-incorrecta, .respuesta-correcta');
+            opciones.forEach(function (opcion) {
+                opcion.classList.remove('respuesta-incorrecta', 'respuesta-correcta');
+            });
+
+            var respuestasCorrectas = {
+                pregunta1: "paris",
+                pregunta2: "3",
+                pregunta3: "tokio"
+            };
+
+            var respuestasUsuario = {
+                pregunta1: obtenerSeleccion("pregunta1"),
+                pregunta2: obtenerSeleccion("pregunta2"),
+                pregunta3: obtenerSeleccion("pregunta3")
+            };
+
+            aplicarEstilosRespuestas(respuestasUsuario, respuestasCorrectas);
+
+            var porcentajeCorrectas = calcularPorcentajeCorrectas(respuestasUsuario, respuestasCorrectas);
+            var porcentajeIncorrectas = 100 - porcentajeCorrectas;
+
+            var resultado = "Porcentaje de respuestas correctas: " + porcentajeCorrectas.toFixed(2) + "%" +
+                "<br>Porcentaje de respuestas incorrectas: " + porcentajeIncorrectas.toFixed(2) + "%";
+
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+
+        function limpiarRespuestas() {
+            var opciones = document.querySelectorAll('input[type="radio"]');
+            opciones.forEach(function (opcion) {
+                opcion.checked = false;
+                opcion.parentNode.classList.remove("respuesta-incorrecta", "respuesta-correcta");
+            });
+
+            document.getElementById("resultado").innerHTML = "";
+        }
+
+        function obtenerSeleccion(nombrePregunta) {
+            var opciones = document.getElementsByName(nombrePregunta);
+            for (var i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    return opciones[i].value;
+                }
+            }
+            return null; // Si ninguna opción está seleccionada
+        }
+
+        function aplicarEstilosRespuestas(respuestasUsuario, respuestasCorrectas) {
+            for (var pregunta in respuestasCorrectas) {
+                var opciones = document.getElementsByName(pregunta);
+                opciones.forEach(function (opcion) {
+                    if (opcion.value === respuestasUsuario[pregunta]) {
+                        if (opcion.value === respuestasCorrectas[pregunta]) {
+                            opcion.parentNode.classList.add("respuesta-correcta");
+                        } else {
+                            opcion.parentNode.classList.add("respuesta-incorrecta");
+                        }
+                    }
+                });
+            }
+        }
+
+        function calcularPorcentajeCorrectas(respuestasUsuario, respuestasCorrectas) {
+            var correctas = 0;
+            for (var pregunta in respuestasCorrectas) {
+                if (respuestasCorrectas[pregunta] === respuestasUsuario[pregunta]) {
+                    correctas++;
+                }
+            }
+            return (correctas / 3) * 100;
+        }
+
+        function actualizarEstilos(nombrePregunta) {
+            var opciones = document.getElementsByName(nombrePregunta);
+            opciones.forEach(function (opcion) {
+                opcion.parentNode.classList.remove('respuesta-incorrecta', 'respuesta-correcta');
+            });
+        }
+    </script>
+
+</body>
+
+</html>
