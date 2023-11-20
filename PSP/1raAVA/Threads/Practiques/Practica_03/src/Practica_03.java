@@ -1,6 +1,3 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 class Atleta extends Thread {
     int dorsal;
     private final Carrera carrera;
@@ -24,20 +21,20 @@ class Atleta extends Thread {
         long startTime = System.currentTimeMillis();
         Carrera.dormir((int) (Math.random() * (11000 - 9000 + 1) + 9000));
         long endTime = System.currentTimeMillis();
-
-        carrera.notificarLlegada(dorsal, endTime - startTime);
+        long tiempo = (endTime - startTime);
+        System.out.println("Dorsal " + dorsal + " tarda " + tiempo / 1000.0 + " segundos");
+        carrera.notificarLlegada(dorsal, tiempo);
     }
 }
 
 class Carrera {
     private final int NUM_ATLETAS;
     private final Atleta[] atletas;
-    public LinkedHashMap<Integer, Long> tiempos;
+    private long[] ganador = {0,12000};
 
     public Carrera(int numAtletas) {
         this.NUM_ATLETAS = numAtletas;
         this.atletas = new Atleta[NUM_ATLETAS];
-        this.tiempos = new LinkedHashMap<>();
     }
 
     public void prepararAtletas(){
@@ -48,15 +45,16 @@ class Carrera {
     }
 
     public void correr(){
+        System.out.println("Preparados!");
+        Carrera.dormir(1000);
+        System.out.println("Listos!");
+        Carrera.dormir(1000);
+        System.out.println("Ya!\n");
         synchronized (this){
-            System.out.println("Preparados!");
-            Carrera.dormir(1000);
-            System.out.println("Listos!");
-            Carrera.dormir(1000);
-            System.out.println("Ya!\n");
             notifyAll();
         }
-
+        Carrera.dormir(8500);
+        System.out.println("Resultados llegada:\n");
         for (Atleta atleta : atletas) {
             try {
                 atleta.join();
@@ -67,17 +65,14 @@ class Carrera {
     }
 
     public synchronized void notificarLlegada(int dorsal, long tiempo) {
-        tiempos.put(dorsal, tiempo);
+        if (tiempo < ganador[1]){
+            ganador[0] = dorsal;
+            ganador[1] = tiempo;
+        }
     }
 
-    public Map.Entry<Integer, Long> obtenerGanador() {
-        Map.Entry<Integer, Long> ganador = null;
-        for (Map.Entry<Integer, Long> entry : tiempos.entrySet()) {
-            if (ganador == null || entry.getValue() < ganador.getValue()) {
-                ganador = entry;
-            }
-        }
-        return ganador;
+    public long obtenerGanador() {
+        return ganador[0];
     }
 
     public static void dormir(int mseconds){
@@ -101,10 +96,6 @@ class Practica_03{
         System.out.println("\nEMPIEZA LA CARRERA\n");
         carrera.correr();
 
-        System.out.println("Resultados llegada:\n");
-        carrera.tiempos.forEach((dorsal, tiempo) -> System.out.println("Dorsal " + dorsal + " tarda " + (tiempo / 1000.0) + " segundos"));
-
-        Map.Entry<Integer, Long> ganador = carrera.obtenerGanador();
-        System.out.println("\nGanador de la carrera: Dorsal " + ganador.getKey() + "!");
+        System.out.println("\nGanador de la carrera: Dorsal " + carrera.obtenerGanador() + "!");
     }
 }
