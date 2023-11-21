@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">myFirstJetpackCompose</string>
+    <string name="pmdm">Module PMDM</string>
+    <string name="school">Maria Enriquez 2023</string>
+</resources>

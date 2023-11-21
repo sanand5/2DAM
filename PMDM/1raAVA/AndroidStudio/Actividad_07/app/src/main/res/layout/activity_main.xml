@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="347dp"
         android:layout_height="242dp"
+        android:textColor="@color/textColor"
         android:text="@string/text"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
