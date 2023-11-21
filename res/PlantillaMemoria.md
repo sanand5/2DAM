@@ -1,8 +1,9 @@
-# Memoria Practica I Threads
+# ¡IMPORTANTE: LOS ARCHIVOS SE COMPIRMEN EN ZIP!
+# Memoria Practica X Tema
 
 ## Que 
 <div style="text-align: justify;">
-
+Enunciat de la practica
 </div>
 
 ## Para que
@@ -12,20 +13,19 @@
 <div style="page-break-before:always"></div>
 
 ## Pseudocodigo
-### Nombre  de la clase
+### Clase
 ``` 
 
 ```
-<div style="page-break-before:always"></div>
-
 ## Como
 <div style="text-align: justify;">
 
+#### Clase
 
 </div>
 
 ## Conclusión
 <div style="text-align: justify;">
 
-</div>
 
+</div>
