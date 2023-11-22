@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="73325002-7859-44e6-9fdf-5d278e26dd25" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ORM/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Practica_1/src/main/kotlin/Producto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/DB-1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/DB/DB-1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/DB-2.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/hibernate.cfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/lib/hibernate-core-6.3.1.Final-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/lib/hibernate-core-6.3.1.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/lib/hibernate-core-6.3.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/lib/mysql-connector-j-8.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/lib/mysql-connector-j-8.2.0.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/Connection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Ejemplos/Popurri/school/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Ejemplos/Popurri/school/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Ejemplos/untitled/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Ejemplos/untitled/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Practica_1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Practica_1/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Practica_1/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../PMDM/1raAVA/Kotlin/Practica_1/src/main/kotlin/Main.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2YAxT9vggiqeBjxXWECkCocrDaU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/2DAM_Sanz_Andreu/Documents/2DAM/PMDM",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73325002-7859-44e6-9fdf-5d278e26dd25" name="Changes" comment="" />
+      <created>1699982190290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699982190290</updated>
+    </task>
+    <servers />
+  </component>
+</project>
