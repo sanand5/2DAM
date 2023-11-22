@@ -4,7 +4,7 @@
 <hibernate-configuration>
    <session-factory>
       <!-- JDBC Database connection settings -->
-   <property name="connection.url">jdbc:mysql://127.0.0.1:3306/prueba?serverTimezone=UTC</property>
+   <property name="connection.url">jdbc:mysql://127.0.0.1:3306/10813358?serverTimezone=UTC</property>
 
    <property name="connection.username">root</property>
 
