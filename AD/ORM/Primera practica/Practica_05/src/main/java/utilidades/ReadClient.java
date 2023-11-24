@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ReadClient {
-
+    Scanner sc = new Scanner(System.in);
     public int pedirInt(String msg) {
         int num = 0;
         boolean repit;
@@ -41,10 +41,10 @@ public class ReadClient {
         int num;
         do {
             num = pedirInt(msg);
-            if (num <= 0) {
+            if (num < 0) {
                 Colors.warMsg("El número debe ser positivo.");
             }
-        } while (num <= 0);
+        } while (num < 0);
         return num;
     }
 
@@ -82,7 +82,6 @@ public class ReadClient {
     }
 
     public String pedirString(String msg, boolean allowNull) {
-        Scanner sc = new Scanner(System.in);
         String str = null;
         boolean repit;
         do {
@@ -99,7 +98,6 @@ public class ReadClient {
                 repit = true;
             }
         } while (repit);
-        sc.close();
         return str;
     }
 }

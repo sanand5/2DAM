@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("Actividad_14"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Debug"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+631e620cd0b25c8a94be2b75d2f35970513fcd85"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("Actividad_14"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("Actividad_14"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _

@@ -41,4 +41,8 @@ public class Colors {
         System.out.println(GREEN_ANSI + "OK: " + msg + RESET_ANSI);
     }
 
+    public static void debugMsg(String msg) {
+        System.out.println(PURPLE_ANSI + "DEBUG: " + msg + RESET_ANSI);
+    }
+
 }

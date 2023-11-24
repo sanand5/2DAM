@@ -1,62 +1,71 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 
 public class Servidor {
 
+    static HashMap<String, Boolean> activos = new HashMap<>();
+
     public static void main(String[] args) {
-        final int PUERTO = 1234;
+        final int PUERTO = 5432;
 
         try (ServerSocket serverSocket = new ServerSocket(PUERTO)) {
-            System.out.println("Servidor esperando conexiones en el puerto " + PUERTO);
+            System.out.println("Servidor esperando conexiones...");
 
             while (true) {
-                Socket clientSocket = serverSocket.accept();
-                System.out.println("Cliente conectado desde " + clientSocket.getInetAddress().getHostAddress());
+                Socket socketCliente = serverSocket.accept();
+                System.out.println("Cliente accedió desde: " + socketCliente.getInetAddress());
 
-                new Thread(() -> handleClient(clientSocket)).start();
+                new Thread(() -> manejarConexion(socketCliente)).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void handleClient(Socket clientSocket) {
+    private static void manejarConexion(Socket socketCliente) {
         try (
-                BufferedReader inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                PrintWriter outputWriter = new PrintWriter(clientSocket.getOutputStream(), true)
+                BufferedReader entrada = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
+                PrintWriter salida = new PrintWriter(socketCliente.getOutputStream(), true);
         ) {
-            String userInput = inputReader.readLine();
-            System.out.println("Usuario y contraseña recibidos: " + userInput);
+            String usuario = entrada.readLine();
+            String contrasena = entrada.readLine();
 
-            // Verificar usuario y contraseña
-            if (checkCredentials(userInput)) {
-                outputWriter.println("El usuario se ha conectado correctamente");
+            if (usuarioEstaActivo(usuario)) {
+                salida.println("El usuario se ha desconectado");
+                activos.put(usuario, false);
             } else {
-                outputWriter.println("Usuario y/o contraseña incorrecto");
+                if (verificarCredenciales(usuario, contrasena)) {
+                    salida.println("El usuario se ha conectado correctamente");
+                    activos.put(usuario, true);
+                } else {
+                    salida.println("Usuario y/o contraseña incorrecto");
+                }
             }
-
-            clientSocket.close();
+            socketCliente.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static boolean checkCredentials(String userInput) {
-        // Verificar las credenciales en el archivo usuarios.txt
-        // Formato del archivo: ID#usuario#contraseña
-        File file = new File("C:/sistemalogin/usuarios.txt");
+    private static boolean usuarioEstaActivo(String usuario) {
+        return activos.getOrDefault(usuario, false);
+    }
 
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = fileReader.readLine()) != null) {
-                if (line.equals(userInput)) {
-                    // Usuario y contraseña válidos
+    private static boolean verificarCredenciales(String usuario, String contrasena) {
+        String rutaArchivo = "res/usuarios.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Dividir la línea en campos usando #
+                String[] campos = linea.split("#");
+                if (campos.length == 3 && campos[1].equals(usuario) && campos[2].equals(contrasena)) {
                     return true;
                 }
             }

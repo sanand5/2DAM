@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "4xzX4AovM5qwx1wO/AwvJRD21bWfc4/H8XwHmiQ8deKEU7ywEOtN1b3t7AmlWOoCSn+2ME1hCQmegUKOFToPPA==",
+  "dgSpecHash": "addJaNexr5XdwbPdKOMbkJwHJJNcgREfJ2ot2geL6e9a1+TrPOKmWzR9kTLBYHMgX/0NvHipKDWzssezpBFy0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_15\\Actividad_15.vbproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\andre\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_15\\Actividad_15.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
   "logs": []
 }

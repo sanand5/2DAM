@@ -14,7 +14,8 @@
 
    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-   
-
+   <mapping class="curso.Alumno" />
+   <mapping class="curso.Modulo" />
+   <mapping class="curso.Matricula" />
    </session-factory>
 </hibernate-configuration>
