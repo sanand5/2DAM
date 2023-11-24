@@ -4,15 +4,15 @@
 <hibernate-configuration>
    <session-factory>
       <!-- JDBC Database connection settings -->
-   <property name="connection.url">jdbc:mysql://127.0.0.1:3306/10813358?serverTimezone=UTC</property>
+   <property name="connection.url">jdbc:mysql://10.0.219.14:3306/10813358?serverTimezone=UTC</property>
 
-   <property name="connection.username">root</property>
+   <property name="connection.username">10813358</property>
 
-   <property name="connection.password">root</property>
+   <property name="connection.password">10813358</property>
 
-   <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+   <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
-   <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+   <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
    <mapping class="curso.Alumno" />
    <mapping class="curso.Modulo" />

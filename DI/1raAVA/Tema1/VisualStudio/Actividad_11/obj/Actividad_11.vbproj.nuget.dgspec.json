@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_11\\Actividad_11.vbproj": {}
+    "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_11\\Actividad_11.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_11\\Actividad_11.vbproj": {
+    "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_11\\Actividad_11.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_11\\Actividad_11.vbproj",
+        "projectUniqueName": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_11\\Actividad_11.vbproj",
         "projectName": "Actividad_11",
-        "projectPath": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_11\\Actividad_11.vbproj",
+        "projectPath": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_11\\Actividad_11.vbproj",
         "packagesPath": "C:\\Users\\2DAM_Sanz_Andreu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\VisualStudio\\Actividad_11\\obj\\",
+        "outputPath": "C:\\Users\\2DAM_Sanz_Andreu\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_11\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\2DAM_Sanz_Andreu\\AppData\\Roaming\\NuGet\\NuGet.Config",

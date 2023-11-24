@@ -3,6 +3,7 @@ package com.dam.myfirstjetpackcompose
 import android.annotation.SuppressLint
 import android.hardware.camera2.params.BlackLevelPattern
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -16,8 +17,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material3.Button
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -28,8 +37,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -155,6 +167,12 @@ fun LazyColumnExample() {
         item {
             SimplesTextField("hola","Adios")
         }
+        item {
+            Buttons()
+        }
+        item{
+            FABButtons()
+        }
     }
 }
 
@@ -163,10 +181,25 @@ fun LazyColumnExample() {
 @Composable
 fun SimplesTextField(label: String, ph: String) {
     var text by remember { mutableStateOf(TextFieldValue(text = "")) }
-    TextField(
+    OutlinedTextField(
         value = text,
         onValueChange = {newtext -> text = newtext},
         label = {Text(text = label)},
-        placeholder = {Text(ph)}
+        placeholder = {Text(ph)},
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+        leadingIcon = {Icon(imageVector = Icons.Rounded.AccountCircle, contentDescription = "email")},
+        trailingIcon = {Icon(imageVector = Icons.Rounded.AccountCircle, contentDescription = "email")}
     )
+}
+@Composable
+fun Buttons() {
+    var t = Toast.makeText(LocalContext.current, "Dejame en paz", Toast.LENGTH_SHORT)
+    var text by remember { mutableStateOf(TextFieldValue(text = "")) }
+    ElevatedButton(onClick = { t.show() }, content = {Text( "Puto Boton")})
+}
+@Composable
+fun FABButtons() {
+    FloatingActionButton(onClick = {}, containerColor = colorResource(id = R.color.teal_700),  ) {
+        Text(fontSize = 24.sp, text ="+")
+    }
 }
