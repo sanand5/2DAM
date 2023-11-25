@@ -4,21 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/r"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="347dp"
-        android:layout_height="242dp"
-        android:textColor="@color/textColor"
+        android:layout_width="326dp"
+        android:layout_height="249dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="@color/pink"
         android:text="@string/text"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <Button
         android:id="@+id/button"
@@ -34,40 +38,40 @@
 
     <ImageView
         android:id="@+id/img_coliseo"
-        android:layout_width="374dp"
-        android:layout_height="117dp"
+        android:layout_width="327dp"
+        android:layout_height="109dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
+        app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/coliseo" />
 
     <ImageView
         android:id="@+id/img_xina"
-        android:layout_width="374dp"
-        android:layout_height="117dp"
+        android:layout_width="330dp"
+        android:layout_height="110dp"
         android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222"
+        app:layout_constraintVertical_bias="0.225"
         app:srcCompat="@drawable/murallaxina" />
 
     <ImageView
         android:id="@+id/img_petra"
-        android:layout_width="372dp"
-        android:layout_height="122dp"
+        android:layout_width="330dp"
+        android:layout_height="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
+        app:layout_constraintVertical_bias="0.44"
         app:srcCompat="@drawable/petra" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

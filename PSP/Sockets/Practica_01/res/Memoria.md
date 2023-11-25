@@ -18,11 +18,10 @@ Si existe el usuario y contraseña, el usuario pasará al estado activo y contes
 En el caso de que el usuario y/o contraseña sean incorrectos, el servidor le enviará el mensaje “usuario y/o contraseña incorrecto”.
 </div>
 
-## Para que
+## Para qué
 <div style="text-align: justify;">
-Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de los Sockets. También ha sido beneficioso para adquirir conocimientos sobre bases de datos, ya que fue necesario crearla y realizar un par de consultas en ella. La lógica del ORM en sí no resultó ser muy complicada. En mi experiencia, la dificultad de este programa radicó en la conexión con la base de datos y el tiempo de programación, dado que es un programa extenso. Además, invertí tiempo en la búsqueda y corrección de errores. En resumen, la actividad fue útil para comprender mejor el funcionamiento de un ORM, así como para aprender a crear sesiones, realizar consultas, entre otros aspectos.
+Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de los Sockets. La actividad sirve para tener una idea básica del funcionamiento de los Sockets con Java o C, dependiendo del lenguaje que queramos usar. Yo he decidido utilizar Java, ya que estoy más familiarizado con él.
 </div>
-<div style="page-break-before:always"></div>
 
 ## Pseudocodigo
 ### Servidor
@@ -121,15 +120,28 @@ Inicio del programa Cliente:
 Fin del programa Cliente
 
 ```
-## Como
+## Cómo
+
 <div style="text-align: justify;">
 
-#### Clase
+#### Clase Cliente
+Esta clase solo contiene la función principal. En ella, he definido dos variables de configuración: el puerto y la IP, donde se conecta el cliente con el socket. Luego, creo el socket con esas dos variables para establecer una conexión con el servidor a través de la IP y el puerto. Luego, creo un `BufferedReader` con un `InputStreamReader` para convertir el flujo de bytes del socket a caracteres, pasándole como parámetro una función del socket, `getInputStream`, que es el canal por el cual los datos son enviados desde el servidor. También creo un `PrintWriter` que hace lo mismo en el `BufferedReader`, pero en vez de recibir, envía los datos al servidor. Y creo un último `BufferedReader` para pedir los datos al usuario. Después, envío los datos al servidor utilizando el `PrintWriter`, recibo la respuesta del servidor y la muestro por pantalla.
+
+#### Clase Servidor
+En esta clase, hay un `HashMap` donde se guarda el estado de los usuarios y tres funciones excepcionales a la función principal.
+- `verificarCredenciales()`: Esta función crea un `BufferedReader` del archivo de loggings y con un bucle while comprueba si los datos del `SocketCliente`, el usuario y la contraseña que son los parámetros de entrada de la función, coinciden con alguno de los datos del archivo. Si es así, devuelve true; si no, false.
+- `usuarioEstaActivo()`: Esta función retorna el estado del usuario en el `HashMap`, si es la primera vez que el usuario se conecta, lo establece como false.
+- `manejarConexion()`: Esta función crea un `BufferedReader` que lee los datos del cliente. Este objeto está conectado al flujo de entrada del socket del cliente y crea un objeto `PrintWriter` para enviar datos al cliente, que también está conectado al flujo de salida del cliente. Luego, recibe los datos que ha enviado el cliente. Luego entra en un if comprobando si el `usuarioEstaActivo`. Si lo está, cambiará su estado a false y le enviará al cliente que está desconectado. Si no, comprobará las credenciales e informará si se ha conectado correctamente o la contraseña era incorrecta. Posteriormente, cerrará el `SocketCliente` y, por consecuencia, el programa Cliente acabará.
+
+En la función principal, se creará un `ServerSocket` que estará a la espera de conexiones y luego entra en un bucle infinito para esperar nuevas conexiones. Cuando un cliente se conecta, se acepta la conexión con la función `accept()`, que devuelve un socket que representa la conexión entre el servidor y el cliente. Finalmente, crea un hilo que llama a la función `manejarConexion()`. Sé que realmente no hace falta ya que el ejercicio solo pide que se pueda conectar un cliente a la vez, pero he decidido implementarlo porque me ha parecido lo más conveniente. Además, ya que ahora sé cómo funcionan los hilos, ¿por qué no utilizarlos?
 
 </div>
 
 ## Conclusión
 <div style="text-align: justify;">
+En conclusión, considero que esta actividad ha sido interesante y ha contribuido significativamente a mejorar mis habilidades de programación con Sockets. También he aprendido mejor cómo usar el `BufferedReader` y el `PrintWriter`, ya que nunca los había utilizado, y es otra forma de hacer lo mismo que un `Scanner`. Creo que está bien saber hacer lo mismo pero con varias formas distintas.
 
+Además, me intriga conocer las diferentes aproximaciones que mis compañeros han tomado para abordar esta actividad, ya que soy consciente de que hay varias formas de implementarla. Consultar a mis amigos y obtener explicaciones sobre sus enfoques podría proporcionarme valiosas perspectivas y aprender nuevas técnicas. También ver cómo se hace esta actividad en C para poder comprender un poco más cómo funciona C.
 
+En general, me ha parecido muy interesante el hecho de que dos programas diferentes puedan compartir información de esa manera. Considero que la dificultad de esta práctica no ha sido elevada, pero tampoco ha sido fácil.
 </div>

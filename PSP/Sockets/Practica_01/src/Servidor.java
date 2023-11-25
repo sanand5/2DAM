@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Servidor {
 
@@ -58,7 +59,7 @@ public class Servidor {
     }
 
     private static boolean verificarCredenciales(String usuario, String contrasena) {
-        String rutaArchivo = "res/usuarios.txt";
+        String rutaArchivo = "C:\\sistemalogin\\usuarios.txt";
 
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
