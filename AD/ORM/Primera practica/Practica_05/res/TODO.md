@@ -1,6 +1,6 @@
 # Cosas que hacer en el proyecto
 ## Generales
-- [x] Mensajes informativos de ok
+- [ ] Mensajes informativos de ok
 ### Alumnos
 - [x] Dar de alta a alumnos.
   - [x] El nia no se puede repetir
