@@ -168,10 +168,14 @@ fun LazyColumnExample() {
             SimplesTextField("hola","Adios")
         }
         item {
-            Buttons()
+            var t = Toast.makeText(LocalContext.current, "Dejame en paz", Toast.LENGTH_SHORT)
+            var text by remember { mutableStateOf(TextFieldValue(text = "")) }
+            ElevatedButton(onClick = { t.show() }, content = {Text( "Puto Boton")})
         }
         item{
-            FABButtons()
+            FloatingActionButton(onClick = {}, containerColor = colorResource(id = R.color.teal_700),  ) {
+                Text(fontSize = 24.sp, text ="+")
+            }
         }
     }
 }
@@ -190,16 +194,4 @@ fun SimplesTextField(label: String, ph: String) {
         leadingIcon = {Icon(imageVector = Icons.Rounded.AccountCircle, contentDescription = "email")},
         trailingIcon = {Icon(imageVector = Icons.Rounded.AccountCircle, contentDescription = "email")}
     )
-}
-@Composable
-fun Buttons() {
-    var t = Toast.makeText(LocalContext.current, "Dejame en paz", Toast.LENGTH_SHORT)
-    var text by remember { mutableStateOf(TextFieldValue(text = "")) }
-    ElevatedButton(onClick = { t.show() }, content = {Text( "Puto Boton")})
-}
-@Composable
-fun FABButtons() {
-    FloatingActionButton(onClick = {}, containerColor = colorResource(id = R.color.teal_700),  ) {
-        Text(fontSize = 24.sp, text ="+")
-    }
 }
