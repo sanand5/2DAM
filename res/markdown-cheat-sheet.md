@@ -62,6 +62,9 @@ These are the elements outlined in John Gruber’s original design document. All
 
 ![alt text](https://www.markdownguide.org/assets/images/tux.png)
 
+
+![alt text](https://www.markdownguide.org/assets/images/tux.png =50x50)  
+Using an extension Markdown Image Size
 ## Extended Syntax
 
 These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
@@ -72,6 +75,39 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 | ----------- | ----------- |
 | Header | Title |
 | Paragraph | Text |
+
+### Diagram
+with extension: Markdown Preview Mermaid
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+::: mermaid
+classDiagram
+    Animal <|-- Duck
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+      +String beakColor
+      +swim()
+      +quack()
+    }
+    class Fish{
+      -int sizeInFeet
+      -canEat()
+    }
+    class Zebra{
+      +bool is_wild
+      +run()
+    }
+:::
 
 ### Fenced Code Block
 
@@ -95,7 +131,7 @@ Here's a sentence with a footnote. [^1]
 
 ### Definition List
 
-term
+term  
 : definition
 
 ### Strikethrough
