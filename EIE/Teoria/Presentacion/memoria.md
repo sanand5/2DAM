@@ -1,7 +1,42 @@
 <div style="text-align: justify;">
 
 ##### Memoria Presentacion EIE
-# Tema 1. L'emprendedor
+- [Tema 1. L'emprendedorç](#tema-1-lemprendedorç)
+  - [Què és emprendre?](#què-és-emprendre)
+  - [Qualitats de l'emprenedor](#qualitats-de-lemprenedor)
+  - [Habilitats de l'empresari](#habilitats-de-lempresari)
+  - [El risc empresarial](#el-risc-empresarial)
+  - [L'intraemprenedor](#lintraemprenedor)
+- [Tema 2.](#tema-2)
+  - [La idea](#la-idea)
+  - [Satisfacció de necessitats](#satisfacció-de-necessitats)
+  - [El factor diferenciador](#el-factor-diferenciador)
+  - [Design thinking](#design-thinking)
+  - [Mètode Lean startup](#mètode-lean-startup)
+  - [Errades que solen fer els emprenedors](#errades-que-solen-fer-els-emprenedors)
+  - [Nous jaciments d’ocupació](#nous-jaciments-docupació)
+  - [L’auto avaluació de la idea](#lauto-avaluació-de-la-idea)
+  - [L’emprenedor social](#lemprenedor-social)
+- [Tema 3.](#tema-3)
+  - [Què és una empresa?](#què-és-una-empresa)
+  - [La localització empresarial](#la-localització-empresarial)
+  - [L’entorn](#lentorn)
+  - [L’anàlisi DAFO i CAME](#lanàlisi-dafo-i-came)
+  - [La cultura empresarial](#la-cultura-empresarial)
+  - [La responsabilitat social corporativa](#la-responsabilitat-social-corporativa)
+- [Tema 4.](#tema-4)
+  - [Introducció](#introducció)
+  - [El producte](#el-producte)
+  - [El preu](#el-preu)
+  - [La comunicació (promotion)](#la-comunicació-promotion)
+  - [La distribució](#la-distribució)
+  - [El mercat](#el-mercat)
+  - [Els clients de l’empresa](#els-clients-de-lempresa)
+  - [La competència](#la-competència)
+  - [Altres tècniques de venda.](#altres-tècniques-de-venda)
+- [Conclusión](#conclusión)
+
+# Tema 1. L'emprendedorç
 ## Què és emprendre?
 [Imatge](https://www.bing.com/images/search?q=Definición+de+emprender+y+características)  
 [Imatge](https://www.bing.com/images/search?q=Cómo+detectar+necesidades+y+oportunidades+emprendedoras)  
