@@ -1,6 +1,7 @@
 <div style="text-align: justify;">
 
 ##### Memoria Presentacion EIE
+[Presentación](https://www.canva.com/design/DAF1p_FrYTA/3QAfdhILLWw1o7zIqJ53cA/edit?utm_content=DAF1p_FrYTA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [Tema 1. L'emprendedorç](#tema-1-lemprendedorç)
   - [Què és emprendre?](#què-és-emprendre)
   - [Qualitats de l'emprenedor](#qualitats-de-lemprenedor)
@@ -36,7 +37,7 @@
   - [Altres tècniques de venda.](#altres-tècniques-de-venda)
 - [Conclusión](#conclusión)
 
-# Tema 1. L'emprendedorç
+# Tema 1. L'emprendedor
 ## Què és emprendre?
 [Imatge](https://www.bing.com/images/search?q=Definición+de+emprender+y+características)  
 [Imatge](https://www.bing.com/images/search?q=Cómo+detectar+necesidades+y+oportunidades+emprendedoras)  
@@ -63,7 +64,6 @@ No sols es tracta de pensar i tindre idees. També hem de tindre el valor i la i
 **Innovació:** fer noves coses o realitzar-les de manera diferent.   
 **Visió de futur:** identificar noves oportunitats de negoci. Observar l'entorn i els canvis socials, culturals...per detectar noves necessitats i generar nous negocis per satisfer-les.  
 **Altres qualitats:** confiança en si mateix, tenacitat, responsabilitat, autodisciplina sentit crític, motivació d'assoliment.
-
 
 ## Habilitats de l'empresari
 [Imatge](https://www.bing.com/images/search?q=Importancia+de+las+habilidades+comunicativas+en+el+empresario)  
@@ -108,7 +108,7 @@ Es tracta d'una persona què treballa per compte d'altri i desenvolupa projectes
 [Imatge](https://www.bing.com/images/search?q=Riesgo+empresarial:+concepto+y+gestión)  
 [Imatge](https://www.bing.com/images/search?q=Intraemprendedor:+definición+y+ejemplos)  
 
-En las políticas de reactivación económica, la opción de crear microempresas mediante "autoocupación" destaca. La elección de la idea de negocio, basada en conocimientos personales u observación del entorno, es crucial. La convicción en el sector, un profundo conocimiento y una idea innovadora son fundamentales. Emprender implica satisfacer las necesidades del cliente con estrategias de monetización claras, provenientes de diversas fuentes.
+En les polítiques de reactivació econòmica, destaca l'opció de crear microempreses mitjançant "autoocupació". La elecció de la idea de negoci, basada en coneixements personals o observació de l'entorn, és crucial. La convicció en el sector, un profund coneixement i una idea innovadora són fonamentals. Emprendre implica satisfer les necessitats del client amb estratègies de monetització clares, provinents de diverses fonts.
 
 ## Satisfacció de necessitats
 [Imatge](https://www.bing.com/images/search?q=Satisfacción+de+necesidades+no+cubiertas+en+el+mercado)  
@@ -146,7 +146,7 @@ L'emprenedoria actual, exemplificada pel Design Thinking, prioriza el client. A 
 
 Lean Startup, com el Design Thinking, converteix projectes en productes amb prioritat en les necessitats del client. Destaca la retroalimentació constant, validació de hipòtesis amb prototips temporals i "si et equivoques, que sigui barat". Abans del llançament, iteracions basades en feedback creen un Mínim Producte Viable, especialment eficient per a startups.
 
-## Errades que solen fer els emprenedors
+## Errades d'els emprenedors
 [Imatge](https://www.bing.com/images/search?q=Previsión+de+errores+en+emprendimiento)  
 [Imatge](https://www.bing.com/images/search?q=Importancia+del+conocimiento+sectorial+en+la+toma+de+decisiones+empresariales)  
 [Imatge](https://www.bing.com/images/search?q=Selección+de+socios+basada+en+complementariedad+y+valores+compartidos)  
