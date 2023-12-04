@@ -1,7 +1,8 @@
 <div style"text-align: justify;">
 
 ##### Memoria Presentacion EIE
-- [Tema 1. L'emprendedorç](#tema-1-lemprendedorç)
+[Presentación](https://www.canva.com/design/DAF1p_FrYTA/3QAfdhILLWw1o7zIqJ53cA/edit?utm_content=DAF1p_FrYTA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- [Tema 1. L'emprendedor](#tema-1-lemprendedorç)
   - [Què és emprendre?](#què-és-emprendre)
   - [Qualitats de l'emprenedor](#qualitats-de-lemprenedor)
   - [Habilitats de l'empresari](#habilitats-de-lempresari)
