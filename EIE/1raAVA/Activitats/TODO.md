@@ -1,0 +1,11 @@
+# TODO EIE 
+- [ ] PLA MARKETING
+- [ ] FORMES jurídiques i balanç
+- [ ] Part 3 Pla empresaLA forma
+- [ ] Pla doperacions
+- [ ] comptes
+- [x] IDEA EMPRESA
+- [x] activitat 1.Lemprenedor
+- [x] Evalua les qualitats
+- [x] Tema01_01-Andreu Sanz Sanz
+- [x] activitat T 3

@@ -12,6 +12,7 @@ public class Servidor {
 
     static HashMap<String, Boolean> activos = new HashMap<>();
 
+
     public static void main(String[] args) {
         final int PUERTO = 5432;
 
