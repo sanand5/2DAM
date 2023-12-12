@@ -1,11 +1,23 @@
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class StreamServer {
+    static Map<String, String> mapaPaisesCapitales = new HashMap<>();
+    static final int SERVIDOR_PORT = 5432;
     public static void main(String[] args) {
+        mapaPaisesCapitales.put("Estados Unidos", "Washington, D.C.");
+        mapaPaisesCapitales.put("Canadá", "Ottawa");
+        mapaPaisesCapitales.put("Reino Unido", "Londres");
+        mapaPaisesCapitales.put("Francia", "París");
+        mapaPaisesCapitales.put("Alemania", "Berlín");
+        mapaPaisesCapitales.put("España", "Madrid");
+
         try {
             // Crear un socket de servidor en el puerto 12345
-            ServerSocket serverSocket = new ServerSocket(12345);
-            System.out.println("> Servidor a la espera de peticiones en puerto 12345");
+            ServerSocket serverSocket = new ServerSocket(SERVIDOR_PORT);
+            System.out.println("Servidor esperando conexiones en el puerto " + SERVIDOR_PORT);
 
             // Aceptar conexiones entrantes
             Socket clienteSocket = serverSocket.accept();
@@ -23,26 +35,8 @@ public class StreamServer {
             System.out.println("> Petición recibida: " + pais);
 
             // (Simulación) Obtener la capital correspondiente al país
-            String capital = obtenerCapital(pais);
-
-            if (capital.equals("Desconocida")) {
-                // Si la capital es desconocida, solicitarla al cliente
-                salidaCliente.println("No se ha podido obtener la capital de " + pais);
-                System.out.print("> ¿Introducir capital? (s/n): ");
-                String respuesta = entradaServidor.readLine();
-
-                if (respuesta.equalsIgnoreCase("s")) {
-                    salidaCliente.println("Introduce la capital de " + pais + ": ");
-                    capital = entradaCliente.readLine();
-                    System.out.println("> Respuesta recibida: " + capital);
-                }
-            } else {
-                // Si se conoce la capital, enviarla al cliente
-                salidaCliente.println("Respuesta petición " + pais + " → " + capital);
-            }
-
-            // Mostrar la capital en el servidor
-            System.out.println("> Capital de " + pais + " → " + capital);
+            String capital = mapaPaisesCapitales.getOrDefault(pais, "Desconocida");
+            gestionarCapital(pais, capital, entradaServidor, entradaCliente, salidaCliente);
 
             // Cerrar conexiones
             entradaCliente.close();
@@ -54,15 +48,25 @@ public class StreamServer {
             e.printStackTrace();
         }
     }
-    private static String obtenerCapital(String pais) {
-        // Simulación: Devolver la capital si se conoce, "Desconocida" si no
-        switch (pais.toLowerCase()) {
-            case "españa":
-                return "Madrid";
-            // Agrega más países y sus capitales aquí...
-            default:
-                return "Desconocida";
+    private static void gestionarCapital(String pais, String capital, BufferedReader entradaServidor,
+                                         BufferedReader entradaCliente, PrintWriter salidaCliente) throws IOException {
+        if (capital.equals("Desconocida")) {
+            // Si la capital es desconocida, solicitarla al cliente
+            salidaCliente.println("No se ha podido obtener la capital de " + pais);
+            String respuesta = entradaServidor.readLine();
+
+            if (respuesta.equalsIgnoreCase("s")) {
+                salidaCliente.println("Introduce la capital de " + pais + ": ");
+                capital = entradaCliente.readLine();
+                System.out.println("> Respuesta recibida: " + capital);
+            }
+        } else {
+            // Si se conoce la capital, enviarla al cliente
+            salidaCliente.println("Respuesta petición " + pais + " → " + capital);
         }
+
+        // Mostrar la capital en el servidor
+        System.out.println("> Capital de " + pais + " → " + capital);
     }
 
 }

@@ -4,7 +4,7 @@ public class StreamClient {
     public static void main(String[] args) {
         try {
             // Crear un socket de cliente y conectarse al servidor en el puerto 12345
-            Socket socket = new Socket("localhost", 12345);
+            Socket socket = new Socket("localhost", 5432);
 
             // Configurar flujos de entrada/salida
             BufferedReader entradaServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
