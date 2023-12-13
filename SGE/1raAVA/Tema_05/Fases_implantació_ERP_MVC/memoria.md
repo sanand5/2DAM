@@ -57,9 +57,27 @@ Entrega de documentación actualizada al cliente, destacando los aspectos espec�
 ## Ejercicio 2. ¿En qué tipo de modelo se basa un ERP para conseguir independencia entre lo que ve el usuario y los datos? Realiza un esquema del mismo. 
 ![](Untitled-2023-12-11-2338.png)
 ## Ejercicio 3. Identifica a partir de tu proyecto las vistas que tienes (por módulos). Realiza capturas. 
+Contactos:
+![Alt text](image-4.png)
+Compra: 
 ![Alt text](image-1.png)
+Ventas: 
 ![Alt text](image.png)
+Facturacion:
 ![Alt text](image-2.png)
+Sitio web:
 ![Alt text](image-3.png)
+Marketing email:
+![Alt text](image-5.png)
+SMS:
+![Alt text](image-6.png)
+Encuesta:
+![Alt text](image-7.png)
+Inventario:
+![Alt text](image-8.png)
+Empleados:
+![Alt text](image-9.png)
 ## Ejercicio 4. Identifica a partir de tu proyecto los modelos (por tabla en la base de datos general).
+He entrado en modo desarrollador de Odoo para poder ver los campos y poniendo el raton encima de un campo podemos ver lo mostrado en la imaguenes
+
 ![Alt text](image.png)
