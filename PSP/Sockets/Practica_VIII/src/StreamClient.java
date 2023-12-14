@@ -1,40 +1,44 @@
 import java.io.*;
 import java.net.*;
+import lector.ReadClient;
 public class StreamClient {
+    static final int SERVIDOR_PORT = 5555;
+    static final String IP = "localhost";
+
     public static void main(String[] args) {
+        ReadClient rc = new ReadClient();
         try {
-            // Crear un socket de cliente y conectarse al servidor en el puerto 12345
-            Socket socket = new Socket("localhost", 5432);
-
-            // Configurar flujos de entrada/salida
-            BufferedReader entradaServidor = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter salidaServidor = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader entradaUsuario = new BufferedReader(new InputStreamReader(System.in));
-
             while (true) {
-                // Leer la entrada del usuario
-                System.out.print("> Obtener capital de ");
-                String pais = entradaUsuario.readLine();
+                Socket socket = new Socket(IP, SERVIDOR_PORT);
 
-                // Enviar la petición al servidor
-                salidaServidor.println(pais);
+                PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
+                BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                // Recibir la respuesta del servidor
-                String respuesta = entradaServidor.readLine();
-                System.out.println("> " + respuesta);
+                String pais = rc.pedirString("> Obtener capital de ", false);
+                salida.println(pais);
 
-                // En caso de capital desconocida, permitir al usuario proporcionar la respuesta
-                if (respuesta.startsWith("No se ha podido obtener la capital")) {
-                    System.out.print("> ¿Introducir capital? (s/n): ");
-                    String introducirCapital = entradaUsuario.readLine();
+                String capital = entrada.readLine();
+                System.out.println("> Capital de " + pais + ": " + capital);
 
-                    if (introducirCapital.equalsIgnoreCase("s")) {
-                        salidaServidor.println(entradaUsuario.readLine());
+                // Verificar si el servidor desconoce la respuesta
+                if (capital.equals("Desconocida")) {
+                    System.out.print("> No se ha podido obtener la capital de " + pais + "\n> ¿Introducir capital? (s/n): ");
+                    String respuestaUsuario = rc.pedirString("", true);
+                    if (respuestaUsuario.equalsIgnoreCase("s")) {
+                        salida.println(rc.pedirString("> Nueva capital para " + pais + ": ", false));
                     }
                 }
+
+                salida.close();
+                entrada.close();
+                socket.close();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error de entrada/salida: " + e.getMessage());
         }
     }
 }
+/*
+ * Mirar si esta gestionat el error de si el servidor esta apagat
+ * Comprovar Codic
+ */
