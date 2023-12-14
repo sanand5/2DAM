@@ -13,10 +13,10 @@
 - [ ] PLA MARKETING
 - [x] Activitat T4
 #### tema 5 - 3
-- [ ] Part 3 Pla empresaLA forma
-- [x] FORMES jurídiques i balanç - En al activitat 6 no se quines son les dades per a fer el balanç
+- [x] Part 3 Pla empresaLA forma
+- [x] FORMES jurídiques i balanç
 - [ ] Activitat T5
 #### tema 6 - 1
-- [ ] Pla doperacions - Aso es una activitat? perque ns que fer
+- [x] Pla doperacions - Aso es una activitat? perque ns que fer
 #### tema 7 - 1
-- [ ] comptes
+- [x] comptes
