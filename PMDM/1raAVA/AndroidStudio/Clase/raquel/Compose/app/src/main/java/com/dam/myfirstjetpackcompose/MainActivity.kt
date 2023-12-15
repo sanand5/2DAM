@@ -22,7 +22,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
@@ -33,6 +36,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -49,6 +54,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -320,4 +326,53 @@ fun AdvanceTopBar() {
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
     )
+
+    @Composable
+    fun BottomNavigationBarWithOnlyIcons() {
+        var navigationSelectedItem by remember { mutableStateOf(0) }
+        NavigationBar {
+            BottomNavigationItem().listOfNavItems().forEachIndexed { index, navigationItem ->
+                NavigationBarItem(
+                    selected = index == navigationSelectedItem,
+                    label = { Text(navigationItem.label) },
+                    icon = {
+                        Icon(
+                            imageVector = navigationItem.icon,
+                            contentDescription = navigationItem.label,
+                        )
+                    },
+                    onClick = {
+                        navigationSelectedItem = index
+                    }
+                )
+            }
+        }
+    }
+
+}
+data class  BottomNavigationItem(
+    val label : String = "",
+    val icon : ImageVector = Icons.Filled.Home,
+    val route : String = ""
+){
+    fun listOfNavItems() : List<BottomNavigationItem>{
+        return listOf(
+            BottomNavigationItem(
+                label = "Home",
+                icon = Icons.Filled.Home,
+                route = "home_route"
+            ),
+            BottomNavigationItem(
+                label = "Search",
+                icon = Icons.Filled.Search,
+                route = "search_route"
+            ),
+            BottomNavigationItem(
+                label = "Profile",
+                icon = Icons.Filled.AccountCircle,
+                route = "profile_route"
+            )
+        )
+    }
+
 }

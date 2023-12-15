@@ -1,5 +1,4 @@
 # TODO EIE 
-
 # Numero de activitats
 #### tema 1 - 2
 - [x] activitat 1.Lemprenedor
@@ -17,6 +16,6 @@
 - [x] FORMES jurídiques i balanç
 - [ ] Activitat T5
 #### tema 6 - 1
-- [x] Pla doperacions - Aso es una activitat? perque ns que fer
+- [x] Pla doperacions
 #### tema 7 - 1
 - [x] comptes
