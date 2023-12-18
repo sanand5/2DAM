@@ -40,4 +40,8 @@ public class DatagramServer {
             System.err.println("Error de entrada/salida: " + e.getMessage());
         }
     }
+
+    public void pull(){
+
+    }
 }

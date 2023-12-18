@@ -1,6 +1,6 @@
 import java.io.*;
 import java.net.*;
-import lector.ReadClient;
+import utilidades.ReadClient;
 public class StreamClient {
     static final int SERVIDOR_PORT = 5555;
     static final String IP = "localhost";

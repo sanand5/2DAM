@@ -1,4 +1,4 @@
-import lector.ReadClient;
+import utilidades.ReadClient;
 
 import java.net.*;
 import java.io.*;
