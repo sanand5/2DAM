@@ -56,6 +56,7 @@ La salida por pantalla deberá ser:
   - podria fer una funció que  comprobe que tot el ficher estiga bé
   - segurament estiga mal lo de el hasNextLine, perque com no es pot tirar arrere si faig dos pull seguits petara
   - Si no encuentra la ruta que la pida
+  - comprobar perque va soles amb la ruta absoluta
 
 # GPT
 # Gestor
