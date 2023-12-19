@@ -51,22 +51,26 @@ La salida por pantalla deberá ser:
 </div>
 
 # TODO
-- [] Pasar a fichers
-  - fun pull, comprobar que si no te el format correcte no dona error
-  - podria fer una funció que  comprobe que tot el ficher estiga bé
-  - segurament estiga mal lo de el hasNextLine, perque com no es pot tirar arrere si faig dos pull seguits petara
-  - Si no encuentra la ruta que la pida
-  - comprobar perque va soles amb la ruta absoluta
+- [x] Pasar a fichers
+  - [x] Fun pull, comprobar que si no te el format correcte no dona error
+  - [x] Segurament estiga mal lo de el hasNextLine, perque com no es pot tirar arrere si faig dos pull seguits petara
+  - [x] Comprobar perque va soles amb la ruta absoluta
+- [ ] Comprobar que funciona en visual
+- [x] Canviar la lectura del usuario a readClient
+- [x] Hacer que ignore las mayusculas
+
+# Errores
+![Alt text](image.png)
 
 # GPT
-# Gestor
+# utilidades.Gestor
 ```java
 import utilidades.Colors;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
-public class Gestor {
+public class utilidades.Gestor {
     String path;
     File fl;
     Scanner scf;
@@ -74,7 +78,7 @@ public class Gestor {
     Colors cl = new Colors();
 
 
-    public Gestor(String path){
+    public utilidades.Gestor(String path){
         this.path = path;
         try{
             fl = new File(path);
@@ -112,26 +116,31 @@ public class Gestor {
 }
 
 ```
-# test
+# utilidades.test
+
 ```java
+import utilidades.Gestor;
+
 import java.util.HashMap;
 
-public class test {
+public class utilidades.test {
     static Gestor gs = new Gestor("./logs.txt");
     static HashMap map;
+
     public static void main(String[] args) {
         map = gs.pull();
         see(map);
         map.put("hola", "adios");
         see(map);
         map = gs.pull();
-        map.put("hola","adios");
+        map.put("hola", "adios");
         gs.push(map);
         map.clear();
         map = gs.pull();
         see(map);
     }
-    public static void see(HashMap map){
+
+    public static void see(HashMap map) {
         map.forEach((pais, capital) -> {
             System.out.println("Capital de " + pais + ": " + capital);
         });
@@ -146,9 +155,19 @@ War: El archivo esta vacio
 Capital de hola: adios
 War: El archivo esta vacio
 Exception in thread "main" java.lang.NullPointerException: Cannot invoke "java.io.FileWriter.write(String)" because "this.fw" is null
-	at Gestor.lambda$push$0(Gestor.java:43)
+	at utilidades.Gestor.lambda$push$0(utilidades.Gestor.java:43)
 	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at Gestor.push(Gestor.java:40)
-	at test.main(test.java:13)
+	at utilidades.Gestor.push(utilidades.Gestor.java:40)
+	at utilidades.test.main(utilidades.test.java:13)
 
+```
+
+# Fichero
+```
+Estados Unidos#Washington, D.C.
+Canadá#Ottawa
+Reino Unido#Londres
+Francia#París
+Alemania#Berlín
+España#Madrid
 ```

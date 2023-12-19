@@ -1,20 +1,16 @@
+import utilidades.Gestor;
+
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class StreamServer {
-    static Map<String, String> mapaPaisesCapitales = new HashMap<>();
+    static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
+    static Gestor gs = new Gestor("./res/logs.txt");
 
     public static void main(String[] args) {
-        mapaPaisesCapitales.put("Estados Unidos", "Washington, D.C.");
-        mapaPaisesCapitales.put("Canadá", "Ottawa");
-        mapaPaisesCapitales.put("Reino Unido", "Londres");
-        mapaPaisesCapitales.put("Francia", "París");
-        mapaPaisesCapitales.put("Alemania", "Berlín");
-        mapaPaisesCapitales.put("España", "Madrid");
-
         try {
             ServerSocket serverSocket = new ServerSocket(SERVIDOR_PORT);
             System.out.println("> Servidor a la espera de peticiones en puerto 5555");
@@ -29,16 +25,16 @@ public class StreamServer {
                 String pais = entrada.readLine();
                 System.out.println("> Petición recibida: " + pais);
 
+                mapaPaisesCapitales = gs.pull();
                 String capital = mapaPaisesCapitales.getOrDefault(pais, "Desconocida");
                 salida.println(capital);
                 System.out.println("> Respuesta petición " + pais + " → " + capital);
 
-                // Verificar si el servidor desconoce la respuesta
                 if (capital.equals("Desconocida")) {
                     String respuestaCliente = entrada.readLine();
                     System.out.println("> Respuesta recibida: " + respuestaCliente);
-                    // Almacenar la respuesta proporcionada por el cliente
                     mapaPaisesCapitales.put(pais, respuestaCliente);
+                    gs.push(mapaPaisesCapitales);
                     System.out.println("> Capital de " + pais + " → " + respuestaCliente);
                 }
 

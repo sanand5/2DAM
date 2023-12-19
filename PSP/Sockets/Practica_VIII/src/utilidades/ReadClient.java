@@ -149,4 +149,7 @@ public class ReadClient {
         } while (repit);
         return str;
     }
+    public String pedirStringLow(String msg, boolean allowNull) {
+        return pedirString(msg, allowNull).toLowerCase();
+    }
 }

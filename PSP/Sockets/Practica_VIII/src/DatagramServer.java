@@ -1,19 +1,18 @@
+import utilidades.Gestor;
+
 import java.net.*;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DatagramServer {
-    static Map<String, String> mapaPaisesCapitales = new HashMap<>();
+    static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
 
+    static Gestor gs = new Gestor("./res/logs.txt");
+
     public static void main(String[] args) {
-        mapaPaisesCapitales.put("Estados Unidos", "Washington, D.C.");
-        mapaPaisesCapitales.put("Canadá", "Ottawa");
-        mapaPaisesCapitales.put("Reino Unido", "Londres");
-        mapaPaisesCapitales.put("Francia", "París");
-        mapaPaisesCapitales.put("Alemania", "Berlín");
-        mapaPaisesCapitales.put("España", "Madrid");
+
 
         try {
             DatagramSocket socket = new DatagramSocket(SERVIDOR_PORT);
@@ -25,6 +24,7 @@ public class DatagramServer {
                 String pais = new String(paqueteRecibido.getData(), 0, paqueteRecibido.getLength());
 
                 System.out.println("> Petición recibida: " + pais);
+                mapaPaisesCapitales = gs.pull();
                 String capital = mapaPaisesCapitales.getOrDefault(pais, "Desconocida");
 
                 byte[] respuestaBytes = capital.getBytes();
@@ -39,9 +39,5 @@ public class DatagramServer {
         } catch (IOException e) {
             System.err.println("Error de entrada/salida: " + e.getMessage());
         }
-    }
-
-    public void pull(){
-
     }
 }

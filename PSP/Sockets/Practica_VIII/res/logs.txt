@@ -1,0 +1,7 @@
+Canadá#Ottawa
+Francia#París
+Espa�a#null
+España#Madrid
+Estados Unidos#Washington, D.C.
+Alemania#Berlín
+Reino Unido#Londres

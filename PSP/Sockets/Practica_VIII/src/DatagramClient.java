@@ -12,7 +12,7 @@ public class DatagramClient {
         try {
             DatagramSocket socket = new DatagramSocket();
             while (true) {
-                String pais = rc.pedirString("> Obtener capital de ", false);
+                String pais = rc.pedirStringLow("> Obtener capital de ", false);
                 byte[] solicitudBytes = pais.getBytes();
 
                 InetAddress servidorAddress = InetAddress.getByName(IP);

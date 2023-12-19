@@ -14,18 +14,17 @@ public class StreamClient {
                 PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                String pais = rc.pedirString("> Obtener capital de ", false);
+                String pais = rc.pedirStringLow("> Obtener capital de ", false);
                 salida.println(pais);
 
                 String capital = entrada.readLine();
                 System.out.println("> Capital de " + pais + ": " + capital);
 
-                // Verificar si el servidor desconoce la respuesta
                 if (capital.equals("Desconocida")) {
                     System.out.print("> No se ha podido obtener la capital de " + pais + "\n> ¿Introducir capital? (s/n): ");
-                    String respuestaUsuario = rc.pedirString("", true);
+                    String respuestaUsuario = rc.pedirStringLow("", true);
                     if (respuestaUsuario.equalsIgnoreCase("s")) {
-                        salida.println(rc.pedirString("> Nueva capital para " + pais + ": ", false));
+                        salida.println(rc.pedirStringLow("> Nueva capital para " + pais + ": ", false));
                     }
                 }
 
