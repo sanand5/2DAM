@@ -1,7 +1,6 @@
-Canadá#Ottawa
-Francia#París
-Espa�a#null
-España#Madrid
-Estados Unidos#Washington, D.C.
-Alemania#Berlín
-Reino Unido#Londres
+alemania#berlín
+canadá#ottawa
+reino unido#londres
+francia#parís
+españa#madrid
+estados unidos#washington, d.c.

@@ -33,9 +33,11 @@ public class StreamServer {
                 if (capital.equals("Desconocida")) {
                     String respuestaCliente = entrada.readLine();
                     System.out.println("> Respuesta recibida: " + respuestaCliente);
-                    mapaPaisesCapitales.put(pais, respuestaCliente);
-                    gs.push(mapaPaisesCapitales);
-                    System.out.println("> Capital de " + pais + " → " + respuestaCliente);
+                    if (respuestaCliente != null) {
+                        mapaPaisesCapitales.put(pais, respuestaCliente);
+                        gs.push(mapaPaisesCapitales);
+                        System.out.println("> Capital de " + pais + " → " + respuestaCliente);
+                    }
                 }
 
                 entrada.close();
