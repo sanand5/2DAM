@@ -17,7 +17,8 @@ public class DatagramClient {
 
                 InetAddress servidorAddress = InetAddress.getByName(IP);
 
-                DatagramPacket solicitudPaquete = new DatagramPacket(solicitudBytes, solicitudBytes.length, servidorAddress, SERVIDOR_PORT);
+                DatagramPacket solicitudPaquete = new DatagramPacket(solicitudBytes, solicitudBytes.length,
+                        servidorAddress, SERVIDOR_PORT);
                 socket.send(solicitudPaquete);
                 byte[] buffer = new byte[1024];
                 DatagramPacket respuestaPaquete = new DatagramPacket(buffer, buffer.length);

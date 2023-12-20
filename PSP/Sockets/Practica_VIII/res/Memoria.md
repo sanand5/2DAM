@@ -58,6 +58,8 @@ La salida por pantalla deberá ser:
 - [ ] Comprobar que funciona en visual
 - [x] Canviar la lectura del usuario a readClient
 - [x] Hacer que ignore las mayusculas
+- [ ] utilizar lo de el timeout
+- [ ] si quiero volver a preguntar
 
 # Errores
 ![Alt text](image.png)
