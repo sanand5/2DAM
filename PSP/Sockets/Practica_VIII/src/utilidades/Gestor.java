@@ -1,7 +1,5 @@
 package utilidades;
 
-import utilidades.Colors;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -13,11 +11,14 @@ public class Gestor {
     Colors cl = new Colors();
 
 
-    public Gestor(String path){
+    public Gestor(String path) {
         this.path = path;
         try{
             fl = new File(path);
-        }catch (NullPointerException e){
+            if (!fl.exists()){
+                fl.createNewFile();
+            }
+        }catch (NullPointerException | IOException e){
             cl.errMsg(e.getMessage());
         }
     }

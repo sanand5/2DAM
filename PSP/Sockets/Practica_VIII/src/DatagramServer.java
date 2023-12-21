@@ -1,15 +1,17 @@
 import utilidades.Gestor;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 import java.util.HashMap;
-import java.util.Map;
 
 public class DatagramServer {
     static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
 
-    static Gestor gs = new Gestor("./res/logs.txt");
+    static Gestor gs = new Gestor("./log.txt");
 
     public static void main(String[] args) {
 

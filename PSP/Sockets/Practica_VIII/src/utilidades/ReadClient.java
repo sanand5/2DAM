@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ReadClient {
     private static Colors cl = new Colors();
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in, "UTF-8");
 
     /**
      * Solicita un entero al usuario desde la consola.
@@ -126,7 +126,7 @@ public class ReadClient {
     /**
      * Solicita una cadena de texto al usuario desde la consola.
      *
-     * @param msg       Mensaje que se muestra al usuario.
+     * @param msg Mensaje que se muestra al usuario.
      * @param allowNull Indica si se permite una cadena de texto nula o vacía.
      * @return La cadena de texto introducida por el usuario.
      */
@@ -149,6 +149,7 @@ public class ReadClient {
         } while (repit);
         return str;
     }
+
     public String pedirStringLow(String msg, boolean allowNull) {
         return pedirString(msg, allowNull).toLowerCase();
     }

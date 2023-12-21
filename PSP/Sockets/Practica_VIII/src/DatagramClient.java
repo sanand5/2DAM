@@ -1,9 +1,11 @@
 import utilidades.Colors;
 import utilidades.ReadClient;
 
-import java.net.*;
-import java.io.*;
-import java.util.Objects;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 
 public class DatagramClient {
     static final int SERVIDOR_PORT = 5555;

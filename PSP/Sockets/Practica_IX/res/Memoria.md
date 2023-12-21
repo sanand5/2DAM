@@ -5,7 +5,9 @@
 
 ## Que 
 <div style="text-align: justify;">
-Enunciat de la practica
+
+ARQUITECTURA DE REDES, Laboratorio  
+MANUAL DE SOCKETS EN C
 
 ## Para que
 <div style="page-break-before:always"></div>
