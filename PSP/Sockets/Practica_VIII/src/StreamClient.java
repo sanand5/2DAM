@@ -1,43 +1,46 @@
 import java.io.*;
 import java.net.*;
+
+import utilidades.Colors;
 import utilidades.ReadClient;
+
 public class StreamClient {
     static final int SERVIDOR_PORT = 5555;
     static final String IP = "localhost";
 
     public static void main(String[] args) {
-        ReadClient rc = new ReadClient();
-        try {
-            while (true) {
-                Socket socket = new Socket(IP, SERVIDOR_PORT);
+        boolean loop = true;
+        while (loop) {
+            ReadClient rc = new ReadClient();
+            Colors cl = new Colors();
+            System.out.println(cl.GREEN_ANSI + "/c para salir" + cl.RESET_ANSI);
+            String pais = rc.pedirStringLow("> Obtener capital de ", false);
+            if (!pais.equals("/c")) {
+                try {
+                    Socket socket = new Socket(IP, SERVIDOR_PORT);
+                    PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
+                    BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    salida.println(pais);
+                    String capital = entrada.readLine();
+                    System.out.println("> Capital de " + pais + ": " + capital);
 
-                PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-                String pais = rc.pedirStringLow("> Obtener capital de ", false);
-                salida.println(pais);
-
-                String capital = entrada.readLine();
-                System.out.println("> Capital de " + pais + ": " + capital);
-
-                if (capital.equals("Desconocida")) {
-                    System.out.print("> No se ha podido obtener la capital de " + pais + "\n> ¿Introducir capital? (s/n): ");
-                    String respuestaUsuario = rc.pedirStringLow("", true);
-                    if (respuestaUsuario.equalsIgnoreCase("s")) {
-                        salida.println(rc.pedirStringLow("> Nueva capital para " + pais + ": ", false));
+                    if (capital.equals("Desconocida")) {
+                        System.out.print("> No se ha podido obtener la capital de " + pais + "\n> ¿Introducir capital? (s/n): ");
+                        String respuestaUsuario = rc.pedirStringLow("", true);
+                        if (respuestaUsuario.equalsIgnoreCase("s")) {
+                            salida.println(rc.pedirStringLow("> Nueva capital para " + pais + ": ", false));
+                        }
                     }
+                    salida.close();
+                    entrada.close();
+                    socket.close();
+                } catch (IOException e) {
+                    System.err.println("Error de entrada/salida: " + e.getMessage());
                 }
-
-                salida.close();
-                entrada.close();
-                socket.close();
+            } else {
+                loop = false;
             }
-        } catch (IOException e) {
-            System.err.println("Error de entrada/salida: " + e.getMessage());
         }
+        System.out.println("Adios!");
     }
 }
-/*
- * Mirar si esta gestionat el error de si el servidor esta apagat
- * Comprovar Codic
- */
