@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class StreamServer {
     static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
-    static Gestor gs = new Gestor("./res/logs.txt");
+    static Gestor gs = new Gestor("logs.txt");
 
     public static void main(String[] args) {
         try {

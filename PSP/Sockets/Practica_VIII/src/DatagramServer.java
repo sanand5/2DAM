@@ -11,7 +11,7 @@ public class DatagramServer {
     static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
 
-    static Gestor gs = new Gestor("./log.txt");
+    static Gestor gs = new Gestor("./logs.txt");
 
     public static void main(String[] args) {
 
