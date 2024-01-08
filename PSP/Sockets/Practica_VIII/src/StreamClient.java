@@ -28,8 +28,7 @@ public class StreamClient {
                     System.out.println("> Capital de " + pais + ": " + capital);
 
                     if (capital.equals("Desconocida")) {
-                        System.out.print("> No se ha podido obtener la capital de " + pais + "\n> ¿Introducir capital? (s/n): ");
-                        String respuestaUsuario = rc.pedirStringLow("", true);
+                        String respuestaUsuario = rc.pedirStringLow("> No se ha podido obtener la capital de \" + pais + \"\\n> ¿Introducir capital? (s/n): ", true);
                         if (respuestaUsuario.equalsIgnoreCase("s")) {
                             salida.println(rc.pedirStringLow("> Nueva capital para " + pais + ": ", false));
                         }
@@ -38,7 +37,7 @@ public class StreamClient {
                     entrada.close();
                     socket.close();
                 } catch (IOException e) {
-                    System.err.println("Error de entrada/salida: " + e.getMessage());
+                    cl.errMsg("Error de entrada/salida: " + e.getMessage());
                 }
             } else {
                 loop = false;

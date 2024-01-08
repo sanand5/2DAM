@@ -32,9 +32,9 @@ public class DatagramClient {
                     String capital = new String(respuestaPaquete.getData(), 0, respuestaPaquete.getLength());
                     System.out.println("> Capital de " + pais + ": " + capital);
                 } catch (SocketException e) {
-                    System.err.println("Error al abrir o utilizar el socket: " + e.getMessage());
+                    cl.errMsg("Error al abrir o utilizar el socket: " + e.getMessage());
                 } catch (IOException e) {
-                    System.err.println("Error de entrada/salida: " + e.getMessage());
+                    cl.errMsg("Error de entrada/salida: " + e.getMessage());
                 }
             } else {
                 loop = false;

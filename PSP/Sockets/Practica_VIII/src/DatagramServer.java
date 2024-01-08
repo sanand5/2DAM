@@ -10,12 +10,9 @@ import java.util.HashMap;
 public class DatagramServer {
     static HashMap<String, String> mapaPaisesCapitales = new HashMap<>();
     static final int SERVIDOR_PORT = 5555;
-
     static Gestor gs = new Gestor("./logs.txt");
 
     public static void main(String[] args) {
-
-
         try {
             DatagramSocket socket = new DatagramSocket(SERVIDOR_PORT);
             System.out.println("> Servidor a la espera de peticiones en puerto 5555");

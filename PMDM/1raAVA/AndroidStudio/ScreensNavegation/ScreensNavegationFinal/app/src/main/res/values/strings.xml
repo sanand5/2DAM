@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ScreensNavegation</string>
+    <string name="main_screen">MainScreen</string>
+    <string name="bbva_text">Banco Bilbao Vizcaya Argentaria S.A., commonly known as BBVA, is a prominent Spanish bank headquartered in Bilbao. \n\nIt ranks among the largest financial institutions globally, with primary markets in Spain, Argentina, Colombia, Mexico, Peru, Venezuela, Uruguay, and Turkey.\n\nIf you are considering opening an account with BBVA, simply click the Register button below or visit our official website. \n\nOur customer service is also available to assist you in the account creation process.</string>
+    <string name="register">REGISTER</string>
+    <string name="exit">EXIT</string>
+
+    <string name="registration_screen">RegistrationScreen</string>
+    <string name="toast_text">There are empty fields. Please fill in all fields.</string>
+    <string name="snackbar_text">An option must be chosen before continuing.</string>
+    <string name="save">SAVE</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter your username</string>
+    <string name="email">Email address</string>
+    <string name="enter_email">Enter your e-mail</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter your password</string>
+
+    <string name="summary_screen">SummaryScreen</string>
+    <string name="data_message">You have been registered with the following data :</string>
+    <string name="new_register">NEW REGISTER</string>
+
+    <string name="exit_screen">ExitScreen</string>
+    <string name="see_you_soon">SEE U SOON</string>
+</resources>

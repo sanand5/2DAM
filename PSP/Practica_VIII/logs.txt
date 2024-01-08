@@ -1,0 +1,6 @@
+alemania#berlín
+canadá#ottawa
+reino unido#londres
+francia#parís
+españa#madrid
+estados unidos#washington, d.c.

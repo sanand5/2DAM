@@ -153,8 +153,4 @@ public class ReadClient {
     public String pedirStringLow(String msg, boolean allowNull) {
         return pedirString(msg, allowNull).toLowerCase();
     }
-
-    public int sumar(int a) {
-        return a+1;
-    }
 }
