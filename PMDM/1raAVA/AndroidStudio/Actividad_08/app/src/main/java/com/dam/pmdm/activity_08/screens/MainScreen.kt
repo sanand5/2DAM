@@ -1,6 +1,7 @@
 package com.dam.pmdm.activity_08.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
@@ -57,8 +59,11 @@ fun BodyContent(navController: NavController){
                 color = Color.Black
             )
         }
-        item { Spacer(modifier = Modifier.height(200.dp)) }
         item{
+            Image(painter = painterResource(id = R.drawable.bocatas2), contentDescription = "hola")
+        }
+
+         item{
             Button(
                 onClick = {
                     navController.navigate(route = AppScreens.RegistrationScreen.route+ "/t")
