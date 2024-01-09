@@ -4,7 +4,6 @@
  */
 package practica_06.gestor;
 
-import java.sql.*;
 import practica_06.curso.Modulo;
 import practica_06.utilidades.*;
 
@@ -18,7 +17,7 @@ public class gsModulo extends gestor {
 
     private void insertModulo(Modulo modulo) {
         String query = String.format("INSERT INTO `modulos`(`MOD_NAME`) VALUES ('%s')",
-                 modulo.getNombre());
+                modulo.getNombre());
         super.executeUpdate(query);
     }
 
@@ -31,20 +30,17 @@ public class gsModulo extends gestor {
 
     public int pedirId() {
         int id = rc.pedirIntPositivo("Dime el id de el modulo, 0 para cancelar: ");
-        String query = "SELECT `MOD_ID`, `MOD_NAME` FROM `modulos` WHERE MOD_ID = ";
-        try {
-            ResultSet rs = super.executeSelect(query + id);
-            while (!rs.next() && id != 0) {
-                Colors.errMsg("No existe ningun modulo con ese ID");
-                id = rc.pedirIntPositivo("Dime el id de el modulo, 0 para cancelar: ");
-                rs = super.executeSelect(query + id);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        int rs = encontrarID(id);
+        while (id == -1) {
+            Colors.errMsg("No existe ningun modulo con ese ID");
+            id = rc.pedirIntPositivo("Dime el id de el modulo, 0 para cancelar: ");
+            rs = encontrarID(id);
         }
+
         return id;
     }
-    public void matricular() {
-        
+
+    public int encontrarID(int id) {
+        return super.select("MOD_ID", "modulos", "MOD_ID = " + id, Integer.class);
     }
 }

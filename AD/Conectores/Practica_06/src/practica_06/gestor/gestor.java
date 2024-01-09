@@ -43,9 +43,29 @@ public class gestor {
         }
     }
     
-    public ResultSet executeSelect(String query) {
-    // Verifica si la lista de columnas no está vacía
+    public <T> T select(String select, String from, String where, Class<T> returnType) {
+    String query = "SELECT " + select + " FROM " + from + " WHERE " + where;
+    T result = null;
 
+    try {
+        ResultSet rs = executeSelect(query);
+        if (rs.next()) {
+            if (returnType.equals(Integer.class)) {
+                result = returnType.cast(rs.getInt(1));
+            } else if (returnType.equals(String.class)) {
+                result = returnType.cast(rs.getString(1));
+            }
+        } else {
+            System.out.println("No se encontraron resultados para la consulta.");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return result;
+}
+    
+    public ResultSet executeSelect(String query) {
     Conexion conexion = new Conexion(DataConexion.URL, DataConexion.USER, DataConexion.PASSWORD);
 
     try {

@@ -19,7 +19,7 @@ public class gsAlumnos extends gestor {
 
     private void insertAlumno(Alumno alumno) {
         String query = String.format("INSERT INTO `alumnos`(`ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES ('%s', '%s', '%s', %d)",
-                 alumno.getNombre(), alumno.getApellidos(), alumno.getFechaNacimiento(), alumno.getNia());
+                alumno.getNombre(), alumno.getApellidos(), alumno.getFechaNacimiento(), alumno.getNia());
         super.executeUpdate(query);
     }
 
@@ -71,13 +71,7 @@ public class gsAlumnos extends gestor {
     }
 
     public void mostrarAlumnos() {
-//        Session session = Conexion.getSessionFactory().openSession();
-//        Query<Alumno> query = session.createQuery("FROM Alumno", Alumno.class);
-//        List<Alumno> alumnosList = query.getResultList();
-//        alumnosList.forEach(it -> {
-//            System.out.println(it.toString());
-//        });
-//        session.close();
+        // TODO: cambiar a nombre de las tablas los *
         String selectQueryAlumnos = "SELECT * FROM `alumnos`";
 
         try (ResultSet resultSetAlumnos = super.executeSelect(selectQueryAlumnos)) {
@@ -131,23 +125,27 @@ public class gsAlumnos extends gestor {
 //        }
 //        return alumno;
 //    }
-    
+    /**
+     *
+     * @param nia
+     * @param exist True si buscas que el nia exista, false si buscas que el nia
+     * no exista
+     * @return
+     */
     public Boolean comprobarNia(int nia, boolean exist) {
-        String query = "SELECT `ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA` FROM `alumnos` WHERE ALM_NIA = ";
-        boolean existe;
-        try {
-            ResultSet rs = super.executeSelect(query + nia);
-            existe = rs.next();
-            if (exist) {
+        boolean existe = false;
+        int id = encontrarID(nia);
+        existe = (id != -1);
+        if (exist) {
             // Devuelve true si el NIA existe
             return existe;
         } else {
             // Devuelve true si el NIA NO existe
             return !existe;
         }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return true;
+    }
+
+    public int encontrarID(int nia) {
+        return super.select("ALM_ID", "alumnos", "ALM_NIA = " + nia, Integer.class);
     }
 }

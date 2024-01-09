@@ -4,7 +4,6 @@
  */
 package practica_06;
 
-import practica_06.curso.Alumno;
 import practica_06.gestor.gsAlumnos;
 import practica_06.gestor.gsModulo;
 
@@ -22,12 +21,13 @@ public class Practica_06 {
         // TODO code application logic here
         gsAlumnos gs = new gsAlumnos();
         gsModulo gsm = new gsModulo();
-        //gsm.pedirId();
+        System.out.println(gs.encontrarID(10813358));
+//        gsm.pedirId();
         
-        Alumno al = new Alumno("LAura", "Llorens", "02/12/2004", 24515);
-        System.out.println(gs.comprobarNia(1258, true));
-        System.out.println(gs.comprobarNia(108258, false));
-        //gs.mostrarAlumnos();
+//        Alumno al = new Alumno("LAura", "Llorens", "02/12/2004", 24515);
+//        System.out.println(gs.comprobarNia(1258, true));
+//        System.out.println(gs.comprobarNia(108258, false));
+//        gs.mostrarAlumnos();
 
     }
 

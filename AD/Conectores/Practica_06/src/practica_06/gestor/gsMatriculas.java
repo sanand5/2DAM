@@ -4,10 +4,15 @@
  */
 package practica_06.gestor;
 
+import practica_06.curso.Alumno;
+import practica_06.curso.Modulo;
+
 /**
  *
  * @author andre
  */
 public class gsMatriculas {
-    
+    public void crearMatricula(Alumno alumno, Modulo modulo) {
+        
+    }
 }
