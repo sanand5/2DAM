@@ -65,6 +65,11 @@ public class gsAlumnos extends gestor {
         }
 
     }
+    
+    public int getIDConNIA() {
+        int nia = pedirNia(true);
+        return encontrarID(nia);
+    }
 
     protected int pedirNia(boolean exist) {
         String cancel = "";

@@ -12,13 +12,18 @@
 - [x] Insertar Modulo
 - [ ] Eliminar Modulo
   - [ ] Eliminar Matriculas con el Modulo
-- [ ] Añadir notas a Aluumno en un modulo
+- [x] Añadir notas a Aluumno en un modulo
   - [x] Matricular Alumno
   - [x] Insertar Modulo
-- [ ] Modificar Notas
+- [x] Modificar Notas
 - [x] Añadir notas
+- [x] PedirID Matrcula
 - [ ] Importar DB
 - [ ] Exportar DB
+- [ ] Crear tablas si no las encuentra
+- [ ] Ordenar codigo
+- [ ] gestionar private, public, protected
+- [ ] Clase menu
 
 
 

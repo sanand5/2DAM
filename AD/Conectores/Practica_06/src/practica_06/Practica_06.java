@@ -4,6 +4,7 @@
  */
 package practica_06;
 
+import java.util.HashMap;
 import practica_06.gestor.gsAlumnos;
 import practica_06.gestor.gsMatriculas;
 import practica_06.gestor.gsModulo;
@@ -28,12 +29,18 @@ public class Practica_06 {
         gsAlumnos gsa = new gsAlumnos();
         gsModulo gsm = new gsModulo();
         gsMatriculas gsM = new gsMatriculas();
+        gsa.mostrarAlumnos();
         //System.out.println(gsM.encontrarID(12, 15));
 //        gsm.pedirId();
         //gsM.crearMatricula();
         //gsM.getNotas(33);
-        double V[] = {3.3, 4.6, 7.8 };
-        gsM.addNotas(33, V);
+        //double V[] = {3.3, 4.6, 7.8 };
+        //gsM.addNotas(33, V);
+//        HashMap<Integer, Double> notasUpdate = new HashMap<Integer, Double>();
+//        notasUpdate.put(0, 2.3);
+//        notasUpdate.put(1, 2.3);
+//        notasUpdate.put(2, 2.3);
+        //gsM.modificarNotas(32, notasUpdate);
         
 //        Alumno al = new Alumno("LAura", "Llorens", "02/12/2004", 24515);
 //        System.out.println(gs.comprobarNia(1258, true));
