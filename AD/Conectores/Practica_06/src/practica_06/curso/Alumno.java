@@ -4,8 +4,7 @@ import java.util.Calendar;
 import practica_06.utilidades.Colors;
 
 public class Alumno {
-
-    private int id;
+    
     private String nombre;
     private String apellidos;
     private String fechaNacimiento;
@@ -19,10 +18,6 @@ public class Alumno {
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.nia = nia;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getNia() {
@@ -64,8 +59,6 @@ public class Alumno {
 
     }
     
-    
-
     @Override
     public String toString() {
         return nia + " : " + nombre + " " + apellidos;

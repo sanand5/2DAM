@@ -4,7 +4,6 @@
  */
 package practica_06.gestor;
 
-import practica_06.curso.Modulo;
 import practica_06.utilidades.*;
 
 /**
@@ -15,32 +14,57 @@ public class gsModulo extends gestor {
 
     ReadClient rc = new ReadClient();
 
-    private void insertModulo(Modulo modulo) {
+    private void insertModulo(String modulo) {
         String query = String.format("INSERT INTO `modulos`(`MOD_NAME`) VALUES ('%s')",
-                modulo.getNombre());
+                modulo);
         super.executeUpdate(query);
     }
-
+    
     public void alta() {
-        String nombre = rc.pedirString("Dime el nombre de el nuevo modulo: ", false);
-        Modulo m = new Modulo(nombre);
-        insertModulo(m);
-        Colors.okMsg("Módulo registrado correctamente.");
-    }
-
-    public int pedirId() {
-        int id = rc.pedirIntPositivo("Dime el id de el modulo, 0 para cancelar: ");
-        int rs = encontrarID(id);
-        while (id == -1) {
-            Colors.errMsg("No existe ningun modulo con ese ID");
-            id = rc.pedirIntPositivo("Dime el id de el modulo, 0 para cancelar: ");
-            rs = encontrarID(id);
+    boolean nombreValido;
+    String nombre;
+    do {
+        nombre = rc.pedirString("Dime el nombre del nuevo modulo (o escribe '/c' para cancelar): ", false);
+        if (nombre.equalsIgnoreCase("/c")) {
+            Colors.warMsg("Registro cancelado por el usuario.");
+            return;
         }
+        int id = encontrarID(nombre);
+        if (id == -1) {
+            nombreValido = true;
+            insertModulo(nombre);
+            Colors.okMsg("Módulo registrado correctamente.");
+        } else {
+            nombreValido = false;
+            Colors.errMsg("No pueden haber varios módulos con el mismo nombre.");
+        }
+    } while (!nombreValido);
+}
 
-        return id;
-    }
+    public int pedirIDconNombre() {
+    String name;
+    int rs;
+    do {
+        name = rc.pedirString("Dime el nombre del módulo (o escribe '/c' para cancelar): ", false);
+        if (name.equalsIgnoreCase("/c")) {
+            Colors.warMsg("Operación cancelada por el usuario.");
+            return -1;
+        }
+        rs = encontrarID(name);
+        if (rs == -1) {
+            Colors.errMsg("No existe ningún módulo con ese nombre.");
+        }
+    } while (rs == -1);
+    return rs;
+}
 
-    public int encontrarID(int id) {
-        return super.select("MOD_ID", "modulos", "MOD_ID = " + id, Integer.class);
+
+    public int encontrarID(String name) {
+        Integer sel = super.select("MOD_ID", "modulos", "MOD_NAME = ?", Integer.class, name);;
+        int res = -1;
+        if (sel != null) {
+            res = sel;
+        }
+        return res;
     }
 }

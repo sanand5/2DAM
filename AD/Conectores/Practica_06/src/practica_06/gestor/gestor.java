@@ -8,34 +8,39 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import practica_06.utilidades.Colors;
+import practica_06.utilidades.ReadClient;
 
 /**
  *
  * @author andre
  */
 public class gestor {
+    ReadClient rc = new ReadClient();
+    
     public void executeUpdate(String query) {
         Conexion conexion = new Conexion(DataConexion.URL, DataConexion.USER, DataConexion.PASSWORD);
 
         try (Connection connection = conexion.getConnection()) {
             // Check if the connection is successful
             if (connection != null) {
-                System.out.println("Connected to the database!");
+                Colors.debMsg("Connected to the database!");
 
                 // Execute the provided SQL query
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
                     int rowsAffected = statement.executeUpdate();
 
                     if (rowsAffected > 0) {
-                        System.out.println("Update successful. Rows affected: " + rowsAffected);
+                        Colors.debMsg("Update successful. Rows affected: " + rowsAffected);
                     } else {
-                        System.out.println("Update failed. No rows affected.");
+                        Colors.debMsg("Update failed. No rows affected.");
                     }
                 }
             } else {
-                System.out.println("Failed to connect to the database.");
+                Colors.debMsg("Failed to connect to the database.");
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Close the connection when done
@@ -43,12 +48,13 @@ public class gestor {
         }
     }
     
-    public <T> T select(String select, String from, String where, Class<T> returnType) {
+    // Si no encunetra devuelve?
+    public <T> T select(String select, String from, String where, Class<T> returnType, Object... params) {
     String query = "SELECT " + select + " FROM " + from + " WHERE " + where;
     T result = null;
 
     try {
-        ResultSet rs = executeSelect(query);
+        ResultSet rs = executeSelect(query, params);
         if (rs.next()) {
             if (returnType.equals(Integer.class)) {
                 result = returnType.cast(rs.getInt(1));
@@ -56,7 +62,7 @@ public class gestor {
                 result = returnType.cast(rs.getString(1));
             }
         } else {
-            System.out.println("No se encontraron resultados para la consulta.");
+            Colors.debMsg("No se encontraron resultados para la consulta.");
         }
     } catch (SQLException e) {
         e.printStackTrace();
@@ -65,16 +71,15 @@ public class gestor {
     return result;
 }
     
-    public ResultSet executeSelect(String query) {
+    public ResultSet executeSelect(String query, Object... params) {
     Conexion conexion = new Conexion(DataConexion.URL, DataConexion.USER, DataConexion.PASSWORD);
-
     try {
         Connection connection = conexion.getConnection();
-
-        // Check if the connection is successful
         if (connection != null) {
-
             PreparedStatement statement = connection.prepareStatement(query);
+            for (int i = 0; i < params.length; i++) {
+                statement.setObject(i + 1, params[i]);
+            }
             return statement.executeQuery();
         } else {
             Colors.errMsg("No se ha podido conectar a la base de datos.");

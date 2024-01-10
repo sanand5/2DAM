@@ -43,32 +43,7 @@ public class gsAlumnos extends gestor {
         Colors.okMsg("El alumno se ha registrado correctamente.");
     }
 
-    public void baja() {
-//        int nia = pedirNia(true);
-//        if (nia != 0) {
-//            Session session = Conexion.getSessionFactory().openSession();
-//            Transaction transaction = session.beginTransaction();
-//
-//            try {
-//                Alumno alumno = buscarAlmNia(nia);
-//
-//                if (alumno != null) {
-//                    gsMatriculas gsMatr = new gsMatriculas();
-//                    gsMatr.delMatriculaPorNia(nia);
-//                    session.delete(alumno);
-//                    transaction.commit();
-//                    Colors.okMsg("Alumno eliminado exitosamente.");
-//                } else {
-//                    Colors.errMsg("No se encontró un alumno con el NIA proporcionado.");
-//                }
-//            } catch (Exception e) {
-//                transaction.rollback();
-//                Colors.errMsg("Error al eliminar el alumno: " + e.getMessage());
-//            } finally {
-//                session.close();
-//            }
-//        }
-    }
+    public void baja() {}
 
     public void mostrarAlumnos() {
         // TODO: cambiar a nombre de las tablas los *
@@ -110,21 +85,7 @@ public class gsAlumnos extends gestor {
         } while (!comprobarNia(nia, exist));
         return nia;
     }
-
-//    protected Alumno buscarAlmNia(int nia) {
-//        Session session = Conexion.getSessionFactory().openSession();
-//        Alumno alumno = null;
-//        try {
-//            alumno = session.createQuery("FROM Alumno WHERE nia = :nia", Alumno.class)
-//                    .setParameter("nia", nia)
-//                    .uniqueResult();
-//        } catch (Exception e) {
-//            Colors.errMsg("No se ha podido buscar al alumno");
-//        } finally {
-//            session.close();
-//        }
-//        return alumno;
-//    }
+    
     /**
      *
      * @param nia
@@ -146,6 +107,11 @@ public class gsAlumnos extends gestor {
     }
 
     public int encontrarID(int nia) {
-        return super.select("ALM_ID", "alumnos", "ALM_NIA = " + nia, Integer.class);
+        Integer sel = super.select("ALM_ID", "alumnos", "ALM_NIA = ?", Integer.class, nia);
+        int res = -1;
+        if (sel != null) {
+            res = sel;
+        }
+        return res;
     }
 }
