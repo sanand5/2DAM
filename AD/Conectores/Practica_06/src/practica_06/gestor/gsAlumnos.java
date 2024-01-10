@@ -23,8 +23,11 @@ public class gsAlumnos extends gestor {
         super.executeUpdate(query);
     }
 
-    public void dropAlumno(int id) {
-
+    private void dropAlumno(int id) {
+        String query = String.format("DELETE FROM matriculas WHERE MAT_ALM_ID = %d", id);
+        super.executeUpdate(query);
+        query = String.format("DELETE FROM alumnos WHERE ALM_ID = %d", id);
+        super.executeUpdate(query);
     }
 
     public void alta() {
@@ -43,7 +46,10 @@ public class gsAlumnos extends gestor {
         Colors.okMsg("El alumno se ha registrado correctamente.");
     }
 
-    public void baja() {}
+    public void baja() {
+        int id = getIDConNIA();
+        dropAlumno(id);
+    }
 
     public void mostrarAlumnos() {
         // TODO: cambiar a nombre de las tablas los *
@@ -65,7 +71,7 @@ public class gsAlumnos extends gestor {
         }
 
     }
-    
+
     public int getIDConNIA() {
         int nia = pedirNia(true);
         return encontrarID(nia);
@@ -90,7 +96,7 @@ public class gsAlumnos extends gestor {
         } while (!comprobarNia(nia, exist));
         return nia;
     }
-    
+
     /**
      *
      * @param nia
@@ -119,4 +125,48 @@ public class gsAlumnos extends gestor {
         }
         return res;
     }
+
+    public void createTable() {
+        // Comprobar si la tabla ya existe antes de intentar crearla
+        if (!tableExists("alumnos")) {
+            // Primera instrucción: CREATE TABLE
+            String createTableQuery = """
+            CREATE TABLE `alumnos` (
+                `ALM_ID` int NOT NULL,
+                `ALM_NAME` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+                `ALM_SURNAMES` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                `ALM_FECHA` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+                `ALM_NIA` int NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            """;
+
+            // Segunda instrucción: ALTER TABLE
+            String alterTableQuery = """
+            ALTER TABLE `alumnos`
+            ADD PRIMARY KEY (`ALM_ID`);
+            """;
+
+            // Ejecutar las instrucciones por separado
+            super.executeUpdate(createTableQuery);
+            super.executeUpdate(alterTableQuery);
+        } else {
+            System.out.println("La tabla 'alumnos' ya existe.");
+        }
+    }
+
+// Método para verificar si una tabla existe en la base de datos
+    private boolean tableExists(String tableName) {
+        String query = String.format("SHOW TABLES LIKE '%s'", tableName);
+        try (ResultSet resultSet = super.executeSelect(query)) {
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public void exportTable() {
+        
+    }
+
 }

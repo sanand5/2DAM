@@ -3,15 +3,15 @@
 
 ## TODO
 - [x] Insertar Alumno
-- [ ] Eliminar Alumno
+- [x] Eliminar Alumno
   - [x] Matricular Alumno
     - [x] Encontrar Alumno
     - [x] Encontrar Modulo (por nombre)
       - [x] Hacer que no pueden haver varios modulos con el mismo nombre
-  - [ ] Eliminar Matricula
+  - [x] Eliminar Matricula
 - [x] Insertar Modulo
-- [ ] Eliminar Modulo
-  - [ ] Eliminar Matriculas con el Modulo
+- [x] Eliminar Modulo
+  - [x] Eliminar Matriculas con el Modulo
 - [x] Añadir notas a Aluumno en un modulo
   - [x] Matricular Alumno
   - [x] Insertar Modulo
@@ -21,6 +21,7 @@
 - [ ] Importar DB
 - [ ] Exportar DB
 - [ ] Crear tablas si no las encuentra
+  - [x] crear funcion para crear las tablas
 - [ ] Ordenar codigo
 - [ ] gestionar private, public, protected
 - [ ] Clase menu

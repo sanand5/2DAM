@@ -4,6 +4,8 @@
  */
 package practica_06.gestor;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import practica_06.utilidades.*;
 
 /**
@@ -13,6 +15,19 @@ import practica_06.utilidades.*;
 public class gsModulo extends gestor {
 
     ReadClient rc = new ReadClient();
+    
+    
+    public void baja() {
+        int id = pedirIDconNombre();
+        dropModulo(id);
+    }
+    
+    private void dropModulo(int id) {
+        String query = String.format("DELETE FROM matriculas WHERE MAT_MOD_ID = %d", id);
+        super.executeUpdate(query);
+        query = String.format("DELETE FROM modulos WHERE MOD_ID = %d", id);
+        super.executeUpdate(query);
+    }
 
     private void insertModulo(String modulo) {
         String query = String.format("INSERT INTO `modulos`(`MOD_NAME`) VALUES ('%s')",
@@ -66,5 +81,41 @@ public class gsModulo extends gestor {
             res = sel;
         }
         return res;
+    }
+    
+    public void createTable() {
+        // Comprobar si la tabla ya existe antes de intentar crearla
+        if (!tableExists("modulos")) {
+            // Primera instrucción: CREATE TABLE
+            String createTableQuery = """
+            CREATE TABLE `modulos` (
+              `MOD_ID` int NOT NULL,
+              `MOD_NAME` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+            """;
+
+            // Segunda instrucción: ALTER TABLE
+            String alterTableQuery = """
+            ALTER TABLE `modulos`
+                ADD PRIMARY KEY (`MOD_ID`);
+            """;
+
+            // Ejecutar las instrucciones por separado
+            super.executeUpdate(createTableQuery);
+            super.executeUpdate(alterTableQuery);
+        } else {
+            System.out.println("La tabla 'modulos' ya existe.");
+        }
+    }
+
+// Método para verificar si una tabla existe en la base de datos
+    private boolean tableExists(String tableName) {
+        String query = String.format("SHOW TABLES LIKE '%s'", tableName);
+        try (ResultSet resultSet = super.executeSelect(query)) {
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

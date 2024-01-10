@@ -29,7 +29,11 @@ public class Practica_06 {
         gsAlumnos gsa = new gsAlumnos();
         gsModulo gsm = new gsModulo();
         gsMatriculas gsM = new gsMatriculas();
-        gsa.mostrarAlumnos();
+        //gsa.createTable();
+        //gsM.createTable();
+        //gsa.mostrarAlumnos();
+        //gsa.dropAlumno(12);
+        //gsa.mostrarAlumnos();
         //System.out.println(gsM.encontrarID(12, 15));
 //        gsm.pedirId();
         //gsM.crearMatricula();
