@@ -19,11 +19,12 @@
 - [x] Añadir notas
 - [x] PedirID Matrcula
 - [ ] Importar DB
-- [ ] Exportar DB
+- [x] Exportar DB
 - [ ] Crear tablas si no las encuentra
   - [x] crear funcion para crear las tablas
 - [ ] Ordenar codigo
-- [ ] gestionar private, public, protected
+  - [ ] gestionar private, public, protected
+  - [ ] Mensajes de error
 - [ ] Clase menu
 
 

@@ -6,6 +6,7 @@ package practica_06.gestor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import practica_06.curso.Alumno;
 import practica_06.utilidades.*;
 
@@ -16,6 +17,7 @@ import practica_06.utilidades.*;
 public class gsAlumnos extends gestor {
 
     ReadClient rc = new ReadClient();
+    private final String ALUMNOSPATH = "./res/alumnos.txt";
 
     private void insertAlumno(Alumno alumno) {
         String query = String.format("INSERT INTO `alumnos`(`ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES ('%s', '%s', '%s', %d)",
@@ -164,9 +166,43 @@ public class gsAlumnos extends gestor {
             return false;
         }
     }
-    
+
     public void exportTable() {
-        
+        String query = "SELECT `ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA` FROM `alumnos`;";
+        ResultSet rs = super.executeSelect(query);
+        String datos = "";
+        try {
+            while (rs.next()) {
+                int id, nia;
+                String name, surname, date;
+                id = rs.getInt(1);
+                name = rs.getString(2);
+                surname = rs.getString(3);
+                date = rs.getString(4);
+                nia = rs.getInt(5);
+                datos += String.format("%d;%s;%s;%s;%d%n", id, name, surname, date, nia);
+            }
+            super.write(ALUMNOSPATH, datos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //test
+    public void importTable() {
+        ArrayList<String> filas = super.read(ALUMNOSPATH);
+        String query = "";
+        for (String fila : filas) {
+            String[] datos = fila.split(";");
+            int id = encontrarID(Integer.parseInt(datos[0]));
+            if ( id != -1){                
+                query = String.format("UPDATE `alumnos` SET `ALM_NAME`= '%s',`ALM_SURNAMES`= '%s',`ALM_FECHA`= '%s',`ALM_NIA`= %d WHERE ALM_ID = " + id, datos[1], datos[2], datos[3], datos[4]);
+            }else{
+                query = String.format("INSERT INTO `alumnos`(`ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES (%d,'%s','%s','%s',%d)",datos[0], datos[1], datos[2], datos[3], datos[4]);;
+            }
+            super.executeUpdate(query);
+                
+        }
     }
 
 }

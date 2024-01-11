@@ -15,6 +15,7 @@ import practica_06.utilidades.*;
 public class gsModulo extends gestor {
 
     ReadClient rc = new ReadClient();
+    private final String MODULOSPATH = "./res/modulos.txt";
     
     
     public void baja() {
@@ -116,6 +117,24 @@ public class gsModulo extends gestor {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    public void exportTable() {
+        String query = "SELECT `MOD_ID`, `MOD_NAME` FROM `modulos`;";
+        ResultSet rs = super.executeSelect(query);
+        String datos = "";
+        try {
+            while (rs.next()) {
+                int id;
+                String name;
+                id = rs.getInt(1);
+                name = rs.getString(2);
+                datos += String.format("%d;%s%n", id, name);
+            }
+            super.write(MODULOSPATH, datos);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

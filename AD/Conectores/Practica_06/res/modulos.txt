@@ -1,0 +1,10 @@
+13;Matemáticas
+14;Programación en C
+15;Bases de Datos
+16;Diseño de Interfaces
+17;Redes de Computadoras
+18;Sistemas Operativos
+19;Desarrollo Web
+20;Inteligencia Artificial
+21;Seguridad Informática
+22;Proyecto Final de Ciclo

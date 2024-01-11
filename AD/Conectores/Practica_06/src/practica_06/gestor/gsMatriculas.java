@@ -20,6 +20,7 @@ public class gsMatriculas extends gestor {
     ReadClient rc = new ReadClient();
     gsAlumnos gsa = new gsAlumnos();
     gsModulo gsm = new gsModulo();
+    private final String MATRICULASPATH = "./res/matriculas.txt";
 
     public void crearMatricula() {
         int alumno = gsa.encontrarID(gsa.pedirNia(true));
@@ -193,5 +194,29 @@ public class gsMatriculas extends gestor {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    public void exportTable() {
+        String query = "SELECT `MAT_ID`, `MAT_ALM_ID`, `MAT_MOD_ID`, `MAT_NOTAS` FROM `matriculas`;";
+        ResultSet rs = super.executeSelect(query);
+        String datos = "";
+        try {
+            while (rs.next()) {
+                int id, idAlumno, idModulo;
+                String notas;
+                id = rs.getInt(1);
+                idAlumno = rs.getInt(2);
+                idModulo = rs.getInt(3);
+                notas = rs.getString(4);
+                datos += String.format("%d;%d;%d;%s%n", id, idAlumno, idModulo, notas);
+            }
+            super.write(MATRICULASPATH, datos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void importTable() {
+        
     }
 }

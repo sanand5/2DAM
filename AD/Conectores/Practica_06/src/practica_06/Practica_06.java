@@ -4,7 +4,6 @@
  */
 package practica_06;
 
-import java.util.HashMap;
 import practica_06.gestor.gsAlumnos;
 import practica_06.gestor.gsMatriculas;
 import practica_06.gestor.gsModulo;
@@ -29,6 +28,9 @@ public class Practica_06 {
         gsAlumnos gsa = new gsAlumnos();
         gsModulo gsm = new gsModulo();
         gsMatriculas gsM = new gsMatriculas();
+        gsa.exportTable();
+        gsm.exportTable();
+        gsM.exportTable();
         //gsa.createTable();
         //gsM.createTable();
         //gsa.mostrarAlumnos();
