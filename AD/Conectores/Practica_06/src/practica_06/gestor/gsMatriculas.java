@@ -6,6 +6,7 @@ package practica_06.gestor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import practica_06.utilidades.Colors;
@@ -26,7 +27,7 @@ public class gsMatriculas extends gestor {
         int alumno = gsa.encontrarID(gsa.pedirNia(true));
         int modulo = gsm.pedirIDconNombre();
 
-        if (encontrarID(alumno, modulo) == -1) {
+        if (encontrarIDconIDs(alumno, modulo) == -1) {
             insertMatricula(alumno, modulo, "");
         } else {
             Colors.errMsg("La matricula ya existe");
@@ -72,7 +73,7 @@ public class gsMatriculas extends gestor {
     private int pedirID() {
         int nia = gsa.getIDConNIA();
         int modulo = gsm.pedirIDconNombre();
-        return encontrarID(nia, modulo);
+        return encontrarIDconIDs(nia, modulo);
     }
     
 
@@ -139,7 +140,7 @@ public class gsMatriculas extends gestor {
         return result.toString();
     }
 
-    private int encontrarID(int alumnoID, int moduloID) {
+    private int encontrarIDconIDs(int alumnoID, int moduloID) {
         Integer sel = super.select("MAT_ID", "matriculas", "MAT_MOD_ID = ? AND MAT_ALM_ID = ?", Integer.class, moduloID, alumnoID);
         int res = -1;
         if (sel != null) {
@@ -217,6 +218,20 @@ public class gsMatriculas extends gestor {
     }
     
     public void importTable() {
-        
+        ArrayList<String> filas = super.read(MATRICULASPATH);
+        String query = "";
+        for (String fila : filas) {
+            String[] datos = fila.split(";");
+            int id = encontrarIDconIDs(Integer.parseInt(datos[1]), Integer.parseInt(datos[2]));
+            if ( id != -1){
+                //"UPDATE `matriculas` SET `MAT_ALM_ID`= %d,`MAT_MOD_ID`= %d,`MAT_NOTAS`= '%s' WHERE `MAT_ID` = " + id
+                query = String.format("UPDATE `matriculas` SET `MAT_ALM_ID`= %d,`MAT_MOD_ID`= %d,`MAT_NOTAS`= '%s' WHERE `MAT_ID` = " + id, Integer.valueOf(datos[1]), Integer.valueOf(datos[2]), datos[3]);
+            }else{
+                // INSERT INTO `matriculas`(`MAT_ID`, `MAT_ALM_ID`, `MAT_MOD_ID`, `MAT_NOTAS`) VALUES (%d,%d,%d,'%s')
+                query = String.format("INSERT INTO `matriculas`(`MAT_ID`, `MAT_ALM_ID`, `MAT_MOD_ID`, `MAT_NOTAS`) VALUES (%d,%d,%d,'%s')",Integer.valueOf(datos[0]), Integer.valueOf(datos[1]), Integer.valueOf(datos[2]), datos[3]);
+            }
+            super.executeUpdate(query);
+                
+        }
     }
 }

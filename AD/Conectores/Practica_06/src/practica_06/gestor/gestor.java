@@ -96,7 +96,7 @@ public class gestor {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+// TODO cerrar conexion
         return null;
     }
 
@@ -138,8 +138,10 @@ public class gestor {
             e.printStackTrace();
             Colors.errMsg("El archivo no se ha podido leer: " + path);
         }
-
         return lines;
     }
 
 }
+/* TODO
+ * Gestionar lo de abstract
+*/

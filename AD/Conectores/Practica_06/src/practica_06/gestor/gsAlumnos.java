@@ -7,7 +7,6 @@ package practica_06.gestor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import practica_06.curso.Alumno;
 import practica_06.utilidades.*;
 
 /**
@@ -19,9 +18,9 @@ public class gsAlumnos extends gestor {
     ReadClient rc = new ReadClient();
     private final String ALUMNOSPATH = "./res/alumnos.txt";
 
-    private void insertAlumno(Alumno alumno) {
+    private void insertAlumno(String name, String surname, String fecha, int nia) {
         String query = String.format("INSERT INTO `alumnos`(`ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES ('%s', '%s', '%s', %d)",
-                alumno.getNombre(), alumno.getApellidos(), alumno.getFechaNacimiento(), alumno.getNia());
+                name, surname, fecha, nia);
         super.executeUpdate(query);
     }
 
@@ -38,13 +37,9 @@ public class gsAlumnos extends gestor {
         int nia = pedirNia(false);
         int dia = rc.pedirIntRango("Dime el dia que nació: ", 1, 31);
         int mes = rc.pedirIntRango("Dime el indice del mes que nació: ", 1, 12);
-        int anio = rc.pedirIntRango("Dime el año que nació: ", 1960, 2023);
-        Alumno alumno = new Alumno();
-        alumno.setNombre(nombre);
-        alumno.setApellidos(apellidos);
-        alumno.setFechaNacimiento(dia, mes, anio);
-        alumno.setNia(nia);
-        insertAlumno(alumno);
+        int anio = rc.pedirIntRango("Dime el año que nació: ", 1900, 2024);
+        insertAlumno(nombre,apellidos,dia +"/"+ mes +"/"+ anio,nia);
+        //TODO gestionar fecha
         Colors.okMsg("El alumno se ha registrado correctamente.");
     }
 
@@ -65,7 +60,8 @@ public class gsAlumnos extends gestor {
                 String fecha = resultSetAlumnos.getString("ALM_FECHA");
                 int nia = resultSetAlumnos.getInt("ALM_NIA");
 
-                System.out.println(new Alumno(name, surnames, fecha, nia).toString());
+                //TODO gestionar sout
+                System.out.println(String.format("%d : %s %s : %s", nia, name, surnames, fecha));
 
             }
         } catch (SQLException e) {
@@ -129,7 +125,6 @@ public class gsAlumnos extends gestor {
     }
 
     public void createTable() {
-        // Comprobar si la tabla ya existe antes de intentar crearla
         if (!tableExists("alumnos")) {
             // Primera instrucción: CREATE TABLE
             String createTableQuery = """
@@ -188,7 +183,7 @@ public class gsAlumnos extends gestor {
         }
     }
     
-    //test
+    
     public void importTable() {
         ArrayList<String> filas = super.read(ALUMNOSPATH);
         String query = "";
@@ -198,7 +193,7 @@ public class gsAlumnos extends gestor {
             if ( id != -1){                
                 query = String.format("UPDATE `alumnos` SET `ALM_NAME`= '%s',`ALM_SURNAMES`= '%s',`ALM_FECHA`= '%s',`ALM_NIA`= %d WHERE ALM_ID = " + id, datos[1], datos[2], datos[3], datos[4]);
             }else{
-                query = String.format("INSERT INTO `alumnos`(`ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES (%d,'%s','%s','%s',%d)",datos[0], datos[1], datos[2], datos[3], datos[4]);;
+                query = String.format("INSERT INTO `alumnos`(`ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES (%d,'%s','%s','%s',%d)",Integer.parseInt(datos[0]), datos[1], datos[2], datos[3], Integer.parseInt(datos[4]));
             }
             super.executeUpdate(query);
                 

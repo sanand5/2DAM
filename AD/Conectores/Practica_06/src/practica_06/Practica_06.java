@@ -19,7 +19,9 @@ public class Practica_06 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        menus menu = new menus();
         test();
+        menu.mainMenu();
 
     }
     
@@ -28,9 +30,8 @@ public class Practica_06 {
         gsAlumnos gsa = new gsAlumnos();
         gsModulo gsm = new gsModulo();
         gsMatriculas gsM = new gsMatriculas();
-        gsa.exportTable();
-        gsm.exportTable();
-        gsM.exportTable();
+        gsa.createTable();
+       
         //gsa.createTable();
         //gsM.createTable();
         //gsa.mostrarAlumnos();

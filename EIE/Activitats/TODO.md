@@ -9,7 +9,7 @@
 #### tema 3 - 1
 - [x] activitat T 3
 #### tema 4 - 2
-- [ ] PLA MARKETING
+- [x] PLA MARKETING
 - [x] Activitat T4
 #### tema 5 - 3
 - [x] Part 3 Pla empresaLA forma

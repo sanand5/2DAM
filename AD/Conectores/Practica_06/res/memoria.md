@@ -1,8 +1,9 @@
 ## Errores
 ![Alt text](image.png)
 
-## TODO
+## TODO codigo
 - [x] Insertar Alumno
+- [ ] Gestionar lode no usar objetos
 - [x] Eliminar Alumno
   - [x] Matricular Alumno
     - [x] Encontrar Alumno
@@ -18,73 +19,46 @@
 - [x] Modificar Notas
 - [x] Añadir notas
 - [x] PedirID Matrcula
-- [ ] Importar DB
-- [x] Exportar DB
+- [ ] IMPORTAR/EXPORTAR
+  - [x] Importar DB
+  - [x] Exportar DB
+  - [ ] gestionar si el nia esta repetido
+  - [ ] preguntar al usuario
+  - [ ] Gestionar que no se conecte cada vez
 - [ ] Crear tablas si no las encuentra
   - [x] crear funcion para crear las tablas
 - [ ] Ordenar codigo
   - [ ] gestionar private, public, protected
   - [ ] Mensajes de error
 - [ ] Clase menu
+- [ ] mostrar notas de alumnos
 
+## TODO menu
+Menu
+- [ ] (0) Salir
+- [ ] (1) Menu Alumnos
+- [ ] (2) Menu Modulos
+- [ ] (3) Evaluar
+- [ ] (4) Importar
+- [ ] (5) Exportar
 
+Menu Alumno
+- [x] (0) Salir
+- [x] (1) Alta
+- [x] (2) Baja
+- [x] (3) Listar
 
+Menu Modulo
+- [ ] (0) Salir
+- [ ] (1) Alta
+- [ ] (2) Baja
+- [ ] (3) Listar
+- [ ] (4) Matricular Alumno
 
-```java
-//***********
-    //   ORM
-    //***********
-    public double[] getNotasList() {
-        double[] notasList = null;
-        if (notas != null) {
-            String[] partes = notas.split("#");
-            notasList = new double[partes.length];
-            for (int i = 0; i < partes.length; i++) {
-                notasList[i] = Double.parseDouble(partes[i]);
-            }
-        }
-        return notasList;
-    }
-
-    public void setNotasList(double[] notasList) {
-        String cadena = String.join("#", Arrays.stream(notasList)
-                .mapToObj(String::valueOf)
-                .toArray(String[]::new));
-        this.notas = cadena;
-    }
-
-    public void addNota(double... notas) {
-        double[] lastNotas = getNotasList();
-        double[] newNotas;
-        int lastNotasSize = 0;
-        if (lastNotas != null) {
-            lastNotasSize = lastNotas.length;
-            newNotas = new double[lastNotas.length + notas.length];
-            for (int i = 0; i < lastNotas.length; i++) {
-                newNotas[i] = lastNotas[i];
-            }
-        } else {
-            newNotas = new double[notas.length];
-        }
-        for (int i = lastNotasSize; i < newNotas.length; i++) {
-            newNotas[i] = notas[i - lastNotasSize];
-        }
-        setNotasList(newNotas);
-    }
-
-    public void mostrarNotas() {
-        double[] notasList = getNotasList();
-        if (notasList == null) {
-            Colors.warMsg(this.alumno.getNombre() + " no tiene notas en " + this.modulo.getNombre());
-        } else {
-
-            System.out.println("Notas de " + this.alumno.getNombre() + " en " + this.modulo.getNombre() + ": ");
-            for (int i = 0; i < notasList.length; i++) {
-                System.out.println(i + 1 + ".- " + notasList[i]);
-            }
-        }
-    }
-    //***********
-    //   /ORM
-    //***********
-```
+Menu Evaluar
+- [ ] (0) Salir
+- [ ] (1) Qualificar
+- [ ] (2) Modificar
+- [ ] (3) Mostrar Notas de un Modulo
+- [ ] (4) Mostrar Notas de un Alumno
+- [ ] (5) Mostrar Notas del Centro
