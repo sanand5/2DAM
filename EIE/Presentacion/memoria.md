@@ -220,8 +220,15 @@ La competència, caracteritzada per la presència d'altres empreses en el mateix
 ## Altres tècniques de venda.
 Altres tècniques de venda, sumades a les ja mencionades, enriqueixen l'arsenal de recursos del màrqueting. El marxandatge, que implica la vinculació de productes relacionats amb el principal, promou compres addicionals. Les ambientacions de botigues, amb una disposició estratègica dels productes i una estètica atractiva, poden influir en les decisions de compra. La distribució estratègica en supermercats també es considera una tècnica, ja que col·loca els productes de manera que siguin fàcilment accessibles i visualment atractius per als consumidors. El "hype", que crea una sensació de necessitat per un producte, es construeix mitjançant estratègies com la publicitat excessiva o l'ús de persones famoses que generen expectació i interès. Els estudis del comportament dels consumidors guien aquestes tècniques per estimular vendes i impulsar compres impulsives, creant una experiència global que captiva i fidelitza als consumidors.
 
-# Conclusió
+# Conclusió 1
 La creació i gestió empresarial implica reconèixer les qualitats de l'emprenedor, entendre el mercat i les tècniques de venda. L'emprenedoria requereix iniciativa, creativitat i visió de futur. Les habilitats com comunicació, negociació, lideratge i presa de decisions són essencials, així com la gestió del risc i la comprensió de l'intraemprenedor. La tria d'una idea, satisfacció del client i innovació són claus, amb mètodes com Design Thinking i Lean Startup. Aspectes com cultura empresarial, responsabilitat social i anàlisis DAFO i CAME estableixen bases per a la gestió. Definir producte, fixar preus, comunicar, distribuir estratègicament, analitzar competència i usar tècniques de venda són crucials per a l'èxit empresarial.
 
 En conjunt, cada aspecte explicat contribueix a la textura complexa del camí cap a la creació i manteniment d'una empresa pròspera i sostenible en l'actual panorama empresarial.
+
+# Tema 5
+
+
+
+
+
 </div>
