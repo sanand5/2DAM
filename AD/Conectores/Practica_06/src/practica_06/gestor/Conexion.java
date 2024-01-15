@@ -14,20 +14,15 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
-    String URL;
-    String User;
-    String Password;
+    final static String URL = "jdbc:postgresql://192.168.0.36/10813358";
+    //final static String URL = "jdbc:mysql://localhost/10813358_";
+    final static String USER = "10813358";
+    final static String PASSWORD = "10813358";
     Connection con = null;
-
-    public Conexion(String URL, String User, String Password) {
-        this.URL = URL;
-        this.User = User;
-        this.Password = Password;
-    }
 
     public Connection getConnection() {
         try {
-            con = DriverManager.getConnection(URL, User, Password);
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             e.getMessage();
         }
@@ -42,5 +37,23 @@ public class Conexion {
             e.getMessage();
         }
     }
+    
+    public enum DatabaseType {
+        MYSQL,
+        POSTGRESQL
+    }
+    
+    public static DatabaseType getDataBaseType() {
+        DatabaseType databasetype = null;
+        if (URL.contains("postgresql")) {
+            databasetype = DatabaseType.POSTGRESQL;
+        }else if (URL.contains("mysql")) {
+            databasetype = DatabaseType.MYSQL;
+        }
+        return databasetype;
+    }
+    
+    
+    
 
 }

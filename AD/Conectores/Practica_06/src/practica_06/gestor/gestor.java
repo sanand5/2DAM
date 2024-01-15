@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import practica_06.gestor.Conexion.DatabaseType;
 import practica_06.utilidades.Colors;
 import practica_06.utilidades.ReadClient;
 
@@ -25,27 +26,19 @@ import practica_06.utilidades.ReadClient;
 public class gestor {
 
     ReadClient rc = new ReadClient();
+    Conexion conexion = new Conexion();
 
     public void executeUpdate(String query) {
-        Conexion conexion = new Conexion(DataConexion.URL, DataConexion.USER, DataConexion.PASSWORD);
-
         try (Connection connection = conexion.getConnection()) {
             // Check if the connection is successful
             if (connection != null) {
-                Colors.debMsg("Connected to the database!");
 
                 // Execute the provided SQL query
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
-                    int rowsAffected = statement.executeUpdate();
-
-                    if (rowsAffected > 0) {
-                        Colors.debMsg("Update successful. Rows affected: " + rowsAffected);
-                    } else {
-                        Colors.debMsg("Update failed. No rows affected.");
-                    }
+                    statement.executeUpdate();
                 }
             } else {
-                Colors.debMsg("Failed to connect to the database.");
+                Colors.errMsg("Failed to connect to the database.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +50,7 @@ public class gestor {
         }
     }
 
-    // Si no encunetra devuelve?
+    // TODO Si no encunetra devuelve?
     public <T> T select(String select, String from, String where, Class<T> returnType, Object... params) {
         String query = "SELECT " + select + " FROM " + from + " WHERE " + where;
         T result = null;
@@ -70,8 +63,6 @@ public class gestor {
                 } else if (returnType.equals(String.class)) {
                     result = returnType.cast(rs.getString(1));
                 }
-            } else {
-                Colors.debMsg("No se encontraron resultados para la consulta.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,7 +72,6 @@ public class gestor {
     }
 
     public ResultSet executeSelect(String query, Object... params) {
-        Conexion conexion = new Conexion(DataConexion.URL, DataConexion.USER, DataConexion.PASSWORD);
         try {
             Connection connection = conexion.getConnection();
             if (connection != null) {
@@ -90,8 +80,6 @@ public class gestor {
                     statement.setObject(i + 1, params[i]);
                 }
                 return statement.executeQuery();
-            } else {
-                Colors.errMsg("No se ha podido conectar a la base de datos.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +120,6 @@ public class gestor {
                 while ((line = reader.readLine()) != null) {
                     lines.add(line);
                 }
-                Colors.debMsg("Datos leídos con éxito desde el archivo: " + path);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -140,6 +127,36 @@ public class gestor {
         }
         return lines;
     }
+    
+    protected boolean tableExists(String tableName) {
+    DatabaseType databasetype = Conexion.getDataBaseType();
+    String query;
+    
+    if (null == databasetype) {
+        Colors.errMsg("Tipo de base de datos no compatible.");
+        return false;
+    } else {
+        switch (databasetype) {
+            case MYSQL:
+                query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = '%s'", tableName);
+                break;
+            case POSTGRESQL:
+                query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_name = '%s'", tableName);
+                break;
+            default:
+                Colors.errMsg("Tipo de base de datos no compatible.");
+                return false;
+        }
+
+        try (ResultSet resultSet = executeSelect(query)) {
+            resultSet.next();
+            return resultSet.getInt(1) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
 
 }
 /* TODO

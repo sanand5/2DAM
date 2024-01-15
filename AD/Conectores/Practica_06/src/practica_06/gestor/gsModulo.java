@@ -7,6 +7,7 @@ package practica_06.gestor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import practica_06.gestor.Conexion.DatabaseType;
 import practica_06.utilidades.*;
 
 /**
@@ -24,14 +25,14 @@ public class gsModulo extends gestor {
     }
 
     private void dropModulo(int id) {
-        String query = String.format("DELETE FROM matriculas WHERE MAT_MOD_ID = %d", id);
+        String query = String.format("DELETE FROM matriculas WHERE mat_mod_id = %d", id);
         super.executeUpdate(query);
-        query = String.format("DELETE FROM modulos WHERE MOD_ID = %d", id);
+        query = String.format("DELETE FROM modulos WHERE mod_id = %d", id);
         super.executeUpdate(query);
     }
 
     private void insertModulo(String modulo) {
-        String query = String.format("INSERT INTO `modulos`(`MOD_NAME`) VALUES ('%s')",
+        String query = String.format("INSERT INTO modulos(mod_name) VALUES ('%s')",
                 modulo);
         super.executeUpdate(query);
     }
@@ -75,7 +76,7 @@ public class gsModulo extends gestor {
     }
 
     public int encontrarIDconNombre(String name) {
-        Integer sel = super.select("MOD_ID", "modulos", "MOD_NAME = ?", Integer.class, name);;
+        Integer sel = super.select("mod_id", "modulos", "mod_name = ?", Integer.class, name);;
         int res = -1;
         if (sel != null) {
             res = sel;
@@ -84,43 +85,36 @@ public class gsModulo extends gestor {
     }
 
     public void createTable() {
-        // Comprobar si la tabla ya existe antes de intentar crearla
-        if (!tableExists("modulos")) {
+        DatabaseType databaseType = Conexion.getDataBaseType();
+        String tableName = "modulos";
+        if (!super.tableExists(tableName)) {
             // Primera instrucción: CREATE TABLE
-            String createTableQuery = """
-            CREATE TABLE `modulos` (
-              `MOD_ID` int NOT NULL,
-              `MOD_NAME` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-            """;
+            String createTableQuery = "";
 
-            // Segunda instrucción: ALTER TABLE
-            String alterTableQuery = """
-            ALTER TABLE `modulos`
-                ADD PRIMARY KEY (`MOD_ID`);
-            """;
-
-            // Ejecutar las instrucciones por separado
+            if (databaseType == DatabaseType.MYSQL) {
+                createTableQuery = """
+                CREATE TABLE modulos (
+                  mod_id int NOT NULL AUTO_INCREMENT,
+                  mod_name varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+                  PRIMARY KEY (mod_id)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                """.formatted(tableName);
+            } else if (databaseType == DatabaseType.POSTGRESQL) {
+                createTableQuery = """
+                CREATE TABLE %s (
+                  mod_id serial PRIMARY KEY,
+                  mod_name varchar(255) NOT NULL
+                );
+                """.formatted(tableName);
+            }
             super.executeUpdate(createTableQuery);
-            super.executeUpdate(alterTableQuery);
         } else {
-            System.out.println("La tabla 'modulos' ya existe.");
-        }
-    }
-
-// Método para verificar si una tabla existe en la base de datos
-    private boolean tableExists(String tableName) {
-        String query = String.format("SHOW TABLES LIKE '%s'", tableName);
-        try (ResultSet resultSet = super.executeSelect(query)) {
-            return resultSet.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            System.out.println("La tabla '" + tableName + "' ya existe.");
         }
     }
 
     public void exportTable() {
-        String query = "SELECT `MOD_ID`, `MOD_NAME` FROM `modulos`;";
+        String query = "SELECT mod_id, mod_name FROM modulos;";
         ResultSet rs = super.executeSelect(query);
         String datos = "";
         try {
@@ -144,12 +138,29 @@ public class gsModulo extends gestor {
             String[] datos = fila.split(";");
             int id = encontrarIDconNombre(datos[1]);
             if (id != -1) {
-                query = String.format("UPDATE `modulos` SET `MOD_ID`='[value-1]',`MOD_NAME`='[value-2]' WHERE `MOD_ID`= " + id, datos[1], datos[2], datos[3], datos[4]);
+                query = String.format("UPDATE modulos SET mod_name= '%s' WHERE mod_id= " + id, datos[1]);
             } else {
-                query = String.format("INSERT INTO `modulos`(`MOD_ID`, `MOD_NAME`) VALUES (%d,'%s')", Integer.valueOf(datos[0]), datos[1]);
+                query = String.format("INSERT INTO modulos(mod_id, mod_name) VALUES (%d,'%s')", Integer.valueOf(datos[0]), datos[1]);
             }
             super.executeUpdate(query);
 
+        }
+    }
+
+    public void mostrarModulos() {
+        String selectQueryAlumnos = "SELECT * FROM modulos";
+
+        try (ResultSet resultSetAlumnos = super.executeSelect(selectQueryAlumnos)) {
+            // Procesar el ResultSet
+            int cont = 1;
+            while (resultSetAlumnos.next()) {
+                String name = resultSetAlumnos.getString("mod_name");
+                System.out.println(String.format("%d.- %s", cont, name));
+                cont++;
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

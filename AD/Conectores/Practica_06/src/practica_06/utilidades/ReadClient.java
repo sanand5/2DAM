@@ -3,6 +3,7 @@ package practica_06.utilidades;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 public class ReadClient {
     private static Colors cl = new Colors();
@@ -61,10 +62,10 @@ public class ReadClient {
         int num;
         do {
             num = pedirInt(msg);
-            if (num <= 0) {
+            if (num < 0) {
                 cl.warMsg("El número debe ser positivo.");
             }
-        } while (num <= 0);
+        } while (num < 0);
         return num;
     }
 
@@ -151,5 +152,24 @@ public class ReadClient {
     }
     public String pedirStringLow(String msg, boolean allowNull) {
         return pedirString(msg, allowNull).toLowerCase();
+    }
+    
+    public String pedirOpcion(String msg, String ... opciones) {
+        String opcionSeleccionada;
+        boolean repit = true;
+        StringJoiner joiner = new StringJoiner(" / ");
+        for (String opcion : opciones) {
+            joiner.add(opcion);
+        }
+        String mensaje = msg + " " + "(" + joiner.toString() + " )"; 
+        do {
+            opcionSeleccionada = pedirString(mensaje, false);
+            for (String opcion : opciones) {
+                if (opcionSeleccionada.equals(opcion)) {
+                    repit = false;
+                }
+            }
+        } while (repit);
+        return opcionSeleccionada;
     }
 }

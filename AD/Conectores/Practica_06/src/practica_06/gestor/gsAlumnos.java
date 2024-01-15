@@ -7,6 +7,7 @@ package practica_06.gestor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import practica_06.gestor.Conexion.DatabaseType;
 import practica_06.utilidades.*;
 
 /**
@@ -19,15 +20,15 @@ public class gsAlumnos extends gestor {
     private final String ALUMNOSPATH = "./res/alumnos.txt";
 
     private void insertAlumno(String name, String surname, String fecha, int nia) {
-        String query = String.format("INSERT INTO `alumnos`(`ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES ('%s', '%s', '%s', %d)",
+        String query = String.format("INSERT INTO alumnos(alm_name, alm_surnames, alm_fecha, alm_nia) VALUES ('%s', '%s', '%s', %d)",
                 name, surname, fecha, nia);
         super.executeUpdate(query);
     }
 
     private void dropAlumno(int id) {
-        String query = String.format("DELETE FROM matriculas WHERE MAT_ALM_ID = %d", id);
+        String query = String.format("DELETE FROM matriculas WHERE mat_alm_id = %d", id);
         super.executeUpdate(query);
-        query = String.format("DELETE FROM alumnos WHERE ALM_ID = %d", id);
+        query = String.format("DELETE FROM alumnos WHERE alm_id = %d", id);
         super.executeUpdate(query);
     }
 
@@ -38,27 +39,28 @@ public class gsAlumnos extends gestor {
         int dia = rc.pedirIntRango("Dime el dia que nació: ", 1, 31);
         int mes = rc.pedirIntRango("Dime el indice del mes que nació: ", 1, 12);
         int anio = rc.pedirIntRango("Dime el año que nació: ", 1900, 2024);
-        insertAlumno(nombre,apellidos,dia +"/"+ mes +"/"+ anio,nia);
+        insertAlumno(nombre, apellidos, dia + "/" + mes + "/" + anio, nia);
         //TODO gestionar fecha
         Colors.okMsg("El alumno se ha registrado correctamente.");
     }
 
     public void baja() {
         int id = getIDConNIA();
-        dropAlumno(id);
+        if (id == 0) {System.out.println("Se ha cancelado la eliminación.");
+        }else{dropAlumno(id);}
     }
 
     public void mostrarAlumnos() {
         // TODO: cambiar a nombre de las tablas los *
-        String selectQueryAlumnos = "SELECT * FROM `alumnos`";
+        String selectQueryAlumnos = "SELECT * FROM alumnos";
 
         try (ResultSet resultSetAlumnos = super.executeSelect(selectQueryAlumnos)) {
             // Procesar el ResultSet
             while (resultSetAlumnos.next()) {
-                String name = resultSetAlumnos.getString("ALM_NAME");
-                String surnames = resultSetAlumnos.getString("ALM_SURNAMES");
-                String fecha = resultSetAlumnos.getString("ALM_FECHA");
-                int nia = resultSetAlumnos.getInt("ALM_NIA");
+                String name = resultSetAlumnos.getString("alm_name");
+                String surnames = resultSetAlumnos.getString("alm_surnames");
+                String fecha = resultSetAlumnos.getString("alm_fecha");
+                int nia = resultSetAlumnos.getInt("alm_nia");
 
                 //TODO gestionar sout
                 System.out.println(String.format("%d : %s %s : %s", nia, name, surnames, fecha));
@@ -72,6 +74,9 @@ public class gsAlumnos extends gestor {
 
     public int getIDConNIA() {
         int nia = pedirNia(true);
+        if (nia == 0){
+            return nia;
+        }
         return encontrarID(nia);
     }
 
@@ -116,7 +121,7 @@ public class gsAlumnos extends gestor {
     }
 
     public int encontrarID(int nia) {
-        Integer sel = super.select("ALM_ID", "alumnos", "ALM_NIA = ?", Integer.class, nia);
+        Integer sel = super.select("alm_id", "alumnos", "alm_nia = ?", Integer.class, nia);
         int res = -1;
         if (sel != null) {
             res = sel;
@@ -125,45 +130,43 @@ public class gsAlumnos extends gestor {
     }
 
     public void createTable() {
-        if (!tableExists("alumnos")) {
+        DatabaseType databaseType = Conexion.getDataBaseType();
+        String tableName = "alumnos";
+        if (!super.tableExists(tableName)) {
             // Primera instrucción: CREATE TABLE
-            String createTableQuery = """
-            CREATE TABLE `alumnos` (
-                `ALM_ID` int NOT NULL,
-                `ALM_NAME` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-                `ALM_SURNAMES` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-                `ALM_FECHA` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-                `ALM_NIA` int NOT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-            """;
+            String createTableQuery = "";
 
-            // Segunda instrucción: ALTER TABLE
-            String alterTableQuery = """
-            ALTER TABLE `alumnos`
-            ADD PRIMARY KEY (`ALM_ID`);
-            """;
-
-            // Ejecutar las instrucciones por separado
+            if (databaseType == DatabaseType.MYSQL) {
+                createTableQuery = """
+                CREATE TABLE alumnos (
+                    alm_id int NOT NULL AUTO_INCREMENT,
+                    alm_name varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+                    alm_surnames varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                    alm_fecha varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+                    alm_nia int NOT NULL,
+                    PRIMARY KEY (alm_id)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                """.formatted(tableName);
+            } else if (databaseType == DatabaseType.POSTGRESQL) {
+                createTableQuery
+                        = """
+                CREATE TABLE alumnos (
+                    alm_id serial PRIMARY KEY,
+                    alm_name varchar(255) NOT NULL,
+                    alm_surnames varchar(255) NOT NULL,
+                    alm_fecha varchar(255) NOT NULL,
+                    alm_nia int NOT NULL
+                );
+                """;
+            }
             super.executeUpdate(createTableQuery);
-            super.executeUpdate(alterTableQuery);
         } else {
-            System.out.println("La tabla 'alumnos' ya existe.");
-        }
-    }
-
-// Método para verificar si una tabla existe en la base de datos
-    private boolean tableExists(String tableName) {
-        String query = String.format("SHOW TABLES LIKE '%s'", tableName);
-        try (ResultSet resultSet = super.executeSelect(query)) {
-            return resultSet.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            Colors.debMsg("La tabla '" + tableName + "' ya existe.");
         }
     }
 
     public void exportTable() {
-        String query = "SELECT `ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA` FROM `alumnos`;";
+        String query = "SELECT alm_id, alm_name, alm_surnames, alm_fecha, alm_nia FROM alumnos;";
         ResultSet rs = super.executeSelect(query);
         String datos = "";
         try {
@@ -178,25 +181,28 @@ public class gsAlumnos extends gestor {
                 datos += String.format("%d;%s;%s;%s;%d%n", id, name, surname, date, nia);
             }
             super.write(ALUMNOSPATH, datos);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    
+
     public void importTable() {
         ArrayList<String> filas = super.read(ALUMNOSPATH);
         String query = "";
         for (String fila : filas) {
             String[] datos = fila.split(";");
             int id = encontrarID(Integer.parseInt(datos[0]));
-            if ( id != -1){                
-                query = String.format("UPDATE `alumnos` SET `ALM_NAME`= '%s',`ALM_SURNAMES`= '%s',`ALM_FECHA`= '%s',`ALM_NIA`= %d WHERE ALM_ID = " + id, datos[1], datos[2], datos[3], datos[4]);
-            }else{
-                query = String.format("INSERT INTO `alumnos`(`ALM_ID`, `ALM_NAME`, `ALM_SURNAMES`, `ALM_FECHA`, `ALM_NIA`) VALUES (%d,'%s','%s','%s',%d)",Integer.parseInt(datos[0]), datos[1], datos[2], datos[3], Integer.parseInt(datos[4]));
+            System.out.println(id);
+            if (id != -1) {
+                query = String.format("UPDATE alumnos SET alm_name= '%s, alm_surnames= '%s',alm_fecha= '%s', alm_nia= %d WHERE alm_id = " + id, datos[1], datos[2], datos[3], datos[4]);
+            } else {
+                //query = String.format("INSERT INTO alumnos(alm_id, alm_name, alm_surnames, alm_fecha, alm_nia) VALUES (%d,'%s','%s','%s',%d)", Integer.parseInt(datos[0]), datos[1], datos[2], datos[3], Integer.parseInt(datos[4]));
+                System.out.println("epasadoporaqui");
+                query = String.format("INSERT INTO alumnos(alm_id, alm_name, alm_surnames, alm_fecha, alm_nia) VALUES (%d,'%s','%s','%s',%d)", Integer.parseInt(datos[0]), datos[1], datos[2], datos[3], Integer.parseInt(datos[4]));
+
             }
             super.executeUpdate(query);
-                
+
         }
     }
 

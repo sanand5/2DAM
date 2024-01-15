@@ -20,8 +20,9 @@ public class Practica_06 {
      */
     public static void main(String[] args) {
         menus menu = new menus();
-        test();
         menu.mainMenu();
+        //test();
+        //menu.mainMenu();
 
     }
     
@@ -30,8 +31,12 @@ public class Practica_06 {
         gsAlumnos gsa = new gsAlumnos();
         gsModulo gsm = new gsModulo();
         gsMatriculas gsM = new gsMatriculas();
-        gsa.createTable();
-       
+//        gsa.createTable(gestor.DatabaseType.MYSQL);
+//        gsm.createTable(gestor.DatabaseType.MYSQL);
+//        gsM.createTable(gestor.DatabaseType.MYSQL);
+//        gsa.importTable();
+//        gsm.importTable();
+//        gsM.importTable();
         //gsa.createTable();
         //gsM.createTable();
         //gsa.mostrarAlumnos();
@@ -48,7 +53,6 @@ public class Practica_06 {
 //        notasUpdate.put(1, 2.3);
 //        notasUpdate.put(2, 2.3);
         //gsM.modificarNotas(32, notasUpdate);
-        
 //        Alumno al = new Alumno("LAura", "Llorens", "02/12/2004", 24515);
 //        System.out.println(gs.comprobarNia(1258, true));
 //        System.out.println(gs.comprobarNia(108258, false));

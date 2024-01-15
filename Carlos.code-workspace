@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"name": "PSP",
+			"path": "PSP"
+		},
+		{
+			"name": "AD",
+			"path": "AD"
+		},
+		{
+			"name": "res",
+			"path": "res"
+		},
+		{
+			"path": "AD/Conectores/Practica_06"
+		}
+	],
+	"settings": {}
+}
