@@ -641,11 +641,23 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
 
 ## Como
 ### Conexion
+Esta clase está diseñada para gestionar la conexión a una base de datos. Con las variables constantes podemos obtener la conexión a la DB. Para obtener la conexion debemos inicializar un objeto de tipo Connection. La interfaz Connection en Java es parte de la API JDBC (Java Database Connectivity) y se encuentra en el paquete java.sql. Esta interfaz proporciona métodos para establecer una conexión con una base de datos y para gestionar transacciones entre la aplicación Java y la base de datos. Para establecer una conexion se utiliza el método DriverManager.getConnection(). Este método toma como parámetros la URL de conexión a la base de datos, el nombre de usuario y la contraseña asociados a esa conexión. Para eso tengo un metodo `getConnection()` que devuelve una conexion establecida con la DB. Además tengo una enumeración anidada, `DatabaseType`, con dos tipos de bases de dato y una funcion `getDataBaseType()` que devuelve segun la URL el tipo de DB que estas usando.
+
 ### gestor
+La clase Gestor está diseñada para facilitar la gestión de operaciones en una base de datos, integrando funcionalidades para realizar conexiones, ejecutar consultas SQL, crear y verificar tablas, así como leer y escribir datos en archivos. Utiliza la clase Conexion para establecer conexiones JDBC con la base de datos.
+
+El método testConexion() verifica la conexión a la base de datos, mostrando mensajes de éxito o error. Para eso creamos un objeto Connection y llamo a la ``conexion.getConnection()`` y creamos otro objeto del tipo `PreparedStatement` para  prepara la sentencia SQL especificada en la cadena ``query`` para su ejecución. Este objeto proporciona métodos para establecer valores en los parámetros de la sentencia y ejecutarla de manera eficiente. El uso de ``PreparedStatement`` mejora la compatibilidad con diferentes bases de datos. La mayoría de los controladores JDBC están diseñados para trabajar con sentencias SQL preparadas, lo que facilita la portabilidad de la aplicación entre diferentes sistemas de gestión de bases de datos (DBMS).
+
+Los métodos executeUpdate() y executeSelect() ejecutan consultas SQL de actualización y selección, respectivamente. La clase también incluye un método genérico select() para obtener un valor específico de la base de datos.
+
 ### gsAlumnos
+
 ### gsModulos
+
 ### gsMatriculas
+
 ### menus
+
 ### Practica_06
 
 ## Conclusión

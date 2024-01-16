@@ -16,7 +16,7 @@ import practica_06.utilidades.Colors;
 public class Conexion {
 
     //final static String URL = "jdbc:postgresql://localhost/";
-    final static String URL = "jdbc:mysql://localhost/";
+    final static String URL = "jdbc:mysql://10.0.219.21/";
     final static String DB = "10813358";
     final static String USER = "10813358";
     final static String PASSWORD = "10813358";

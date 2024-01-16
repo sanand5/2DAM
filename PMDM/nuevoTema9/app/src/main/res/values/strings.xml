@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tema9</string>
+    <string name="header_image">doraemon</string>
+    <string name="forgot_password">forgot password</string>
+</resources>
