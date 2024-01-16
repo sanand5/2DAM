@@ -40,11 +40,9 @@ public class menus {
                     menuMatriculas();
                     break;
                 case 4:
-                    System.out.println("Desarrolando");
                     importar();
                     break;
                 case 5:
-                    System.out.println("Desarrolando");
                     exportar();
                     break;
                 default:
@@ -54,7 +52,7 @@ public class menus {
         }
     }
 
-    public void menuAlumnos() {
+    private void menuAlumnos() {
         int menu = 0;
         boolean repetir = true;
         while (repetir) {
@@ -87,7 +85,7 @@ public class menus {
         }
     }
 
-    public void menuModulos() {
+    private void menuModulos() {
         gsModulo gsMod = new gsModulo();
         int menu = 0;
         boolean repetir = true;
@@ -120,7 +118,7 @@ public class menus {
         }
     }
 
-    public void menuMatriculas() {
+    private void menuMatriculas() {
         int menu;
         boolean repetir = true;
         while (repetir) {
@@ -128,12 +126,13 @@ public class menus {
                     Menu Evaluar
                     (0) Salir
                     (1) Matricular Alumno
-                    (2) Qualificar
-                    (3) Modificar
-                    (4) Mostrar Notas de un Modulo de un Alumno
-                    (5) Mostrar Notas de un Alumno
-                    (6) Mostrar Notas del Centro""");
-            menu = rc.pedirIntRango("?", 0, 6);
+                    (2) Desmatricular Alumno
+                    (3) Qualificar
+                    (4) Modificar
+                    (5) Mostrar Notas de un Modulo de un Alumno
+                    (6) Mostrar Notas de un Alumno
+                    (7) Mostrar Notas del Centro""");
+            menu = rc.pedirIntRango("?", 0, 7);
             switch (menu) {
                 case 0:
                     repetir = false;
@@ -143,19 +142,22 @@ public class menus {
                     gsMat.crearMatricula();
                     break;
                 case 2:
-                    gsMat.qualificar();
+                    gsMat.eliminarMatricula();
                     break;
                 case 3:
-                    gsMat.modificarNotas();
+                    gsMat.qualificar();
                     break;
                 case 4:
-                    gsMat.mostrarModuloAlumno();
+                    gsMat.modificarNotas();
                     break;
                 case 5:
+                    gsMat.mostrarModuloAlumno();
+                    break;
+                case 6:
                     int id = gsAl.getIDConNIA();
                     gsMat.mostrarModulosAlumno(id);
                     break;
-                case 6:
+                case 7:
                     gsMat.mostrarCentro();
                     break;
                 default:
@@ -165,18 +167,19 @@ public class menus {
         }
     }
 
-    public void crearTablas() {
+    private void crearTablas() {
         gsAl.createTable();
         gsMod.createTable();
         gsMat.createTable();
     }
     
-    public void importar() {
+    private void importar() {
         gsAl.importTable();
         gsMod.importTable();
         gsMat.importTable();
     }
-    public void exportar() {
+    
+    private void exportar() {
         gsAl.exportTable();
         gsMod.exportTable();
         gsMat.exportTable();
