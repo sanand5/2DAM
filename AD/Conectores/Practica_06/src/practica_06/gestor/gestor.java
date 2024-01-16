@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -28,30 +28,39 @@ public class gestor {
     ReadClient rc = new ReadClient();
     Conexion conexion = new Conexion();
 
-    public void executeUpdate(String query) {
-        try (Connection connection = conexion.getConnection()) {
-            // Check if the connection is successful
-            if (connection != null) {
+    public boolean testConexion() {
+        try {
+            Connection connection = conexion.getConnection();
+            if (connection != null && !connection.isClosed()) {
+                Colors.okMsg("¡Conexión exitosa!");
+                return true;
+            } else {
+                Colors.errMsg("La conexión está cerrada o es nula.");
 
-                // Execute the provided SQL query
+            }
+        } catch (SQLException e) {
+            Colors.errMsg("No se ha podido conectar a la base de datos");
+        }
+        return false;
+    }
+
+    protected void executeUpdate(String query) {
+        try (Connection connection = conexion.getConnection()) {
+            if (connection != null) {
                 try (PreparedStatement statement = connection.prepareStatement(query)) {
                     statement.executeUpdate();
                 }
             } else {
-                Colors.errMsg("Failed to connect to the database.");
+                Colors.errMsg("No se ha podido conectar a la base de datos");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Colors.errMsg("Imposible hacer la consulta");
         } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // Close the connection when done
-            conexion.closeConnection();
+            Colors.errMsg("Error inesperado");
         }
     }
-
-    // TODO Si no encunetra devuelve?
-    public <T> T select(String select, String from, String where, Class<T> returnType, Object... params) {
+    
+    protected <T> T select(String select, String from, String where, Class<T> returnType, Object... params) {
         String query = "SELECT " + select + " FROM " + from + " WHERE " + where;
         T result = null;
 
@@ -65,13 +74,13 @@ public class gestor {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Colors.errMsg("Imposible hacer la consulta");
         }
 
         return result;
     }
 
-    public ResultSet executeSelect(String query, Object... params) {
+    protected ResultSet executeSelect(String query, Object... params) {
         try {
             Connection connection = conexion.getConnection();
             if (connection != null) {
@@ -82,10 +91,35 @@ public class gestor {
                 return statement.executeQuery();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Colors.errMsg("Imposible hacer la consulta");
+        } catch (Exception e) {
+            Colors.errMsg("Error inesperado");
         }
-// TODO cerrar conexion
         return null;
+    }
+
+    protected void createTable(String tableName, String queryMYSQL, String queryPOSTGRESQL) {
+        DatabaseType databaseType = Conexion.getDataBaseType();
+        if (!tableExists(tableName)) {
+            Colors.debMsg("Tabla " + tableName + " creada.");
+            String createTableQuery = "";
+
+            if (databaseType == DatabaseType.MYSQL) {
+                createTableQuery = queryMYSQL.formatted(tableName);
+            } else if (databaseType == DatabaseType.POSTGRESQL) {
+                createTableQuery = queryPOSTGRESQL;
+            }
+            executeUpdate(createTableQuery);
+        }
+    }
+
+    protected String getTitulo(String tableName) {
+        String titulo = String.format("##### LISTA DE %s EN DB : %s #####%n", tableName.toUpperCase(), Conexion.DB);
+        String subrallado = "";
+        for (int i = 2; i < titulo.length(); i++) {
+            subrallado += "#";
+        }
+        return titulo + subrallado;
     }
 
     protected void write(String path, String datos) {
@@ -98,14 +132,15 @@ public class gestor {
             }
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
                 writer.write(datos);
-                System.out.println("Datos escritos con éxito en el archivo: " + path);
+                Colors.okMsg("Datos escritos con éxito en el archivo: " + path);
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Error al escribir en el archivo: " + path);
+            Colors.errMsg("Nop de ha podido escribir en el archivo: " + path);
+        } catch (Exception e) {
+            Colors.errMsg("Error inesperado");
         }
     }
-    
+
     protected ArrayList<String> read(String path) {
         ArrayList<String> lines = new ArrayList<>();
 
@@ -122,43 +157,39 @@ public class gestor {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
             Colors.errMsg("El archivo no se ha podido leer: " + path);
+        } catch (Exception e) {
+            Colors.errMsg("Error inesperado");
         }
         return lines;
     }
-    
-    protected boolean tableExists(String tableName) {
-    DatabaseType databasetype = Conexion.getDataBaseType();
-    String query;
-    
-    if (null == databasetype) {
-        Colors.errMsg("Tipo de base de datos no compatible.");
-        return false;
-    } else {
-        switch (databasetype) {
-            case MYSQL:
-                query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = '%s'", tableName);
-                break;
-            case POSTGRESQL:
-                query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_name = '%s'", tableName);
-                break;
-            default:
-                Colors.errMsg("Tipo de base de datos no compatible.");
-                return false;
-        }
 
-        try (ResultSet resultSet = executeSelect(query)) {
-            resultSet.next();
-            return resultSet.getInt(1) > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
+    protected boolean tableExists(String tableName) {
+        DatabaseType databasetype = Conexion.getDataBaseType();
+        String query;
+
+        if (null == databasetype) {
+            Colors.errMsg("Tipo de base de datos no compatible.");
             return false;
+        } else {
+            switch (databasetype) {
+                case MYSQL:
+                    query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = '%s'", tableName);
+                    break;
+                case POSTGRESQL:
+                    query = String.format("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'public' AND table_name = '%s'", tableName);
+                    break;
+                default:
+                    Colors.errMsg("Tipo de base de datos no compatible.");
+                    return false;
+            }
+            try (ResultSet resultSet = executeSelect(query)) {
+                resultSet.next();
+                return resultSet.getInt(1) > 0;
+            } catch (SQLException e) {
+                Colors.errMsg("Error en la ejecución.");
+                return false;
+            }
         }
     }
 }
-
-}
-/* TODO
- * Gestionar lo de abstract
-*/

@@ -7,6 +7,7 @@ package practica_06.gestor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import practica_06.utilidades.Colors;
 
 /**
  *
@@ -14,28 +15,20 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
-    final static String URL = "jdbc:postgresql://192.168.0.36/10813358";
-    //final static String URL = "jdbc:mysql://localhost/10813358_";
+    //final static String URL = "jdbc:postgresql://localhost/";
+    final static String URL = "jdbc:mysql://localhost/";
+    final static String DB = "10813358";
     final static String USER = "10813358";
     final static String PASSWORD = "10813358";
     Connection con = null;
 
     public Connection getConnection() {
         try {
-            con = DriverManager.getConnection(URL, USER, PASSWORD);
+            con = DriverManager.getConnection(URL+DB, USER, PASSWORD);
         } catch (SQLException e) {
-            e.getMessage();
+            Colors.errMsg("No se ha podido realizar la conexión correctamente");
         }
         return con;
-    }
-    
-    public void closeConnection() {
-        try {
-            con.close();
-            con = null;
-        } catch (SQLException e) {
-            e.getMessage();
-        }
     }
     
     public enum DatabaseType {
@@ -52,8 +45,4 @@ public class Conexion {
         }
         return databasetype;
     }
-    
-    
-    
-
 }
