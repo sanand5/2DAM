@@ -644,6 +644,7 @@ El metodo `write()` tiene como parametros la ruta de el fichero y los datos, est
 El metodo `read()` tiene como parametros la ruta de el fichero, y añade cada fila de el fichero a un ``ArrayList`` de ``string`` para devolverlo.
 
 Por último el metodo `getTitulo` convierte el texto introducido como parametro a un texto con un poco mas de formato.
+
 ### gsAlumnos
 La clase ``gsAlumnos`` extiende la funcionalidad de la clase ``gestor`` y se centra en la gestión de operaciones relacionadas con alumnos en una base de datos.
 
@@ -666,20 +667,23 @@ El metodo `baja()` llama a la funcion ``getIDConNIA()`` i luego elimina ese id l
 
 El metodo `mostrarAlumnos()` imprime los alumnos de el centro creando una query para seleccionar todos los alumnos, llama a la funcion `super.getTitulo()` e imprime el resultado y llamando a la funcion `executeSelect()` obtiene un ``ResultSet`` para sacar toda la informacion de cada alumno he imprime por pantalla.
 
-1. - [x] `createTable()`
-2. - [x] `encontrarID()`
-3. - [x] `comprobarNia()`
-4. - [x] `pedirNia()`
-5. - [x] `getIDConNIA()`
-6. - [x] `insertAlumno()`
-7. - [x] `dropAlumno()`
-8. - [x] `alta()`
-9. - [x] `baja()`
-10. - [x] `mostrarAlumnos()`
-11. - [ ] `exportTable()`
-12. - [ ] `importTable()`
+El metodo `importTable()` guarda en un Arraylist de Strings la llamada de la funcion `super.read()` pasandole como parametro la variable constant (``ALUMNOSPATH`) de la ruta de el archivo donde se encuentran los datos de los alumnos definida al principio de la clase, luego separa los campos y compruba si existe el alumno conla funcion `encontrarID()`, si el alumno existe se actualizan los datos, sino se añaden.
+
+Por último el metodo `exporTable()` llama a la funcion `executeSelect()` para obtener los datos de toda la tabla, luego con ese ResultSet se obtienen los valores de cada fila i se van añadiendo con un formato separado por ";" a un String para luego llamar a la funcion `super.write()` pasandole la ``ALUMNOSPATH`` y el string. 
 
 ### gsModulos
+La clase ``gsModulos`` extiende la funcionalidad de la clase ``gestor`` y se centra en la gestión de operaciones relacionadas con modulos en una base de datos. Sus metodos son similares a los de la clase alumnos por eso mencionare los metodos que tiene y explicare aquellos que cambien un poco.
+Los metodos de esta clase son los siguientes:
+1. `createTable()`
+2. `pedirIDconNombre()`
+3. `encontrarIDconNombre()`
+4. `insertModulo()`
+5. `dropModulo()`
+6. `alta()`
+7. `baja()`
+8. `mostrarModulos()`
+9. `exportTable()`
+10. `importTable()`
 
 ### gsMatriculas
 
