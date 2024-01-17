@@ -1,0 +1,4 @@
+{"_id": {"$oid": "65a6ad2ee2e721475d0d40e4"}, "nombre": "1", "apellido": "1", "dni": "1"}
+{"_id": {"$oid": "65a6afe382bba6608240667b"}, "nombre": "RAUL", "apellido": "RAUL", "dni": "8"}
+{"_id": {"$oid": "65a6b494f24b79316192e384"}, "nombre": "2", "apellido": "2", "dni": "2"}
+{"_id": {"$oid": "65a6bb152ef9c67cd22e296a"}, "nombre": "7", "apellido": "7", "dni": "7"}

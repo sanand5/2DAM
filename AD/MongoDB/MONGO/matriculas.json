@@ -1,0 +1,2 @@
+{"_id": {"$oid": "65a6ad42e2e721475d0d40e6"}, "alumno_dni": "1", "modulo_codigo": "1", "fecha_matriculacion": {"$date": "1999-12-31T23:00:00Z"}}
+{"_id": {"$oid": "65a6b4a7f24b79316192e386"}, "alumno_dni": "2", "modulo_codigo": "2", "fecha_matriculacion": {"$date": "2023-01-15T23:00:00Z"}}
