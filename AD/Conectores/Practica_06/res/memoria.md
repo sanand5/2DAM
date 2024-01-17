@@ -5,12 +5,10 @@
 Modifica el programa anterior para que, utlitzant varis connectors, puga almacenar l'informació a diverses Base de Dades
 
 ## Para que
-
 Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de los conectores. También ha sido beneficioso para adquirir conocimientos sobre bases de datos, ya que fue necesario ejecutar varias consultas. En mi experiencia, la dificultad de este programa reside en las consultas i la gestion de poderse conectar a otras bases de datos ademas de  la variabilidad en la sintaxis SQL entre distintas bases de datos. En resumen, la actividad fue útil para comprender mejor el funcionamiento de conectores, así como para aprender a realizar consultas, entre otros aspectos.
 
 ## Pseudocodigo
 ### Conexion
-    ```
     Enumeración DatabaseType:
         MYSQL
         POSTGRESQL
@@ -37,9 +35,7 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
             Sino, si URL contiene "mysql":
                 databasetype -> MYSQL
             Devolver databasetype
-    ```
 ### gestor
-    ```
     Clase gestor:
         Crear una instancia de ReadClient llamada rc
         Crear una instancia de Conexion llamada conexion
@@ -161,9 +157,7 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
                 Capturar SQLException:
                     Mensaje de error
                     Devolver falso
-    ```
 ### gsAlumnos
-    ```
     Clase gsAlumnos extiende gestor:
 
         Crear una instancia de ReadClient llamada rc
@@ -232,10 +226,7 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
         Función dropAlumno con parámetro id:
             Construir las queries para eliminar el alumno de las matrículas y de la tabla de alumnos
             Llamar a executeUpdate con ambas querys
-
-    ```
 ### gsModulos
-    ```
     Clase gsModulo extiende gestor:
 
         Crear una instancia de ReadClient llamada rc
@@ -295,10 +286,7 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
         Función insertModulo con parámetro modulo:
             Construir la query de inserción con el nombre proporcionado
             Llamar a executeUpdate con la query
-
-    ```
 ### gsMatriculas
-    ```
     Clase gsMatriculas extiende gestor:
 
         Crear una instancia de ReadClient llamada rc
@@ -508,10 +496,7 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
         Función dropMatricula con parámetro matrID:
             Definir la consulta SQL para eliminar la matrícula con el ID proporcionado
             Llamar a super.executeUpdate con la consulta SQL
-
-    ```
 ### menus
-    ```
     Clase menus:
 
         Crear una instancia de ReadClient llamada rc
@@ -626,18 +611,13 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
             Llamar a gsAl.exportTable
             Llamar a gsMod.exportTable
             Llamar a gsMat.exportTable
-
-    ```
 ### Practica_06
-    ```
     Clase Practica_06:
-
         Función main:
             Crear una instancia de gestor llamada gs
             Si gs.testConexion es verdadero:
                 Crear una instancia de menus llamada menu
                 Llamar a menu.mainMenu
-    ```
 
 ## Como
 ### Conexion
@@ -646,11 +626,58 @@ Esta clase está diseñada para gestionar la conexión a una base de datos. Con 
 ### gestor
 La clase Gestor está diseñada para facilitar la gestión de operaciones en una base de datos, integrando funcionalidades para realizar conexiones, ejecutar consultas SQL, crear y verificar tablas, así como leer y escribir datos en archivos. Utiliza la clase Conexion para establecer conexiones JDBC con la base de datos.
 
-El método testConexion() verifica la conexión a la base de datos, mostrando mensajes de éxito o error. Para eso creamos un objeto Connection y llamo a la ``conexion.getConnection()`` y creamos otro objeto del tipo `PreparedStatement` para  prepara la sentencia SQL especificada en la cadena ``query`` para su ejecución. Este objeto proporciona métodos para establecer valores en los parámetros de la sentencia y ejecutarla de manera eficiente. El uso de ``PreparedStatement`` mejora la compatibilidad con diferentes bases de datos. La mayoría de los controladores JDBC están diseñados para trabajar con sentencias SQL preparadas, lo que facilita la portabilidad de la aplicación entre diferentes sistemas de gestión de bases de datos (DBMS).
+El método `testConexion()` verifica la conexión a la base de datos, mostrando mensajes de éxito o error. Para eso creamos un objeto Connection y llamo a la funcion `conexion.getConnection()`.
 
-Los métodos executeUpdate() y executeSelect() ejecutan consultas SQL de actualización y selección, respectivamente. La clase también incluye un método genérico select() para obtener un valor específico de la base de datos.
+El metodo executeUpdate() crea una conexion y otro objeto del tipo `PreparedStatement` para  prepara la sentencia SQL especificada en la cadena `query` (que es el String de la consulta SQL que tiene la funcion como parametro) para su ejecución. Este objeto proporciona métodos para establecer valores en los parámetros de la sentencia y ejecutarla de manera eficiente. El uso de `PreparedStatement` mejora la compatibilidad con diferentes bases de datos. La mayoría de los controladores JDBC están diseñados para trabajar con sentencias SQL preparadas, lo que facilita la portabilidad de la aplicación entre diferentes sistemas de gestión de bases de datos (Database Management System, DBMS). Finalemnte se ejecuta la consulta con la funcion `executeUpdate()` de el objeto `PreparedStatement`.
 
+El metodo `executeSelect()` es similar al anterior, pero como parametros tiene el String de la consulta y una lista de Objetos. Se crea una conexión y un `PreparedStatement` pero ademas de eso se añaden al `PreparedStatement` los objetos de la lista, con un bucle que va añadiendo todos los parametros al `PreparedStatement` mediante la función `setObject(int, Object)`. Esta función requiere la posición del parámetro que se debe modificar y el objeto que se debe colocar en dicho parámetro. Es común utilizar el carácter '?' en la consulta SQL para indicar los lugares donde se insertarán los parámetros, y luego sustituir esos marcadores de posición por los objetos deseados, asignándoles valores secuenciales comenzando desde 1, siendo el primer parámetro en la posición 1 al realizar una consulta de inserción. Por ultimo despues de tener todos los parametros substituidos ejecutamos `executeQuery()`, otro metodo de el `PreparedStatement`, este metodo nos devuele un `ResultSet`,  que es una tabla de datos que representa un conjunto de resultados de la base de datos, este `ResultSet` tambien lo debvuelve la funcíon `executeSelect`.
+
+El metodo `select()` se usa para simplificar la funcion `executeSelect()`, esta funcion toma como referencia un select y pide el contenido de ella por separado, es decir si la sintaxis de un select es la siguiente `SELECT ... FROM ... WHERE ...`, esta funcion pide como parametros en contenido de el Select, el contenido de el From y el contenido de el Where, tambien tiene como parametro una clase, para saber que tipo de parametro debe devolver y una lista de objetos, para pasarsela a la funcion `executeSelect()`. La funcion `select()`, crea una query con los tres parametros principales, e inicializa una variable resultado a null, llama a `executeSelect()` pasandole como parametros la query y la lista de objetos. El resultado de esa funcion lo guarda en un `ResultSet`.
+Luego se comprueba si ha devuelto algo la funcion con un ``if`` que tiene como condicion la funcion ``next()`` del `ResultSet`, este metodo mueve el cursor hacia delante una fila desde su posición actual. Inicialmente se coloca un cursor antes de la primera fila por eso debemos llamar a la función y esta funcion devuelve true si la nueva fila actual es válida, si no hay más filas o no hay devuelve false, por tanto si no hubiera ningun resultado de la consulta devolveriamos null, por otra parte si existiera un resultado, comprobariamos que tipo de objeto se espera que se devuelva i llamamos a la respectiva funcion de para obtener ese objeto de la clase ``ResultSet``.
+
+El metodo tableExists() tiene como parametros la tabla que se va a comprobar si existe y devuelve un booleano segun si existe o no. Segun en tipo de base de datos que te quieras conectar ejecuta una consulta con `executeSelect()` para saber si existe o no y devuelve el resultado del ``ResultSet``.
+
+El metodo ``createTable()`` tiene como parametros, el nombre de la tabla, la consulta en MySQL y la consulta en POSTGRESQL. Primero comprueba si la tabla no existe, si es así comprueba que tipo de base de datos estas utilizando i llama a `executeUpdate()` con la consulta de el tipo de base de datos.
+
+El metodo `write()` tiene como parametros la ruta de el fichero y los datos, esta funcion sobreescribe los datos de de un fichero, ademas de gestionar si existe o no.
+
+El metodo `read()` tiene como parametros la ruta de el fichero, y añade cada fila de el fichero a un ``ArrayList`` de ``string`` para devolverlo.
+
+Por último el metodo `getTitulo` convierte el texto introducido como parametro a un texto con un poco mas de formato.
 ### gsAlumnos
+La clase ``gsAlumnos`` extiende la funcionalidad de la clase ``gestor`` y se centra en la gestión de operaciones relacionadas con alumnos en una base de datos.
+
+El metodo `createTable()`, define dos consultas para crear la tabla de alumnos, define el nombre de la tabla i llama a la funcion `createTable()` de gestor.
+
+El metodo `encontrarID()` tiene como parametros el nia i llama a la funcion ``select()`` de la clase superior y si el resultado de el select es ``null`` devuelve ``-1``
+
+El metodo `comprobarNia()` ya esta explicado en la practica anterior.
+El metodo `pedirNia()` ya esta explicado en la practica anterior.
+
+El metodo `getIDConNIA()` llama a la funcion ``pedirNia()`` y con el nia llama a la funcion `encontrarID()` y devuelve el id.
+
+El metodo `insertAlumno()` tiene como parametros los datos de el alumno (nombre, apellidos, fecha de nacimiento y nia), y con esos datos crea una query para insertar el alumno y llama a la función `executeUpdate()` de el padre.
+
+El metodo `dropAlumno()` tiene como parametro el id del alumno y crea dos querys para eliminar el alumno que tenga ese id y la matricula que tenga tambien ese id de alumno.
+
+El metodo `alta()` pide los datos del alumno al usuario y llama a la funcion ``insertAlumno()``
+
+El metodo `baja()` llama a la funcion ``getIDConNIA()`` i luego elimina ese id llamando a la función ``dropAlumno()``.
+
+El metodo `mostrarAlumnos()` imprime los alumnos de el centro creando una query para seleccionar todos los alumnos, llama a la funcion `super.getTitulo()` e imprime el resultado y llamando a la funcion `executeSelect()` obtiene un ``ResultSet`` para sacar toda la informacion de cada alumno he imprime por pantalla.
+
+1. - [x] `createTable()`
+2. - [x] `encontrarID()`
+3. - [x] `comprobarNia()`
+4. - [x] `pedirNia()`
+5. - [x] `getIDConNIA()`
+6. - [x] `insertAlumno()`
+7. - [x] `dropAlumno()`
+8. - [x] `alta()`
+9. - [x] `baja()`
+10. - [x] `mostrarAlumnos()`
+11. - [ ] `exportTable()`
+12. - [ ] `importTable()`
 
 ### gsModulos
 
@@ -661,7 +688,7 @@ Los métodos executeUpdate() y executeSelect() ejecutan consultas SQL de actuali
 ### Practica_06
 
 ## Conclusión
-En conclusión, considero que esta actividad ha sido interesante y ha contribuido significativamente a mejorar mis habilidades de programación con conectores y bases de datos. El uso de nuevas funciones para acceder y modificar la base de datos desde mi programa ha ampliado mi comprensión y destrezas en este ámbito. A lo largo de la actividad, he descubierto algunas funciones que no conocía como la ``enumeración anidada`` en java.
+En conclusión, considero que esta actividad ha sido interesante y ha contribuido significativamente a mejorar mis habilidades de programación con conectores y bases de datos. El uso de nuevas funciones para acceder y modificar la base de datos desde mi programa ha ampliado mi comprensión y destrezas en este ámbito. A lo largo de la actividad, he descubierto algunas funciones que no conocía como la `enumeración anidada` en java.
 
 La práctica de diferentes consultas ha sido beneficiosa y ha reforzado mi conocimiento en el manejo de bases de datos. Además, me intriga conocer las diferentes aproximaciones que mis compañeros han tomado para abordar esta actividad, ya que estoy consciente de que hay varias formas de implementarla. Consultar a mis amigos y obtener explicaciones sobre sus enfoques podría proporcionarme valiosas perspectivas y aprender nuevas técnicas.
 
