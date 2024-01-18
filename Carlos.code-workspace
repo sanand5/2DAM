@@ -1,20 +1,22 @@
 {
 	"folders": [
 		{
-			"name": "PSP",
-			"path": "PSP"
+			"path": "AD/MongoDB/Practica_07"
 		},
 		{
-			"name": "AD",
-			"path": "AD"
-		},
-		{
-			"name": "res",
-			"path": "res"
+			"path": "AD/MongoDB/MONGO"
 		},
 		{
 			"path": "AD/Conectores/Practica_06"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.project.sourcePaths": [
+			"src"
+		],
+		"java.project.outputPath": "bin",
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar"
+		]
+	}
 }

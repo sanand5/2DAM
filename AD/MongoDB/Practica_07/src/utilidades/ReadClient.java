@@ -161,7 +161,7 @@ public class ReadClient {
         for (String opcion : opciones) {
             joiner.add(opcion);
         }
-        String mensaje = msg + " " + "(" + joiner.toString() + " )"; 
+        String mensaje = msg + " " + "(" + joiner.toString() + "):"; 
         do {
             opcionSeleccionada = pedirString(mensaje, false);
             for (String opcion : opciones) {

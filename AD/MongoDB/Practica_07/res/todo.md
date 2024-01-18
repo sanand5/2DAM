@@ -1,7 +1,7 @@
 # TODO
 ## Alumnos
-- [ ] Crear alumno
-  - [ ] Comprobar que el nia no existe
+- [x] Crear alumno
+  - [x] Comprobar que el nia no existe
   - [x] Insetar alumno
 - [ ] Eliminar Alumno
   - [ ] Eliminar matriculas
