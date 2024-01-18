@@ -7,7 +7,8 @@ public class App {
     public static void main(String[] args) {
         Gestor gs = new Gestor();
         alumnos al = new alumnos();
-        al.baja();
+        al.alta();
+        al.mostrarAlumnos();
         //gs.fun();
     }
 }

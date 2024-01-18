@@ -27,20 +27,12 @@ public class alumnos extends Gestor {
         super.eliminarDocumento(collection, "nia", nia);
     }
 
-    public String encontrarID(String nia) {
-        Document filtro = new Document("nia", nia);
-        FindIterable<Document> fr = realizarConsultaMongoDB(collection, filtro);
-        if (fr != null) {
-            Document document = fr.first();
-            if (document != null) {
-                return document.getObjectId("_id").toString();
-            }
-        }
-        return null;
+    public String getID(String nia) {
+        return super.getID("nia", nia, collection);
     }
 
     public boolean comprobarAlumno(String nia) {
-        return encontrarID(nia) != null;
+        return getID(nia) != null;
     }
 
     /**
@@ -81,17 +73,33 @@ public class alumnos extends Gestor {
         System.out.printf("Nombre completo: %s %s %nFecha de nacimiento: %s%nNia: %s%n%n", nombre, apellidos, fecha, nia);
 
         String opcion = rc.pedirOpcion("Quieres dar de alta al alumno", "s", "n");
-        if (opcion == "s") {
-            
-        } else {
+        if (opcion.equals("s")) {
             insertAlumno(nombre, apellidos, fecha, nia);
+        } else {
+            Colors.warMsg("Se ha cancelado la operación");
         }
     }
 
     public void baja() {
         String nia = pedirNIA(true);
         if (!nia.equals("0")) {
-            deleteAlumno(nia);
+            String opcion = rc.pedirOpcion("Seguro que quieres elilminar el alumno", "s", "n");
+            if (opcion.equals("s")) {
+                deleteAlumno(nia);
+            } else {
+                Colors.warMsg("Se ha cancelado la operación");
+            }
+        }
+    }
+
+    public void mostrarAlumnos() {
+        FindIterable<Document> fr = realizarConsultaMongoDB(collection, new Document());
+        for (Document doc : fr) {
+            String nia = doc.getString("nia");
+            String nombre = doc.getString("nombre");
+            String apellidos = doc.getString("apellidos");
+            String fecha = doc.getString("fecha");
+            System.out.printf("%s : %s %s, %s%n", nia, nombre, apellidos, fecha);
         }
     }
 }

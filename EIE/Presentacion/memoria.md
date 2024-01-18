@@ -226,8 +226,73 @@ La creació i gestió empresarial implica reconèixer les qualitats de l'emprene
 En conjunt, cada aspecte explicat contribueix a la textura complexa del camí cap a la creació i manteniment d'una empresa pròspera i sostenible en l'actual panorama empresarial.
 
 # Tema 5
+## Introducció
+A l'hora de crear una empresa, la decisió sobre la forma jurídica és crucial. Un exemple és la responsabilitat dels deutes. En cas de fallida, un emprenedor podria haver de respondre amb el seu patrimoni personal. La elecció de la forma jurídica, com empresari individual, SA, SL o cooperativa, determinarà aquesta responsabilitat. És un factor a tenir en compte en la decisió, ja que afecta directament la protecció del patrimoni personal de l'emprenedor.
 
+## Tipus d’empreses
+Les empreses es classifiquen segons diversos criteris. En funció de la naturalesa dels productes o serveis, hi ha empreses industrials (que transformen matèries primeres), comercials (que venen productes ja fabricats) i de serveis (que ofereixen activitats o serveis). Les empreses informàtiques podrien classificar-se com empreses de serveis.
 
+En funció de la dimensió, les empreses poden ser micro (menys de 10 treballadors i facturació ≤ 2M€), xicotetes (menys de 50 treballadors i facturació ≤ 10M€), mitjanes (menys de 250 treballadors i facturació ≤ 50M€) i grans (≥ 250 treballadors i/o facturació ≥ 50M€). La majoria a València són micro i xicotetes empreses.
+
+En funció de la personalitat jurídica, hi ha empreses amb personalitat jurídica (societats mercantils o cooperatives) i sense (empresaris individuals, comunitats de bens, societats civils). Les primeres tenen personalitat independent, mentre que les segones estan vinculades al patrimoni dels propietaris amb responsabilitat il·limitada.
+
+## Obligació de cotitzar per part de l’empresari treballador
+L'empresari que treballa a la seva pròpia empresa ha de cotitzar a la Seguretat Social. Si és soci d'una societat no autònoma, cotitza pel Règim General; si és autònom, ho fa pel Règim Especial d'Autònoms. La cotització es calcula com a quota = Base de cotització * Tipus impositiu. Els autònoms poden triar una base de cotització dins d'uns límits.
+
+Des de 2013, existeix una tarifa plana per als autònoms, actualment al voltant de 60€, que abans només es podia aplicar als menors de 30 anys. Aquesta tarifa només s'aplica als nous autònoms i ha de complir certs requisits. Les quantitats de reducció varien durant els primers 36 mesos, amb opcions per a diferents grups i situacions.
+
+Cal destacar que aquesta tarifa plana està sent revisada pel govern, amb la possibilitat de canviar-la per una cotització basada en els ingressos reals dels autònoms. Això podria afectar els autònoms amb ingressos elevats, amb la intenció de reflectir millor la seva situació financera.
+
+## Eleccions de la forma jurídica********
+Especial de la Seguretat Social o mantenir-se en el règim de la Seguretat Social 
+general.
+
+o Tenen dret a participar en la gestió i direcció de l'empresa a través de 
+l'assemblea general, poden ser elegits com a membres del consell rector i 
+tenen dret a expressar la seva opinió i votar en les decisions importants de 
+l'empresa.
+
+o Reben una part dels excedents nets de l'empresa (no considerats com 
+beneficis) en forma de retorn cooperatiu, que és una retribució que 
+correspon als socis pel seu treball i participació en l'activitat de la 
+cooperativa.
+
+o En cas de la Societat Cooperativa de Treball Associat (CTA), si un soci treballador 
+deixa la cooperativa, pot sol·licitar la capitalització de l'atur, que li permet utilitzar 
+la prestació per desocupació per finançar la seva participació en la cooperativa o 
+altres formes d'inversió.
+
+o Tenen dret a ser informats sobre els aspectes rellevants de l'empresa i a 
+participar activament en les decisions que afecten la cooperativa.
+## Formes jurídiques*****
+En aquest text, es parla sobre diferents formes jurídiques d'empreses, com empresari individual, comunitats de béns i societats civils. A continuació, es resumeixen els punts principals:
+
+### Empresari Individual
+- És una persona física amb capacitat legal que realitza de manera habitual una activitat comercial, industrial o professional.
+- Respon amb tots els seus béns pel compliment de les obligacions de l'empresa.
+- No té personalitat jurídica pròpia i tributa pel IRPF.
+- Avantatges: Senzillesa en la creació, gestió unipersonal, tràmits simplificats.
+- Desavantatges: Responsabilitat il·limitada.
+
+### Empresari de Responsabilitat Limitada
+- És una figura per a empresaris individuals que volen limitar la responsabilitat sobre la seva vivenda habitual.
+- Requereix complir amb condicions com comparèixer davant notari, inscriure's al Registre Mercantil, entre altres.
+- La responsabilitat limitada afecta només la vivenda habitual.
+
+### Comunitats de Béns
+- No tenen personalitat jurídica pròpia.
+- Forma senzilla per a diverses persones que volen iniciar una activitat en comú.
+- La responsabilitat és il·limitada, i els socis responen amb tot el seu patrimoni.
+- Tributen per l'IRPF en règim d'atribució de rendes.
+
+### Societats Civils
+- Diferenciació entre societats civils amb i sense caràcter mercantil des de 2016.
+- Amb caràcter mercantil: Responsabilitat il·limitada, tributen per l'Impost de Societats, obligades a dur comptabilitat normalitzada.
+- Sense caràcter mercantil: Poden tenir o no personalitat jurídica pròpia, tributen per l'IRPF en règim d'atribució de rendes.
+- Els socis poden ser industrials (aporten treball) o capitalistes (aporten capital).
+- Formes d'administració: administrador únic, administradors mancomunats, administradors solidaris.
+
+Aquestes formes jurídiques tenen avantatges i desavantatges específics, i la elecció depèn de factors com la naturalesa del negoci, la responsabilitat que es vol assumir i altres consideracions legals i fiscals.
 
 
 

@@ -40,4 +40,16 @@ public class Gestor {
         }
         return null;
     }
+
+    public String getID(String nombreAtributo, String atributo, String collection) {
+        Document filtro = new Document(nombreAtributo, atributo);
+        FindIterable<Document> fr = realizarConsultaMongoDB(collection, filtro);
+        if (fr != null) {
+            Document document = fr.first();
+            if (document != null) {
+                return document.getObjectId("_id").toString();
+            }
+        }
+        return null;
+    }
 }
