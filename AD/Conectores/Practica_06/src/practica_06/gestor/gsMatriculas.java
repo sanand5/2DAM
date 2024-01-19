@@ -322,6 +322,7 @@ public class gsMatriculas extends gestor {
         if (sel != null) {
             res = sel;
         }
+        
         return res;
     }
 

@@ -9,8 +9,8 @@ public class Conexion {
     final static String PASSWORD = "10813358";
     final static String IP = "10.0.219.21";
     final static String PORT = "27017";
-    final static String URL = String.format("mongodb://%s:%s@%s:%s/", USER, PASSWORD, IP, PORT);
-    //final static String URL = "mongodb://localhost:27017/";
+    //final static String URL = String.format("mongodb://%s:%s@%s:%s/", USER, PASSWORD, IP, PORT);
+    final static String URL = "mongodb://localhost:27017/";
 
     private static MongoClient mongoClient;
 

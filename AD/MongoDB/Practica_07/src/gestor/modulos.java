@@ -8,8 +8,9 @@ import com.mongodb.client.FindIterable;
 import utilidades.Colors;
 import utilidades.ReadClient;
 
+
 public class modulos extends Gestor {
-    final String collection = "modulos";
+    final static String collection = "modulos";
     ReadClient rc = new ReadClient();
 
     public void insertModulo(String nombre) {
@@ -20,7 +21,7 @@ public class modulos extends Gestor {
     }
 
     public void deleteModulo(String nombre) {
-        super.eliminarDocumento(collection, "nombre", nombre);
+        super.eliminarDocumento(collection, new Document("nombre", nombre));
     }
 
     public void alta() {
@@ -46,7 +47,7 @@ public class modulos extends Gestor {
         }
     }
 
-    public String getID(String nombre) {
+    public ObjectId getID(String nombre) {
         return super.getID("nombre", nombre, collection);
     }
 
@@ -54,19 +55,17 @@ public class modulos extends Gestor {
         return getID(nombre) != null;
     }
 
-    public String pedirNombre(boolean exist) {
+    protected String pedirNombre(boolean exist) {
         String nombre;
         String cancel = exist ? ", 0 para salir" : "";
         String errMsg = exist ? "El modulo no existe." : "El modulo ya existe.";
 
         do {
-            nombre = rc.pedirString("Modulo del alumno" + cancel + ": ", false);
+            nombre = rc.pedirString("Nombre modulo" + cancel + ": ", false);
             if (nombre.equals("0") && exist == true) {
                 break;
             }
-            if (!nombre.matches("\\d+") || Integer.parseInt(nombre) <= 0) {
-                Colors.errMsg("NIA inválido. Debe ser un número positivo sin letras.");
-            } else if ((exist && !comprobarModulo(nombre)) || (!exist && comprobarModulo(nombre))) {
+            if ((exist && !comprobarModulo(nombre)) || (!exist && comprobarModulo(nombre))) {
                 Colors.errMsg(errMsg);
             }
 
@@ -80,7 +79,9 @@ public class modulos extends Gestor {
         for (Document doc : fr) {
             cont++;
             String nombre = doc.getString("nombre");
-            System.out.printf("%d.- %s%n",cont, nombre);
+            System.out.printf("%d.- %s%n", cont, nombre);
         }
     }
+    
+    
 }

@@ -10,7 +10,7 @@ import utilidades.ReadClient;
 import org.bson.Document;
 
 public class alumnos extends Gestor {
-    final String collection = "alumnos";
+    final static String collection = "alumnos";
     ReadClient rc = new ReadClient();
 
     public void insertAlumno(String nombre, String apellidos, String fecha, String nia) {
@@ -24,10 +24,10 @@ public class alumnos extends Gestor {
     }
 
     public void deleteAlumno(String nia) {
-        super.eliminarDocumento(collection, "nia", nia);
+        super.eliminarDocumento(collection, new Document("nia", nia));
     }
 
-    public String getID(String nia) {
+    public ObjectId getID(String nia) {
         return super.getID("nia", nia, collection);
     }
 
