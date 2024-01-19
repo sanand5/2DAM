@@ -11,6 +11,7 @@ import utilidades.ReadClient;
 
 public class modulos extends Gestor {
     public final static String collection = "modulos";
+    public final static String path = "res/modulos.json";
     ReadClient rc = new ReadClient();
 
     public void insertModulo(String nombre) {
@@ -25,32 +26,42 @@ public class modulos extends Gestor {
     }
 
     public void alta() {
-        String nombre = pedirNombre(false);
-        String opcion = rc.pedirOpcion("Quieres dar de alta al modulo", "s", "n");
-        if (opcion.equals("s")) {
-            insertModulo(nombre);
-        } else {
-            Colors.warMsg("Se ha cancelado la operación");
-        }
-
-    }
-    
-    public void baja() {
-        matriculas matr = new matriculas();
-        String nombre = pedirNombre(true);
-        if (!nombre.equals("0")) {
-            String opcion = rc.pedirOpcion("Seguro que quieres elilminar el modulo", "s", "n");
+        try{
+            String nombre = pedirNombre(false);
+            String opcion = rc.pedirOpcion("Quieres dar de alta al modulo", "s", "n");
             if (opcion.equals("s")) {
-                ObjectId id = getID(nombre);
-                FindIterable<Document> fr = super.realizarConsultaMongoDB(matriculas.collection, new Document("idmodulo", id));
-                for (Document doc : fr) {
-                    ObjectId matrId = doc.getObjectId("_id");
-                    matr.deleteMatricula(matrId);
-                }
-                deleteModulo(nombre);
+                insertModulo(nombre);
+                Colors.okMsg("Se a dado de alta el modulo");
             } else {
                 Colors.warMsg("Se ha cancelado la operación");
             }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+        }
+    }
+    
+    public void baja() {
+        try {
+            matriculas matr = new matriculas();
+            String nombre = pedirNombre(true);
+            if (!nombre.equals("0")) {
+                String opcion = rc.pedirOpcion("Seguro que quieres elilminar el modulo", "s", "n");
+                if (opcion.equals("s")) {
+                    ObjectId id = getID(nombre);
+                    FindIterable<Document> fr = super.realizarConsultaMongoDB(matriculas.collection, new Document("idmodulo", id));
+                    for (Document doc : fr) {
+                        ObjectId matrId = doc.getObjectId("_id");
+                        matr.deleteMatricula(matrId);
+                    }
+                    Colors.okMsg("Se han eliminado todas las matriculas con ese modulo");
+                    deleteModulo(nombre);
+                    Colors.okMsg("Se a dado de baja el modulo");
+                } else {
+                    Colors.warMsg("Se ha cancelado la operación");
+                }
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
@@ -81,24 +92,33 @@ public class modulos extends Gestor {
     }
 
     public void mostrarModulos() {
-        FindIterable<Document> fr = realizarConsultaMongoDB(collection, new Document());
-        int cont = 0;
-        for (Document doc : fr) {
-            cont++;
-            String nombre = doc.getString("nombre");
-            System.out.printf("%d.- %s%n", cont, nombre);
+        try {
+            FindIterable<Document> fr = realizarConsultaMongoDB(collection, new Document());
+            int cont = 0;
+            for (Document doc : fr) {
+                cont++;
+                String nombre = doc.getString("nombre");
+                System.out.printf("%d.- %s%n", cont, nombre);
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
     public void modificar() {
-        System.out.println("Intrduce primero el nombre antiguo");
-        String nombre = pedirNombre(true);
-        System.out.println("Intrduce el nuevo nombre");
-        String nuevo = pedirNombre(false);
-        if (nombre != null && nuevo != null) {
-            super.updateDocumento(alumnos.collection, new Document("nombre", nombre), new Document("nombre", nuevo));
+        try {
+            System.out.println("Intrduce primero el nombre antiguo");
+            String nombre = pedirNombre(true);
+            System.out.println("Intrduce el nuevo nombre");
+            String nuevo = pedirNombre(false);
+            if (nombre != null && nuevo != null) {
+                super.updateDocumento(modulos.collection, new Document("nombre", nombre),
+                        new Document("nombre", nuevo));
+                Colors.okMsg("Se a modificado nombre del modulo");
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
-    
     
 }

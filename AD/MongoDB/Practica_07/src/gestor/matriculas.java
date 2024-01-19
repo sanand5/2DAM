@@ -14,6 +14,7 @@ import utilidades.ReadClient;
 
 public class matriculas extends Gestor {
     public final static String collection = "matriculas";
+    public final static String path = "res/matriculas.json";
     ReadClient rc = new ReadClient();
     alumnos al = new alumnos();
     modulos mod = new modulos();
@@ -34,7 +35,7 @@ public class matriculas extends Gestor {
     public ObjectId encontrarIDconIDs(ObjectId alumnoID, ObjectId moduloID) {
         try {
             Document filtro = new Document("idAlumno", alumnoID).append("idmodulo", moduloID);
-            ObjectId id = super.getAtribute(collection, filtro, collection, ObjectId.class)
+            ObjectId id = super.getAtribute(collection, filtro, "_id", ObjectId.class);
             return id;
         } catch (Exception e) {
             System.err.println("Error al conectar a MongoDB: " + e.getMessage());
@@ -44,19 +45,16 @@ public class matriculas extends Gestor {
 
     public ObjectId[] obtenerIds(boolean exist) {
         do {
-            ObjectId alumno = al.getID(al.pedirNIA(exist));
-
+            ObjectId alumno = al.getID(al.pedirNIA(true));
             if (alumno != null) {
-                ObjectId modulo = mod.getID(mod.pedirNombre(exist));
-
+                ObjectId modulo = mod.getID(mod.pedirNombre(true));
                 if (modulo != null) {
                     ObjectId id = encontrarIDconIDs(alumno, modulo);
-
-                    if ((exist && id == null) || (!exist && id != null)) {
+                    if ((exist && id != null) || (!exist && id == null)) {
                         return new ObjectId[] { id, alumno, modulo };
                     } else {
-                        Colors.errMsg(exist ? "La matrícula ya existe. Introduce otros datos."
-                                : "La matrícula no existe. Introduce otros datos.");
+                        Colors.errMsg(exist ? "La matrícula no existe. Introduce otros datos."
+                                : "La matrícula ya existe. Introduce otros datos.");
                     }
                 } else {
                     Colors.warMsg("Se ha cancelado la operación de módulo");
@@ -70,16 +68,46 @@ public class matriculas extends Gestor {
     }
 
     public void crearMatricula() {
-        ObjectId[] ids = obtenerIds(true);
-        if (ids[1] != null && ids[2] != null) {
-            insertMatricula(ids[1], ids[2], null);
+        try {
+            while (true) {
+                ObjectId[] ids = obtenerIds(true);
+                ObjectId matrID = ids[0];
+                if (ids[1] != null && ids[2] != null) {
+                    if (matrID == null) {
+                        insertMatricula(ids[1], ids[2], null);
+                        Colors.okMsg("Se ha matriculado al alumno");
+                        break;
+                    } else {
+                        Colors.errMsg("El alumno no esta matriculado en este modulo.");
+                    }
+                } else {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
+
     }
 
     public void eliminarMatricula() {
-        ObjectId id = obtenerIds(true)[0];
-        if (id != null) {
-            deleteMatricula(id);
+        try {
+            while (true) {
+                ObjectId[] ids = obtenerIds(true);
+                ObjectId matrID = ids[0];
+                if (ids[1] != null && ids[2] != null) {
+                    if (matrID != null) {
+                        deleteMatricula(matrID);
+                        break;
+                    } else {
+                        Colors.errMsg("El alumno no esta matriculado en este modulo.");
+                    }
+                } else {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
@@ -108,13 +136,29 @@ public class matriculas extends Gestor {
     }
 
     public void modificarNotas() {
-        ObjectId[] ids = obtenerIds(true);
-        ObjectId matrID = ids[0];
-        String notas = modNotas(matrID);
-        Document filtro = new Document("_id", matrID);
-        Document update = new Document("$set", new Document("notas", notas));
-        super.updateDocumento(collection, filtro, null);
-        
+        try {
+            while (true) {
+
+                ObjectId[] ids = obtenerIds(true);
+                ObjectId matrID = ids[0];
+                if (ids[1] != null && ids[2] != null) {
+                    if (matrID != null) {
+                        String notas = modNotas(matrID);
+                        Document filtro = new Document("_id", matrID);
+                        Document update = new Document("notas", notas);
+                        super.updateDocumento(collection, filtro, update);
+                        Colors.okMsg("Se han modificado las notas del alumno");
+                        break;
+                    } else {
+                        Colors.errMsg("El alumno no esta matriculado en este modulo.");
+                    }
+                } else {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+        }
     }
 
     public String notasToString(List<Double> notasArrayList) {
@@ -122,35 +166,38 @@ public class matriculas extends Gestor {
         for (Double nota : notasArrayList) {
             result.append(nota).append("#");
         }
-        result.deleteCharAt(result.length() - 1);
+        if (result.length() > 0) {
+            result.deleteCharAt(result.length() - 1);
+        }
         return result.toString();
     }
 
     public String modNotas(ObjectId matrID) {
         Double[] notas = getNotas(matrID);
-        List<Double> notasArrayList = Arrays.asList(notas);
+        ArrayList<Double> notasArrayList = new ArrayList<>(Arrays.asList(notas));
 
         while (true) {
             System.out.println("\t0.- Salir");
-            mostrarNotas(notas);
+            mostrarNotas(notasArrayList.toArray(Double[]::new));
             int posAñadir = notas.length + 1;
             System.out.println("\t" + posAñadir + ".- Para añadir");
-            int pos = rc.pedirIntRango("Que nota quieres modificar: ", 0, notas.length);
-            double nota = rc.pedirDoublePositivo("Nota: ");
+            int pos = rc.pedirIntRango("Que nota quieres modificar: ", 0, posAñadir);
             if (pos == 0) {
                 break;
             }
+            double nota = rc.pedirDoubleRango("Nota: ", 0, 10);
             if (pos == posAñadir) {
                 notasArrayList.add(nota);
             } else {
-                notasArrayList.set(pos, nota);
+                notasArrayList.set(pos-1, nota);
             }
         }
         return notasToString(notasArrayList);
     }
 
     public void mostrarFormato(ObjectId alumnoid, ObjectId moduloid, Double[] notas) {
-        String alumno = super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "nia", String.class) + " : ";
+        String alumno = super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "nia", String.class)
+                + " : ";
         alumno += super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "nombre", String.class) + " ";
         alumno += super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "apellidos", String.class);
         String modulo = super.getAtribute(modulos.collection, new Document("_id", moduloid), "nombre", String.class);
@@ -159,32 +206,37 @@ public class matriculas extends Gestor {
     }
 
     public void mostrarNotasModulo() {
-        ObjectId[] ids = obtenerIds(true);
-        Double[] notas = getNotas(ids[0]);
-        mostrarFormato(ids[1], ids[2], notas);
-        
+        try {
+            ObjectId[] ids = obtenerIds(true);
+            Double[] notas = getNotas(ids[0]);
+            mostrarFormato(ids[1], ids[2], notas);
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+        }
     }
 
     public void mostrarAlumno() {
-        String nia = al.pedirNIA(true);
-        if (nia != null) {
-            ObjectId idAlumno = al.getID(nia);
-            FindIterable<Document> fr = super.realizarConsultaMongoDB(collection, new Document("idAlumno", idAlumno));
-            if (fr != null) {
-                for (Document doc : fr) {
-                    ObjectId alumnoid = doc.getObjectId("idAlumno");
-                    ObjectId moduloid = doc.getObjectId("idmodulo");
-                    String notasString = doc.getString("notas");
-                    Double[] notas = notasDouble(notasString);
-                    mostrarFormato(alumnoid, moduloid, notas);
-                    
+        try {
+            String nia = al.pedirNIA(true);
+            if (nia != null) {
+                ObjectId idAlumno = al.getID(nia);
+                FindIterable<Document> fr = super.realizarConsultaMongoDB(collection,
+                        new Document("idAlumno", idAlumno));
+                if (fr != null) {
+                    for (Document doc : fr) {
+                        ObjectId alumnoid = doc.getObjectId("idAlumno");
+                        ObjectId moduloid = doc.getObjectId("idmodulo");
+                        String notasString = doc.getString("notas");
+                        Double[] notas = notasDouble(notasString);
+                        mostrarFormato(alumnoid, moduloid, notas);
+                    }
                 }
             }
-
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
-
     }
-    
+
     public void mostrarCentro() {
         try {
             FindIterable<Document> fr = super.realizarConsultaMongoDB(collection, new Document());
@@ -196,13 +248,13 @@ public class matriculas extends Gestor {
                 mostrarFormato(alumnoid, moduloid, notas);
             }
         } catch (Exception e) {
-            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
     public void mostrarNotas(Double[] notas) {
         for (int i = 0; i < notas.length; i++) {
-            System.out.printf("\t%d.- %d%n", i + 1, notas[i]);
+            System.out.printf("\t%d.- %.2f%n", i + 1, notas[i]);
         }
     }
 

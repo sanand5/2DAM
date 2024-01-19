@@ -1,0 +1,8 @@
+{"_id": {"$oid": "65a9a1aae461044723f8216f"}, "nombre": "AD"}
+{"_id": {"$oid": "65a9a1fa6d8563086a24323a"}, "nombre": "Historia"}
+{"_id": {"$oid": "65a9a24db52ea035bdedf9f3"}, "nombre": "Biología"}
+{"_id": {"$oid": "65a9a28e43c3fe045b4a3e19"}, "nombre": "Química"}
+{"_id": {"$oid": "65a9a2ce8e048404e991f4f4"}, "nombre": "Geografía"}
+{"_id": {"$oid": "65a9a318b6c88204a6a9c21f"}, "nombre": "Inglés"}
+{"_id": {"$oid": "65a9a35e2e208903b9d0f17d"}, "nombre": "Educación Física"}
+{"_id": {"$oid": "65a9a3a36d0b9e06ebe2c9e0"}, "nombre": "Arte"}

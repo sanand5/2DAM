@@ -3,13 +3,18 @@ package gestor;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import utilidades.Colors;
+import utilidades.ReadClient;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.function.Function;
 import java.nio.file.Files;
 
 import org.bson.Document;
@@ -18,33 +23,27 @@ import org.bson.types.ObjectId;
 public class Gestor {
     
     public <T> void insertarDocumento(String nombreColeccion, T documento) {
-        try {
+        
             MongoDatabase database = Conexion.getConexion();
             MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
             collection.insertOne(documento);
-        } catch (Exception e) {
-            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
-        }
+        
     }
 
     public <T> void eliminarDocumento(String nombreColeccion, Document filtro) {
-        try {
+        
             MongoDatabase database = Conexion.getConexion();
             MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) Document.class);
             collection.deleteOne(filtro);
-        } catch (Exception e) {
-            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
-        }
+        
     }
 
     public <T> void updateDocumento(String nombreColeccion, Document filtro, T documento) {
-        try {
+        
             MongoDatabase database = Conexion.getConexion();
             MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
             collection.updateOne(filtro, new Document("$set", documento));
-        } catch (Exception e) {
-            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
-        }
+        
     }
 
     public FindIterable<Document> realizarConsultaMongoDB(String nombreColeccion, Document filtro) {
@@ -59,7 +58,6 @@ public class Gestor {
         return null;
     }
 
-    //Nose si el nombre es el correcto
     public <T> T getAtribute(String nombreColeccion, Document filtro, String nombreAtributo, Class<T> tipoResultado) {
         FindIterable<Document> fr = realizarConsultaMongoDB(nombreColeccion, filtro);
         T resObject = null;
@@ -99,8 +97,9 @@ public class Gestor {
                     fileWriter.write(document.toJson() + "\n");
                 }
             }
+            Colors.okMsg("Datos exportados correctamente a " + path);
         } catch (IOException e) {
-            e.printStackTrace();
+            Colors.errMsg("Imposible exportar datos");
         }
     }
 
@@ -114,10 +113,44 @@ public class Gestor {
             MongoCollection<Document> collection = database.getCollection(collectionName);
             Files.lines(Paths.get(path)).forEach(line -> {
                 Document document = Document.parse(line);
-                collection.insertOne(document);
+                ObjectId id = getAtribute(collectionName, new Document("_id", document.getObjectId("_id")), "_id",
+                        ObjectId.class);
+                if (id == null) {
+                    collection.insertOne(document);
+                } else {
+                    updateDocumento(collectionName, new Document("_id", id), document);
+                }
             });
+            Colors.okMsg("Datos importados correctamente de " + path);
         } catch (IOException e) {
-            e.printStackTrace();
+            Colors.errMsg("Imposible importar datos");
         }
+    }
+    
+    public static void crearTablas() {
+        try {
+            MongoDatabase database = Conexion.getConexion();
+            crearTablaSiNoExiste(database, "alumnos");
+            crearTablaSiNoExiste(database, "modulos");
+            crearTablaSiNoExiste(database, "matriculas");
+        } catch (Exception e) {
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
+        }
+    }
+
+    private static void crearTablaSiNoExiste(MongoDatabase database, String tablaNombre) {
+        if (!existeTabla(database, tablaNombre)) {
+            database.createCollection(tablaNombre);
+            Colors.okMsg("Tabla '" + tablaNombre + "' creada.");
+        }
+    }
+
+    private static boolean existeTabla(MongoDatabase database, String tablaNombre) {
+        for (String existingCollection : database.listCollectionNames()) {
+            if (existingCollection.equals(tablaNombre)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

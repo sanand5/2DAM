@@ -1,13 +1,18 @@
-import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoDatabase;
+
+import gestor.Conexion;
 import gestor.Gestor;
-import gestor.alumnos;
-import gestor.matriculas;
-import gestor.modulos;
+import utilidades.Colors;
 
 public class App {
 
     public static void main(String[] args) {
-        menus menus = new menus();
-        menus.mainMenu();
+        if (Conexion.testConexion()) {
+            Gestor.crearTablas();
+            menus menus = new menus();
+            menus.mainMenu();
+        } else {
+            System.out.println(Colors.RED_ANSI + "No se ha podido iniciar la conexion, revisa la conexión." + Colors.RESET_ANSI);
+        }
     }
 }

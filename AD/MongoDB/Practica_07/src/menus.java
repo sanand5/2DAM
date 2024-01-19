@@ -101,6 +101,7 @@ public class menus {
                 case 7:
                     System.out.println("Introduce primero el nuevo nia del alumno");
                     String nia = gsAl.pedirNIA(false);
+                    System.out.println("Introduce el nia antiguo del alumno");
                     gsAl.modificar("nia", nia);
                     break;
 
@@ -122,7 +123,7 @@ public class menus {
                     (2) Baja
                     (3) Listar
                     (4) Modificar Nombre""");
-            menu = rc.pedirIntRango("?", 0, 3);
+            menu = rc.pedirIntRango("?", 0, 4);
             switch (menu) {
                 case 0:
                     repetir = false;
@@ -192,10 +193,22 @@ public class menus {
     }
 
     public void exportar() {
-        gsAl.exportar();
+        try {
+            gs.export(alumnos.collection, alumnos.path);
+            gs.export(modulos.collection, modulos.path);
+            gs.export(matriculas.collection, matriculas.path);
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+        }
     }
     
     public void importar() {
-        gsAl.importar();
+        try {
+            gs.importar(alumnos.collection, alumnos.path);
+            gs.importar(modulos.collection, modulos.path);
+            gs.importar(matriculas.collection, matriculas.path);
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+        }
     }
 }

@@ -69,66 +69,76 @@ public class alumnos extends Gestor {
     }
 
     public void alta() {
-        String nombre = rc.pedirString("Nombre de el alumno: ", false);
-        String apellidos = rc.pedirString("Apellidos de el alumno: ", false);
-        int dia = rc.pedirIntRango("Dia nacimiento de el alumno: ", 1, 31);
-        int mes = rc.pedirIntRango("Mes nacimiento de el alumno: ", 1, 12);
-        int ano = rc.pedirIntRango("Año nacimiento de el alumno: ", 1900, 2024);
-        String nia = pedirNIA(false);
-        String fecha = String.format("%02d/%02d/%d", dia, mes, ano);
-        System.out.println("Resumen de los datos:\n");
-        System.out.printf("Nombre completo: %s %s %nFecha de nacimiento: %s%nNia: %s%n%n", nombre, apellidos, fecha, nia);
-
-        String opcion = rc.pedirOpcion("Quieres dar de alta al alumno", "s", "n");
-        if (opcion.equals("s")) {
-            insertAlumno(nombre, apellidos, fecha, nia);
-        } else {
-            Colors.warMsg("Se ha cancelado la operación");
+        try {
+            String nombre = rc.pedirString("Nombre de el alumno: ", false);
+            String apellidos = rc.pedirString("Apellidos de el alumno: ", false);
+            int dia = rc.pedirIntRango("Dia nacimiento de el alumno: ", 1, 31);
+            int mes = rc.pedirIntRango("Mes nacimiento de el alumno: ", 1, 12);
+            int ano = rc.pedirIntRango("Año nacimiento de el alumno: ", 1900, 2024);
+            String nia = pedirNIA(false);
+            String fecha = String.format("%02d/%02d/%d", dia, mes, ano);
+            System.out.println("Resumen de los datos:\n");
+            System.out.printf("Nombre completo: %s %s %nFecha de nacimiento: %s%nNia: %s%n%n", nombre, apellidos, fecha,
+                    nia);
+            String opcion = rc.pedirOpcion("Quieres dar de alta al alumno", "s", "n");
+            if (opcion.equals("s")) {
+                insertAlumno(nombre, apellidos, fecha, nia);
+                Colors.okMsg("Se a dado de alta el alumno :)");
+            } else {
+                Colors.warMsg("Se ha cancelado la operación");
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
     public void baja() {
-        matriculas matr = new matriculas();
-        String nia = pedirNIA(true);
-        if (!nia.equals("0")) {
-            String opcion = rc.pedirOpcion("Seguro que quieres elilminar el alumno", "s", "n");
-            if (opcion.equals("s")) {
+        try {
+
+            matriculas matr = new matriculas();
+            String nia = pedirNIA(true);
+            if (!nia.equals("0")) {
                 ObjectId id = getID(nia);
-                FindIterable<Document> fr = super.realizarConsultaMongoDB(matriculas.collection, new Document("idAlumno", id));
+                FindIterable<Document> fr = super.realizarConsultaMongoDB(matriculas.collection,
+                        new Document("idAlumno", id));
                 for (Document doc : fr) {
                     ObjectId matrId = doc.getObjectId("_id");
                     matr.deleteMatricula(matrId);
                 }
+                Colors.okMsg("Se han eliminado todas las matriculas con ese alumno");
                 deleteAlumno(nia);
-            } else {
-                Colors.warMsg("Se ha cancelado la operación");
+                Colors.okMsg("Se a dado de baja el alumno :()");
             }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
+
         }
     }
 
     public void mostrarAlumnos() {
-        FindIterable<Document> fr = realizarConsultaMongoDB(collection, new Document());
-        for (Document doc : fr) {
-            String nia = doc.getString("nia");
-            String nombre = doc.getString("nombre");
-            String apellidos = doc.getString("apellidos");
-            String fecha = doc.getString("fecha");
-            System.out.printf("%s : %s %s, %s%n", nia, nombre, apellidos, fecha);
+        try {
+            FindIterable<Document> fr = realizarConsultaMongoDB(collection, new Document());
+            for (Document doc : fr) {
+                String nia = doc.getString("nia");
+                String nombre = doc.getString("nombre");
+                String apellidos = doc.getString("apellidos");
+                String fecha = doc.getString("fecha");
+                System.out.printf("%s : %s %s, %s%n", nia, nombre, apellidos, fecha);
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
     }
 
     public void modificar(String atributo, String valor) {
-        String nia = pedirNIA(true);
-        if (nia != null && valor != null) {
-            super.updateDocumento(alumnos.collection, new Document("nia", nia), new Document("atributo", valor));
+        try {
+            String nia = pedirNIA(true);
+            if (nia != null && valor != null) {
+                super.updateDocumento(alumnos.collection, new Document("nia", nia), new Document(atributo, valor));
+                Colors.okMsg(String.format("Se a modificado '%s' del alumno", atributo));
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectar a MongoDB.");
         }
-    }
-
-    public void exportar() {
-        super.export(collection, path);
-    }
-
-    public void importar() {
-        super.importar(collection, path);
     }
 }

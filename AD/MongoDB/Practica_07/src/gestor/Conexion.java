@@ -3,6 +3,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
+import utilidades.Colors;
+
 public class Conexion {
     final static String DB = "10813358";
     final static String USER = "10813358";
@@ -19,6 +21,18 @@ public class Conexion {
             mongoClient = MongoClients.create(URL);
         }
         return mongoClient.getDatabase(DB);
+    }
+
+    public static boolean testConexion() {
+        try {
+            MongoClient mongoClient = MongoClients.create(URL);
+            MongoDatabase database = mongoClient.getDatabase(DB);
+            database.listCollectionNames().first();
+            return true;
+        } catch (Exception e) {
+            Colors.errMsg("Imposible conectare a MongoDB");
+            return false;
+        }
     }
 
     public static void cerrarConexion() {
