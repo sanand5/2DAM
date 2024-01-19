@@ -1,5 +1,3 @@
-import com.mongodb.client.MongoDatabase;
-
 import gestor.Conexion;
 import gestor.Gestor;
 import utilidades.Colors;
