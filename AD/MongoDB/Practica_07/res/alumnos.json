@@ -1,0 +1,3 @@
+{"_id": {"$oid": "65a8e9f504d3de52f23d3faf"}, "nombre": "Andreu", "apellidos": "Sanz Sanz", "fecha": "12/12/2004", "nia": "10813358"}
+{"_id": {"$oid": "65a8f986e875f2716c2c552e"}, "nombre": "1", "apellidos": "1", "fecha": "01/01/1900", "nia": "10813359"}
+{"_id": {"$oid": "65a8f9c948272629d501fe21"}, "nombre": "1", "apellidos": "1", "fecha": "01/01/2004", "nia": "1111"}

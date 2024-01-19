@@ -3,14 +3,21 @@ package gestor;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 import utilidades.Colors;
 import utilidades.ReadClient;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.bson.Document;
 
 public class alumnos extends Gestor {
-    final static String collection = "alumnos";
+    public final static String collection = "alumnos";
+    public final static String path = "res/alumnos.json";
     ReadClient rc = new ReadClient();
 
     public void insertAlumno(String nombre, String apellidos, String fecha, String nia) {
@@ -81,10 +88,17 @@ public class alumnos extends Gestor {
     }
 
     public void baja() {
+        matriculas matr = new matriculas();
         String nia = pedirNIA(true);
         if (!nia.equals("0")) {
             String opcion = rc.pedirOpcion("Seguro que quieres elilminar el alumno", "s", "n");
             if (opcion.equals("s")) {
+                ObjectId id = getID(nia);
+                FindIterable<Document> fr = super.realizarConsultaMongoDB(matriculas.collection, new Document("idAlumno", id));
+                for (Document doc : fr) {
+                    ObjectId matrId = doc.getObjectId("_id");
+                    matr.deleteMatricula(matrId);
+                }
                 deleteAlumno(nia);
             } else {
                 Colors.warMsg("Se ha cancelado la operación");
@@ -101,5 +115,20 @@ public class alumnos extends Gestor {
             String fecha = doc.getString("fecha");
             System.out.printf("%s : %s %s, %s%n", nia, nombre, apellidos, fecha);
         }
+    }
+
+    public void modificar(String atributo, String valor) {
+        String nia = pedirNIA(true);
+        if (nia != null && valor != null) {
+            super.updateDocumento(alumnos.collection, new Document("nia", nia), new Document("atributo", valor));
+        }
+    }
+
+    public void exportar() {
+        super.export(collection, path);
+    }
+
+    public void importar() {
+        super.importar(collection, path);
     }
 }

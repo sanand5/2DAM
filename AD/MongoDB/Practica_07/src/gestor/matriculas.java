@@ -13,7 +13,7 @@ import utilidades.Colors;
 import utilidades.ReadClient;
 
 public class matriculas extends Gestor {
-    final static String collection = "matriculas";
+    public final static String collection = "matriculas";
     ReadClient rc = new ReadClient();
     alumnos al = new alumnos();
     modulos mod = new modulos();
@@ -83,8 +83,7 @@ public class matriculas extends Gestor {
         }
     }
 
-    private Double[] getNotas(ObjectId matrID) {
-        String notasString = getAtribute(collection, new Document("_id", matrID), "notas", String.class);
+    public Double[] notasDouble(String notasString) {
         if (notasString != null && !"null".equals(notasString) && !"".equals(notasString)) {
             String notasActuales[] = notasString.split("#");
             Double[] notas = new Double[notasActuales.length];
@@ -101,6 +100,11 @@ public class matriculas extends Gestor {
         } else {
             return new Double[0];
         }
+    }
+
+    private Double[] getNotas(ObjectId matrID) {
+        String notasString = getAtribute(collection, new Document("_id", matrID), "notas", String.class);
+        return notasDouble(notasString);
     }
 
     public void modificarNotas() {
@@ -143,6 +147,57 @@ public class matriculas extends Gestor {
             }
         }
         return notasToString(notasArrayList);
+    }
+
+    public void mostrarFormato(ObjectId alumnoid, ObjectId moduloid, Double[] notas) {
+        String alumno = super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "nia", String.class) + " : ";
+        alumno += super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "nombre", String.class) + " ";
+        alumno += super.getAtribute(alumnos.collection, new Document("_id", alumnoid), "apellidos", String.class);
+        String modulo = super.getAtribute(modulos.collection, new Document("_id", moduloid), "nombre", String.class);
+        System.out.println(alumno + " - " + modulo);
+        mostrarNotas(notas);
+    }
+
+    public void mostrarNotasModulo() {
+        ObjectId[] ids = obtenerIds(true);
+        Double[] notas = getNotas(ids[0]);
+        mostrarFormato(ids[1], ids[2], notas);
+        
+    }
+
+    public void mostrarAlumno() {
+        String nia = al.pedirNIA(true);
+        if (nia != null) {
+            ObjectId idAlumno = al.getID(nia);
+            FindIterable<Document> fr = super.realizarConsultaMongoDB(collection, new Document("idAlumno", idAlumno));
+            if (fr != null) {
+                for (Document doc : fr) {
+                    ObjectId alumnoid = doc.getObjectId("idAlumno");
+                    ObjectId moduloid = doc.getObjectId("idmodulo");
+                    String notasString = doc.getString("notas");
+                    Double[] notas = notasDouble(notasString);
+                    mostrarFormato(alumnoid, moduloid, notas);
+                    
+                }
+            }
+
+        }
+
+    }
+    
+    public void mostrarCentro() {
+        try {
+            FindIterable<Document> fr = super.realizarConsultaMongoDB(collection, new Document());
+            for (Document doc : fr) {
+                ObjectId alumnoid = doc.getObjectId("idAlumno");
+                ObjectId moduloid = doc.getObjectId("idmodulo");
+                String notasString = doc.getString("notas");
+                Double[] notas = notasDouble(notasString);
+                mostrarFormato(alumnoid, moduloid, notas);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
+        }
     }
 
     public void mostrarNotas(Double[] notas) {
