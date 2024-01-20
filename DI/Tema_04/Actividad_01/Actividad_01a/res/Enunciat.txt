@@ -1,0 +1,3 @@
+Necesario visualizar y seguir los pasos de los videos 2 y 3.
+
+Adicionalmente diseña una aplicación más donde se encuentren dos ventanas, dos botones y comunicación entre ellas, para así demostrar aquello aprendido en el video.

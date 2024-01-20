@@ -1,49 +1,44 @@
 package gestor;
 
-
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import utilidades.Colors;
-import utilidades.ReadClient;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.function.Function;
 import java.nio.file.Files;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Gestor {
-    
+
     public <T> void insertarDocumento(String nombreColeccion, T documento) {
-        
-            MongoDatabase database = Conexion.getConexion();
-            MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
-            collection.insertOne(documento);
-        
+
+        MongoDatabase database = Conexion.getConexion();
+        MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
+        collection.insertOne(documento);
+
     }
 
     public <T> void eliminarDocumento(String nombreColeccion, Document filtro) {
-        
-            MongoDatabase database = Conexion.getConexion();
-            MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) Document.class);
-            collection.deleteOne(filtro);
-        
+
+        MongoDatabase database = Conexion.getConexion();
+        MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) Document.class);
+        collection.deleteOne(filtro);
+
     }
 
     public <T> void updateDocumento(String nombreColeccion, Document filtro, T documento) {
-        
-            MongoDatabase database = Conexion.getConexion();
-            MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
-            collection.updateOne(filtro, new Document("$set", documento));
-        
+
+        MongoDatabase database = Conexion.getConexion();
+        MongoCollection<T> collection = database.getCollection(nombreColeccion, (Class<T>) documento.getClass());
+        collection.updateOne(filtro, new Document("$set", documento));
+
     }
 
     public FindIterable<Document> realizarConsultaMongoDB(String nombreColeccion, Document filtro) {
@@ -126,28 +121,28 @@ public class Gestor {
             Colors.errMsg("Imposible importar datos");
         }
     }
-    
-    public static void crearTablas() {
+
+    public static void crearCollections() {
         try {
             MongoDatabase database = Conexion.getConexion();
-            crearTablaSiNoExiste(database, "alumnos");
-            crearTablaSiNoExiste(database, "modulos");
-            crearTablaSiNoExiste(database, "matriculas");
+            crearCollectionSiNoExiste(database, "alumnos");
+            crearCollectionSiNoExiste(database, "modulos");
+            crearCollectionSiNoExiste(database, "matriculas");
         } catch (Exception e) {
             System.err.println("Error al conectar a MongoDB: " + e.getMessage());
         }
     }
 
-    private static void crearTablaSiNoExiste(MongoDatabase database, String tablaNombre) {
-        if (!existeTabla(database, tablaNombre)) {
-            database.createCollection(tablaNombre);
-            Colors.okMsg("Tabla '" + tablaNombre + "' creada.");
+    private static void crearCollectionSiNoExiste(MongoDatabase database, String collectionNombre) {
+        if (!existeCollection(database, collectionNombre)) {
+            database.createCollection(collectionNombre);
+            Colors.okMsg("Colección '" + collectionNombre + "' creada.");
         }
     }
 
-    private static boolean existeTabla(MongoDatabase database, String tablaNombre) {
+    private static boolean existeCollection(MongoDatabase database, String collectionNombre) {
         for (String existingCollection : database.listCollectionNames()) {
-            if (existingCollection.equals(tablaNombre)) {
+            if (existingCollection.equals(collectionNombre)) {
                 return true;
             }
         }

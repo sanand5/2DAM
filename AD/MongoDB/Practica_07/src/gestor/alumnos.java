@@ -3,15 +3,9 @@ package gestor;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 import utilidades.Colors;
 import utilidades.ReadClient;
-
-import java.io.FileWriter;
-import java.io.IOException;
 
 import org.bson.Document;
 
