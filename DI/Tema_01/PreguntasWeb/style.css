@@ -1,0 +1,11 @@
+ body {
+     font-family: 'Calibri', sans-serif;
+ }
+ 
+ .respuesta-incorrecta {
+     color: red;
+ }
+
+ .respuesta-correcta {
+     color: green;
+ }

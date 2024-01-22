@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "glb9AWqDuvHpf8ZzU4TMfk5MraxYQCYo88Lg3QLsy2GizcIkrqBZDR6GAJxA0dTF3gaa1ivnfXPztsMwTFeIIA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\andre\\Documents\\2DAM\\DI\\1raAVA\\Tema1\\VisualStudio\\Actividad_14\\Actividad_14.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
