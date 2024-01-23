@@ -4,6 +4,9 @@
  */
 package gestionclientes.gui;
 
+import gestionclientes.dto.Cliente;
+import java.util.Date;
+
 /**
  *
  * @author andre
@@ -13,8 +16,11 @@ public class DialogoAlta extends javax.swing.JDialog {
     /**
      * Creates new form DialogoAlta
      */
+    PantallaPrincipal pantallaPrincipal;
+    
     public DialogoAlta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        pantallaPrincipal = (PantallaPrincipal)parent;
         initComponents();
     }
 
@@ -132,6 +138,10 @@ public class DialogoAlta extends javax.swing.JDialog {
 
     private void jButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAltaActionPerformed
         // TODO add your handling code here:
+        pantallaPrincipal.anadirCliente(new Cliente(jTextFieldNombre.getText(), 
+                jTextFieldApellidos.getText(), 
+                (Date) jSpinnerFechaAlta.getValue(), 
+                (String) jComboBoxProvincia.getSelectedItem()));
         dispose();
     }//GEN-LAST:event_jButtonAltaActionPerformed
 

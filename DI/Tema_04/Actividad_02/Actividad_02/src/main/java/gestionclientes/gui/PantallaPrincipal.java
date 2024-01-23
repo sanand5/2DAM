@@ -4,6 +4,9 @@
  */
 package gestionclientes.gui;
 
+import gestionclientes.dto.Cliente;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author andre
@@ -15,6 +18,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     public PantallaPrincipal() {
         initComponents();
+        inicializarTabla();
+    }
+    
+    private void inicializarTabla() {
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(new String[] {"Nombre","Apellidos","Fecha Alta","Provincia"});
+        jTableClientes.setModel(dtm);
+    }
+    
+    public void anadirCliente(Cliente cliente) {
+        DefaultTableModel dtm = (DefaultTableModel)jTableClientes.getModel();
+        dtm.addRow(cliente.toArrayString());
     }
 
     /**
@@ -67,8 +82,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
