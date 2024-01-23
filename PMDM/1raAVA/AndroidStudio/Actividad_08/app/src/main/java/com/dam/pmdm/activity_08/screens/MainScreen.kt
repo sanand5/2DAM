@@ -1,6 +1,7 @@
 package com.dam.pmdm.activity_08.screens
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -32,7 +32,6 @@ import com.dam.pmdm.activity_08.navigation.AppScreens
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-
 fun MainScreen(navController: NavController): Unit {
         BodyContent(navController)
 }
@@ -41,8 +40,7 @@ fun BodyContent(navController: NavController){
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .fillMaxHeight()
-            .background(Color.White),
+            .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ){
@@ -50,14 +48,12 @@ fun BodyContent(navController: NavController){
             Text(
                 text = stringResource(R.string.brand),
                 fontSize = 40.sp,
-                color = Color.Red,
                 )
         }
-        item { 
+        item {
             Text(text = stringResource(id = R.string.slogan),
                 fontSize = 30.sp,
                 fontStyle = FontStyle.Italic,
-                color = Color.Black
             )
         }
         item { Spacer(modifier = Modifier.height(16.dp)) }
@@ -78,10 +74,9 @@ fun BodyContent(navController: NavController){
                     navController.navigate(route = AppScreens.RegistrationScreen.route+ "/t")
                 },
                 modifier = Modifier
-                    .height(35.dp) // Altura deseada para el botón
-                    .width(200.dp) // Ancho deseado para el botón
-                    .clip(RoundedCornerShape(8.dp)) // Establece el borde redondeado
-                    .background(MaterialTheme.colorScheme.primary)
+                    .height(50.dp) // Altura deseada para el botón
+                    .width(200.dp), // Ancho deseado para el botón
+                shape = RoundedCornerShape(8.dp),
             ) {
                 Text(
                     text = stringResource(id = R.string.log_txt),
