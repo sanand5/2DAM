@@ -66,14 +66,5 @@ En general, me ha parecido interesante descubrir como desarrollar una idea muy b
 
 </div>
 
-# TODO
-- [x] Pasar a fichers
-  - [x] Fun pull, comprobar que si no te el format correcte no dona error
-  - [x] Segurament estiga mal lo de el hasNextLine, perque com no es pot tirar arrere si faig dos pull seguits petara
-  - [x] Comprobar perque va soles amb la ruta absoluta
-- [x] Canviar la lectura del usuario a readClient
-- [x] Hacer que ignore las mayusculas
-- [c] utilizar lo de el timeout
-- [x] si quiero volver a preguntar
-- [x] gestionar que no escriba null en el fichero
-- [ ] Comprobar que funciona en visual
+## Fedback
+Lo mas importante del programa es definir el protocolo, es decir que envia cada uno de ellos y cuando y que espera recibir cada uno de ellos en cada momento. Como se implementa ese intercambio de mensajes, ese protocolo, aunque lo has de explicar, tiene mucho menos peso en la nota. No veo la definicion del protocolo en ningun sitio
