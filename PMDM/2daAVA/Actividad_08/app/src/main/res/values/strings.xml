@@ -34,5 +34,9 @@
     <string name="dialog01">Are you sure?</string>
     <string name="dialog02">You will lose all changes.</string>
     <string name="ConfirmExit">Confirm &amp; Exit</string>
-    <string name="order_confirmation_message">kljsagfds</string>
+    <string name="piolin_img_content">Piolin with our Sandwiches</string>
+    <string name="sandwich_img_content">Image of a sandwich</string>
+    <string name="emailIcon">Email icon</string>
+    <string name="personIcon">Person icon</string>
+    <string name="wallpaper">Wallpaper</string>
 </resources>

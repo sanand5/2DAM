@@ -1,4 +1,4 @@
-package com.dam.pmdm.activity_08.navigation
+package com.dam.pmdm.activity_08.ui.app.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
@@ -7,10 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dam.pmdm.activity_08.screens.ExitScreen
-import com.dam.pmdm.activity_08.screens.MainScreen
-import com.dam.pmdm.activity_08.screens.RegistrationScreen
-import com.dam.pmdm.activity_08.screens.SummaryScreen
+import com.dam.pmdm.activity_08.ui.app.ui.screens.ExitScreen
+import com.dam.pmdm.activity_08.ui.app.ui.screens.MainScreen
+import com.dam.pmdm.activity_08.ui.app.ui.screens.RegistrationScreen
+import com.dam.pmdm.activity_08.ui.app.ui.screens.SummaryScreen
 
 @Composable
 @Preview

@@ -1,4 +1,4 @@
-package com.dam.pmdm.activity_08.navigation
+package com.dam.pmdm.activity_08.ui.app.ui.navigation
 
 sealed class AppScreens(val route: String) {
     object MainScreen : AppScreens("MainScreen")

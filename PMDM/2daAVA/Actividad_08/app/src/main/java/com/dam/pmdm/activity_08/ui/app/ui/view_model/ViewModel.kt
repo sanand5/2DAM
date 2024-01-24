@@ -1,6 +1,7 @@
-package com.dam.pmdm.activity_08
+package com.dam.pmdm.activity_08.ui.app.ui.view_model
 
 import android.annotation.SuppressLint
+import android.util.Patterns
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -11,9 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,7 +32,8 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -36,13 +41,20 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.dam.pmdm.activity_08.R
 import com.dam.pmdm.activity_08.ui.theme.naranjaClaro
+import com.dam.pmdm.activity_08.ui.theme.naranjaOscuro
+import kotlinx.coroutines.delay
 
 @Composable
-fun InvestedButton(textReference: Int, modifier: Modifier, onClick: () -> Unit): Unit {
+fun InvestedButton(textReference: Int, modifier: Modifier, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         modifier = modifier,
@@ -53,7 +65,7 @@ fun InvestedButton(textReference: Int, modifier: Modifier, onClick: () -> Unit):
         ),
         border = BorderStroke(2.dp, Color.Red)
     ) {
-        Icon(Icons.Filled.ExitToApp, contentDescription = "Salir")
+        Icon(Icons.Filled.ExitToApp, contentDescription = stringResource(id = R.string.exit_txt))
         Spacer(Modifier.width(10.dp))
         Text(
             text = stringResource(id = textReference),
@@ -62,7 +74,12 @@ fun InvestedButton(textReference: Int, modifier: Modifier, onClick: () -> Unit):
 }
 
 @Composable
-fun NormalButton(textReference: Int, modifier: Modifier, onClick: () -> Unit): Unit {
+fun NormalButton(
+    textReference: Int,
+    modifier: Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit
+) {
     Button(
         onClick = onClick,
         modifier = modifier,
@@ -71,6 +88,7 @@ fun NormalButton(textReference: Int, modifier: Modifier, onClick: () -> Unit): U
             containerColor = Color.Red,
             contentColor = Color.White,
         ),
+        enabled = enabled
     ) {
         Text(
             text = stringResource(id = textReference),
@@ -79,7 +97,7 @@ fun NormalButton(textReference: Int, modifier: Modifier, onClick: () -> Unit): U
 }
 
 @Composable
-fun textSummary(text: String, icon: ImageVector): Unit {
+fun TextSummary(text: String, icon: ImageVector) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(vertical = 20.dp)
@@ -102,16 +120,16 @@ fun textSummary(text: String, icon: ImageVector): Unit {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun scaffoldGeneral(
+fun ScaffoldGeneral(
     textReference: Int,
     navController: NavController,
     snackbarHostState: SnackbarHostState? = null,
     content: @Composable () -> Unit
-): Unit {
+) {
     Scaffold(
         snackbarHost = {
             if (snackbarHostState != null) {
-                SnackbarHost(hostState = snackbarHostState) // Type mismatch. Required: SnackbarHostState
+                SnackbarHost(hostState = snackbarHostState)
             }
         },
         topBar = {
@@ -138,20 +156,54 @@ fun scaffoldGeneral(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SimpleTextField(
-    name: String,
-    icon: ImageVector,
-    contentDescription: String,
-    text: MutableState<String>
-) {
+fun EmailTextField(emailLiveData: LiveData<String>, onTextFieldChange: (String) -> Unit) {
+    val email by emailLiveData.observeAsState("")
     TextField(
-        value = text.value,
-        onValueChange = { nuevoTexto -> text.value = nuevoTexto },
-        label = { Text(name) },
-        leadingIcon = { Icon(icon, contentDescription = contentDescription) },
+        value = email,
+        onValueChange = { onTextFieldChange(it) },
+        label = { Text("email") },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        leadingIcon = {
+            Icon(
+                Icons.Default.Email,
+                contentDescription = stringResource(id = R.string.emailIcon)
+            )
+        },
+        singleLine = true,
+        maxLines = 1,
         colors = TextFieldDefaults.textFieldColors(
             textColor = Color.Black,
-            containerColor = naranjaClaro
+            containerColor = naranjaClaro,
+            cursorColor = naranjaOscuro,
+            focusedIndicatorColor = naranjaOscuro,
+            focusedLabelColor = naranjaOscuro,
+        )
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NameTextField(nameLiveData: LiveData<String>, onTextFieldChange: (String) -> Unit) {
+    val name by nameLiveData.observeAsState("")
+    TextField(
+        value = name,
+        onValueChange = { onTextFieldChange(it) },
+        label = { Text("name") },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        leadingIcon = {
+            Icon(
+                Icons.Default.Person,
+                contentDescription = stringResource(id = R.string.personIcon)
+            )
+        },
+        singleLine = true,
+        maxLines = 1,
+        colors = TextFieldDefaults.textFieldColors(
+            textColor = Color.Black,
+            containerColor = naranjaClaro,
+            cursorColor = naranjaOscuro,
+            focusedIndicatorColor = naranjaOscuro,
+            focusedLabelColor = naranjaOscuro,
         )
     )
 }
@@ -161,29 +213,40 @@ fun FondoAplicacion() {
     val imagenFondo = painterResource(id = R.drawable.background)
     Image(
         painter = imagenFondo,
-        contentDescription = "Fondo de la aplicación",
+        contentDescription = stringResource(id = R.string.wallpaper),
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop
     )
 }
 
+class ViewModel : ViewModel() {
+    private val _email: MutableLiveData<String> = MutableLiveData("")
+    private val _name: MutableLiveData<String> = MutableLiveData("")
+    private val _loginEnable: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
 
-/*
- Button(
-                onClick = {
-                    navController.navigate(route = AppScreens.RegistrationScreen.route+ "/t")
-                },
-                modifier = Modifier
-                    .height(40.dp)
-                    .width(200.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Red,
-                    contentColor = Color.White,
-                ),
-            ) {
-                Text(
-                    text = stringResource(id = R.string.log_txt),
-                )
-            }
- */
+    val email: LiveData<String> = _email
+    val name: LiveData<String> = _name
+    val loginEnable: LiveData<Boolean> = _loginEnable
+
+    fun onLoginChange(email: String, name: String) {
+        _email.value = email
+        _name.value = name
+        _loginEnable.value = isValidEmail(email) && isValidName(name)
+    }
+
+    suspend fun onLoginPressed() {
+        _isLoading.value = true
+        delay(4000)
+        _isLoading.value = false
+    }
+
+    private fun isValidEmail(email: String): Boolean =
+        Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+    private fun isValidName(name: String): Boolean {
+        val pattern = Regex("^[a-zA-Z]+$")
+        return pattern.matches(name)
+    }
+
+}

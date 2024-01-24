@@ -1,4 +1,4 @@
-package com.dam.pmdm.activity_08.screens
+package com.dam.pmdm.activity_08.ui.app.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -25,16 +25,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.dam.pmdm.activity_08.FondoAplicacion
-import com.dam.pmdm.activity_08.InvestedButton
-import com.dam.pmdm.activity_08.NormalButton
 import com.dam.pmdm.activity_08.R
-import com.dam.pmdm.activity_08.navigation.AppScreens
+import com.dam.pmdm.activity_08.ui.app.ui.navigation.AppScreens
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.FondoAplicacion
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.InvestedButton
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.NormalButton
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen(navController: NavController): Unit {
+fun MainScreen(navController: NavController) {
     FondoAplicacion()
     BodyContent(navController)
 }
@@ -69,7 +69,7 @@ fun BodyContent(navController: NavController) {
         item {
             Image(
                 painter = painterResource(id = R.drawable.bocatas2),
-                contentDescription = "Imagen de un Sandwich", //TODO: strings.xml
+                contentDescription = stringResource(id = R.string.sandwich_img_content), //TODO: strings.xml
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(300.dp)
@@ -93,9 +93,8 @@ fun BodyContent(navController: NavController) {
                 R.string.exit_txt,
                 Modifier
                     .height(40.dp)
-                    .width(200.dp),
-                { navController.navigate(route = AppScreens.ExitScreen.route) }
-            )
+                    .width(200.dp)
+            ) { navController.navigate(route = AppScreens.ExitScreen.route) }
         }
     }
 }

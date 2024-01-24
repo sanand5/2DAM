@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.dam.pmdm.activity_08.navigation.AppNavigation
+import com.dam.pmdm.activity_08.ui.app.ui.navigation.AppNavigation
 import com.dam.pmdm.activity_08.ui.theme.NavegationTheme
 
 class MainActivity : ComponentActivity() {

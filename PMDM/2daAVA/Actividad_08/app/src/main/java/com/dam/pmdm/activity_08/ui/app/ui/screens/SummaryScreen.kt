@@ -1,4 +1,4 @@
-package com.dam.pmdm.activity_08.screens
+package com.dam.pmdm.activity_08.ui.app.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,12 +22,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.dam.pmdm.activity_08.InvestedButton
-import com.dam.pmdm.activity_08.NormalButton
 import com.dam.pmdm.activity_08.R
-import com.dam.pmdm.activity_08.navigation.AppScreens
-import com.dam.pmdm.activity_08.scaffoldGeneral
-import com.dam.pmdm.activity_08.textSummary
+import com.dam.pmdm.activity_08.ui.app.ui.navigation.AppScreens
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.InvestedButton
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.NormalButton
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.ScaffoldGeneral
+import com.dam.pmdm.activity_08.ui.app.ui.view_model.TextSummary
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -40,8 +39,8 @@ fun SummaryScreen(
     free: String?,
     userName: String?,
     userEmail: String?
-): Unit {
-    scaffoldGeneral(
+) {
+    ScaffoldGeneral(
         textReference = R.string.RegistrationScreen,
         navController = navController
     ) { SummaryBodyContent(navController, bread, toping, free, userName, userEmail) }
@@ -64,17 +63,17 @@ fun SummaryBodyContent(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        textSummary(text = userName.toString(), icon = Icons.Default.Person)
-        textSummary(text = userEmail.toString(), icon = Icons.Default.Email)
-        textSummary(
+        TextSummary(text = userName.toString(), icon = Icons.Default.Person)
+        TextSummary(text = userEmail.toString(), icon = Icons.Default.Email)
+        TextSummary(
             text = bread.toString(),
             icon = ImageVector.vectorResource(id = R.drawable.breadico)
         )
-        textSummary(
+        TextSummary(
             text = toping.toString(),
             icon = ImageVector.vectorResource(id = R.drawable.condimentsico)
         )
-        textSummary(
+        TextSummary(
             text = if (free.toString() == "true") stringResource(id = R.string.yes) else stringResource(
                 id = R.string.no
             ),
