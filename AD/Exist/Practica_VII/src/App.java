@@ -33,10 +33,11 @@ import java.net.http.HttpResponse;
 
 public class App {
     public static void main(String[] args) {
-        String existDBApiUrl = "http://10.0.219.21:8080/exist/rest";
-        String collectionName = "/db/carmon01/biblioteca";
+        // String existDBApiUrl = "http://10.0.219.21:8080/exist/rest";
+        String existDBApiUrl = "http://localhost:8080/exist/rest";
+        String collectionName = "/db/10813358/alumnos";
 
-        String username = "10813358";
+        String username = "admin";
         String password = username;
 
         try {
