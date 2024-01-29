@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">445756251308</string>
+    <string name="google_api_key" translatable="false">AIzaSyCFs31_ojwEHLFvb4Iu6Ma1WHOwXuAmyXY</string>
+    <string name="google_app_id" translatable="false">1:445756251308:android:a76bb1295bd14c6b841309</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCFs31_ojwEHLFvb4Iu6Ma1WHOwXuAmyXY</string>
+    <string name="google_storage_bucket" translatable="false">peliculasapp-49431.appspot.com</string>
+    <string name="project_id" translatable="false">peliculasapp-49431</string>
+</resources>
