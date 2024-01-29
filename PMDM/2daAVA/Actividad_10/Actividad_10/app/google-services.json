@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1069883139227",
+    "project_id": "sandwichking-36e42",
+    "storage_bucket": "sandwichking-36e42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069883139227:android:a9b5171eb598fa0057523e",
+        "android_client_info": {
+          "package_name": "com.dam.pmdm.activity_10"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_OVRyFbPb_8SGBWeATNNsoBc3PWFAzgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
