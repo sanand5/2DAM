@@ -92,7 +92,7 @@ fun RegistrationBodyContent(
     val emailLiveData: LiveData<String> = viewModel.email
     val nameLiveData: LiveData<String> = viewModel.password
     val loginEnable: Boolean by viewModel.loginEnable.observeAsState(initial = false)
-    var loc = LocalContext.current
+    val loc = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
 
     Column(
@@ -138,13 +138,12 @@ fun RegistrationBodyContent(
                 textReference = R.string.order,
                 modifier = Modifier.padding(16.dp),
                 onClick = {
-                    if (signInWithFireBase(viewModel.email.toString(), viewModel.password.toString(), loc)){
-
-                    coroutineScope.launch { viewModel.onLoginPressed() }
-                    if (selectedRadioButtonBread != null && selectedRadioButtonSandwich != null) {
-                        navController.navigate(route = AppScreens.SummaryScreen.route + "/${selectedRadioButtonBread}/${selectedRadioButtonSandwich}/${checkboxChecked}/${nameLiveData.value}/${emailLiveData.value}")
-                    }
-
+                    coroutineScope.launch {
+                        if (signInWithFireBase(viewModel.email.value.toString(), viewModel.password.value.toString(), loc)){
+                            if (selectedRadioButtonBread != null && selectedRadioButtonSandwich != null) {
+                                navController.navigate(route = AppScreens.SummaryScreen.route + "/${selectedRadioButtonBread}/${selectedRadioButtonSandwich}/${checkboxChecked}/${nameLiveData.value}/${emailLiveData.value}")
+                            }
+                        }
                     }
                 },
                 enabled = loginEnable && selectedRadioButtonBread != null && selectedRadioButtonSandwich != null
@@ -228,7 +227,10 @@ fun TextFields(
                 loc = loc
             )
             Spacer(modifier = Modifier.width(78.dp))
-            ForgotPassword()
+            ForgotPassword(
+                viewModel.email.value.toString(),
+                loc = loc
+            )
         }
     }
 }

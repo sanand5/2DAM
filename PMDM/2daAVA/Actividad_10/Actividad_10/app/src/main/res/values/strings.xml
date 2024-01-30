@@ -38,7 +38,22 @@
     <string name="sandwich_img_content">Image of a sandwich</string>
     <string name="emailIcon">Email icon</string>
     <string name="personIcon">Person icon</string>
+    <string name="LockIcon">Lock icon</string>
     <string name="wallpaper">Wallpaper</string>
     <string name="forgot_password">Forgot my password</string>
     <string name="register_now">Register Now</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+<!--    <string name="account_created">Account created for user: </string>-->
+<!--    <string name="password">Error in account creation </string>-->
+<!--    <string name="password">Successful login for user: </string>-->
+<!--    <string name="password">Account not verified by email</string>-->
+<!--    <string name="password">Authentication failed</string>-->
+<!--    <string name="password">A verification email has been sent to your email</string>-->
+<!--    <string name="password">Error sending verification email</string>-->
+<!--    <string name="password">email</string>-->
+<!--    <string name="password">email</string>-->
+
+
 </resources>

@@ -19,7 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -45,6 +45,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -57,7 +58,8 @@ import com.dam.pmdm.activity_10.ui.theme.naranjaClaro
 import com.dam.pmdm.activity_10.ui.theme.naranjaOscuro
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.future.await
+import java.util.concurrent.CompletableFuture
 
 @Composable
 fun InvestedButton(textReference: Int, modifier: Modifier, onClick: () -> Unit) {
@@ -170,7 +172,7 @@ fun EmailTextField(emailLiveData: LiveData<String>, onTextFieldChange: (String) 
         ),
         value = email,
         onValueChange = { onTextFieldChange(it) },
-        label = { Text("Email") },
+        label = { Text(stringResource(id = R.string.email)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         trailingIcon = {
             Icon(
@@ -200,12 +202,13 @@ fun PasswordTextField(passwordLiveData: LiveData<String>, onTextFieldChange: (St
         ),
         value = password,
         onValueChange = { onTextFieldChange(it) },
-        label = { Text("Password") },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        visualTransformation = PasswordVisualTransformation(),
+        label = { Text(stringResource(id = R.string.password)) },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         trailingIcon = {
             Icon(
-                Icons.Default.Person,
-                contentDescription = stringResource(id = R.string.personIcon)
+                Icons.Default.Lock,
+                contentDescription = stringResource(id = R.string.LockIcon)
             )
         },
         singleLine = true,
@@ -221,11 +224,11 @@ fun PasswordTextField(passwordLiveData: LiveData<String>, onTextFieldChange: (St
 }
 
 @Composable
-fun ForgotPassword() {
+fun ForgotPassword(email: String, loc: Context) {
     Text(
         text = stringResource(id = R.string.forgot_password),
         modifier = Modifier.clickable {
-
+            sendPasswordResetEmail(email, loc)
         },
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold,
@@ -235,10 +238,14 @@ fun ForgotPassword() {
 }
 @Composable
 fun Register(email: String, password: String, loc: Context) {
+
     Text(
         text = stringResource(id = R.string.register_now),
         modifier = Modifier.clickable {
-            signUp(email,password,loc)
+            if (password.length >= 8){
+                signUp(email,password,loc)
+            }
+
         },
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold,
@@ -247,39 +254,60 @@ fun Register(email: String, password: String, loc: Context) {
     )
 }
 
+
+//Registrarse
 private fun signUp(username:String,password:String, loc: Context){
-    Firebase.auth.createUserWithEmailAndPassword(username,password).addOnCompleteListener { task ->
-        if (task.isSuccessful) {
-            showToast("Cuenta creada para usuario: $username.",loc)
-        }else{
-            showToast("Error en la creacion de cuenta",loc)
+    if (username.isNotBlank() && password.isNotBlank()){
+        Firebase.auth.createUserWithEmailAndPassword(username,password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                showToast("Account created for user: $username.",loc)
+            }else{
+                showToast("Error in account creation ",loc)
+            }
         }
+    }else{
+        showToast("Some field is empty",loc)
+    }
+
+}
+
+
+fun sendPasswordResetEmail(email: String?, loc: Context) {
+    if (!email.isNullOrBlank()) {
+        Firebase.auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                showToast("A password reset email has been sent to your email", loc)
+            } else {
+                showToast("Error sending password reset email: ${task.exception?.message}", loc)
+            }
+        }
+    } else {
+        showToast("Email is null or empty", loc)
     }
 }
 
-fun signInWithFireBase(username:String,password:String,loc:Context): Boolean {
-    var ok = false
+
+
+//Log
+suspend fun signInWithFireBase(username:String,password:String,loc:Context): Boolean {
+    val completableFuture = CompletableFuture<Boolean>()
     Firebase.auth.signInWithEmailAndPassword(username, password).addOnCompleteListener { task ->
         if (task.isSuccessful) {
+            completableFuture.complete(true)
             val user = Firebase.auth.currentUser
-            if (user != null && user.isEmailVerified) {
+            if (!(user != null && user.isEmailVerified)) {
                 showToast(
-                    "Login exitoso para usuario: $username. Cuenta verificada por correo",
-                    loc
-                )
-            } else {
-                showToast(
-                    "Login exitoso para usuario: $username. Cuenta no verificada por correo",
+                    "Successful login for user: $username. Account not verified by email",
                     loc
                 )
                 sendEmailVerification(loc)
             }
-            ok = true
         } else {
-            showToast("Error en la autntificacion", loc)
+            completableFuture.complete(false)
+            showToast("Authentication failed", loc)
         }
     }
-    return ok
+    return completableFuture.await()
 }
 
 fun sendEmailVerification(loc: Context) {
@@ -287,9 +315,9 @@ fun sendEmailVerification(loc: Context) {
 
     user?.sendEmailVerification()?.addOnCompleteListener{task->
         if(task.isSuccessful){
-            showToast("Se ha enviado un correo de verificacion a tu correo electronico",loc)
+            showToast("A verification email has been sent to your email",loc)
         }else{
-            showToast("Error al enviar el correo de verificacion"+task.exception?.message,loc)
+            showToast("Error sending verification email" + task.exception?.message,loc)
         }
     }
 }
@@ -325,17 +353,11 @@ class ViewModel : ViewModel() {
         _loginEnable.value = isValidEmail(email) && isValidPassword(password)
     }
 
-    suspend fun onLoginPressed() {
-        _isLoading.value = true
-        delay(4000)
-        _isLoading.value = false
-    }
-
     private fun isValidEmail(email: String): Boolean =
         Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
     private fun isValidPassword(password: String): Boolean {
-        return password.length > 8
+        return password.length >= 8
     }
 
 }

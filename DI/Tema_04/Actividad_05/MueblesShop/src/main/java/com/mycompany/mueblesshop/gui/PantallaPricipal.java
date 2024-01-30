@@ -12,11 +12,16 @@ import javax.swing.JOptionPane;
  */
 public class PantallaPricipal extends javax.swing.JFrame {
 
+    
+    TablaVentas tabla;
+    
     /**
      * Creates new form PantallaPricipal
      */
     public PantallaPricipal() {
+        tabla = new TablaVentas(this, true);
         initComponents();
+        
     }
 
     /**
@@ -97,7 +102,6 @@ public class PantallaPricipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        TablaVentas tabla = new TablaVentas(this, true);
         tabla.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

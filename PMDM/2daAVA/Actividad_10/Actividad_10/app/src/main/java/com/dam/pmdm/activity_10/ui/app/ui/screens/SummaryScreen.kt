@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -63,7 +62,6 @@ fun SummaryBodyContent(
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        TextSummary(text = userName.toString(), icon = Icons.Default.Person)
         TextSummary(text = userEmail.toString(), icon = Icons.Default.Email)
         TextSummary(
             text = bread.toString(),
