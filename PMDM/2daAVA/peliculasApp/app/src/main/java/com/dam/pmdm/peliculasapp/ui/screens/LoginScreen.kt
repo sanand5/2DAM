@@ -24,12 +24,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.dam.pmdm.peliculasapp.ui.viewmodel.UserViewModel
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(onLoginSuccess: () -> Unit){
+fun LoginScreen(onLoginSuccess: (FirebaseUser) -> Unit){
+    val context = LocalContext.current
+    val userViewModel = UserViewModel()
     var text1 by remember { mutableStateOf(TextFieldValue()) }
     var text2 by remember { mutableStateOf(TextFieldValue()) }
 
@@ -62,14 +66,18 @@ fun LoginScreen(onLoginSuccess: () -> Unit){
 
         Button(
             onClick = {
-                //onLoginSuccess()
+                if (text1.text.isNotEmpty() && text1.text.isNotEmpty()){
+                    userViewModel.signInWithFirebase(text1.text, text2.text, context, onLoginSuccess)
+                }
             }
         ) {
             Text("Iniciar Sesion")
         }
 
         Button(
-            onClick = {},
+            onClick = {
+                      userViewModel.signUp(text1.text, text2.text, context)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
