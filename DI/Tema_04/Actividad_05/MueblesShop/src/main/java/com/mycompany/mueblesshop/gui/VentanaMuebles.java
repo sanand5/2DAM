@@ -4,7 +4,6 @@
  */
 package com.mycompany.mueblesshop.gui;
 
-import javax.crypto.AEADBadTagException;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +11,11 @@ import javax.swing.JOptionPane;
  * @author 2DAM_Sanz_Andreu
  */
 public class VentanaMuebles extends javax.swing.JDialog {
-    TablaVentas tabla;
 
     /**
      * Creates new form VentanaMuebles
      */
+    TablaVentas tabla;
     public VentanaMuebles(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         tabla = new TablaVentas(parent, true);
@@ -33,50 +32,50 @@ public class VentanaMuebles extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonSalon = new javax.swing.JButton();
+        jButtonCocina = new javax.swing.JButton();
+        jButtonTerraza = new javax.swing.JButton();
+        jButtonHabitacion = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.GridLayout(2, 2, 20, 20));
 
-        jButton1.setText("Salón");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalon.setText("Salón");
+        jButtonSalon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSalonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(jButtonSalon);
 
-        jButton2.setText("Cocina");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCocina.setText("Cocina");
+        jButtonCocina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCocinaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
+        jPanel1.add(jButtonCocina);
 
-        jButton3.setText("Terraza");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTerraza.setText("Terraza");
+        jButtonTerraza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonTerrazaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
+        jPanel1.add(jButtonTerraza);
 
-        jButton4.setText("Habitación");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonHabitacion.setText("Habitación");
+        jButtonHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonHabitacionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
+        jPanel1.add(jButtonHabitacion);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Que tipo de mueble quieres añadir?");
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelTitulo.setText("Que tipo de mueble quieres añadir?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,14 +87,14 @@ public class VentanaMuebles extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -111,28 +110,28 @@ public class VentanaMuebles extends javax.swing.JDialog {
         
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonSalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalonActionPerformed
         tabla.anadirVenta(1, pedirMueble());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSalonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCocinaActionPerformed
         tabla.anadirVenta(2, pedirMueble());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCocinaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonTerrazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerrazaActionPerformed
         tabla.anadirVenta(3, pedirMueble());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonTerrazaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHabitacionActionPerformed
         tabla.anadirVenta(4, pedirMueble());
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonHabitacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonCocina;
+    private javax.swing.JButton jButtonHabitacion;
+    private javax.swing.JButton jButtonSalon;
+    private javax.swing.JButton jButtonTerraza;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

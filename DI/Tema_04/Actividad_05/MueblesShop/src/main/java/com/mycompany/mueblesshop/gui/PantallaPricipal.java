@@ -33,45 +33,45 @@ public class PantallaPricipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonTabla = new javax.swing.JButton();
+        jButtonVenta = new javax.swing.JButton();
+        jButtonInfo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Muebles Sanz");
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelTitulo.setText("Muebles Sanz");
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
 
-        jButton1.setBackground(new java.awt.Color(79, 167, 255));
-        jButton1.setText("Tabla");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTabla.setBackground(new java.awt.Color(79, 167, 255));
+        jButtonTabla.setText("Tabla");
+        jButtonTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTablaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(jButtonTabla);
 
-        jButton2.setBackground(new java.awt.Color(0, 253, 83));
-        jButton2.setText("Añadir Venta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVenta.setBackground(new java.awt.Color(0, 253, 83));
+        jButtonVenta.setText("Añadir Venta");
+        jButtonVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
+        jPanel1.add(jButtonVenta);
 
-        jButton3.setBackground(new java.awt.Color(255, 44, 12));
-        jButton3.setText("Sobre Nosotros");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInfo.setBackground(new java.awt.Color(255, 44, 12));
+        jButtonInfo.setText("Sobre Nosotros");
+        jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonInfoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
+        jPanel1.add(jButtonInfo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,18 +79,18 @@ public class PantallaPricipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -100,20 +100,20 @@ public class PantallaPricipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTablaActionPerformed
         // TODO add your handling code here:
         tabla.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonTablaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentaActionPerformed
         // TODO add your handling code here:
         VentanaMuebles muebles = new VentanaMuebles(this, true);
         muebles.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonVentaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
         JOptionPane.showMessageDialog(this, "Somos una empresa líder en el diseño y fabricación de muebles de alta calidad,\ndestacándonos por soluciones personalizadas.Nuestra meticulosa artesanía y enfoque\ncentrado en el cliente garantizan productos estéticos y duraderos para hogares,\noficinas y espacios comerciales, mejorando la vida de nuestros clientes.", "Sobre Nosotros", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +151,10 @@ public class PantallaPricipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonInfo;
+    private javax.swing.JButton jButtonTabla;
+    private javax.swing.JButton jButtonVenta;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
