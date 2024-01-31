@@ -4,7 +4,8 @@ La barra de progreso es una barra o un circulo?
 ### Pantalla de inicio de sesión/registro
 Pantalla que pida iniciar sesion o registrarse
 ### Pantalla del carrito de compras
-En esta pantalla no tengo claro que es lo que se pide, `poner radiobuttons o checksbox para marcar productos?`
+En esta pantalla se mostrara los productos de la tienda y su nombre.
+Esta pantalla tenfra un fabbutton que mostrara otra pantalla para introducir los campos nombre del producto y cantidad del producto. I luego volvera a la pantalla de articulos para motrar en el boton que se han añadido x productos al carrito, al presionar este boton mostrara confirmara la compra (debera aparezer un alertDialog)
 
 Estaria bien implementar una scrollBar y que el boton de confirmar compra este siempre por encima, con el FAB
 ### Agregar pantalla de producto
