@@ -29,19 +29,19 @@ public class TablaVentas extends javax.swing.JDialog {
 
     public void anadirVenta(int column, String producto) {
         DefaultTableModel dtm = (DefaultTableModel) jTableTabla.getModel();
-        for (int row = 0; row < dtm.getRowCount(); row++) {
-            String mueble = dtm.getValueAt(row, column).toString();
-            if (mueble.isEmpty()) {
-                String[] V = new String[dtm.getColumnCount()];
-                for (int i = 0; i < dtm.getColumnCount(); i++) {
-                    V[i] = (i == column) ? producto : (String) dtm.getValueAt(row, i);
-                }
-                dtm.insertRow(row, V);
-                break;
-            } else {
-                row++;
+        int rowCount = dtm.getRowCount();
+
+        for (int row = 0; row < rowCount; row++) {
+            Object value = dtm.getValueAt(row, column);
+            if (value == null || value.toString().isEmpty()) {
+                dtm.setValueAt(producto, row, column);
+                return;
             }
         }
+        
+        String[] rowData = new String[dtm.getColumnCount()];
+        rowData[column] = producto;
+        dtm.addRow(rowData);
     }
 
     /**

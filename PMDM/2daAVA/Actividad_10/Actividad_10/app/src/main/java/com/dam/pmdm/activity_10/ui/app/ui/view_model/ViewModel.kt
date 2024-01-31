@@ -260,13 +260,13 @@ private fun signUp(username:String,password:String, loc: Context){
     if (username.isNotBlank() && password.isNotBlank()){
         Firebase.auth.createUserWithEmailAndPassword(username,password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                showToast("Account created for user: $username.",loc)
+                showToast( loc.getString(R.string.account_created)+" $username.",loc)
             }else{
-                showToast("Error in account creation ",loc)
+                showToast(loc.getString(R.string.Error_account),loc)
             }
         }
     }else{
-        showToast("Some field is empty",loc)
+        showToast(loc.getString(R.string.field_empty),loc)
     }
 
 }
@@ -276,13 +276,13 @@ fun sendPasswordResetEmail(email: String?, loc: Context) {
     if (!email.isNullOrBlank()) {
         Firebase.auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                showToast("A password reset email has been sent to your email", loc)
+                showToast(loc.getString(R.string.password_reset), loc)
             } else {
-                showToast("Error sending password reset email: ${task.exception?.message}", loc)
+                showToast(loc.getString(R.string.Error_sending_password) + "${task.exception?.message}", loc)
             }
         }
     } else {
-        showToast("Email is null or empty", loc)
+        showToast(loc.getString(R.string.Email_null), loc)
     }
 }
 
@@ -297,14 +297,14 @@ suspend fun signInWithFireBase(username:String,password:String,loc:Context): Boo
             val user = Firebase.auth.currentUser
             if (!(user != null && user.isEmailVerified)) {
                 showToast(
-                    "Successful login for user: $username. Account not verified by email",
+                    loc.getString(R.string.login_success_message, username), //TEST
                     loc
                 )
                 sendEmailVerification(loc)
             }
         } else {
             completableFuture.complete(false)
-            showToast("Authentication failed", loc)
+            showToast(loc.getString(R.string.Authentication_failed), loc)
         }
     }
     return completableFuture.await()
@@ -315,9 +315,9 @@ fun sendEmailVerification(loc: Context) {
 
     user?.sendEmailVerification()?.addOnCompleteListener{task->
         if(task.isSuccessful){
-            showToast("A verification email has been sent to your email",loc)
+            showToast(loc.getString(R.string.verification_email_sent),loc)
         }else{
-            showToast("Error sending verification email" + task.exception?.message,loc)
+            showToast(loc.getString(R.string.Error_sending_email) + task.exception?.message,loc)
         }
     }
 }

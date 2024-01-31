@@ -45,15 +45,19 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
 
-<!--    <string name="account_created">Account created for user: </string>-->
-<!--    <string name="password">Error in account creation </string>-->
-<!--    <string name="password">Successful login for user: </string>-->
-<!--    <string name="password">Account not verified by email</string>-->
-<!--    <string name="password">Authentication failed</string>-->
-<!--    <string name="password">A verification email has been sent to your email</string>-->
-<!--    <string name="password">Error sending verification email</string>-->
-<!--    <string name="password">email</string>-->
-<!--    <string name="password">email</string>-->
+    <string name="account_created">Account created for user: </string>
+    <string name="Error_account">Error in account creation </string>
+    <string name="field_empty">Some field is empty</string>
+    <string name="Successful_login">Successful login for user: </string>
+    <string name="Account_not_verified">Account not verified by email</string>
+    <string name="Authentication_failed">Authentication failed</string>
+    <string name="verification_email_sent">A verification email has been sent to your email</string>
+    <string name="Error_sending_email">Error sending verification email </string>
+    <string name="password_reset">A password reset email has been sent to your email</string>
+    <string name="Error_sending_password">Error sending password reset email: </string>
+    <string name="Email_null">Email is null or empty</string>
+    <string name="login_success_message">Successful login for user: %1$s. Account not verified by email</string>
+
 
 
 </resources>
