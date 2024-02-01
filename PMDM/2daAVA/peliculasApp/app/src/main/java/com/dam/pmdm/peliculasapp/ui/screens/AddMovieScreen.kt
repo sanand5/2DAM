@@ -22,8 +22,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
+import com.dam.pmdm.peliculasapp.ui.viewmodel.MovieViewModel
+import com.dam.pmdm.peliculasapp.ui.viewmodel.UserViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,12 +52,16 @@ fun AddMovieScreen(closeAddCompleteMovie:() ->Unit, ) {
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun AddMovieScreenBodyContent(closeAddCompleteMovie:() ->Unit) {
     var title by remember { mutableStateOf("") }
     var director by remember { mutableStateOf("") }
     var year by remember { mutableStateOf("") }
+
+    val movieViewModel: MovieViewModel = MovieViewModel()
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val context = LocalContext.current
 
     LazyColumn {
         item {
@@ -91,7 +100,11 @@ fun AddMovieScreenBodyContent(closeAddCompleteMovie:() ->Unit) {
         item {
             FloatingActionButton(onClick = {
                 if (title.isNotEmpty() && director.isNotEmpty() && year.isNotEmpty()) {
+                    movieViewModel.addMovie(title,director,year)
+                    keyboardController?.hide()
                     closeAddCompleteMovie()
+                }else{
+                    //TODO : showToast(context, "Can not add a movie with empty fields")
                 }
             }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "+")

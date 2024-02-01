@@ -28,7 +28,7 @@ class UserViewModel {
         }
     }
 
-    private fun showToast(message: String, loc: Context){
+    fun showToast(message: String, loc: Context){
         Toast.makeText(loc, message, Toast.LENGTH_LONG).show()
     }
 
