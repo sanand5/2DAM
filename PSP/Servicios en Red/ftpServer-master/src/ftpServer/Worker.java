@@ -59,8 +59,8 @@ public class Worker extends Thread {
 
   // user properly logged in?
   private userStatus currentUserStatus = userStatus.NOTLOGGEDIN;
-  private String validUser = "comp4621";
-  private String validPassword = "network";
+  private String validUser = "u";
+  private String validPassword = "p";
 
   private boolean quitCommandLoop = false;
 
@@ -380,9 +380,7 @@ public class Worker extends Thread {
    * @param args The directory to be listed
    */
   private void handleNlst(String args) {
-    if (dataConnection == null || dataConnection.isClosed()) {
-      sendMsgToClient("425 No data connection was established");
-    } else {
+    
 
       String[] dirContent = nlstHelper(args);
 
@@ -400,7 +398,7 @@ public class Worker extends Thread {
 
       }
 
-    }
+    
 
   }
 

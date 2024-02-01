@@ -61,7 +61,6 @@ public class Server {
 
     } catch (IOException e) {
       System.out.println("Problem stopping server");
-      System.exit(-1);
     }
 
   }
