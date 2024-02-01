@@ -18,20 +18,21 @@
 - [ ] DELE
 
 
-- [ ] ACCT
 - [ ] CDUP
-- [ ] SMNT
-- [ ] PORT
 - [ ] PASV
+- [ ] PORT
 - [ ] TYPE
-- [ ] STRU
 - [ ] MODE
 - [ ] RETR
 - [ ] STOR
+
+- [ ] REST
+- [ ] ACCT
+- [ ] SMNT
+- [ ] STRU
 - [ ] STOU
 - [ ] APPE
 - [ ] ALLO
-- [ ] REST
 - [ ] RNFR
 - [ ] RNTO
 - [ ] ABOR

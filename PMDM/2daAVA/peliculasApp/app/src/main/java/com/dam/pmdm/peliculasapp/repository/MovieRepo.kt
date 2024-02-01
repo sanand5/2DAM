@@ -23,6 +23,11 @@ class MovieRepo : MovieRepoInterface {
         year: String,
         callback: (Boolean) -> Unit
     ) {
-        TODO("Not yet implemented")
+        val movie = hashMapOf(
+            "title" to title,
+            "director" to director,
+            "year" to year
+        )
+        //TODO
     }
 }
