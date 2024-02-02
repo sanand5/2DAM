@@ -76,8 +76,10 @@ public class Client implements Runnable {
 
                 break;
             case "LIST":
+                writer.print(" ");
+                writer.flush();
                 if (isAuthenticated) {
-                    handleListCommand(arg);
+                    handleListCommand();
                 } else {
                     writer.println(
                             "530 Usuario no conectado. Inicie sesión con USER antes de ejecutar otros comandos.");
@@ -203,47 +205,21 @@ public class Client implements Runnable {
         return true;
     }
 
-    private void handleListCommand(String directory) {
+    private void handleListCommand() {
         if (!isAuthenticated) {
             writer.println("530 Inicie sesión con USER antes de ejecutar otros comandos.");
             return;
         }
-
-        String[] dirContent = nlstHelper(directory);
-
-        if (dirContent == null) {
-            writer.println("550 File does not exist.");
-        } else {
+        File carpeta = new File(currentDirectory);
+        if (carpeta.exists() && carpeta.isDirectory()) {
+            String[] dirContent = carpeta.list();
             writer.println("125 Opening ASCII mode data connection for file list.");
-
             for (int i = 0; i < dirContent.length; i++) {
-                writer.println(dirContent[i]);
+                writer.println("\t" + dirContent[i]);
             }
-
             writer.println("226 Transfer complete.");
-            writer.println();
-        }
-    }
-
-    private String[] nlstHelper(String args) {
-        // Construct the name of the directory to list.
-        String filename = currentDirectory;
-        if (args != null) {
-            filename = filename + "/" + args;
-        }
-
-        // Now get a File object, and see if the name we got exists and is a
-        // directory.
-        File f = new File(filename);
-
-        if (f.exists() && f.isDirectory()) {
-            return f.list();
-        } else if (f.exists() && f.isFile()) {
-            String[] allFiles = new String[1];
-            allFiles[0] = f.getName();
-            return allFiles;
         } else {
-            return null;
+            writer.println("550 Directory does not exist.");
         }
     }
 
@@ -273,7 +249,7 @@ public class Client implements Runnable {
 
             if (isValidDirectory(newDirectory)) {
                 File newDir = new File(newDirectory);
-                if (newDir.mkdir()) {
+                if (newDir.mkdirs()) {
                     writer.println("257 Directorio creado correctamente: " + newDirectory);
                 } else {
                     writer.println("550 No se pudo crear el directorio: " + newDirectory);

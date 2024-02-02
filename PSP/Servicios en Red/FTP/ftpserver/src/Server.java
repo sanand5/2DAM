@@ -3,7 +3,7 @@ import java.net.Socket;
 
 public class Server {
     public static void main(String[] args) {
-        int port = 1021;
+        int port = 25;
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Servidor FTP iniciado en el puerto " + port);

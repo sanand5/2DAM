@@ -7,9 +7,9 @@
 - [x] PWD
 - [x] NOOP
 - [x] REIN
+- [x] LIST
 
 - [/] CWD
-- [/] LIST
 - [/] MKD
 
 - [ ] RMD
