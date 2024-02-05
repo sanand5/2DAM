@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SolterraApp</string>
+    <string name="logo_content_description">Imaguen de Solterra</string>
+    <string name="home">Home</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="person">Profile</string>
+    <string name="exit">Salir</string>
+    <string name="KeyboardArrowLeft">Arrow back</string>
+    <string name="LogScreen">Login Screen</string>
 </resources>

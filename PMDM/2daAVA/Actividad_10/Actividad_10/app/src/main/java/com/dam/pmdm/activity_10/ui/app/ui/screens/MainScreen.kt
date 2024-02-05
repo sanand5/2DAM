@@ -69,7 +69,7 @@ fun BodyContent(navController: NavController) {
         item {
             Image(
                 painter = painterResource(id = R.drawable.bocatas2),
-                contentDescription = stringResource(id = R.string.sandwich_img_content), //TODO: strings.xml
+                contentDescription = stringResource(id = R.string.sandwich_img_content),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(300.dp)
