@@ -31,7 +31,7 @@ public class PantallaRegistro extends javax.swing.JDialog {
         jLabelUser = new javax.swing.JLabel();
         jTextFieldUser = new javax.swing.JTextField();
         jLabelPass = new javax.swing.JLabel();
-        jButtonReg = new javax.swing.JButton();
+        jButtonLog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,10 +70,10 @@ public class PantallaRegistro extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jButtonReg.setText("Registrarse");
-        jButtonReg.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLog.setText("Registrarse");
+        jButtonLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegActionPerformed(evt);
+                jButtonLogActionPerformed(evt);
             }
         });
 
@@ -82,13 +82,13 @@ public class PantallaRegistro extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jButtonLog, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonReg, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,15 +96,15 @@ public class PantallaRegistro extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonReg)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jButtonLog)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegActionPerformed
+    private void jButtonLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogActionPerformed
         // TODO add your handling code here:
         String name = jTextFieldUser.getText();
         String password = new String(jPasswordFieldPass.getPassword());
@@ -112,11 +112,11 @@ public class PantallaRegistro extends javax.swing.JDialog {
             this.dispose();
         }
         
-    }//GEN-LAST:event_jButtonRegActionPerformed
+    }//GEN-LAST:event_jButtonLogActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonReg;
+    private javax.swing.JButton jButtonLog;
     private javax.swing.JLabel jLabelPass;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanel2;
