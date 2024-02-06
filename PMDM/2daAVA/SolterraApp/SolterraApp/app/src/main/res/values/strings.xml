@@ -7,4 +7,6 @@
     <string name="exit">Salir</string>
     <string name="KeyboardArrowLeft">Arrow back</string>
     <string name="LogScreen">Login Screen</string>
+    <string name="email">Email</string>
+    <string name="emailIcon">Email icon</string>
 </resources>
