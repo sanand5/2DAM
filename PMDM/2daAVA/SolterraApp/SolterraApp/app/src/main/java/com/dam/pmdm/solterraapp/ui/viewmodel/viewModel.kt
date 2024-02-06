@@ -90,7 +90,11 @@ data class BottomNavigationItem(
 fun BottomNavigationBar(){
     val context = LocalContext.current
     var navigationSelectedItem by remember { mutableStateOf(0)}
-    NavigationBar {
+    NavigationBar(
+        modifier = Modifier.height(50.dp),
+        containerColor = colorResource(id = R.color.solterraRed),
+        contentColor = colorResource(id = R.color.solterraRedOscuro),
+    ) {
         BottomNavigationItem().listOfNavItems(context).forEachIndexed{index, navigationItem ->
             NavigationBarItem(
                 selected = index == navigationSelectedItem,
@@ -109,8 +113,9 @@ fun topAppBar(
     drawerState: DrawerState
 ){
     TopAppBar(
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Red),
-        modifier = Modifier.clickable { navController.popBackStack() },
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = colorResource(id = R.color.solterraRed)),
+        modifier = Modifier
+            .clickable { navController.popBackStack() },
         title = {
             Row {
                 Icon(
@@ -145,8 +150,8 @@ fun scaffold(
         topBar = {
             topAppBar(text,navController,scope,drawerState)
                  },
-        content = { LogRegBodyContent() },
-        bottomBar = { BottomNavigationBar() }
+        bottomBar = { BottomNavigationBar() },
+        content = { content },
     )
 }
 
@@ -164,11 +169,12 @@ fun ModalNavDrawer(
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = { DrawerSheet(scope = scope, drawerState = drawerState) },
-        content = { scaffold(
-            navController = navController,
-            text = text,
-            scope = scope,
-            drawerState = drawerState
+        content = {
+            scaffold(
+                navController = navController,
+                text = text,
+                scope = scope,
+                drawerState = drawerState
             ){
             content()
         }}
@@ -180,7 +186,7 @@ fun ModalNavDrawer(
 fun DrawerSheet(scope: CoroutineScope, drawerState: DrawerState) {
     val context = LocalContext.current
     val items = listOf(
-        Icons.Default.Home,
+        Icons.Default.Home, //TODO: Solterra Icon
         Icons.Default.ShoppingCart,
         Icons.Default.Person,
         Icons.Default.ExitToApp
