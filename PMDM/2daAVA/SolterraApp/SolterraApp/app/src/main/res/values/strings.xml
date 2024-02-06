@@ -9,4 +9,10 @@
     <string name="LogScreen">Login Screen</string>
     <string name="email">Email</string>
     <string name="emailIcon">Email icon</string>
+    <string name="password">Password</string>
+    <string name="LockIcon">Lock icon</string>
+    <string name="Register">Registrarse</string>
+    <string name="Login">Iniciar Sesion</string>
+    <string name="house">Imaguen de una casa</string>
+    <string name="slogan">¡Descubre cómo la energía solar puede beneficiar tu hogar!</string>
 </resources>
