@@ -26,7 +26,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon("src/imagenes/img/linuxwindowsjokes.jpg");
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabelImg.getWidth(), jLabelImg.getHeight(), Image.SCALE_DEFAULT ));
         jLabelImg.setIcon(icono);
-        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/img/OIP.jpg")).getImage());
+        //this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/img/OIP.jpg")).getImage());
     }
 
     /**
