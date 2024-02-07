@@ -24,8 +24,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         fondo = new background(this, false);
         ImageIcon imagen = new ImageIcon("src/imagenes/img/linuxwindowsjokes.jpg");
-        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT ));
-        jLabel1.setIcon(icono);
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabelImg.getWidth(), jLabelImg.getHeight(), Image.SCALE_DEFAULT ));
+        jLabelImg.setIcon(icono);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/img/OIP.jpg")).getImage());
     }
 
@@ -38,7 +38,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelImg = new javax.swing.JLabel();
         jButtonVentana = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButtonRed = new javax.swing.JButton();
@@ -47,7 +47,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabelImg.setText(" ");
 
         jButtonVentana.setText("Abrir Ventana");
         jButtonVentana.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -106,7 +106,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelImg, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonVentana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
@@ -115,6 +115,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVentanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentanaActionPerformed
@@ -170,7 +171,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRed;
     private javax.swing.JButton jButtonVentana;
     private javax.swing.JButton jButtonVerde;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelImg;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
