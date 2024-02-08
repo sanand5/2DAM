@@ -2,17 +2,14 @@ package com.dam.pmdm.solterraapp.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -23,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -53,10 +49,9 @@ fun LogRegScr(
     val viewModel = ViewModel()
     ModalNavDrawer(
         navController = navController,
-        text = stringResource(id = R.string.LogScreen)
-    ){
-        LogRegBodyContent(viewModel)
-    }
+        text = stringResource(id = R.string.LogScreen),
+        content = { LogRegBodyContent(viewModel) }
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -69,7 +64,7 @@ fun LogRegBodyContent(viewModel: ViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.casa),
-            contentDescription = null,
+            contentDescription = null, //TODO: content description
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
@@ -82,7 +77,7 @@ fun LogRegBodyContent(viewModel: ViewModel) {
                 Spacer(modifier = Modifier.height(80.dp))
             }
             item{
-                Text(
+                Text( //TODO: el texto se sobrepone
                     text = stringResource(id = R.string.slogan),
                     fontSize = 40.sp,
                     fontWeight = FontWeight.Bold,

@@ -15,4 +15,10 @@
     <string name="Login">Iniciar Sesion</string>
     <string name="house">Imaguen de una casa</string>
     <string name="slogan">¡Descubre cómo la energía solar puede beneficiar tu hogar!</string>
+    <string name="add">Añadir producto</string>
+    <string name="cancel">Cancelar</string>
+    <string name="option_1">Bateria</string>
+    <string name="option_2">Panel Solar</string>
+    <string name="option_3">Inversor</string>
+    <string name="option_4">Cargador</string>
 </resources>

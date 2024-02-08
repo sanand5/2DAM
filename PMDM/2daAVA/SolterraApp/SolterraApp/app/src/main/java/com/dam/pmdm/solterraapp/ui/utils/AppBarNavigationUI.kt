@@ -46,7 +46,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.dam.pmdm.solterraapp.R
-import com.dam.pmdm.solterraapp.navigation.AppScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -119,10 +118,6 @@ fun topAppBar(
             .clickable { navController.popBackStack() },
         title = {
             Row {
-                Icon(
-                    imageVector = Icons.Default.KeyboardArrowLeft,
-                    contentDescription = stringResource(id = R.string.KeyboardArrowLeft),
-                )
                 Text(text = text)
                 Spacer(modifier = Modifier.width(8.dp))
             }
@@ -144,14 +139,16 @@ fun topBottonScaffold(
     text: String,
     scope: CoroutineScope,
     drawerState: DrawerState,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    FAB: @Composable () -> Unit = { }
 ){
 
     Scaffold(
         topBar = {
-            topAppBar(text,navController,scope,drawerState)
+            topAppBar(text, navController, scope, drawerState)
         },
         bottomBar = { BottomNavigationBar(navController) },
+        floatingActionButton = { FAB() },
         content = { content() },
     )
 }
@@ -161,7 +158,8 @@ fun topBottonScaffold(
 fun ModalNavDrawer(
     navController: NavController,
     text: String,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    FAB: @Composable () -> Unit = { }
 
 ){
     val scope = rememberCoroutineScope()
@@ -175,10 +173,11 @@ fun ModalNavDrawer(
                 navController = navController,
                 text = text,
                 scope = scope,
-                drawerState = drawerState
-            ){
-                content()
-            }}
+                drawerState = drawerState,
+                content = { content() },
+                FAB = { FAB() }
+            )
+        }
     )
 }
 
