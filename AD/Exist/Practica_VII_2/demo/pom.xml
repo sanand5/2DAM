@@ -8,10 +8,9 @@
     <version>1.0</version>
     <dependencies>
         <dependency> 
-            <!-- Error: Missing artifact org.exist-db:exist-jdbc-driver:jar:4.7.1 -->
             <groupId>org.exist-db</groupId>
             <artifactId>exist-jdbc-driver</artifactId>
-            <version>4.7.1</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 </project>
