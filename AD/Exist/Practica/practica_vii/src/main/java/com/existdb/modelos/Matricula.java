@@ -1,4 +1,8 @@
 package com.existdb.modelos;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.existdb.utilidades.*;
 
 public class Matricula {
@@ -49,32 +53,46 @@ public class Matricula {
         return notas;
     }
 
-    public void addNota() {
-
-    }
-    
-    public Double[] getNotasArray() {
+    public List<Double> getNotasArray() {
         String notasString = getNotas();
+        List<Double> notasList = new ArrayList<>();
         if (notasString != null && !"null".equals(notasString) && !"".equals(notasString)) {
-            String notasActuales[] = notasString.split("#");
-            Double[] notas = new Double[notasActuales.length];
-
-            for (int i = 0; i < notasActuales.length; i++) {
+            String[] notasActuales = notasString.split("#");
+            for (String notaActual : notasActuales) {
                 try {
-                    notas[i] = Double.parseDouble(notasActuales[i]);
+                    if (!notaActual.trim().equals("")) {
+                        Double nota = Double.parseDouble(notaActual);
+                        notasList.add(nota);
+                    }
                 } catch (NumberFormatException e) {
-                    Colors.errMsg("Error de formato en : " + notasActuales[i]);
+                    Colors.errMsg("Error de formato en: " + notaActual);
                 }
-
             }
-            return notas;
-        } else {
-            return new Double[0];
+        }
+        return notasList;
+    }
+
+    public void setNotasArray(List<Double> notas) {
+        if (notas != null && !notas.isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+
+            for (Double nota : notas) {
+                sb.append(nota).append("#");
+            }
+
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+
+            this.notas = sb.toString();
         }
     }
 
-    public void setNotas(String notas) {
-        this.notas = notas;
+    public void mostrarNotas() {
+        List<Double> notas = getNotasArray();
+        for (int i = 0; i < notas.size(); i++) {
+            System.out.println(i+1+".- " + notas.get(i));
+        }
     }
 
     public String toXml() {

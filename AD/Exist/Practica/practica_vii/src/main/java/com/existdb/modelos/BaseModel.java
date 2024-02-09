@@ -32,9 +32,8 @@ public class BaseModel {
         return xmlBuilder.toString();
     }
 
-    // Método para obtener el valor de una propiedad por nombre
     protected String getPropertyValue(String propertyName) {
-        return ""; // Por defecto, devuelve una cadena vacía
+        return ""; 
     }
     
     

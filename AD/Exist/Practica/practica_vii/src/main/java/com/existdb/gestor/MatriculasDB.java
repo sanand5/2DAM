@@ -19,6 +19,7 @@ import java.util.List;
 
 public class MatriculasDB extends CrudManager<Matricula> {
     private static String documento = "matriculas.xml";
+    private static String root = "matriculas";
     public static final String CAMPO_ALUMNO = "idAlumno";
     public static final String CAMPO_MODULO = "idModulo";
 
@@ -45,21 +46,23 @@ public class MatriculasDB extends CrudManager<Matricula> {
         }
     }
 
+    public void actualizarMatricula(int id, String value) {
+        updateMatricula(id, value);
+    }
+
     private void addMatricula(Matricula matricula) {
         try {
             matricula.setId(obtenerMaximoId(documento) + 1 + "");
             String nuevaMatriculaXml = matricula.toXml();
-            super.createResource(documento, nuevaMatriculaXml);
+            super.createResource(documento, nuevaMatriculaXml, root);
             System.out.println("Matrícula añadida con éxito.");
         } catch (Exception e) {
-            System.out.println("Error al añadir la matrícula.");
-            e.printStackTrace();
+            Colors.errMsg("Error al añadir la matrícula.");
         }
     }
 
     private void deleteMatriculaById(int id) {
         try {
-            // Obtén el recurso por ID y elimínalo
             String resourceName = documento;
             XMLResource resource = readResource(resourceName);
             if (resource != null) {
@@ -74,8 +77,27 @@ public class MatriculasDB extends CrudManager<Matricula> {
                 System.out.println("No se encontró el recurso " + resourceName);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al eliminar la matrícula.");
+            Colors.errMsg("Error al eliminar la matrícula.");
+        }
+    }
+
+    public void updateMatricula(int id, String value) {
+        try {
+            String resourceName = documento;
+            XMLResource resource = readResource(resourceName);
+            if (resource != null) {
+                Matricula matriculaToDelete = findMatriculaById(resource.getContent().toString(), id);
+                if (matriculaToDelete != null) {
+                    super.updateFieldById(resourceName, id+"", "matricula", "notas",  value);
+                    System.out.println("Matrícula eliminada con éxito.");
+                } else {
+                    System.out.println("No se encontró una matrícula con el ID proporcionado.");
+                }
+            } else {
+                System.out.println("No se encontró el recurso " + resourceName);
+            }
+        } catch (Exception e) {
+            Colors.errMsg("Error al eliminar la matrícula.");
         }
     }
 
@@ -96,19 +118,17 @@ public class MatriculasDB extends CrudManager<Matricula> {
                     int matriculaId = Integer.parseInt(idString);
 
                     if (matriculaId == id) {
-                        // Encontramos la matrícula con el ID proporcionado
                         return parseMatriculaFromElement(matriculaElement);
                     }
                 } catch (NumberFormatException e) {
-                    // Manejar el caso en que el atributo "id" no sea un número válido
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
-            return null; // No se encontró la matrícula con el ID proporcionado
+            return null; 
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; // Manejar la excepción según tus necesidades
+            Colors.errMsg("No se ha podido encontar el id ");
+            return null; 
         }
     }
 
@@ -154,15 +174,14 @@ public class MatriculasDB extends CrudManager<Matricula> {
                         maxId = id;
                     }
                 } catch (NumberFormatException e) {
-                    // Manejar el caso en que el atributo "id" no sea un número válido
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
             return maxId;
         } catch (Exception e) {
-            e.printStackTrace();
-            return 0; // Indicar un valor de error
+            Colors.errMsg("No se ha podido encontar el id ");
+            return 0;
         }
     }
 
@@ -170,7 +189,7 @@ public class MatriculasDB extends CrudManager<Matricula> {
         try {
             List<Matricula> filteredMatriculas = new ArrayList<>();
             for (Matricula matricula : getAllMatriculas()) {
-                int externalId = (element.equals("alumno")) ? matricula.getIdAlumno() : matricula.getIdModulo();
+                int externalId = (element.equals("idAlumno")) ? matricula.getIdAlumno() : matricula.getIdModulo();
 
                 if (externalId == id) {
                     filteredMatriculas.add(matricula);
@@ -179,8 +198,7 @@ public class MatriculasDB extends CrudManager<Matricula> {
 
             return filteredMatriculas;
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al obtener matrículas por ID.");
+            Colors.errMsg("Error al obtener matrículas por ID.");
             return null;
         }
     }
@@ -206,9 +224,16 @@ public class MatriculasDB extends CrudManager<Matricula> {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al obtener todos los alumnos.");
+            Colors.errMsg("Error al obtener todos los alumnos.");
             return null;
         }
+    }
+    
+    public void exportar(String filePath) {
+        exportToXml(documento, filePath);
+    }
+    
+    public void importar(String filePath) {
+        importarDesdeXml(documento, filePath);
     }
 }

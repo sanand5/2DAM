@@ -7,7 +7,7 @@ package com.existdb.utilidades;
 public class Colors {
 
     public static final String WHITE_ANSI = "\u001B[37m";
-    public static final String RESET_ANSI = "\u001B[0m";//"";
+    public static final String RESET_ANSI = "\u001B[0m";
     public static final String BLACK_ANSI = "\u001B[30m";
     public static final String RED_ANSI = "\u001B[31m";
     public static final String GREEN_ANSI = "\u001B[32m";

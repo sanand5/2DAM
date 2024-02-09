@@ -1,19 +1,18 @@
 package com.existdb;
 
 import com.existdb.gestor.Conexion;
-import com.existdb.gestor.ClientComands;
+import com.existdb.utilidades.Colors;
+
 public class Main {
     public static void main(String[] args) {
         try {
-            ClientComands c = new ClientComands();
             Conexion.iniciarConexion();
-            //c.altaAlumno();
-            //c.altaAlumno();
-            c.bajaAlumno();
-
-
+            if (Conexion.isConexionEstablecida()) {
+                menus menus = new menus();
+                menus.mainMenu();
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            Colors.errMsg("Error inesperado");
         }
     }
 }

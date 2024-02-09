@@ -42,6 +42,8 @@ public class Alumno extends BaseModel {
         this.id = id;
     }
 
+    
+
     public String toXml() {
         return "<alumno id = \"" + this.getId() + "\">" +
                 "<nombre>" + this.getNombre() + "</nombre>" +
@@ -49,5 +51,10 @@ public class Alumno extends BaseModel {
                 "<fecha>" + this.getFecha() + "</fecha>" +
                 "<nia>" + this.getNia() + "</nia>" +
                 "</alumno>";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s :: %s %s, %s ", nia, nombre, apellidos, fecha);
     }
 }

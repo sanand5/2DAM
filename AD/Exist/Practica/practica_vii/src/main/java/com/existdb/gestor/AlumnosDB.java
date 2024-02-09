@@ -22,6 +22,7 @@ import java.util.Optional;
 
 public class AlumnosDB extends CrudManager<Alumno> {
     private static String documento = "alumnos.xml";
+    private static String root = "alumnos";
 
     public void anadirAlumno(Alumno alumno) {
         List<Alumno> alumnosList = getAllAlumnos();
@@ -55,7 +56,7 @@ public class AlumnosDB extends CrudManager<Alumno> {
     private void addAlumno(Alumno alumno) {
         try {
             alumno.setId(obtenerMaximoId() + 1 + "");
-            super.createResource(documento, alumno.toXml());
+            super.createResource(documento, alumno.toXml(), root);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -64,7 +65,6 @@ public class AlumnosDB extends CrudManager<Alumno> {
 
     private void deleteAlumnoById(int id) {
         try {
-            // Obtén el recurso por ID y elimínalo
             XMLResource resource = readResource(documento);
             if (resource != null) {
                 Alumno alumnoToDelete = findAlumnoById(resource.getContent().toString(), id);
@@ -78,8 +78,7 @@ public class AlumnosDB extends CrudManager<Alumno> {
                 System.out.println("No se encontró el recurso " + documento);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al eliminar el alumno.");
+            Colors.errMsg("No se ha podido eliminar el alumno.");
         }
     }
 
@@ -100,19 +99,17 @@ public class AlumnosDB extends CrudManager<Alumno> {
                     int alumnoId = Integer.parseInt(idString);
 
                     if (alumnoId == id) {
-                        // Encontramos al alumno con el ID proporcionado
                         return parseAlumnoFromElement(alumnoElement);
                     }
                 } catch (NumberFormatException e) {
-                    // Manejar el caso en que el atributo "id" no sea un número válido
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
-            return null; // No se encontró el alumno con el ID proporcionado
+            return null;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; // Manejar la excepción según tus necesidades
+            Colors.errMsg("No se ha podido encontar el alumno ");
+            return null;
         }
     }
 
@@ -158,15 +155,14 @@ public class AlumnosDB extends CrudManager<Alumno> {
                         maxId = id;
                     }
                 } catch (NumberFormatException e) {
-                    // Manejar el caso en que el atributo "id" no sea un número válido
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
             return maxId;
         } catch (Exception e) {
-            e.printStackTrace();
-            return 0; // Indicar un valor de error
+            Colors.errMsg("No se ha podido encontar el id ");
+            return 0;
         }
     }
 
@@ -199,9 +195,16 @@ public class AlumnosDB extends CrudManager<Alumno> {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Error al obtener todos los alumnos.");
             return null;
         }
+    }
+
+    public void exportar(String filePath) {
+        exportToXml(documento, filePath);
+    }
+    
+    public void importar(String filePath) {
+        importarDesdeXml(documento, filePath);
     }
 }

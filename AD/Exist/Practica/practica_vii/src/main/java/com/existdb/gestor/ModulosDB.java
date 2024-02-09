@@ -21,6 +21,7 @@ import javax.xml.parsers.DocumentBuilder;
 
 public class ModulosDB extends CrudManager<Modulo> {
     private static String documento = "modulos.xml";
+    private static String root = "modulos";
 
     public void anadirModulo(Modulo modulo) {
         List<Modulo> modulosList = getAllModulos();
@@ -48,15 +49,15 @@ public class ModulosDB extends CrudManager<Modulo> {
     public void mostrarModulos() {
         List<Modulo> modulosList = getAllModulos();
         System.out.println("### Lista de modulos ###");
-        for(int i = 1; i <= modulosList.size(); i++) {
-            System.out.println(i + ".- " + modulosList.get(i).getNombre());
+        for (int i = 0; i < modulosList.size(); i++) {
+            System.out.println(i + 1 + ".- " + modulosList.get(i).getNombre());
         }
     }
 
     private void addModulo(Modulo modulo) {
         try {
             modulo.setId(obtenerMaximoId(documento) + 1 + "");
-            createResource(documento, modulo.toXml());
+            createResource(documento, modulo.toXml(), root);
             System.out.println("Módulo agregado con éxito.");
         } catch (Exception e) {
             System.out.println(e);
@@ -65,7 +66,6 @@ public class ModulosDB extends CrudManager<Modulo> {
 
     private void deleteModuloById(int id) {
         try {
-            // Obtén el recurso por ID y elimínalo
             XMLResource resource = readResource(documento);
             if (resource != null) {
                 Modulo moduloToDelete = findModuloById(resource.getContent().toString(), id);
@@ -79,8 +79,7 @@ public class ModulosDB extends CrudManager<Modulo> {
                 System.out.println("No se encontró el recurso " + documento);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al eliminar el modulo.");
+            Colors.errMsg("Error al eliminar el modulo.");
         }
     }
 
@@ -101,19 +100,17 @@ public class ModulosDB extends CrudManager<Modulo> {
                     int moduloId = Integer.parseInt(idString);
 
                     if (moduloId == id) {
-                        // Encontramos el módulo con el ID proporcionado
                         return parseModuloFromElement(moduloElement);
                     }
                 } catch (NumberFormatException e) {
-                    // Manejar el caso en que el atributo "id" no sea un número válido
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
-            return null; // No se encontró el módulo con el ID proporcionado
+            return null; 
         } catch (Exception e) {
-            e.printStackTrace();
-            return null; // Manejar la excepción según tus necesidades
+            Colors.errMsg("No se ha podido encontar el id ");
+            return null; 
         }
     }
 
@@ -157,26 +154,26 @@ public class ModulosDB extends CrudManager<Modulo> {
                         maxId = id;
                     }
                 } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                    Colors.errMsg("Formato incorecto id = " + idString);
                 }
             }
 
             return maxId;
         } catch (Exception e) {
-            e.printStackTrace();
+            Colors.errMsg("No se ha podido encontar el id ");
             return 0;
         }
     }
 
     public Modulo getModuloById(String id) {
-    List<Modulo> modulosList = getAllModulos();
+        List<Modulo> modulosList = getAllModulos();
 
-    Optional<Modulo> moduloOptional = modulosList.stream()
-            .filter(modulo -> modulo.getId().equals(id))
-            .findFirst();
+        Optional<Modulo> moduloOptional = modulosList.stream()
+                .filter(modulo -> modulo.getId().equals(id))
+                .findFirst();
 
-    return moduloOptional.orElse(null);
-}
+        return moduloOptional.orElse(null);
+    }
 
     public List<Modulo> getAllModulos() {
         try {
@@ -199,9 +196,16 @@ public class ModulosDB extends CrudManager<Modulo> {
                 return null;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error al obtener todos los alumnos.");
+            Colors.errMsg("Error al obtener todos los alumnos.");
             return null;
         }
+    }
+
+    public void exportar(String filePath) {
+        exportToXml(documento, filePath);
+    }
+    
+    public void importar(String filePath) {
+        importarDesdeXml(documento, filePath);
     }
 }

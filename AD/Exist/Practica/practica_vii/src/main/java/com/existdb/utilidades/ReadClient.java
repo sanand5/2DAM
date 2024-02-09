@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 public class ReadClient {
-    private static Colors cl = new Colors();
     Scanner sc = new Scanner(System.in);
 
     /**
@@ -24,7 +23,7 @@ public class ReadClient {
                 num = Integer.parseInt(pedirString(msg, false));
 
             } catch (InputMismatchException | NumberFormatException e) {
-                cl.warMsg("Debes introducir un número entero");
+                Colors.warMsg("Debes introducir un número entero");
                 repit = true;
             }
         } while (repit);
@@ -45,7 +44,7 @@ public class ReadClient {
             try {
                 num = Double.parseDouble(pedirString(msg, false));
             } catch (InputMismatchException | NumberFormatException e) {
-                cl.warMsg("Debes introducir un número decimal");
+                Colors.warMsg("Debes introducir un número decimal");
                 repit = true;
             }
         } while (repit);
@@ -63,7 +62,7 @@ public class ReadClient {
         do {
             num = pedirInt(msg);
             if (num < 0) {
-                cl.warMsg("El número debe ser positivo.");
+                Colors.warMsg("El número debe ser positivo.");
             }
         } while (num < 0);
         return num;
@@ -82,7 +81,7 @@ public class ReadClient {
         do {
             num = pedirInt(msg);
             if (num < min || num > max) {
-                cl.warMsg("El número debe estar en el rango [" + min + ", " + max + "].");
+                Colors.warMsg("El número debe estar en el rango [" + min + ", " + max + "].");
             }
         } while (num < min || num > max);
         return num;
@@ -99,7 +98,7 @@ public class ReadClient {
         do {
             num = pedirDouble(msg);
             if (num <= 0) {
-                cl.warMsg("El número debe ser positivo.");
+                Colors.warMsg("El número debe ser positivo.");
             }
         } while (num <= 0);
         return num;
@@ -118,7 +117,7 @@ public class ReadClient {
         do {
             num = pedirDouble(msg);
             if (num < min || num > max) {
-                cl.warMsg("El número debe estar en el rango [" + min + ", " + max + "].");
+                Colors.warMsg("El número debe estar en el rango [" + min + ", " + max + "].");
             }
         } while (num < min || num > max);
         return num;
@@ -141,10 +140,10 @@ public class ReadClient {
                 str = sc.nextLine();
                 if (!allowNull && (str == null || str.trim().isEmpty())) {
                     repit = true;
-                    cl.warMsg("No puedes dejar el campo vacío");
+                    Colors.warMsg("No puedes dejar el campo vacío");
                 }
             } catch (NoSuchElementException e) {
-                cl.warMsg("Debes introducir un texto");
+                Colors.warMsg("Debes introducir un texto");
                 repit = true;
             }
         } while (repit);
