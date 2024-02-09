@@ -1,0 +1,50 @@
+[
+  {
+    "objectIdString": "65a6b2196392ac06db9c3dd5",
+    "dni": "12345678F",
+    "nombre": "Juan",
+    "nombre2": "",
+    "apellido1": "Juanito",
+    "apellido2": ""
+  },
+  {
+    "objectIdString": "65a9005b2f28c567d2d55030",
+    "dni": "12345678J",
+    "nombre": "Maria",
+    "nombre2": "",
+    "apellido1": "Gutierrez",
+    "apellido2": "Latosa"
+  },
+  {
+    "objectIdString": "65a6adb5167b55507559d83a",
+    "dni": "12345678B",
+    "nombre": "Pepe",
+    "nombre2": "Enriquez",
+    "apellido1": "Juan",
+    "apellido2": ""
+  },
+  {
+    "objectIdString": "65a6aeb5561519185eb060ba",
+    "dni": "12312312N",
+    "nombre": "Nico",
+    "nombre2": "Mejia",
+    "apellido1": "Perez",
+    "apellido2": "Perez"
+  },
+  {
+    "objectIdString": "65a6fdc5e6c9df719136e5d1",
+    "dni": "47739483Q",
+    "nombre": "Aaron",
+    "nombre2": "Gallego",
+    "apellido1": "Gabaldon",
+    "apellido2": "Campos"
+  },
+  {
+    "objectIdString": "65a6addd167b55507559d83b",
+    "dni": "12345678L",
+    "nombre": "Manolo",
+    "nombre2": "Pescador",
+    "apellido1": "Martinez",
+    "apellido2": ""
+  }
+]

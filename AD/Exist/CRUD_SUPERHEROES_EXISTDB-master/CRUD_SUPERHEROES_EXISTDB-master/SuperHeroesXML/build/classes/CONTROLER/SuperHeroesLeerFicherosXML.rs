@@ -1,0 +1,2 @@
+CONTROLER.SuperHeroesLeerFicherosXML
+CONTROLER.GestionContenidoSuperHeroes

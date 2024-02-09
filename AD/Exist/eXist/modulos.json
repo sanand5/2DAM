@@ -1,0 +1,22 @@
+[
+  {
+    "objectId": "65a95c307382b14d5e50331c",
+    "codigo": 56,
+    "nombre": "PMDM"
+  },
+  {
+    "objectId": "65aa8592ef726f53a1088e73",
+    "codigo": 5,
+    "nombre": "PSP"
+  },
+  {
+    "objectId": "65aa8595ef726f53a1088e74",
+    "codigo": 6,
+    "nombre": "SGE"
+  },
+  {
+    "objectId": "65aa8598ef726f53a1088e75",
+    "codigo": 12,
+    "nombre": "AD"
+  }
+]

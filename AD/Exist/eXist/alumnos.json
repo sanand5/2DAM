@@ -1,0 +1,22 @@
+[
+  {
+    "objectId": "65aa85c7ef726f53a1088e78",
+    "nia": 765,
+    "personaId": "65a9005b2f28c567d2d55030"
+  },
+  {
+    "objectId": "65aa85b0ef726f53a1088e76",
+    "nia": 123,
+    "personaId": "65a6adb5167b55507559d83a"
+  },
+  {
+    "objectId": "65a9012416ec8232faa8db27",
+    "nia": 12345,
+    "personaId": "65a6fdc5e6c9df719136e5d1"
+  },
+  {
+    "objectId": "65aa85bfef726f53a1088e77",
+    "nia": 1234,
+    "personaId": "65a6addd167b55507559d83b"
+  }
+]

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alumnos>
     <alumno>
-        <id></id>
-        <nombre></nombre>
-        <apellidos></apellidos>
-        <fecha></fecha>
-        <nia></nia>
+        <id>001</id>
+        <nombre>Andreu</nombre>
+        <apellidos>Sanz</apellidos>
+        <fecha>12/12/2004</fecha>
+        <nia>10813358</nia>
     </alumno>
 </alumnos>

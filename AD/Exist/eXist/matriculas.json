@@ -1,0 +1,32 @@
+[
+  {
+    "objectIdString": "65a9642509ffaf6b69b093c2",
+    "id": 1,
+    "alumnoId": "65a9012416ec8232faa8db27",
+    "moduloId": "65a95c307382b14d5e50331c"
+  },
+  {
+    "objectIdString": "65aa85ccef726f53a1088e79",
+    "id": 2,
+    "alumnoId": "65aa85c7ef726f53a1088e78",
+    "moduloId": "65aa8595ef726f53a1088e74"
+  },
+  {
+    "objectIdString": "65aa85d4ef726f53a1088e7a",
+    "id": 3,
+    "alumnoId": "65aa85c7ef726f53a1088e78",
+    "moduloId": "65aa8598ef726f53a1088e75"
+  },
+  {
+    "objectIdString": "65aa85d8ef726f53a1088e7b",
+    "id": 4,
+    "alumnoId": "65a9012416ec8232faa8db27",
+    "moduloId": "65aa8598ef726f53a1088e75"
+  },
+  {
+    "objectIdString": "65aa85deef726f53a1088e7c",
+    "id": 5,
+    "alumnoId": "65aa85bfef726f53a1088e77",
+    "moduloId": "65a95c307382b14d5e50331c"
+  }
+]
