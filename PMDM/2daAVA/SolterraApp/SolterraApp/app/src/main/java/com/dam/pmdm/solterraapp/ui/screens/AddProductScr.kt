@@ -36,18 +36,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.dam.pmdm.solterraapp.R
+import com.dam.pmdm.solterraapp.navigation.AppNavigation
+import com.dam.pmdm.solterraapp.navigation.AppScreen
 import com.dam.pmdm.solterraapp.ui.utils.InvestedButton
 import com.dam.pmdm.solterraapp.ui.utils.NormalButton
 
 @Composable
-fun AddProductScr(): Unit {
-    AddProductBodyContent()
+fun AddProductScr(navController: NavController): Unit {
+    AddProductBodyContent(navController)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddProductBodyContent(): Unit {
+fun AddProductBodyContent(navController: NavController): Unit {
     var name by remember { mutableStateOf("") }
 
     val options = listOf("-",stringResource(id = R.string.option_1), stringResource(id = R.string.option_2), stringResource(id = R.string.option_3), stringResource(id = R.string.option_4))
@@ -133,7 +137,7 @@ fun AddProductBodyContent(): Unit {
         item{
 
             TextField(
-                value = number.value?.toString() ?: "",
+                value = number.value?.toString() ?: " ",
                 onValueChange = {
                     it.toIntOrNull()?.let { value ->
                         number.value = it.toInt()
@@ -146,7 +150,9 @@ fun AddProductBodyContent(): Unit {
         item { Spacer(modifier = Modifier.height(50.dp)) }
         item {
             NormalButton (
-                modifier = Modifier.width(150.dp)
+                modifier = Modifier.width(150.dp),
+                onClick = {navController.navigate(AppScreen.ShoppingCartScr.route)}
+
             ){
                 Text(text = stringResource(R.string.add))
             }
@@ -154,7 +160,8 @@ fun AddProductBodyContent(): Unit {
         item { Spacer(modifier = Modifier.height(20.dp)) }
         item {
             InvestedButton(
-                modifier = Modifier.width(150.dp)
+                modifier = Modifier.width(150.dp),
+                onClick = {navController.navigate(AppScreen.ShoppingCartScr.route)}
             ) {
                 Text(text = stringResource(id = R.string.cancel))
             }

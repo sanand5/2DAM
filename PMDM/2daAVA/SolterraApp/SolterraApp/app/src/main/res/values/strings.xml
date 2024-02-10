@@ -21,4 +21,9 @@
     <string name="option_2">Panel Solar</string>
     <string name="option_3">Inversor</string>
     <string name="option_4">Cargador</string>
+    <string name="your_data">Tus datos:</string>
+    <string name="icon_person">Icono Persona</string>
+    <string name="icon_email">Icono Email</string>
+    <string name="icon_location">Icono direccion</string>
+    <string name="icon_password">Icono contraseña</string>
 </resources>

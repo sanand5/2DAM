@@ -6,7 +6,7 @@ import com.existdb.utilidades.Colors;
 public class Main {
     public static void main(String[] args) {
         try {
-            Conexion.iniciarConexion();
+            Conexion.startConexion();
             if (Conexion.isConexionEstablecida()) {
                 menus menus = new menus();
                 menus.mainMenu();

@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dam.pmdm.solterraapp.ui.screens.AddProductScr
 import com.dam.pmdm.solterraapp.ui.screens.LogRegScr
+import com.dam.pmdm.solterraapp.ui.screens.ProfileScr
 import com.dam.pmdm.solterraapp.ui.screens.ShoppingCartScr
 import com.dam.pmdm.solterraapp.ui.screens.WelcomeScr
 
@@ -16,7 +17,7 @@ fun AppNavigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = AppScreen.AddProductScr.route, //AppScreen.WelcomeScr.route
+        startDestination = AppScreen.ProfileScr.route, //AppScreen.WelcomeScr.route
     ) {
         composable(
             route = AppScreen.WelcomeScr.route
@@ -36,12 +37,12 @@ fun AppNavigation() {
         composable(
             route = AppScreen.AddProductScr.route
         ) {
-            AddProductScr()
+            AddProductScr(navController)
         }
         composable(
             route = AppScreen.ProfileScr.route
         ) {
-            LogRegScr(navController)
+            ProfileScr(navController)
         }
         composable(
             route = AppScreen.ExitScr.route

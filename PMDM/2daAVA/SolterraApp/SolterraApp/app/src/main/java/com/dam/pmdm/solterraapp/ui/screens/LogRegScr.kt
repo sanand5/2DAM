@@ -35,12 +35,6 @@ import com.dam.pmdm.solterraapp.R
 import com.dam.pmdm.solterraapp.ui.utils.*
 import com.dam.pmdm.solterraapp.ui.viewmodel.ViewModel
 
-@Composable
-@Preview
-fun loginpreviw(): Unit {
-    val navController = rememberNavController()
-    LogRegScr(navController)
-}
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LogRegScr(

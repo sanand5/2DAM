@@ -29,10 +29,10 @@ import javax.xml.parsers.DocumentBuilder;
 
 public class CrudManager<T> {
 
-    private Collection collection = Conexion.getDatabase();
+    private Collection collection = Conexion.getCollection();
 
     protected void createResource(String resourceName, String xmlContent, String root) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             XMLResource resource = (XMLResource) collection.getResource(resourceName);
             Document document = null;
@@ -87,7 +87,7 @@ public class CrudManager<T> {
     }
 
     protected XMLResource readResource(String resourceName) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             return (XMLResource) collection.getResource(resourceName);
         } catch (XMLDBException e) {
@@ -98,7 +98,7 @@ public class CrudManager<T> {
 
     protected void updateFieldById(String resourceName, String targetId, String elementName, String fieldName,
             String newValue) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             XMLResource resource = (XMLResource) collection.getResource(resourceName);
             if (resource != null) {
@@ -133,7 +133,7 @@ public class CrudManager<T> {
     }
 
     protected void deleteResource(String resourceName, String targetId, String elementName) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             XMLResource resource = (XMLResource) collection.getResource(resourceName);
             if (resource != null) {
@@ -182,7 +182,7 @@ public class CrudManager<T> {
     }
 
     public void exportToXml(String resourceName, String filePath) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             XMLResource resource = (XMLResource) collection.getResource(resourceName);
 
@@ -215,7 +215,7 @@ public class CrudManager<T> {
     }
 
     public void importarDesdeXml(String resourceName, String filePath) {
-        collection = Conexion.getDatabase();
+        collection = Conexion.getCollection();
         try {
             File file = new File(filePath);
             String xmlContent = "";

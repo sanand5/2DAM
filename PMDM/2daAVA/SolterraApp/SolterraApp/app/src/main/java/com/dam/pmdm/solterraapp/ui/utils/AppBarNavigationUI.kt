@@ -69,12 +69,12 @@ data class BottomNavigationItem(
             BottomNavigationItem(
                 icon = Icons.Filled.Person,
                 contentDescription = context.getString(R.string.person),
-                route = ""
+                route = "ProfileScr"
             ),
             BottomNavigationItem(
                 icon = Icons.Filled.ExitToApp,
                 contentDescription = context.getString(R.string.exit),
-                route = ""
+                route = "ExitScr"
             ))
     }
 }
@@ -199,7 +199,9 @@ fun DrawerSheet(scope: CoroutineScope, drawerState: DrawerState) {
     )
     val selectedItem = remember { mutableStateOf(items[0]) }
 
-    ModalDrawerSheet {
+    ModalDrawerSheet (
+        modifier = Modifier.width(220.dp)
+    ){
         Spacer(modifier = Modifier.height(12.dp))
         items.forEachIndexed(){ index, item ->
             NavigationDrawerItem(

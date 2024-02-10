@@ -20,7 +20,7 @@ public class Conexion {
     private Conexion() {
     }
 
-    public static void iniciarConexion()
+    public static void startConexion()
             throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException,
             IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
         Class<?> cl = Class.forName("org.exist.xmldb.DatabaseImpl");
@@ -30,7 +30,7 @@ public class Conexion {
         collection = DatabaseManager.getCollection(uri, username, password);
     }
 
-    public static Collection getDatabase() {
+    public static Collection getCollection() {
         return collection;
     }
 
