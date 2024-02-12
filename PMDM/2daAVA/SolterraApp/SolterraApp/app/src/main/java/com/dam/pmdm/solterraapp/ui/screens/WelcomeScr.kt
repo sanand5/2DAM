@@ -27,7 +27,7 @@ import com.dam.pmdm.solterraapp.navigation.AppScreen
 import kotlinx.coroutines.delay
 
 @Composable
-fun WelcomeScr(navController: NavController): Unit {
+fun WelcomeScr(navController: NavController) {
     var isLoading by remember { mutableStateOf(true) }
     WelcomeBodyContent(isLoading, navController)
     LaunchedEffect(Unit) {
@@ -38,36 +38,39 @@ fun WelcomeScr(navController: NavController): Unit {
 }
 
 @Composable
-fun WelcomeBodyContent(isLoading: Boolean, navController: NavController): Unit {
-    Column (
+fun WelcomeBodyContent(isLoading: Boolean, navController: NavController) {
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-    ){
+    ) {
         Image(
             painter = painterResource(id = R.drawable.logo),
-            contentDescription = stringResource(id = R.string.logo_content_description),
+            contentDescription = stringResource(id = R.string.img_solterra),
             modifier = Modifier.width(250.dp)
         )
         Box(
-            modifier = Modifier.width(250.dp).height(30.dp),
+            modifier = Modifier
+                .width(250.dp)
+                .height(30.dp),
             contentAlignment = Alignment.Center,
-            ){
+        ) {
             if (isLoading) {
                 LinearProgressIndicator(
                     modifier = Modifier.width(250.dp),
                     color = colorResource(id = R.color.solterraRed)
                 )
-            }else{
+            } else {
                 navController.navigate(route = AppScreen.LogRegScr.route)
             }
         }
         Image(
             painter = painterResource(id = R.drawable.textosolterra),
-            contentDescription = stringResource(id = R.string.logo_content_description),
+            contentDescription = stringResource(id = R.string.img_solterra),
             modifier = Modifier.width(250.dp)
 
         )
-    }}
+    }
+}

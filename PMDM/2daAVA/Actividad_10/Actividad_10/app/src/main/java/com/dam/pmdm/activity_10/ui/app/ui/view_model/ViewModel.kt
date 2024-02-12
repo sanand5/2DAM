@@ -245,7 +245,6 @@ fun Register(email: String, password: String, loc: Context) {
             if (password.length >= 8){
                 signUp(email,password,loc)
             }
-
         },
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold,

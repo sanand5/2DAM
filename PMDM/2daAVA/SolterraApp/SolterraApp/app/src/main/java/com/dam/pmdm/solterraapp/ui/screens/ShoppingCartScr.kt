@@ -16,13 +16,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,81 +33,58 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.dam.pmdm.solterraapp.R
 import com.dam.pmdm.solterraapp.navigation.AppScreen
-import com.dam.pmdm.solterraapp.ui.utils.EmailTextField
-import com.dam.pmdm.solterraapp.ui.utils.InvestedButton
-import com.dam.pmdm.solterraapp.ui.utils.ModalNavDrawer
-import com.dam.pmdm.solterraapp.ui.utils.NormalButton
-import com.dam.pmdm.solterraapp.ui.viewmodel.ViewModel
+import com.dam.pmdm.solterraapp.ui.tools.NavigationUI
+import com.dam.pmdm.solterraapp.ui.tools.NormalButton
+import com.dam.pmdm.solterraapp.ui.tools.showToast
+import com.dam.pmdm.solterraapp.ui.viewmodel.ProductViewModel
+import com.dam.pmdm.solterraapp.ui.viewmodel.listaProductos
 
 @Composable
 fun ShoppingCartScr(
     navController: NavController
 ) {
-    ModalNavDrawer(
+    NavigationUI(
         navController = navController,
-        text = stringResource(id = R.string.shopping_cart),
-        content = { ShoppingCartBodyContent() },
-        FAB = { FAB(navController) }
+        text = stringResource(id = R.string.scr_shopping),
+        content = { ShoppingCartBodyContent(navController) },
+        fab = { FAB(navController) }
     )
 }
 
 //TODO: fotos
 @Composable
-fun ShoppingCartBodyContent() {
+fun ShoppingCartBodyContent(navController: NavController) {
+    val productViewModel = ProductViewModel()
     val productImages = listOf(
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
-        R.drawable.casa,
+        R.drawable.ps_100,
+        R.drawable.ps_150,
+        R.drawable.ps_200,
+        R.drawable.b_12,
+        R.drawable.b_24,
+        R.drawable.b_p_12,
+        R.drawable.i_3000,
+        R.drawable.i_5000,
     )
     val productNames = listOf(
-        "Panel Solar 100W",
-        "Panel Solar 150W",
-        "Panel Solar 200W",
-        "Batería de Litio 12V 50Ah",
-        "Batería de Litio 24V 100Ah",
-        "Batería de Plomo-Ácido 12V 80Ah",
-        "Inversor Solar 3000W",
-        "Inversor Solar 5000W",
-        "Regulador de Carga 20A",
-        "Panel Solar 250W",
-        "Batería de Litio 48V 200Ah",
-        "Inversor Solar Híbrido 6000W",
-        "Regulador de Carga 30A",
-        "Panel Solar Plegable 120W",
-        "Batería de Plomo-Ácido 24V 150Ah",
-        "Inversor Solar 8000W",
-        "Batería Portátil Solar 50000mAh",
-        "Regulador de Carga MPPT 40A",
-        "Panel Solar Flexible 100W",
+        "Solar Panel 100W",
+        "Solar Panel 150W",
+        "Solar Panel 200W",
+        "Lithium Battery 12V 50Ah",
+        "Lithium Battery 24V 100Ah",
+        "Lead-Acid Battery 12V 80Ah",
+        "Solar Inverter 3000W",
+        "Solar Inverter 5000W",
     )
     val productPrices = listOf(
         "$199.99",
@@ -118,22 +95,13 @@ fun ShoppingCartBodyContent() {
         "$129.99",
         "$899.99",
         "$1299.99",
-        "$79.99",
-        "$349.99",
-        "$799.99",
-        "$1599.99",
-        "$99.99",
-        "$349.99",
-        "$549.99",
-        "$1999.99",
-        "$129.99",
-        "$149.99",
-        "$199.99",
     )
+    val loc = LocalContext.current
+    var showDialog by remember { mutableStateOf(false) }
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.patron_solar),
-            contentDescription = null, //TODO: content description
+            contentDescription = stringResource(id = R.string.img_patronSolar),
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
@@ -146,7 +114,7 @@ fun ShoppingCartBodyContent() {
                 Spacer(modifier = Modifier.height(80.dp))
             }
             item {
-                for (index in 0 until productImages.size step 2) {
+                for (index in productImages.indices step 2) {
                     Row(
                         horizontalArrangement = Arrangement.Center,
                         modifier = Modifier
@@ -172,15 +140,23 @@ fun ShoppingCartBodyContent() {
             item {
                 Row(
                     modifier = Modifier.fillMaxSize(),
-                    horizontalArrangement = Arrangement.Start,
+                    horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.Bottom,
                 ) {
-                    InvestedButton {
-                        Text(text = stringResource(id = R.string.cancel))
-                    }
-                    Spacer(modifier = Modifier.padding(10.dp))
-                    NormalButton {
-                        Text(text = "2 productos") //TODO: strings.xml
+                    NormalButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = { showDialog = true }
+                    ) {
+                        if (listaProductos.size > 0) {
+                            Text(
+                                text = stringResource(
+                                    id = R.string.btn_buyProducts,
+                                    listaProductos.size
+                                )
+                            )
+                        } else {
+                            Text(text = stringResource(id = R.string.btn_products))
+                        }
                     }
                     Spacer(modifier = Modifier.fillMaxWidth())
                 }
@@ -189,6 +165,57 @@ fun ShoppingCartBodyContent() {
                 Spacer(modifier = Modifier.height(40.dp))
             }
         }
+    }
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                showDialog = false
+            },
+            title = {
+                Text(
+                    text = stringResource(id = R.string.altD_confirmTitle),
+                    color = Color.White
+                )
+            },
+            text = {
+                Text(
+                    text = stringResource(id = R.string.altD_confirmText),
+                    color = Color.White
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        for (product in listaProductos) {
+                            productViewModel.addProduct(
+                                product.getCategory(),
+                                product.getName(),
+                                product.getQuantity()
+                            )
+                        }
+                        listaProductos.clear()
+                        showToast(loc.getString(R.string.tst_i_buyConfirmed), loc)
+                        navController.navigate(AppScreen.ExitScr.route)
+                    },
+                    colors = ButtonDefaults.textButtonColors(contentColor = colorResource(id = R.color.solterraRedOscuro))
+                ) {
+                    Text(stringResource(id = R.string.altD_yes))
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        showToast(loc.getString(R.string.tst_i_buyCancel), loc)
+                        showDialog = false
+                    },
+                    colors = ButtonDefaults.textButtonColors(contentColor = colorResource(id = R.color.solterraRedOscuro))
+                ) {
+                    Text(stringResource(id = R.string.altD_no))
+                }
+            },
+            containerColor = colorResource(id = R.color.solterraRedClaro)
+        )
     }
 }
 
@@ -201,7 +228,7 @@ fun ProductItem(imageResource: Int, productName: String, productPrice: String) {
     ) {
         Image(
             painter = painterResource(id = imageResource),
-            contentDescription = null, //TODO: content description
+            contentDescription = stringResource(id = R.string.img_product),
             modifier = Modifier
                 .width(125.dp)
                 .clip(RoundedCornerShape(8.dp))
@@ -239,7 +266,7 @@ fun FAB(navController: NavController) {
         ) {
             Icon(
                 imageVector = Icons.Filled.Add,
-                contentDescription = stringResource(id = R.string.add),
+                contentDescription = stringResource(id = R.string.btn_add),
             )
         }
     }

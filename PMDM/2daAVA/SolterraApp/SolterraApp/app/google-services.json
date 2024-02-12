@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "187255483899",
+    "project_id": "solterraapp",
+    "storage_bucket": "solterraapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187255483899:android:53986930ab46a41c182f5e",
+        "android_client_info": {
+          "package_name": "com.dam.pmdm.solterraapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx4ikBfADd_n5qvKKIo-azIoF-HDd_Kx4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
