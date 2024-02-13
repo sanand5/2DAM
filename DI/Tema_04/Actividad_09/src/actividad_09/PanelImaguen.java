@@ -7,15 +7,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author andre
- */
 public class PanelImaguen extends JPanel implements Serializable{
 
     private File imgFile;
@@ -33,10 +25,10 @@ public class PanelImaguen extends JPanel implements Serializable{
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.paintComponent(g);
         if (imgFile != null && imgFile.exists()) {
             ImageIcon imageicon = new ImageIcon(imgFile.getAbsolutePath());
-            g.drawImage(imageicon.getImage(), this.getWidth(), 0, this);
+            g.drawImage(imageicon.getImage(), 0,0,getWidth(), getHeight(), this);
             
         }
     }

@@ -36,7 +36,7 @@ public class PanelImg extends JPanel implements Serializable{
         super.paintComponent(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         if (imgFile != null && imgFile.exists()) {
             ImageIcon imageicon = new ImageIcon(imgFile.getAbsolutePath());
-            g.drawImage(imageicon.getImage(), this.getWidth(), 0, this);
+            g.drawImage(imageicon.getImage(), 0, 0, null);
             
         }
     }

@@ -4,6 +4,9 @@
  */
 package actividad_09;
 
+import java.io.File;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author andre
@@ -14,102 +17,99 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     PantallaSecundaria secondScreen;
     public PantallaPrincipal() {
         initComponents();
-        secondScreen = new PantallaSecundaria(this, true);
+        secondScreen = new PantallaSecundaria(this, false);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
+        jButtonRojo = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenuImaguen = new javax.swing.JMenu();
+        jMenuItemImaguen_01 = new javax.swing.JMenuItem();
+        jMenuItemImaguen_02 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 0));
-        jButton1.setText("Boton Rojo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRojo.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonRojo.setText("Boton Rojo");
+        jButtonRojo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonRojoActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("Esto es un menu");
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelTitulo.setText("SIIIIMUUULAAAACROOOOO");
 
-        jMenu2.setText("Esto es un submenu");
+        jMenuImaguen.setText("Imaguen");
 
-        jMenu3.setText("Esto es un submenu de un submenu");
+        jMenuItemImaguen_01.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        jMenuItemImaguen_01.setText("Primera Imaguen");
+        jMenuItemImaguen_01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemImaguen_01ActionPerformed(evt);
+            }
+        });
+        jMenuImaguen.add(jMenuItemImaguen_01);
 
-        jMenu4.setText("Esto es un subsubsubmenu");
+        jMenuItemImaguen_02.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItemImaguen_02.setText("Segunda Imaguen");
+        jMenuItemImaguen_02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemImaguen_02ActionPerformed(evt);
+            }
+        });
+        jMenuImaguen.add(jMenuItemImaguen_02);
 
-        jMenu5.setText("Esto es un subsubsubsubmenu");
+        jMenuBar2.add(jMenuImaguen);
 
-        jMenu6.setText("Esto es un subsubsubsubsubmenu");
-
-        jMenu7.setText("Esto es un subsubsubsubsubsubmenu");
-
-        jMenu8.setText("Esto es un subsubsubsubsubsubsubmenu");
-
-        jMenu9.setText("Esto es un subsubsubsubsubsubsubsubmenu");
-
-        jMenu10.setText("Ayuda");
-        jMenu10.setToolTipText("");
-        jMenu9.add(jMenu10);
-
-        jMenu8.add(jMenu9);
-
-        jMenu7.add(jMenu8);
-
-        jMenu6.add(jMenu7);
-
-        jMenu5.add(jMenu6);
-
-        jMenu4.add(jMenu5);
-
-        jMenu3.add(jMenu4);
-
-        jMenu2.add(jMenu3);
-
-        jMenu1.add(jMenu2);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jButtonRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelTitulo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jButtonRojo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonRojoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRojoActionPerformed
+        JOptionPane.showMessageDialog(this, "Todo bien?", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButtonRojoActionPerformed
+
+    private void jMenuItemImaguen_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImaguen_01ActionPerformed
+       secondScreen.setimg(new File("./src/actividad_09/img/GOKU.jpg"));
         secondScreen.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jMenuItemImaguen_01ActionPerformed
+
+    private void jMenuItemImaguen_02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImaguen_02ActionPerformed
+        // TODO add your handling code here:
+        secondScreen.setimg(new File("./src/actividad_09/img/VEGETA.jpg"));
+        secondScreen.setVisible(true);
+    }//GEN-LAST:event_jMenuItemImaguen_02ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,17 +147,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton jButtonRojo;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuImaguen;
+    private javax.swing.JMenuItem jMenuItemImaguen_01;
+    private javax.swing.JMenuItem jMenuItemImaguen_02;
     // End of variables declaration//GEN-END:variables
 }
