@@ -1,6 +1,7 @@
 package com.dam.pmdm.solterraapp.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -46,9 +48,14 @@ import com.dam.pmdm.solterraapp.R
 import com.dam.pmdm.solterraapp.navigation.AppScreen
 import com.dam.pmdm.solterraapp.ui.tools.NavigationUI
 import com.dam.pmdm.solterraapp.ui.tools.NormalButton
+import com.dam.pmdm.solterraapp.ui.tools.isNavigationEnabled
+import com.dam.pmdm.solterraapp.ui.tools.itemSelected
 import com.dam.pmdm.solterraapp.ui.tools.showToast
 import com.dam.pmdm.solterraapp.ui.viewmodel.ProductViewModel
+import com.dam.pmdm.solterraapp.ui.viewmodel.email
 import com.dam.pmdm.solterraapp.ui.viewmodel.listaProductos
+import com.dam.pmdm.solterraapp.ui.viewmodel.password
+import com.dam.pmdm.solterraapp.ui.viewmodel.user
 
 @Composable
 fun ShoppingCartScr(
@@ -138,6 +145,47 @@ fun ShoppingCartBodyContent(navController: NavController) {
                 }
             }
             item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            color = colorResource(id = R.color.solterraRed).copy(0.8f),
+                            shape = RoundedCornerShape(16.dp)
+                        )
+                        .padding(10.dp)
+
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.txt_yourProducts),
+                        fontSize = 30.sp,
+                        fontFamily = FontFamily.SansSerif,
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                        color = Color.White
+                    )
+                    Spacer(modifier = Modifier.height(3.dp))
+                    if (listaProductos.isEmpty()) {
+                        Text(
+                            text = stringResource(id = R.string.txt_anyProduct),
+                            fontSize = 20.sp,
+                            fontFamily = FontFamily.SansSerif,
+                            modifier = Modifier.padding(horizontal = 25.dp, vertical = 4.dp),
+                            color = Color.White
+                        )
+                    }
+                    for (index in listaProductos) {
+                        Row {
+                            Text(
+                                text = index.getName() + ": " + index.getQuantity() + ", " + index.getCategory(),
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.SansSerif,
+                                modifier = Modifier.padding(horizontal = 35.dp, vertical = 4.dp),
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+            item {
                 Row(
                     modifier = Modifier.fillMaxSize(),
                     horizontalArrangement = Arrangement.Center,
@@ -145,9 +193,14 @@ fun ShoppingCartBodyContent(navController: NavController) {
                 ) {
                     NormalButton(
                         modifier = Modifier.fillMaxWidth(),
-                        onClick = { showDialog = true }
+                        onClick = {
+                            if (listaProductos.isNotEmpty()) {
+                                showDialog = true
+                            }
+                        },
+                        enabled = listaProductos.isNotEmpty()
                     ) {
-                        if (listaProductos.size > 0) {
+                        if (listaProductos.isNotEmpty()) {
                             Text(
                                 text = stringResource(
                                     id = R.string.btn_buyProducts,
@@ -196,6 +249,11 @@ fun ShoppingCartBodyContent(navController: NavController) {
                         }
                         listaProductos.clear()
                         showToast(loc.getString(R.string.tst_i_buyConfirmed), loc)
+                        itemSelected = 3
+                        isNavigationEnabled = false
+                        user = ""
+                        email = ""
+                        password = ""
                         navController.navigate(AppScreen.ExitScr.route)
                     },
                     colors = ButtonDefaults.textButtonColors(contentColor = colorResource(id = R.color.solterraRedOscuro))

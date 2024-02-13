@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Solterra</string>
+
+    <string name="scr_shopping">Shopping</string>
+    <string name="scr_LogReg">Login</string>
+    <string name="scr_Profile">Profile</string>
+    <string name="scr_exit">Exit</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_shopping">Shop</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_exit">Exit</string>
+
+    <string name="option_1">Battery</string>
+    <string name="option_2">Solar Panel</string>
+    <string name="option_3">Inverter</string>
+    <string name="option_4">Charger</string>
+
+    <string name="btn_login">Log In</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_add">Add Product</string>
+    <string name="btn_products">Nothing to buy</string>
+    <string name="btn_buyProducts">Buy %1$d products</string>
+    <string name="btn_forgotpassword">I forgot my password</string>
+
+    <string name="txt_slogan">Discover how solar energy can benefit your home!</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_yourData">Your Data:</string>
+    <string name="txt_thanksExit">Thank you for choosing us!</string>
+    <string name="txt_programer">Andreu Sanz Sanz</string>
+    <string name="txt_ies">IES MARIA ENRIQUEZ</string>
+    <string name="txt_modulo">PMDM</string>
+    <string name="txt_date">2024</string>
+    <string name="txt_version">1.0</string>
+    <string name="txt_yourProducts">Your Products:</string>
+    <string name="txt_anyProduct">Nothing in the cart</string>
+
+    <string name="lnk_solterraInstagram">https://www.instagram.com/solterraenergia/</string>
+    <string name="lnk_solterraWeb">https://solterraenergia.com/</string>
+
+    <string name="icon_menu">Menu Icon</string>
+    <string name="icon_person">Person Icon</string>
+    <string name="icon_email">Email Icon</string>
+    <string name="icon_location">Location Icon</string>
+    <string name="icon_password">Password Icon</string>
+
+    <string name="img_casa">Home with solar panels Image</string>
+    <string name="img_patronSolar">Solar panel pattern Image</string>
+    <string name="img_instalacion">Installation Example Image</string>
+    <string name="img_product">Product Image</string>
+    <string name="img_edificioempresa">Company Building Image</string>
+    <string name="img_solterra">Solterra Logo Image</string>
+
+    <string name="txtf_user">Username</string>
+    <string name="txtf_emil">Email</string>
+    <string name="txtf_location">Address</string>
+    <string name="txtf_product">Product Name</string>
+    <string name="txtf_option">Option</string>
+    <string name="txtf_ph_name">._Naruto_.</string>
+    <string name="txtf_ph_email">narutouzumaki@gmail.com</string>
+    <string name="txtf_ph_productName">Lithium Battery 12V</string>
+    <string name="txtf_ph_number">1</string>
+
+    <string name="tst_e_Account">Error in account creation</string>
+    <string name="tst_e_fieldEmpty">Some field is empty</string>
+    <string name="tst_e_SendingPassword">Error sending verification email</string>
+    <string name="tst_e_emailNull">Email is null or empty</string>
+    <string name="tst_e_authenticationFailed">Authentication failed</string>
+    <string name="tst_e_SendingEmail">Error sending verification email</string>
+    <string name="tst_e_fieldsEmpty">Some fields are empty</string>
+    <string name="tst_e_invalidNumber">The number is not valid</string>
+    <string name="tst_i_verificationEmailSent">A verification email has been sent to your email</string>
+    <string name="tst_i_passwordReset">A password reset email has been sent to your email</string>
+    <string name="tst_i_addCart">A product has been added to the cart</string>
+    <string name="tst_i_buyCancel">The purchase has been canceled</string>
+    <string name="tst_i_buyConfirmed">Purchase confirmed</string>
+    <string name="tst_o_accountCreated">Account created for user:</string>
+    <string name="tst_o_loginSuccessMessage">Successful login for user: %1$s. Account not verified by email</string>
+
+    <string name="altD_yes">Yes</string>
+    <string name="altD_no">No</string>
+    <string name="altD_confirmTitle">Confirmation</string>
+    <string name="altD_confirmText">Do you want to confirm the purchase?</string>
+</resources>
+

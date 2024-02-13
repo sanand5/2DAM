@@ -33,9 +33,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -45,12 +43,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.dam.pmdm.solterraapp.R
+import com.dam.pmdm.solterraapp.navigation.AppScreen
+import com.dam.pmdm.solterraapp.ui.viewmodel.email
+import com.dam.pmdm.solterraapp.ui.viewmodel.password
 import com.dam.pmdm.solterraapp.ui.viewmodel.user
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -87,15 +89,17 @@ data class BottomNavigationItem(
                 contentDescription = context.getString(R.string.nav_exit),
                 title = R.string.nav_exit,
                 route = "ExitScr"
-            ))
+            )
+        )
     }
 }
+
+var itemSelected: Int = 0
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val context = LocalContext.current
-    var navigationSelectedItem by remember { mutableIntStateOf(-1) }
     val keyboardController = LocalSoftwareKeyboardController.current
     NavigationBar(
         modifier = Modifier.height(50.dp),
@@ -103,13 +107,9 @@ fun BottomNavigationBar(navController: NavController) {
     ) {
         BottomNavigationItem().listOfNavItems(context).forEachIndexed { index, navigationItem ->
             NavigationBarItem(
-                selected = index == navigationSelectedItem,
+                selected = index == itemSelected,
                 onClick = {
-                    keyboardController?.hide()
-                    if (isNavigationEnabled) {
-                        navigationSelectedItem = index
-                        navController.navigate(navigationItem.route)
-                    }
+                    navigate(keyboardController, navigationItem, navController, index)
                 },
                 icon = {
                     Icon(
@@ -236,15 +236,15 @@ fun DrawerSheet(
     navController: NavController
 ) {
     val context = LocalContext.current
-    var selectedItem by remember { mutableStateOf(BottomNavigationItem().listOfNavItems(context)[0]) }
     val keyboardController = LocalSoftwareKeyboardController.current
+
 
     ModalDrawerSheet(
         modifier = Modifier.width(220.dp),
     ) {
 
         Spacer(modifier = Modifier.height(12.dp))
-        BottomNavigationItem().listOfNavItems(context).forEachIndexed { _, navigationItem ->
+        BottomNavigationItem().listOfNavItems(context).forEachIndexed { index, navigationItem ->
             NavigationDrawerItem(
                 icon = {
                     Icon(
@@ -253,17 +253,37 @@ fun DrawerSheet(
                     )
                 },
                 label = { Text(stringResource(id = navigationItem.title)) },
-                selected = navigationItem == selectedItem,
+                selected = index == itemSelected,
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
                 onClick = {
-                    keyboardController?.hide()
                     scope.launch { drawerState.close() }
-                    if (isNavigationEnabled) {
-                        selectedItem = navigationItem
-                        navController.navigate(navigationItem.route)
-                    }
+                    navigate(keyboardController, navigationItem, navController, index)
                 },
             )
         }
+    }
+}
+
+@OptIn(ExperimentalComposeUiApi::class)
+fun navigate(
+    keyboardController: SoftwareKeyboardController?,
+    navigationItem: BottomNavigationItem,
+    navController: NavController,
+    index: Int
+) {
+    keyboardController?.hide()
+    itemSelected = index
+    if (isNavigationEnabled) {
+        if (navigationItem.route != AppScreen.ExitScr.route && navigationItem.route != AppScreen.LogRegScr.route) {
+            navController.navigate(navigationItem.route)
+        } else {
+            isNavigationEnabled = false
+            user = ""
+            email = ""
+            password = ""
+            navController.navigate(navigationItem.route)
+        }
+    } else if (navigationItem.route == AppScreen.ExitScr.route || navigationItem.route == AppScreen.LogRegScr.route) {
+        navController.navigate(navigationItem.route)
     }
 }

@@ -51,7 +51,7 @@ import com.dam.pmdm.solterraapp.ui.viewmodel.addProduct
 fun AddProductScr(navController: NavController) {
     NavigationUI(
         navController = navController,
-        text = stringResource(id = R.string.scr_shopping),
+        text = stringResource(id = R.string.scr_LogReg),
         content = { AddProductBodyContent(navController) }
     )
 }
@@ -129,7 +129,6 @@ fun AddProductBodyContent(navController: NavController) {
                             disabledIndicatorColor = colorResource(id = R.color.solterraRed),
                             focusedLabelColor = colorResource(id = R.color.solterraRed),
                         ),
-
                         )
                 ExposedDropdownMenu(
                     expanded = expanded,

@@ -73,7 +73,7 @@ fun ExitBodyContent() {
                             uriHandler.openUri(linkUrl)
                         },
                     painter = painterResource(id = R.drawable.lnk_solterraweb),
-                    contentDescription = null
+                    contentDescription = stringResource(id = R.string.img_web)
                 )
             }
             item {

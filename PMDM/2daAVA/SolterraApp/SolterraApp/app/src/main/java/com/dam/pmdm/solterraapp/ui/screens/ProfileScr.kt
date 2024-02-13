@@ -149,7 +149,7 @@ fun ProfileBodyContent() {
                             uriHandler.openUri(linkUrl)
                         },
                     painter = painterResource(id = R.drawable.anuncioinstajpg),
-                    contentDescription = null
+                    contentDescription = stringResource(id = R.string.img_instagram)
                 )
             }
             item {

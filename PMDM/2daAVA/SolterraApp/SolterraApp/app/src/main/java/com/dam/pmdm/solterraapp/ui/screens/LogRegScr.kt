@@ -178,6 +178,7 @@ fun LogRegBodyContent(viewModel: ViewModel, navController: NavController) {
                                             loc
                                         )
                                     ) {
+                                        itemSelected = 1
                                         isNavigationEnabled = true
                                         user = name
                                         email = emailLiveData.value.toString()
