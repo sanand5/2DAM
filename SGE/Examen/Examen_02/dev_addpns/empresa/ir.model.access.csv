@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_empresa_incidencias,empresa.incidencias,model_empresa_incidencias,base.group_user,1,1,1,1
-access_empresa_departamentos,empresa.departamentos,model_empresa_departamentos,base.group_user,1,1,1,1
