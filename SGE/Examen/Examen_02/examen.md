@@ -1,0 +1,2 @@
+- [ ] Como hacer mensajes de log
+- [ ] 
