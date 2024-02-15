@@ -5,7 +5,14 @@
 package actividad_10.gui;
 
 import actividad_10.dto.Producto;
+import actividad_10.gui.tablemodels.ProductosTableModel;
+import actividad_10.logica.logicaSolterra;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -16,6 +23,7 @@ public class productos extends javax.swing.JDialog {
     /**
      * Creates new form productos
      */
+    private logicaSolterra logicaSolterra = new logicaSolterra();
     public productos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -23,15 +31,16 @@ public class productos extends javax.swing.JDialog {
     }
     
     private void inicializarTabla() {
-        DefaultTableModel dtm = new DefaultTableModel();
-        dtm.setColumnIdentifiers(new String[]{"ID", "Nombre", "Descripcion"});
-        jTableTabla.setModel(dtm);
+        ProductosTableModel tmp = new ProductosTableModel(logicaSolterra.getListProductos());
+        jTableTabla.setModel(tmp);
         
-        anadirProducto(new Producto("P001", "Panel Solar 100W", "Panel solar monocristalino de 100W"));
-        anadirProducto(new Producto("P002", "Batería de Litio 12V", "Batería recargable de litio de 12V, 200Ah"));
-        anadirProducto(new Producto("P003", "Inversor Solar 3000W", "Inversor solar de onda sinusoidal pura, 3000W"));
-        anadirProducto(new Producto("P004", "Regulador de Carga 20A", "Regulador de carga solar PWM de 20A"));
-        anadirProducto(new Producto("P005", "Cable Solar 5 metros", "Cable solar fotovoltaico de 5 metros"));
+        TableRowSorter<ProductosTableModel> sorter = new TableRowSorter<>(tmp);
+        jTableTabla.setRowSorter(sorter);
+        
+        List<SortKey> sortKey = new ArrayList<>();
+        sortKey.add(new SortKey(0,SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKey);
+        
     }
     
     public void anadirProducto(Producto p) {

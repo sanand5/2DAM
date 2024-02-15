@@ -4,10 +4,7 @@
  */
 package actividad_10.gui;
 
-import java.awt.Image;
 import java.io.File;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  *
