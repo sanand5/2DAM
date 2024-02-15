@@ -4,6 +4,11 @@
  */
 package actividad_10.gui;
 
+import actividad_10.dto.Pedido;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 2DAM_Sanz_Andreu
@@ -14,13 +19,15 @@ public class pantallaPrincipal extends javax.swing.JFrame {
      * Creates new form pantallaPrincipal
      */
     SobreNosotros info;
-    imaguenes img;
+    imagenes img;
     productos prd;
     pedidos ped;
+
     public pantallaPrincipal() {
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("/actividad_10/img/Favicon.png")).getImage());
         info = new SobreNosotros(this, true);
-        img = new imaguenes(this, true);
+        img = new imagenes(this, true);
         prd = new productos(this, true);
         ped = new pedidos(this, true);
     }
@@ -41,7 +48,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jTextFieldCant = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonPedir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemInstalacion_01 = new javax.swing.JMenuItem();
@@ -54,6 +61,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
         jMenuItemInfo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Solterra Enegia");
 
         jLabel3.setText("Nombre de el producto:");
 
@@ -122,7 +130,13 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("jButton1");
+        jButtonPedir.setText("Pedir");
+        jButtonPedir.setToolTipText("");
+        jButtonPedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPedirActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Instalaciones");
 
@@ -146,6 +160,11 @@ public class pantallaPrincipal extends javax.swing.JFrame {
 
         jMenuItemInstalacion_03.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemInstalacion_03.setText("Instalación 03");
+        jMenuItemInstalacion_03.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemInstalacion_03ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemInstalacion_03);
 
         jMenuBar1.add(jMenu1);
@@ -198,7 +217,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonPedir)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -207,7 +226,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButtonPedir)
                 .addGap(26, 26, 26))
         );
 
@@ -216,7 +235,9 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemInstalacion_02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstalacion_02ActionPerformed
-        // TODO add your handling code here:
+        img.setTitle("Instalación de Raquel");
+        img.setimg(new File("./src/actividad_10/img/casa.png"));
+        img.setVisible(true);
     }//GEN-LAST:event_jMenuItemInstalacion_02ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -232,8 +253,42 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemInfoActionPerformed
 
     private void jMenuItemInstalacion_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstalacion_01ActionPerformed
+        img.setTitle("Instalación de Cristhian");
+        img.setimg(new File("./src/actividad_10/img/casaconplacas.jpg"));
         img.setVisible(true);
     }//GEN-LAST:event_jMenuItemInstalacion_01ActionPerformed
+
+    private void jButtonPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPedirActionPerformed
+        try {
+            String name = jTextFieldProduct.getText();
+            int cant = Integer.parseInt(jTextFieldCant.getText());
+            if (name.isBlank()) {
+                JOptionPane.showMessageDialog(this, "La producto no puede estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                
+                if (cant <= 0) {
+                    JOptionPane.showMessageDialog(this, "La cantidad debe ser mayor que cero", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ped.anadirPedido(new Pedido(name, cant));
+                }
+                JOptionPane.showMessageDialog(this, "El producto se a añadido", "OK", JOptionPane.INFORMATION_MESSAGE);
+                jTextFieldProduct.setText(null);
+                jTextFieldCant.setText(null);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese una cantidad válida", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButtonPedirActionPerformed
+
+    private void jMenuItemInstalacion_03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstalacion_03ActionPerformed
+        img.setTitle("Instalación de Raul");
+        img.setimg(new File("./src/actividad_10/img/instalacion.png"));
+        img.setVisible(true);
+    }//GEN-LAST:event_jMenuItemInstalacion_03ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,7 +326,7 @@ public class pantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonPedir;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;

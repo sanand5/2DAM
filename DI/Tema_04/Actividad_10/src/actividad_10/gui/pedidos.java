@@ -4,6 +4,7 @@
  */
 package actividad_10.gui;
 
+import actividad_10.dto.Pedido;
 import actividad_10.dto.Producto;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,23 +20,22 @@ public class pedidos extends javax.swing.JDialog {
     public pedidos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicializarTabla();
     }
     
     private void inicializarTabla() {
         DefaultTableModel dtm = new DefaultTableModel();
-        dtm.setColumnIdentifiers(new String[]{"ID", "Nombre", "Descripcion"});
+        dtm.setColumnIdentifiers(new String[]{"Nombre", "Cantidad"});
         jTableTabla.setModel(dtm);
     }
     
-    public void anadirPedido(Producto p) {
+    public void anadirPedido(Pedido p) {
     DefaultTableModel dtm = (DefaultTableModel) jTableTabla.getModel();
 
     // Agregar una nueva fila
     String[] rowData = new String[dtm.getColumnCount()];
-    rowData[0] = p.getId();  // Supongamos que quieres agregar el ID del producto en la primera columna
-    rowData[1] = p.getNombre();
-    rowData[2] = p.getDescripcion();
-    
+    rowData[0] = p.getNombre();
+    rowData[1] = String.valueOf(p.getCatidad());
     dtm.addRow(rowData);
 }
 
@@ -52,6 +52,7 @@ public class pedidos extends javax.swing.JDialog {
         jTableTabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tus pedidos");
 
         jTableTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,14 +73,14 @@ public class pedidos extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

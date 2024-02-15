@@ -4,18 +4,25 @@
  */
 package actividad_10.gui;
 
+import java.io.File;
+
 /**
  *
  * @author 2DAM_Sanz_Andreu
  */
-public class imaguenes extends javax.swing.JDialog {
+public class imagenes extends javax.swing.JDialog {
 
     /**
      * Creates new form imaguenes
      */
-    public imaguenes(java.awt.Frame parent, boolean modal) {
+    public imagenes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setimg(new File("./src/actividad_10/img/casa.png"));
+    }
+    
+    public void setimg(File path){
+        panelImaguen.setPath(path);
     }
 
     /**
@@ -27,17 +34,30 @@ public class imaguenes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImaguen = new actividad_10.gui.PanelImagen();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        javax.swing.GroupLayout panelImaguenLayout = new javax.swing.GroupLayout(panelImaguen);
+        panelImaguen.setLayout(panelImaguenLayout);
+        panelImaguenLayout.setHorizontalGroup(
+            panelImaguenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 424, Short.MAX_VALUE)
+        );
+        panelImaguenLayout.setVerticalGroup(
+            panelImaguenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 326, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelImaguen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelImaguen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -45,5 +65,6 @@ public class imaguenes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private actividad_10.gui.PanelImagen panelImaguen;
     // End of variables declaration//GEN-END:variables
 }

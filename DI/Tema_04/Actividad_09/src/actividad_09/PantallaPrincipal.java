@@ -102,7 +102,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemImaguen_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImaguen_01ActionPerformed
        secondScreen.setimg(new File("./src/actividad_09/img/GOKU.jpg"));
-        secondScreen.setVisible(true);
+       secondScreen.setVisible(true);
     }//GEN-LAST:event_jMenuItemImaguen_01ActionPerformed
 
     private void jMenuItemImaguen_02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImaguen_02ActionPerformed

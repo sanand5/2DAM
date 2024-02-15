@@ -8,11 +8,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
-public class PanelImaguen extends JPanel implements Serializable{
+public class PanelImagen extends JPanel implements Serializable{
 
     private File imgFile;
     
-    public PanelImaguen() {
+    public PanelImagen() {
     }
 
     public File getPath() {
