@@ -20,7 +20,9 @@ public class Registro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         p = (PantallaPrincipal) parent;
+        
         ValidationGroup group = validationPanel1.getValidationGroup();
+        
         group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
         group.add(jTextFieldNombre_Usuario, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.NO_WHITESPACE);
         group.add(jPasswordFieldPassword, StringValidators.REQUIRE_NON_EMPTY_STRING, StringValidators.NO_WHITESPACE);//?

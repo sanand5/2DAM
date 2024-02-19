@@ -1,0 +1,3 @@
+- [ ] memories en pdf junt
+- [ ] mirar lo de el validation panel
+- [ ] lo de un exemple en la img label
