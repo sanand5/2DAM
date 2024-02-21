@@ -70,7 +70,7 @@ public class matriculas extends Gestor {
     public void crearMatricula() {
         try {
             while (true) {
-                ObjectId[] ids = obtenerIds(true);
+                ObjectId[] ids = obtenerIds(false);
                 ObjectId matrID = ids[0];
                 if (ids[1] != null && ids[2] != null) {
                     if (matrID == null) {
@@ -179,9 +179,9 @@ public class matriculas extends Gestor {
         while (true) {
             System.out.println("\t0.- Salir");
             mostrarNotas(notasArrayList.toArray(Double[]::new));
-            int posAñadir = notas.length + 1;
-            System.out.println("\t" + posAñadir + ".- Para añadir");
-            int pos = rc.pedirIntRango("Que nota quieres modificar: ", 0, posAñadir);
+            int posAñadir = notasArrayList.size() + 1;
+            System.out.println("\t" + (notasArrayList.size() + 1) + ".- Para añadir");
+            int pos = rc.pedirIntRango("Que nota quieres modificar: ", 0, notasArrayList.size()+1);
             if (pos == 0) {
                 break;
             }

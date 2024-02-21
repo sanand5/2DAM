@@ -48,7 +48,7 @@ public class Client implements Runnable {
 
     private void handleCommand(String command) {
         String[] commandParts = command.split("\\s+", 2);
-        String cmd = commandParts[0].toUpperCase(); // Convertir a mayúsculas
+        String cmd = commandParts[0].toUpperCase();
         String arg = commandParts.length > 1 ? commandParts[1].trim() : "";
 
         switch (cmd) {
@@ -139,32 +139,16 @@ public class Client implements Runnable {
     }
 
     private void handleCwdCommand(String args) {
-        // Lógica para manejar el comando CWD
-        // Puedes implementar tu lógica específica aquí
-        // String newDirectory = getAbsolutePath(directory);
-
-        // if (isValidDirectory(newDirectory)) {
-        // currentDirectory = newDirectory;
-        // writer.println("250 Directorio cambiado correctamente: " + currentDirectory);
-        // } else {
-        // writer.println("550 Directorio no válido: " + directory);
-        // }
         String filename = currentDirectory;
-
-        // go one level up (cd ..)
         if (args.equals("..")) {
             int ind = filename.lastIndexOf("\\");
             if (ind > 0) {
                 filename = filename.substring(0, ind);
             }
         }
-
-        // if argument is anything else (cd . does nothing)
         else if ((args != null) && (!args.equals("."))) {
             filename = filename + "\\" + args;
         }
-
-        // check if file exists, is directory and is not above root directory
         File f = new File(filename);
 
         if (f.exists() && f.isDirectory() && (filename.length() >= currentDirectory.length())) {
@@ -178,16 +162,16 @@ public class Client implements Runnable {
     private String getAbsolutePath(String directory) {
         Path newPath = Paths.get(directory);
 
-        // Verificar si la ruta es relativa
+
         if (!newPath.isAbsolute()) {
-            // Convertir a ruta absoluta utilizando el directorio actual
+
             newPath = Paths.get(currentDirectory).resolve(newPath);
         }
 
-        // Verificar si el directorio ya existe
+
         File dir = newPath.toFile();
         if (dir.exists()) {
-            return null; // Directorio ya existe
+            return null;
         }
 
         return newPath.toString();
@@ -225,7 +209,7 @@ public class Client implements Runnable {
 
     private void handleHelpCommand() {
         writer.println("214-The following commands are recognized:");
-        writer.println(" USER    PASS    CWD     PWD     LIST    HELP    NOOP    REIN    QUIT");
+        writer.println(" USER    PASS    CWD     PWD     LIST    HELP    NOOP    REIN    QUIT  examen PSP");
         writer.println("214 Help OK.");
     }
 
@@ -239,23 +223,24 @@ public class Client implements Runnable {
 
     private void handleReinCommand() {
         isAuthenticated = false;
-        // Puedes realizar otras tareas de reinicialización aquí si es necesario
+        
         writer.println("220 Reinicialización exitosa. Listo para recibir nuevo nombre de usuario.");
     }
 
     private void handleMkdCommand(String directory) {
         if (isAuthenticated) {
-            String newDirectory = getAbsolutePath(directory);
+            try {
+                File newDirectory = new File(currentDirectory, directory);
 
-            if (isValidDirectory(newDirectory)) {
-                File newDir = new File(newDirectory);
-                if (newDir.mkdirs()) {
+                if (!newDirectory.exists() && newDirectory.mkdir()) {
                     writer.println("257 Directorio creado correctamente: " + newDirectory);
+
                 } else {
                     writer.println("550 No se pudo crear el directorio: " + newDirectory);
                 }
-            } else {
+            } catch (Exception e) {
                 writer.println("550 Directorio no válido: " + directory);
+                e.printStackTrace();
             }
         } else {
             writer.println("530 Usuario no conectado. Inicie sesión con USER antes de ejecutar otros comandos.");
