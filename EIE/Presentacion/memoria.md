@@ -388,9 +388,6 @@ Recursos propis de l'empresa que inclouen Romanent, Capital, Reserves. Reflectei
 ### El balanç
 El balanç és un document comptable que reflecteix el patrimoni d’una empresa en un moment determinat. L'actiu s'ordena de menor a major liquiditat, mentre que el passiu de menor a major exigibilitat. Un exemple de balanç mostra els valors dels diversos elements del patrimoni, com fons de comerç, mercaderies, reserves, etc.
 
-### Instruments per analitzar el patrimoni
-Després de fer el balanç, es calcula el Fons de Maniobra (FM), que indica la liquiditat de l'empresa per fer front als deutes a curt termini. Si FM > 0, l'empresa és en bon estat; si FM < 0, es troba en desequilibri financer. Cal buscar finançament si no es pot fer front als deutes. Exemples il·lustren aquesta situació.
-
 ### Informació què dona el balanç
 L'anàlisi patrimonial ofereix informació essencial:
 - **Origen dels diners:** El passiu mostra d'on prové la financiació, mentre que l'actiu indica on s'han invertit els diners.
@@ -424,6 +421,9 @@ Per inversió s’entén les eixides de diners que fa un empresari en la compra 
 - **Mobiliari i material d’oficina:** Tot tipus de mobiliari i efectes d’oficina, incloent USB, DVD i altres materials d’emmagatzematge informàtic.
 - **Despeses de constitució i posada en marxa de l’empresa:** Despeses relacionades amb la posada en marxa i constitució de l’empresa com notari, advocats, estudis de viabilitat, promoció, etc.
 
+## Definició de despesa<a name="definicio-despesa"></a>
+Per despesa, entendrem totes aquelles quantitats que paguem amb una periodicitat inferior a un any.
+
 ## Diferència entre despesa i inversió<a name="dif-despesa-inversio"></a>
 Totes aquelles operacions de l’empresa on el patrimoni net disminueixi comportaran una despesa, mentre que les operacions on aquest no disminueixi sinó que es transformi, seran considerades com a inversions. Per exemple, la compra d'un cotxe que es paga a mà no és una despesa ja que l'actiu (cotxe) entra pel mateix valor de l'actiu, no fent-nos més pobres en termes de patrimoni.
 
@@ -440,8 +440,7 @@ Totes les despeses relacionades amb la posada en marxa i constitució de l’emp
 ## Càlcul de la inversió total<a name="calcular-inversio"></a>
 La suma de tots aquests conceptes ens donarà la inversió total a realitzar. Cal calcular amb precisió per conèixer el cost econòmic exacte de les esmentades inversions.
 
-## Definició de despesa<a name="definicio-despesa"></a>
-Per despesa, entendrem totes aquelles quantitats que paguem amb una periodicitat inferior a un any.
+
 
 ## Tipus de despeses<a name="tipus-despeses"></a>
 - **Lloguer del local:** Si es compra el local és inversió, sinó és despesa. Inclou totes les quantitats pagades com finança, pagament a la immobiliària i les quantitats mensuals del lloguer.
