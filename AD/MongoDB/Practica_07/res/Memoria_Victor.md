@@ -6,6 +6,10 @@ Modifica el programa anterior para que puga almacenar l'informació a alguna Bas
 ## Para que
 Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de los conectores con bases de datos noSQL. También ha sido beneficioso para adquirir conocimientos sobre bases de datos de este tipo, ya que fue necesario informarme sobre como es su funcionamiento. En mi experiencia, la dificultad de este programa reside la gestión por software, además de nuevas implementaciones en el programa. En resumen, la actividad fue útil para comprender mejor el funcionamiento de conectores, así como para aprender y saber que existen bases de datos noSQL, entre otros aspectos.
 
+## Diagrama
+![alt text](image.png)
+<div style="page-break-before:always"></div>
+
 ## Como
 En primer lugar, empezaré hablando de mis clases generales:
 ### Paquete Utilidades
@@ -142,6 +146,7 @@ Estas funciones organizan las opciones disponibles para el usuario en distintos 
 
 - `exportar()`: llama a la función `export()` con parametros para alumnos, módulos y matrículas.
 - `importar()`: llama a la función `importar()` con parametros para alumnos, módulos y matrículas.
+<div style="page-break-before:always"></div>
 
 #### App
 Esta clase comprueba que la conexión sea correcta llamando a la función `testConexion()` de `Gestor`. Si es correcta,  llama a la función `crearCollections()` de `Gestor` para validar que las colecciones existen i si no crearlas, luego llama a `mainMenu()` de la clase `Menu`.

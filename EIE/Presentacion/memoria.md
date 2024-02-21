@@ -4,8 +4,26 @@
 [Presentación](https://www.canva.com/design/DAF1p_FrYTA/3QAfdhILLWw1o7zIqJ53cA/edit?utm_content=DAF1p_FrYTA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [Tema 1. L'emprendedor](#tema-1-lemprendedor)
   - [Què és emprendre?](#què-és-emprendre)
+    - [Detectar una necessitat o una oportunitat:](#detectar-una-necessitat-o-una-oportunitat)
+    - [Desenvolupar alguna cosa per satisfer eixa necessitat:](#desenvolupar-alguna-cosa-per-satisfer-eixa-necessitat)
+    - [Implementar la idea per convertir-la en resultats reals:](#implementar-la-idea-per-convertir-la-en-resultats-reals)
   - [Qualitats de l'emprenedor](#qualitats-de-lemprenedor)
+    - [Iniciativa:](#iniciativa)
+    - [Autonomia:](#autonomia)
+    - [Creativitat:](#creativitat)
+    - [Innovació:](#innovació)
+    - [Visió de futur:](#visió-de-futur)
+    - [Altres qualitats:](#altres-qualitats)
   - [Habilitats de l'empresari](#habilitats-de-lempresari)
+    - [Comunicatives:](#comunicatives)
+    - [Assertivitat:](#assertivitat)
+    - [Negociació:](#negociació)
+    - [Treball en equip:](#treball-en-equip)
+    - [Lideratge:](#lideratge)
+    - [Capacitat per afrontar problemes i trobar solucions:](#capacitat-per-afrontar-problemes-i-trobar-solucions)
+    - [Planificació, gestió i presa de decisions:](#planificació-gestió-i-presa-de-decisions)
+    - [Organització i optimització de recursos:](#organització-i-optimització-de-recursos)
+    - [Altres capacitats:](#altres-capacitats)
   - [El risc empresarial](#el-risc-empresarial)
   - [L'intraemprenedor](#lintraemprenedor)
 - [Tema 2.](#tema-2)
@@ -20,7 +38,7 @@
   - [L’emprenedor social](#lemprenedor-social)
 - [Tema 3.](#tema-3)
   - [Què és una empresa?](#què-és-una-empresa)
-  - [La localització empresarial](#la-localització-empresarial)
+  - [La localització empresarial ??](#la-localització-empresarial-)
   - [L’entorn](#lentorn)
   - [L’anàlisi DAFO i CAME](#lanàlisi-dafo-i-came)
   - [La cultura empresarial](#la-cultura-empresarial)
@@ -35,7 +53,49 @@
   - [Els clients de l’empresa](#els-clients-de-lempresa)
   - [La competència](#la-competència)
   - [Altres tècniques de venda.](#altres-tècniques-de-venda)
-- [Conclusió](#conclusió)
+- [Conclusió 1](#conclusió-1)
+- [Tema 5](#tema-5)
+  - [Introducció](#introducció-1)
+  - [Tipus d’empreses](#tipus-dempreses)
+  - [Obligació de cotitzar per part de l’empresari treballador](#obligació-de-cotitzar-per-part-de-lempresari-treballador)
+  - [Eleccions de la forma jurídica\*\*\*\*\*\*\*\*](#eleccions-de-la-forma-jurídica)
+  - [Formes jurídiques](#formes-jurídiques)
+    - [Empresari Individual](#empresari-individual)
+    - [Empresari de Responsabilitat Limitada](#empresari-de-responsabilitat-limitada)
+    - [Comunitats de Béns](#comunitats-de-béns)
+    - [Societats Civils](#societats-civils)
+- [Tema 6 : PLA ECONÒMIC FINANCER](#tema-6--pla-econòmic-financer)
+  - [Estats econòmics i financers](#estats-econòmics-i-financers)
+    - [Patrimoni](#patrimoni)
+    - [Masses patrimonials](#masses-patrimonials)
+  - [Actiu](#actiu)
+    - [Actiu corrent](#actiu-corrent)
+    - [Actiu no corrent](#actiu-no-corrent)
+  - [Passiu](#passiu)
+    - [Passiu no corrent](#passiu-no-corrent)
+    - [Passiu corrent](#passiu-corrent)
+    - [Net patrimonial](#net-patrimonial)
+  - [La representació del patrimoni](#la-representació-del-patrimoni)
+    - [El balanç](#el-balanç)
+    - [Instruments per analitzar el patrimoni](#instruments-per-analitzar-el-patrimoni)
+    - [Informació què dona el balanç](#informació-què-dona-el-balanç)
+  - [El compte de guany i pèrdues](#el-compte-de-guany-i-pèrdues)
+    - [Regles per elaborar el Compte de Resultats](#regles-per-elaborar-el-compte-de-resultats)
+    - [Pla de tresoreria](#pla-de-tresoreria)
+  - [Llindar de rendibilitat o punt mort](#llindar-de-rendibilitat-o-punt-mort)
+    - [Rendibilitat de l'empresa](#rendibilitat-de-lempresa)
+- [Tema 7: Pla d’inversions i despeses](#tema-7-pla-dinversions-i-despeses)
+  - [Definició d'inversió](#definició-dinversió)
+  - [Tipus d'inversions](#tipus-dinversions)
+  - [Diferència entre despesa i inversió](#diferència-entre-despesa-i-inversió)
+  - [Detalls sobre certes inversions](#detalls-sobre-certes-inversions)
+    - [Despeses d'instal·lació i formalització](#despeses-dinstallació-i-formalització)
+    - [Mobiliari i material d'oficina](#mobiliari-i-material-doficina)
+    - [Despeses de constitució i posada en marxa](#despeses-de-constitució-i-posada-en-marxa)
+  - [Càlcul de la inversió total](#càlcul-de-la-inversió-total)
+  - [Definició de despesa](#definició-de-despesa)
+  - [Tipus de despeses](#tipus-de-despeses)
+
 
 
 # Tema 1. L'emprendedor
@@ -264,7 +324,7 @@ altres formes d'inversió.
 
 o Tenen dret a ser informats sobre els aspectes rellevants de l'empresa i a 
 participar activament en les decisions que afecten la cooperativa.
-## Formes jurídiques*****
+## Formes jurídiques
 En aquest text, es parla sobre diferents formes jurídiques d'empreses, com empresari individual, comunitats de béns i societats civils. A continuació, es resumeixen els punts principals:
 
 ### Empresari Individual
@@ -295,5 +355,103 @@ En aquest text, es parla sobre diferents formes jurídiques d'empreses, com empr
 Aquestes formes jurídiques tenen avantatges i desavantatges específics, i la elecció depèn de factors com la naturalesa del negoci, la responsabilitat que es vol assumir i altres consideracions legals i fiscals.
 
 
+# Tema 6 : PLA ECONÒMIC FINANCER
+## Estats econòmics i financers
+### Patrimoni
+El patrimoni és el conjunt de bens, drets i obligacions d'una persona física o jurídica. Bens són elements per satisfer necessitats, drets són crèdits a favor, i obligacions són deutes amb tercers. El patrimoni net es calcula com bens + drets - obligacions.
 
+### Masses patrimonials
+Les masses patrimonials divideixen el patrimoni en elements homogenis. L'actiu integra bens i drets, mentre que el passiu involucra obligacions. L'equació fonamental: Total actiu = total passiu.
+## Actiu
+### Actiu corrent
+Inclou elements esperats per vendre, consumir o realitzar en el cicle normal. Subdivisions:
+- **Existències:** Béns per vendre o transformar (mercadèries, matèries primeres).
+- **Deutors comercials (Realitzable):** Drets de cobrament en menys d'un any (deutes de clients).
+- **Efectiu i altres actius (Disponible):** Diners en caixa i comptes bancàries a curt termini.
+### Actiu no corrent
+Elements que suporten l'activitat de forma permanent:
+- **Immobilitzat material:** Béns duradors no destinats a venda (terrenys, construccions).
+- **Immobilitzat intangible:** Elements intangibles amb valor econòmic (patents, marques).
+- **Immobilitzat financer:** Inversions permanents en altres empreses.
+
+## Passiu
+### Passiu no corrent
+Recursos financers amb venciment superior a l'any (préstecs rebuts amb termini superior).
+
+### Passiu corrent
+Deutes amb venciment inferior a l'any (préstecs rebuts amb termini inferior, deutes amb proveïdors, Seguretat Social, Hisenda pública).
+
+### Net patrimonial
+Recursos propis de l'empresa que inclouen Romanent, Capital, Reserves. Reflecteixen la solidesa financera.
+
+## La representació del patrimoni
+### El balanç
+El balanç és un document comptable que reflecteix el patrimoni d’una empresa en un moment determinat. L'actiu s'ordena de menor a major liquiditat, mentre que el passiu de menor a major exigibilitat. Un exemple de balanç mostra els valors dels diversos elements del patrimoni, com fons de comerç, mercaderies, reserves, etc.
+
+### Instruments per analitzar el patrimoni
+Després de fer el balanç, es calcula el Fons de Maniobra (FM), que indica la liquiditat de l'empresa per fer front als deutes a curt termini. Si FM > 0, l'empresa és en bon estat; si FM < 0, es troba en desequilibri financer. Cal buscar finançament si no es pot fer front als deutes. Exemples il·lustren aquesta situació.
+
+### Informació què dona el balanç
+L'anàlisi patrimonial ofereix informació essencial:
+- **Origen dels diners:** El passiu mostra d'on prové la financiació, mentre que l'actiu indica on s'han invertit els diners.
+- **Solvència:** L'actiu total ha de ser més gran que el passiu per ser solvent. Si l'actiu és inferior, l'empresa s'acosta a la fallida.
+- **Liquiditat:** Un actiu corrent major que el passiu corrent indica liquiditat, evitant la suspensió de pagaments. La relació entre fons propis i deutes, així com la proporció entre deutes a curt i llarg termini, també són consideracions importants.
+
+## El compte de guany i pèrdues
+### Regles per elaborar el Compte de Resultats
+El compte de resultats indica beneficis o pèrdues en un període. Les despeses inclouen només el que es consumeix, aplicant el criteri de meritació per compres i vendes. Els diners que entren/surten i han de tornar-se no es consideren ingrés/despesa. La previsió del resultat es basa en el compte provisional.
+
+### Pla de tresoreria
+És un document que preveu els cobraments i pagaments de l'empresa, permetent anticipar les necessitats de finançament i el saldo de caixa. Analitza els pagaments i cobraments estimats en el curt termini, oferint flexibilitat.
+
+
+## Llindar de rendibilitat o punt mort
+És la quantitat a vendre per cobrir els costos. La fórmula és PM = costos fixos / (preu venda – cost variable per unitat). Aquest indicador ajuda a evitar pèrdues i a assegurar beneficis quan les vendes superen aquest llindar.
+
+### Rendibilitat de l'empresa
+Analitza la rendibilitat econòmica (BAII / Actiu) i financera (Benefici net / Patrimoni net). Valors més alts indiquen millor rendiment de les inversions i del capital dels socis, respectivament.
+
+# Tema 7: Pla d’inversions i despeses
+## Definició d'inversió<a name="definicio-inversio"></a>
+Per inversió s’entén les eixides de diners que fa un empresari en la compra de béns que l’ajudaran a produir altres béns. Es tracta de bens que ens duraran més d’un any o estan predestinades a durar més d’un any. Son inversions per exemple la compra de local, maquinària, eines, vehicles, instal·lacions, mobiliari i material d’oficina, i despeses de constitució i posada en marxa de l’empresa.
+
+## Tipus d'inversions<a name="tipus-inversions"></a>
+- **Local:** Només en el cas que es compre.
+- **Maquinària:** Inclou tota mena de material informàtic com ara ordinadors, impressores, xarxes, etc.
+- **Eines:** Tota classe d’eines, motlles i matrius que es facen servir conjuntament amb la maquinària.
+- **Vehicles:** Tot tipus de vehicles que faci servir l’empresa per al transport.
+- **Instal·lacions:** Despeses d'instal·lació i formalització dels contractes d’energia elèctrica, telèfon, gas, aigua, calefacció, etc. Inclou les despeses per adequar el local a les necessitats.
+- **Mobiliari i material d’oficina:** Tot tipus de mobiliari i efectes d’oficina, incloent USB, DVD i altres materials d’emmagatzematge informàtic.
+- **Despeses de constitució i posada en marxa de l’empresa:** Despeses relacionades amb la posada en marxa i constitució de l’empresa com notari, advocats, estudis de viabilitat, promoció, etc.
+
+## Diferència entre despesa i inversió<a name="dif-despesa-inversio"></a>
+Totes aquelles operacions de l’empresa on el patrimoni net disminueixi comportaran una despesa, mentre que les operacions on aquest no disminueixi sinó que es transformi, seran considerades com a inversions. Per exemple, la compra d'un cotxe que es paga a mà no és una despesa ja que l'actiu (cotxe) entra pel mateix valor de l'actiu, no fent-nos més pobres en termes de patrimoni.
+
+## Detalls sobre certes inversions<a name="detalls-inversions"></a>
+### Despeses d'instal·lació i formalització
+Les despeses d'instal·lació i formalització dels contractes (energia elèctrica, telèfon, gas, aigua, calefacció, etc.) són considerades inversions. També s'inclouen despeses per adequar el local a les necessitats.
+
+### Mobiliari i material d'oficina
+Inclou tota mena de mobiliari d'oficina com taules, cadires, fitxers, i el material de oficina habitual. També es consideren com a inversió USB, DVD i altres materials d'emmagatzematge informàtic.
+
+### Despeses de constitució i posada en marxa
+Totes les despeses relacionades amb la posada en marxa i constitució de l’empresa, com ara honoraris de notaris, advocats, estudis de viabilitat, promoció, etc., es consideren inversions per qüestions comptables.
+
+## Càlcul de la inversió total<a name="calcular-inversio"></a>
+La suma de tots aquests conceptes ens donarà la inversió total a realitzar. Cal calcular amb precisió per conèixer el cost econòmic exacte de les esmentades inversions.
+
+## Definició de despesa<a name="definicio-despesa"></a>
+Per despesa, entendrem totes aquelles quantitats que paguem amb una periodicitat inferior a un any.
+
+## Tipus de despeses<a name="tipus-despeses"></a>
+- **Lloguer del local:** Si es compra el local és inversió, sinó és despesa. Inclou totes les quantitats pagades com finança, pagament a la immobiliària i les quantitats mensuals del lloguer.
+- **Subministraments:** Incloem els pagaments per llum, aigua, gas, internet i telèfon.
+- **Despeses de personal:** Calcular les despeses dels treballadors tenint en compte salaris i cotitzacions.
+- **Despeses d’assegurances:** Tot pagament en assegurances com assegurança del local, responsabilitat civil a tercers, etc.
+- **Despeses serveis d’altres
+
+ empreses:** Incloent pagaments a empreses externes que ofereixen serveis com gestors, empreses de neteja, etc.
+- **Despeses material fungible:** Tot material utilitzat diàriament i renovat a curt termini com material d’oficina, cartutxos de tinta, etc.
+# Conclusió 2
+En resum, aquesta exploració detallada dels temes 5, 6 i 7 destaca la importància de la elecció prudent de la forma jurídica empresarial, la comprensió dels estats econòmics i financers, així com la planificació efectiva d'inversions i despeses. La correcta elecció de la forma jurídica afecta la responsabilitat i protecció del patrimoni personal. Els estats econòmics, especialment el balanç, ofereixen informació essencial per a la presa de decisions estratègiques i per avaluar la situació financera. Pel que fa a les inversions i despeses, la distinció clara entre ambdues i els detalls sobre els tipus específics proporcionen una guia valuosa per a la gestió financera. En conjunt, aquest coneixement integral proporciona als empresaris les eines necessàries per a la presa de decisions informades i el creixement sostenible de l'empresa, subratllant la importància de la planificació estratègica i la comprensió completa dels aspectes legals i financers.
 </div>
