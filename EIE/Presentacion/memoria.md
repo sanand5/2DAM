@@ -297,36 +297,22 @@ En funció de la dimensió, les empreses poden ser micro (menys de 10 treballado
 En funció de la personalitat jurídica, hi ha empreses amb personalitat jurídica (societats mercantils o cooperatives) i sense (empresaris individuals, comunitats de bens, societats civils). Les primeres tenen personalitat independent, mentre que les segones estan vinculades al patrimoni dels propietaris amb responsabilitat il·limitada.
 
 ## Obligació de cotitzar per part de l’empresari treballador
-L'empresari que treballa a la seva pròpia empresa ha de cotitzar a la Seguretat Social. Si és soci d'una societat no autònoma, cotitza pel Règim General; si és autònom, ho fa pel Règim Especial d'Autònoms. La cotització es calcula com a quota = Base de cotització * Tipus impositiu. Els autònoms poden triar una base de cotització dins d'uns límits.
+L'empresari que treballa a la seva pròpia empresa ha de cotitzar a la Seguretat Social. Si és soci d'una societat no autònoma, cotitza pel Règim General; si és autònom, ho fa pel Règim Especial d'Autònoms.
 
 Des de 2013, existeix una tarifa plana per als autònoms, actualment al voltant de 60€, que abans només es podia aplicar als menors de 30 anys. Aquesta tarifa només s'aplica als nous autònoms i ha de complir certs requisits. Les quantitats de reducció varien durant els primers 36 mesos, amb opcions per a diferents grups i situacions.
 
 Cal destacar que aquesta tarifa plana està sent revisada pel govern, amb la possibilitat de canviar-la per una cotització basada en els ingressos reals dels autònoms. Això podria afectar els autònoms amb ingressos elevats, amb la intenció de reflectir millor la seva situació financera.
 
-## Eleccions de la forma jurídica********
+## Eleccions de la forma jurídica
 Especial de la Seguretat Social o mantenir-se en el règim de la Seguretat Social 
 general.
 
-o Tenen dret a participar en la gestió i direcció de l'empresa a través de 
-l'assemblea general, poden ser elegits com a membres del consell rector i 
-tenen dret a expressar la seva opinió i votar en les decisions importants de 
-l'empresa.
+- Tenen dret a participar en la gestió i direcció de l'empresa a través de l'assemblea general, poden ser elegits com a membres del consell rector i tenen dret a expressar la seva opinió i votar en les decisions importants de l'empresa.
+- Reben una part dels excedents nets de l'empresa (no considerats com beneficis) en forma de retorn cooperatiu, que és una retribució que correspon als socis pel seu treball i participació en l'activitat de la cooperativa.
+- En cas de la Societat Cooperativa de Treball Associat (CTA), si un soci treballador deixa la cooperativa, pot sol·licitar la capitalització de l'atur, que li permet utilitzar la prestació per desocupació per finançar la seva participació en la cooperativa o altres formes d'inversió.
+- Tenen dret a ser informats sobre els aspectes rellevants de l'empresa i a participar activament en les decisions que afecten la cooperativa.
 
-o Reben una part dels excedents nets de l'empresa (no considerats com 
-beneficis) en forma de retorn cooperatiu, que és una retribució que 
-correspon als socis pel seu treball i participació en l'activitat de la 
-cooperativa.
-
-o En cas de la Societat Cooperativa de Treball Associat (CTA), si un soci treballador 
-deixa la cooperativa, pot sol·licitar la capitalització de l'atur, que li permet utilitzar 
-la prestació per desocupació per finançar la seva participació en la cooperativa o 
-altres formes d'inversió.
-
-o Tenen dret a ser informats sobre els aspectes rellevants de l'empresa i a 
-participar activament en les decisions que afecten la cooperativa.
 ## Formes jurídiques
-En aquest text, es parla sobre diferents formes jurídiques d'empreses, com empresari individual, comunitats de béns i societats civils. A continuació, es resumeixen els punts principals:
-
 ### Empresari Individual
 - És una persona física amb capacitat legal que realitza de manera habitual una activitat comercial, industrial o professional.
 - Respon amb tots els seus béns pel compliment de les obligacions de l'empresa.
@@ -350,10 +336,6 @@ En aquest text, es parla sobre diferents formes jurídiques d'empreses, com empr
 - Amb caràcter mercantil: Responsabilitat il·limitada, tributen per l'Impost de Societats, obligades a dur comptabilitat normalitzada.
 - Sense caràcter mercantil: Poden tenir o no personalitat jurídica pròpia, tributen per l'IRPF en règim d'atribució de rendes.
 - Els socis poden ser industrials (aporten treball) o capitalistes (aporten capital).
-- Formes d'administració: administrador únic, administradors mancomunats, administradors solidaris.
-
-Aquestes formes jurídiques tenen avantatges i desavantatges específics, i la elecció depèn de factors com la naturalesa del negoci, la responsabilitat que es vol assumir i altres consideracions legals i fiscals.
-
 
 # Tema 6 : PLA ECONÒMIC FINANCER
 ## Estats econòmics i financers
@@ -401,15 +383,8 @@ El compte de resultats indica beneficis o pèrdues en un període. Les despeses 
 ### Pla de tresoreria
 És un document que preveu els cobraments i pagaments de l'empresa, permetent anticipar les necessitats de finançament i el saldo de caixa. Analitza els pagaments i cobraments estimats en el curt termini, oferint flexibilitat.
 
-
-## Llindar de rendibilitat o punt mort
-És la quantitat a vendre per cobrir els costos. La fórmula és PM = costos fixos / (preu venda – cost variable per unitat). Aquest indicador ajuda a evitar pèrdues i a assegurar beneficis quan les vendes superen aquest llindar.
-
-### Rendibilitat de l'empresa
-Analitza la rendibilitat econòmica (BAII / Actiu) i financera (Benefici net / Patrimoni net). Valors més alts indiquen millor rendiment de les inversions i del capital dels socis, respectivament.
-
 # Tema 7: Pla d’inversions i despeses
-## Definició d'inversió<a name="definicio-inversio"></a>
+## Definició d'inversió @ <a name="definicio-inversio"></a>
 Per inversió s’entén les eixides de diners que fa un empresari en la compra de béns que l’ajudaran a produir altres béns. Es tracta de bens que ens duraran més d’un any o estan predestinades a durar més d’un any. Son inversions per exemple la compra de local, maquinària, eines, vehicles, instal·lacions, mobiliari i material d’oficina, i despeses de constitució i posada en marxa de l’empresa.
 
 ## Tipus d'inversions<a name="tipus-inversions"></a>
@@ -420,9 +395,6 @@ Per inversió s’entén les eixides de diners que fa un empresari en la compra 
 - **Instal·lacions:** Despeses d'instal·lació i formalització dels contractes d’energia elèctrica, telèfon, gas, aigua, calefacció, etc. Inclou les despeses per adequar el local a les necessitats.
 - **Mobiliari i material d’oficina:** Tot tipus de mobiliari i efectes d’oficina, incloent USB, DVD i altres materials d’emmagatzematge informàtic.
 - **Despeses de constitució i posada en marxa de l’empresa:** Despeses relacionades amb la posada en marxa i constitució de l’empresa com notari, advocats, estudis de viabilitat, promoció, etc.
-
-## Definició de despesa<a name="definicio-despesa"></a>
-Per despesa, entendrem totes aquelles quantitats que paguem amb una periodicitat inferior a un any.
 
 ## Diferència entre despesa i inversió<a name="dif-despesa-inversio"></a>
 Totes aquelles operacions de l’empresa on el patrimoni net disminueixi comportaran una despesa, mentre que les operacions on aquest no disminueixi sinó que es transformi, seran considerades com a inversions. Per exemple, la compra d'un cotxe que es paga a mà no és una despesa ja que l'actiu (cotxe) entra pel mateix valor de l'actiu, no fent-nos més pobres en termes de patrimoni.
@@ -437,20 +409,17 @@ Inclou tota mena de mobiliari d'oficina com taules, cadires, fitxers, i el mater
 ### Despeses de constitució i posada en marxa
 Totes les despeses relacionades amb la posada en marxa i constitució de l’empresa, com ara honoraris de notaris, advocats, estudis de viabilitat, promoció, etc., es consideren inversions per qüestions comptables.
 
-## Càlcul de la inversió total<a name="calcular-inversio"></a>
+## Càlcul de la inversió total @<a name="calcular-inversio"></a>
 La suma de tots aquests conceptes ens donarà la inversió total a realitzar. Cal calcular amb precisió per conèixer el cost econòmic exacte de les esmentades inversions.
 
-
+## Definició de despesa @<a name="definicio-despesa"></a>
+Per despesa, entendrem totes aquelles quantitats que paguem amb una periodicitat inferior a un any.
 
 ## Tipus de despeses<a name="tipus-despeses"></a>
 - **Lloguer del local:** Si es compra el local és inversió, sinó és despesa. Inclou totes les quantitats pagades com finança, pagament a la immobiliària i les quantitats mensuals del lloguer.
 - **Subministraments:** Incloem els pagaments per llum, aigua, gas, internet i telèfon.
 - **Despeses de personal:** Calcular les despeses dels treballadors tenint en compte salaris i cotitzacions.
 - **Despeses d’assegurances:** Tot pagament en assegurances com assegurança del local, responsabilitat civil a tercers, etc.
-- **Despeses serveis d’altres
-
- empreses:** Incloent pagaments a empreses externes que ofereixen serveis com gestors, empreses de neteja, etc.
+- **Despeses serveis d’altres empreses:** Incloent pagaments a empreses externes que ofereixen serveis com gestors, empreses de neteja, etc.
 - **Despeses material fungible:** Tot material utilitzat diàriament i renovat a curt termini com material d’oficina, cartutxos de tinta, etc.
-# Conclusió 2
-En resum, aquesta exploració detallada dels temes 5, 6 i 7 destaca la importància de la elecció prudent de la forma jurídica empresarial, la comprensió dels estats econòmics i financers, així com la planificació efectiva d'inversions i despeses. La correcta elecció de la forma jurídica afecta la responsabilitat i protecció del patrimoni personal. Els estats econòmics, especialment el balanç, ofereixen informació essencial per a la presa de decisions estratègiques i per avaluar la situació financera. Pel que fa a les inversions i despeses, la distinció clara entre ambdues i els detalls sobre els tipus específics proporcionen una guia valuosa per a la gestió financera. En conjunt, aquest coneixement integral proporciona als empresaris les eines necessàries per a la presa de decisions informades i el creixement sostenible de l'empresa, subratllant la importància de la planificació estratègica i la comprensió completa dels aspectes legals i financers.
 </div>
