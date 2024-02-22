@@ -10,7 +10,8 @@ El primero modulo gestionara los Propietarios, en este modelo debes guardar los 
 - Casa o casas
  
 El segundo modelo gestionara las casas y estas tendran los siguientes campos: 
-- Propietario
+- Propietarios
+- Direccion
 - Fecha de inicio de la instalación
 - Fecha final
 - Estado (Por hacer / En proceso / Finalizada)
@@ -22,7 +23,3 @@ El segundo modelo gestionara las casas y estas tendran los siguientes campos:
 Y el tercer modelo sera una Lista de tareas asignadas a cada casa, los campos seran:
 - Nombre de la tarea
 - Descripción de la tarea
-- Casa asociada
-
-
-![alt text](extra.jpg)

@@ -1,27 +1,27 @@
 # Version 3
 **Phone Call between Andrew Sanz Sanz and Director Rachel**
 
-**Rachel:** Hello, this is Rachel speaking. How may I help you?
+**Rachel:** Good afternoon, I'm director Rachel. How may I assist you?
 
 **Andrew:** Hello, Rachel. I'm Andrew Sanz Sanz. I have a serious complaint about teacher Charly.
 
-**Rachel:** I'm sorry to hear that, Andrew. What's the issue?
+**Rachel:** I’m so sorry to hear that, Andrew. What’s the matter?
 
 **Andrew:** There are too many tasks in the Access to Data course. Implementing FTP servers and managing ExistDB databases is too much. The work, the minimal explications, and the delay in corrections are affecting our learning.
 
-**Rachel:** I'll look into this as soon as possible. We want a positive learning environment. I'll address it with Professor Charly.
+**Rachel:** That is serious. I will take a look at this as soon as possible. We want a positive learning environment. I will address it with Teacher Charly.
 
 **Andrew:** Thank you, Rachel. It's stressing us, affecting our marks and the class's attitude.
 
-**Rachel:** I'll make it a priority to solve this. Any suggestions for improvement?
+**Rachel:** I apologize(apoloyais) for this situation. I will make it a priority to solve this problem. Any suggestions for improvement?
 
 **Andrew:** Charly could be more patient and respond better
 
-**Rachel:** I'll address these concerns. Everyone deserves respect. Thank you for bringing this to my attention.
+**Rachel:**  I undestand. Everyone deserves to be treated with respect. Thank you for bringing this to my attention.
 
 **Andrew:** I hope for a quick resolution. It is affecting us all.
 
-**Rachel:** I'll do my best. If you have further concerns, reach out. We're here to support you.
+**Rachel:** I’m doing the best I can. If you have any other problem, contact us. We are here to support you.
 
 **Andrew:** Appreciate it, Rachel. Thank you.
 
@@ -31,22 +31,22 @@
 
 **Three Days Later - Phone Call between Director Rachel and Andrew Sanz Sanz**
 
-**Rachel:** Hello, Andrew. Rachel here. Any updates on Professor Charly?
+**Rachel:** Hello, Andrew. Rachel here. We got news about teacher Charly
 
 **Andrew:** Hi, Rachel. Any news?
 
-**Rachel:** We've taken your complaint seriously. Professor Charly has been let go. Victor, a new professor, will join in two weeks.
+**Rachel:** We have taken your complaint seriously. Teacher Charly has been fired. Victor, a new professional teacher, will join (yoin)in two weeks.
 
 **Andrew:** Wow, that's unexpected. Will Victor be more helpful?
 
-**Rachel:** Absolutely. Victor is experienced, professional, and values clear communication. He'll positively impact your class.
+**Rachel:** : Absolutely (absolutly). Victor is experienced, professional, and values(valius) clear communication. He will positively(positivly) impact your class. He will achieve a better learning environment.
 
 **Andrew:** Thank you, Rachel! Thanks for listening to me
 
-**Rachel:** We value our students. Victor will address any issues. Sorry for any inconvenience.
+**Rachel:** We value our students. Victor will address any issues(isius). I apologize(apoloyais) for any inconvenience.
 
 **Andrew:** No need to apologize. I appreciate your quick response. Looking forward to positive changes.
 
-**Rachel:** Feel free to reach out. Victor will be a great addition. Goodbye!
+**Rachel:** Feel free to contact us. Victor will be a great addition. Goodbye!
 
 **Andrew:** Thank you, Rachel! Goodbye!

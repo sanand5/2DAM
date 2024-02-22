@@ -9,8 +9,6 @@ Este ejercicio ha resultado útil para aprender y practicar el funcionamiento de
 <div style="page-break-before:always"></div>
 
 ## Como
-
-
 #### Clase Server
 Esta clase solo contiene el metodo principal que empieza definiendo el puerto que se va a utlizar asignandolo a una variable y crea un `ServerSocket` en el puerto especificado. Este es responsable de aceptar conexiones entrantes de clientes. 
 El servidor entra en un bucle para esperar y aceptar conexiones continuamente. Cuando un cliente se conecta, el método `accept()` del `ServerSocket` devuelve un objeto Socket que representa la conexión con ese cliente. Despues se crea un nuevo hilo (`Thread`) para manejar la conexión con el cliente. El hilo utiliza la clase Client que implementa la lógica específica para manejar las operaciones del cliente. El hilo recién creado se inicia con el método `start()`. Esto permite que el servidor continúe aceptando conexiones mientras maneja las operaciones de clientes en hilos separados.
