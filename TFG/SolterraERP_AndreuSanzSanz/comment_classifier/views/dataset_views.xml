@@ -1,0 +1,46 @@
+<odoo>
+  <record id="view_dataset_form" model="ir.ui.view">
+    <field name="name">dataset.form</field>
+    <field name="model">comment.classifier.dataset</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name" />
+            <field name="tag_ids">
+              <tree>
+                <field name="name" />
+                <field name="description" />
+              </tree>
+            </field>
+            <field name="comment_ids">
+              <tree>
+                <field name="name" />
+                <field name="tag_ids" />
+              </tree>
+            </field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_dataset_tree" model="ir.ui.view">
+    <field name="name">dataset.tree</field>
+    <field name="model">comment.classifier.dataset</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_dataset" model="ir.actions.act_window">
+    <field name="name">Datasets</field>
+    <field name="res_model">comment.classifier.dataset</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_dataset" parent="menu_comment_classifier_root" name="Datasets"
+    action="action_dataset" />
+</odoo>

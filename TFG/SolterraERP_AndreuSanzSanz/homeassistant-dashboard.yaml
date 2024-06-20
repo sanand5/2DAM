@@ -1,0 +1,1969 @@
+title: Casa
+views:
+  - title: TARJETAS
+    path: tarjetas
+    cards:
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:flex-horseshoe-card
+            view_layout:
+              grid-area: g2
+            entities:
+              - entity: sensor.deye_battery_soc
+                decimals: 0
+                unit: '%'
+                name: Batería
+              - entity: sensor.deye_battery_voltage
+                decimals: 2
+                unit: V
+              - entity: sensor.deye_battery_current
+                decimals: 2
+                unit: A
+              - entity: sensor.deye_battery_power
+                decimals: 0
+                unit: W
+              - entity: sensor.deye_day_battery_discharge
+                decimals: 2
+                unit: kWh
+                name: Descarga
+              - entity: sensor.deye_day_battery_charge
+                decimals: 2
+                unit: kWh
+                name: Carga
+            show:
+              horseshoe_style: autominmax
+            layout:
+              hlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 40
+                  length: 70
+                  styles:
+                    - opacity: 0.2;
+                - id: 0
+                  xpos: 50
+                  ypos: 60
+                  length: 70
+                  styles:
+                    - opacity: 0.2;
+              vlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 50
+                  length: 18
+                  styles:
+                    - opacity: 0.2;
+              states:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 33
+                  styles:
+                    - font-size: 3em;
+                    - opacity: 0.9;
+                - id: 1
+                  entity_index: 1
+                  xpos: 44
+                  ypos: 53
+                  styles:
+                    - font-size: 1.5em;
+                    - text-anchor: end;
+                - id: 2
+                  entity_index: 2
+                  xpos: 55
+                  ypos: 53
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.5em;
+                - id: 3
+                  entity_index: 3
+                  xpos: 34
+                  ypos: 75
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 2em;
+                - id: 4
+                  entity_index: 4
+                  xpos: 76
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+                - id: 5
+                  entity_index: 5
+                  xpos: 0
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+              icons:
+                - id: 0
+                  entity_index: 1
+                  xpos: 30
+                  ypos: 52
+                  align: start
+                  size: 1
+              names:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 95
+                  styles:
+                    - font-size: 1.2em;
+                - id: 1
+                  entity_index: 4
+                  xpos: 81
+                  ypos: 12
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+                - id: 2
+                  entity_index: 5
+                  xpos: 0
+                  ypos: 12
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+            horseshoe_scale:
+              min: 0
+              max: 100
+              width: 6
+            color_stops:
+              '0': pink
+              '2000': pink
+            card_mod:
+              style: |
+                ha-card {
+                  --ha-card-background: var(--card-background-color);
+                  color: var(--primary-color);
+                }
+          - type: custom:flex-horseshoe-card
+            view_layout:
+              grid-area: g3
+            entities:
+              - entity: sensor.deye_essential_power_1
+                unit: W
+                name: AC
+              - entity: sensor.deye_inverter_voltage
+                decimals: 0
+                unit: V
+              - entity: sensor.deye_grid_frequency
+                decimals: 2
+                unit: Hz
+                name: Red Eléctrica
+              - entity: sensor.deye_grid_ct_power
+                decimals: 0
+                unit: W
+                name: Red Eléctrica
+              - entity: sensor.deye_day_grid_import
+                decimals: 2
+                unit: kWh
+                name: Importado
+              - entity: sensor.deye_day_load_energy
+                decimals: 2
+                unit: kWh
+                name: Vertido
+            show:
+              horseshoe_style: autominmax
+            layout:
+              hlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 40
+                  length: 70
+                  styles:
+                    - opacity: 0.2;
+                - id: 0
+                  xpos: 50
+                  ypos: 60
+                  length: 70
+                  styles:
+                    - opacity: 0.2;
+              vlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 50
+                  length: 18
+                  styles:
+                    - opacity: 0.2;
+              states:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 33
+                  styles:
+                    - font-size: 3em;
+                    - opacity: 0.9;
+                - id: 1
+                  entity_index: 1
+                  xpos: 44
+                  ypos: 53
+                  styles:
+                    - font-size: 1.5em;
+                    - text-anchor: end;
+                - id: 2
+                  entity_index: 2
+                  xpos: 55
+                  ypos: 53
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.5em;
+                - id: 3
+                  entity_index: 3
+                  xpos: 34
+                  ypos: 75
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 2em;
+                - id: 4
+                  entity_index: 4
+                  xpos: 75
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+                - id: 5
+                  entity_index: 5
+                  xpos: 0
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+              icons:
+                - id: 0
+                  entity_index: 1
+                  xpos: 30
+                  ypos: 52
+                  align: start
+                  size: 1
+              names:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 95
+                  styles:
+                    - font-size: 1.2em;
+                - id: 1
+                  entity_index: 4
+                  xpos: 85
+                  ypos: 12
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+                - id: 2
+                  entity_index: 5
+                  xpos: 0
+                  ypos: 12
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+                - id: 3
+                  entity_index: 3
+                  xpos: 44
+                  ypos: 80
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+            horseshoe_scale:
+              min: 0
+              max: 8000
+              width: 6
+            color_stops:
+              '0': '#5fb6ad'
+              '2000': '#5fb6ad'
+            card_mod:
+              style: |
+                ha-card {
+                  --ha-card-background: var(--card-background-color);
+                  color: var(--primary-color); 
+                }
+          - type: custom:flex-horseshoe-card
+            view_layout:
+              grid-area: g1
+            entities:
+              - entity: sensor.deye_solar_power
+                decimals: 0
+                unit: W
+                name: Producción
+              - entity: sensor.deye_pv1_power
+                decimals: 0
+                unit: W
+                name: PV1
+              - entity: sensor.deye_pv2_power
+                decimals: 0
+                unit: W
+                name: PV2
+              - entity: sensor.deye_pv1_voltage
+                decimals: 0
+                unit: V
+              - entity: sensor.deye_pv2_voltage
+                decimals: 0
+                unit: V
+              - entity: sensor.deye_pv1_current
+                decimals: 1
+                unit: A
+              - entity: sensor.deye_pv2_current
+                decimals: 1
+                unit: A
+              - entity: sensor.deye_day_pv_energy
+                decimals: 2
+                unit: kWh
+                name: Acomulado
+              - entity: sensor.solcast_pv_forecast_forecast_remaining_today
+                decimals: 2
+                unit: kWh
+                name: Previsto
+            show:
+              horseshoe_style: autominmax
+            layout:
+              hlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 40
+                  length: 70
+                  styles:
+                    - opacity: 0.2;
+              vlines:
+                - id: 0
+                  xpos: 50
+                  ypos: 59
+                  length: 36
+                  styles:
+                    - opacity: 0.2;
+              states:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 33
+                  styles:
+                    - font-size: 3em;
+                    - opacity: 0.9;
+                - id: 1
+                  entity_index: 1
+                  xpos: 47
+                  ypos: 53
+                  styles:
+                    - font-size: 1.5em;
+                    - text-anchor: end;
+                - id: 2
+                  entity_index: 2
+                  xpos: 53
+                  ypos: 53
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.5em;
+                - id: 3
+                  entity_index: 3
+                  xpos: 46
+                  ypos: 63
+                  styles:
+                    - text-anchor: end;
+                    - font-size: 1.5em;
+                - id: 4
+                  entity_index: 4
+                  xpos: 53
+                  ypos: 63
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.5em;
+                - id: 5
+                  entity_index: 5
+                  xpos: 46
+                  ypos: 73
+                  styles:
+                    - text-anchor: end;
+                    - font-size: 1.5em;
+                - id: 6
+                  entity_index: 6
+                  xpos: 53
+                  ypos: 73
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.5em;
+                - id: 7
+                  entity_index: 7
+                  xpos: 0
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+                - id: 8
+                  entity_index: 8
+                  xpos: 75
+                  ypos: 7
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 1.2em;
+              icons:
+                - id: 0
+                  entity_index: 1
+                  xpos: 1
+                  ypos: 53
+                  align: start
+                  size: 1
+                - id: 1
+                  entity_index: 2
+                  xpos: 53
+                  ypos: 65
+                  align: end
+                  size: 0.5
+              names:
+                - id: 0
+                  entity_index: 0
+                  xpos: 50
+                  ypos: 95
+                  styles:
+                    - font-size: 1.2em;
+                - id: 1
+                  entity_index: 1
+                  xpos: 15
+                  ypos: 45
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 0.5em;
+                - id: 2
+                  entity_index: 2
+                  xpos: 85
+                  ypos: 45
+                  styles:
+                    - text-anchor: end;
+                    - font-size: 0.5em;
+                - id: 3
+                  entity_index: 7
+                  xpos: 0
+                  ypos: 12
+                  styles:
+                    - text-anchor: start;
+                    - font-size: 0.5em;
+                - id: 4
+                  entity_index: 8
+                  xpos: 80
+                  ypos: 12
+                  styles:
+                    - font-size: 0.5em;
+                    - text-anchor: start;
+            horseshoe_scale:
+              min: 0
+              max: 7000
+              width: 6
+            color_stops:
+              '0': orange
+              '2000': orange
+            card_mod:
+              style: |
+                ha-card {
+                  --ha-card-background: var(--card-background-color);
+                  color: var(--primary-color); 
+                }
+        layout:
+          grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%
+          grid-template-rows: auto 2fr auto auto auto auto auto
+          grid-template-areas: |
+            "g1 g1 g2 g2 g3 g3 ls ls weather weather"
+            "flow flow flow flow graph graph graph graph graph graph "
+            "total total total total daily daily daily daily daily daily"
+            "sg sg sg sg sg sg sg sg stats stats"
+            "m m m m m m m m stats1 stats1 "
+            "bat bat bat bat bat geyser geyser geyser geyser geyser "
+            "energy energy energy solar solar solar  solar solar  solar solar "
+          justify-items: stretch
+          mediaquery:
+            '(max-width: 800px)':
+              grid-template-columns: 100%
+              grid-template-areas: |
+                "ls"
+                "g1"
+                "g2"
+                "g3"
+                "flow"
+                "graph"
+                "daily"
+                "total"
+                "stats1"
+                "sg"
+                "m"
+                "bat"
+                "geyser"
+                "stats"
+                "energy"
+                "solar"
+                "weather"
+            '(max-width: 1300px)':
+              grid-template-columns: 33% 33% 33%
+              grid-template-rows: auto
+              grid-template-areas: |
+                "g1 g2 g3"
+                "flow flow flow "
+                "graph graph graph"
+                "stats1 daily daily"
+                "stats total total"
+                "sg sg sg"
+                "m m m"
+                "ls bat bat"
+                "weather geyser geyser"
+                "energy solar solar"
+    type: custom:grid-layout
+  - path: default_view
+    title: Dibujo
+    icon: ''
+    panel: true
+    cards:
+      - type: custom:layout-card
+        layout_type: vertical
+        cards:
+          - type: custom:sunsynk-power-flow-card
+            cardstyle: lite
+            show_solar: true
+            inverter:
+              model: deye
+              modern: false
+              colour: '#959595'
+              autarky: power
+            battery:
+              energy: 15960
+              shutdown_soc: sensor.deye_battery_capacity_shutdown
+              show_daily: true
+              colour: pink
+              animation_speed: 6
+              max_power: 4100
+              auto_scale: true
+            solar:
+              show_daily: true
+              mppts: 2
+              pv1_name: Este
+              pv2_name: Sur
+              auto_scale: true
+              pv1_max_power: 2225
+              pv2_max_power: 4200
+              efficiency: 90
+            load:
+              show_daily: true
+            grid:
+              show_daily_buy: true
+              show_daily_sell: false
+              show_nonessential: true
+            entities:
+              use_timer_248: switch.deye_toggle_system_timer
+              priority_load_243: switch.deye_toggle_priority_load
+              inverter_voltage_154: sensor.deye_inverter_voltage
+              load_frequency_192: sensor.deye_load_frequency
+              inverter_current_164: sensor.deye_inverter_current
+              inverter_power_175: sensor.deye_inverter_power
+              grid_connected_status_194: binary_deye.sunsynk_grid_connected_status
+              inverter_status_59: sensor.deye_overall_state
+              day_battery_charge_70: sensor.deye_day_battery_charge
+              day_battery_discharge_71: sensor.deye_day_battery_discharge
+              battery_voltage_183: sensor.deye_battery_voltage
+              battery_soc_184: sensor.deye_battery_soc
+              battery_power_190: sensor.deye_battery_power
+              battery_current_191: sensor.deye_battery_current
+              grid_power_169: sensor.deye_grid_power
+              day_grid_import_76: sensor.deye_day_grid_import
+              day_grid_export_77: sensor.deye_day_grid_export
+              grid_ct_power_172: sensor.deye_grid_ct_power
+              day_load_energy_84: sensor.deye_day_load_energy
+              essential_power: none
+              nonessential_power: none
+              aux_power_166: sensor.deye_aux_power
+              day_pv_energy_108: sensor.deye_day_pv_energy
+              pv1_power_186: sensor.deye_pv1_power
+              pv2_power_187: sensor.deye_pv2_power
+              pv1_voltage_109: sensor.deye_pv1_voltage
+              pv1_current_110: sensor.deye_pv1_current
+              pv2_voltage_111: sensor.deye_pv2_voltage
+              pv2_current_112: sensor.deye_pv2_current
+            large_font: true
+            panel_mode: true
+  - title: Gráficos
+    path: Gráficos
+    cards:
+      - type: custom:plotly-graph
+        cardstyle: lite
+        entities:
+          - entity: sensor.deye_solar_power
+            name: |
+              $fn ({ ys,meta }) =>
+                "Producción" + "🔆" + "(" +ys[ys.length - 1]+"W)"
+            fill: tozeroy
+            line:
+              color: rgb(255, 155, 48)
+              shape: spline
+          - entity: sensor.deye_essential_power_1
+            name: |
+              $fn ({ ys,meta }) =>
+                "Consumo" + "⚡" + "(" +ys[ys.length - 1]+"W)"
+            fill: tozeroy
+            line:
+              color: rgb(95, 182, 173)
+              shape: spline
+          - entity: sensor.deye_grid_ct_power
+            name: |
+              $fn ({ ys,meta }) =>
+                "Red" + "💡" + "(" +ys[ys.length - 1]+"W)"
+            fill: tozeroy
+            line:
+              color: rgb(84, 144, 194)
+              shape: spline
+          - entity: sensor.deye_battery_power
+            fill: tozeroy
+            name: |
+              $fn ({ ys,meta }) =>
+                "Batería" + "🔋" + "(" +ys[ys.length - 1]+"W)"
+            line:
+              color: rgb(243, 179, 202)
+              shape: spline
+          - entity: sensor.deye_battery_soc
+            name: |
+              $fn ({ ys,meta }) =>
+                "Nivel batería" + "⚠️" + "(" +ys[ys.length - 1]+"%)"
+            yaxis: y2
+            line:
+              color: red
+              width: 1
+              shape: spline
+            fill: none
+            filters:
+              - sliding_window_moving_average:
+                  window_size: 1
+                  extended: true
+        hours_to_show: 24
+        refresh_interval: 60
+        title: null
+        defaults:
+          entity:
+            show_value: false
+          yaxes:
+            fixedrange: true
+        layout:
+          legend:
+            bgcolor: rgba(0,0,0,0)
+            itemsizing: constant
+            font:
+              size: 11
+          height: 750
+          card_width: 100%
+          yaxis2:
+            range:
+              - 20
+              - 105
+            fixedrange: true
+          yaxis:
+            tickmode: linear
+            dtick: 1000
+        config:
+          scrollZoom: false
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:plotly-graph
+            view_layout:
+              grid-area: daily
+            entities:
+              - entity: sensor.deye_day_pv_energy
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Producción" + "🔆" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: rgb(255, 155, 48)
+              - entity: sensor.deye_day_load_energy
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Consumo" + "⚡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                filters:
+                  - filter: i>0
+                texttemplate: '%{y}'
+                marker:
+                  color: rgb(95, 182, 173)
+              - entity: sensor.deye_day_grid_import
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Importado" + "💡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: rgb(84, 144, 194)
+              - entity: sensor.deye_day_battery_discharge
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Descarga Batería" + "🖱️" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: rgb(151, 90, 182)
+              - entity: sensor.deye_day_battery_charge
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Carga Batería" + "🔋" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: yellow
+            hours_to_show: 5d
+            title: null
+            refresh_interval: 120
+            defaults:
+              yaxes:
+                fixedrange: true
+            layout:
+              legend:
+                bgcolor: rgba(0,0,0,0)
+                itemsizing: constant
+                font:
+                  size: 11
+              height: 750
+            config:
+              displayModeBar: false
+              scrollZoom: false
+            time_offset: 12h
+          - type: custom:plotly-graph
+            view_layout:
+              grid-area: total
+            entities:
+              - entity: sensor.deye_total_pv_energy
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Producción" + "🔆" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                width: $fn() => 1000*60*60*3
+                offset: $fn() => 1000*60*60*4.5
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                  - force_numeric
+                marker:
+                  color: rgb(255, 155, 48)
+              - entity: sensor.deye_total_load_energy
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Consumo" + "⚡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                width: $fn() => 1000*60*60*3
+                offset: $fn() => 1000*60*60*7.5
+                filters:
+                  - filter: i>0
+                  - force_numeric
+                texttemplate: '%{y}'
+                marker:
+                  color: rgb(95, 182, 173)
+              - entity: sensor.deye_total_grid_import
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Importado" + "💡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                width: $fn() => 1000*60*60*3
+                offset: $fn() => 1000*60*60*10.5
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                  - force_numeric
+                marker:
+                  color: rgb(84, 144, 194)
+              - entity: sensor.deye_total_battery_discharge
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Carga Batería" + "🖱️" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                width: $fn() => 1000*60*60*3
+                offset: $fn() => 1000*60*60*13.5
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                  - force_numeric
+                marker:
+                  color: rgb(151, 90, 182)
+              - entity: sensor.deye_total_battery_charge
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Descarga Batería" + "🔋" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                width: $fn() => 1000*60*60*3
+                offset: $fn() => 1000*60*60*16.5
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                  - force_numeric
+                marker:
+                  color: yellow
+            hours_to_show: current_day
+            defaults:
+              entity:
+                line:
+                  width: 2
+              yaxes:
+                fixedrange: true
+            title: null
+            layout:
+              barmode: group
+              xaxis:
+                nticks: 1
+              height: 750
+            time_offset: '-1m'
+            config:
+              displayModeBar: false
+              scrollZoom: false
+        layout:
+          grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%
+          grid-template-rows: auto 2fr auto auto auto auto auto
+          grid-template-areas: |
+            "g1 g1 g2 g2 g3 g3 ls ls weather weather"
+            "flow flow flow flow graph graph graph graph graph graph "
+            "total total total total daily daily daily daily daily daily"
+            "sg sg sg sg sg sg sg sg stats stats"
+            "m m m m m m m m stats1 stats1 "
+            "bat bat bat bat bat geyser geyser geyser geyser geyser "
+            "energy energy energy solar solar solar  solar solar  solar solar "
+          justify-items: stretch
+          mediaquery:
+            '(max-width: 800px)':
+              grid-template-columns: 100%
+              grid-template-areas: |
+                "ls"
+                "g1"
+                "g2"
+                "g3"
+                "flow"
+                "graph"
+                "daily"
+                "total"
+                "stats1"
+                "sg"
+                "m"
+                "bat"
+                "geyser"
+                "stats"
+                "energy"
+                "solar"
+                "weather"
+            '(max-width: 1300px)':
+              grid-template-columns: 33% 33% 33%
+              grid-template-rows: auto
+              grid-template-areas: |
+                "g1 g2 g3"
+                "flow flow flow "
+                "graph graph graph"
+                "stats1 daily daily"
+                "stats total total"
+                "sg sg sg"
+                "m m m"
+                "ls bat bat"
+                "weather geyser geyser"
+                "energy solar solar"
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:apexcharts-card
+            view_layout:
+              grid-area: bat
+            chart_type: donut
+            header:
+              show: true
+              title: En que se usa la producción
+              show_states: true
+              colorize_states: true
+            apex_config:
+              chart:
+                toolbar:
+                  show: false
+                  autoSelected: zoom
+              stroke:
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              responsive:
+                - breakpoint: 800
+                  options:
+                    chart:
+                      height: 360px
+                - breakpoint: 1300
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: 400px
+            series:
+              - entity: sensor.deye_day_load_energy
+                name: Consumo diario
+              - entity: sensor.deye_day_battery_charge
+                name: Carga
+              - entity: sensor.deye_day_grid_export_energy_local
+                name: Exportación
+          - type: custom:apexcharts-card
+            view_layout:
+              grid-area: geyser
+            chart_type: donut
+            header:
+              show: true
+              title: Flujo energía
+              show_states: true
+              colorize_states: true
+            apex_config:
+              chart:
+                toolbar:
+                  show: false
+                  autoSelected: zoom
+              stroke:
+                width: 1
+                curve: smooth
+              legend:
+                show: false
+              responsive:
+                - breakpoint: 800
+                  options:
+                    chart:
+                      height: 400px
+                - breakpoint: 1300
+                  options:
+                    chart:
+                      height: 360px
+                - breakpoint: 10000
+                  options:
+                    chart:
+                      height: 400px
+            series:
+              - entity: sensor.deye_day_pv_energy
+                name: Producción
+                color: rgb(255, 155, 48)
+              - entity: sensor.deye_day_battery_discharge
+                name: Batería
+                color: rgb(151, 90, 182)
+              - entity: sensor.deye_day_grid_import
+                name: Red eléctrica
+                color: rgb(84, 144, 194)
+        layout:
+          grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%
+          grid-template-rows: auto 2fr auto auto auto auto auto
+          grid-template-areas: |
+            "g1 g1 g2 g2 g3 g3 ls ls weather weather"
+            "flow flow flow flow graph graph graph graph graph graph "
+            "total total total total daily daily daily daily daily daily"
+            "sg sg sg sg sg sg sg sg stats stats"
+            "m m m m m m m m stats1 stats1 "
+            "bat bat bat bat bat geyser geyser geyser geyser geyser "
+            "energy energy energy solar solar solar  solar solar  solar solar "
+          justify-items: stretch
+          mediaquery:
+            '(max-width: 800px)':
+              grid-template-columns: 100%
+              grid-template-areas: |
+                "ls"
+                "g1"
+                "g2"
+                "g3"
+                "flow"
+                "graph"
+                "daily"
+                "total"
+                "stats1"
+                "sg"
+                "m"
+                "bat"
+                "geyser"
+                "stats"
+                "energy"
+                "solar"
+                "weather"
+            '(max-width: 1300px)':
+              grid-template-columns: 33% 33% 33%
+              grid-template-rows: auto
+              grid-template-areas: |
+                "g1 g2 g3"
+                "flow flow flow "
+                "graph graph graph"
+                "stats1 daily daily"
+                "stats total total"
+                "sg sg sg"
+                "m m m"
+                "ls bat bat"
+                "weather geyser geyser"
+                "energy solar solar"
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:plotly-graph
+            view_layout: null
+            entities:
+              - entity: sensor.deye_day_pv_energy
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Producción" + "🔆" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: rgb(255, 155, 48)
+              - entity: sensor.deye_day_grid_import
+                statistic: state
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Importación" + "💡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: bar
+                texttemplate: '%{y}'
+                filters:
+                  - filter: i>0
+                marker:
+                  color: rgb(84, 144, 194)
+              - entity: sensor.deye_day_load_energy
+                statistic: state
+                show_value: true
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Consumo" + "⚡" + "(" +ys[ys.length - 1]+"kWh)"
+                period: day
+                type: line
+                texttemplate: '%{y}'
+                line:
+                  color: rgb(95, 182, 173)
+                  width: 2
+            hours_to_show: 31d
+            title: null
+            refresh_interval: 600
+            defaults:
+              yaxes:
+                fixedrange: true
+            layout:
+              legend:
+                bgcolor: rgba(0,0,0,0)
+                itemsizing: constant
+                font:
+                  size: 11
+                x: 0.4
+              height: 750
+              barmode: stack
+              xaxis:
+                rangeselector:
+                  'y': 1.05
+                  buttons:
+                    - count: 7
+                      step: day
+                    - count: 31
+                      step: day
+                    - count: 90
+                      step: day
+            config:
+              displayModeBar: false
+              scrollZoom: false
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:apexcharts-card
+            view_layout: null
+            header:
+              show: true
+              standard_format: true
+              show_states: true
+              colorize_states: true
+            apex_config:
+              chart:
+                height: 750px
+              tooltip:
+                enabled: true
+                shared: true
+                followCursor: true
+            graph_span: 4d
+            now:
+              show: true
+              label: Now
+            span:
+              start: day
+              offset: '-1day'
+            all_series_config:
+              type: area
+              opacity: 0.3
+              stroke_width: 1
+            series:
+              - entity: sensor.deye_battery_soc
+                name: Battery
+                float_precision: 0
+                type: line
+                color: '#f06292'
+                opacity: 0.6
+                yaxis_id: capacity
+                extend_to: now
+                show:
+                  legend_value: true
+                  in_header: false
+                group_by:
+                  func: last
+                  duration: 5m
+              - entity: sensor.deye_solar_power
+                name: Solar Power
+                float_precision: 3
+                color: '#ff9800'
+                yaxis_id: kWh
+                unit: kW
+                transform: return x/1000;
+                extend_to: now
+                show:
+                  legend_value: true
+                  in_header: false
+                group_by:
+                  func: avg
+                  duration: 5m
+              - entity: sensor.solcast_pv_forecast_forecast_today
+                name: Solar Forecast (D1)
+                extend_to: false
+                color: grey
+                opacity: 0.3
+                stroke_width: 0
+                yaxis_id: kWh
+                show:
+                  legend_value: false
+                  in_header: false
+                data_generator: |
+                  return entity.attributes.detailedForecast.map((entry) => {
+                        return [new Date(entry.period_start), entry.pv_estimate];
+                      });
+              - entity: sensor.solcast_pv_forecast_forecast_tomorrow
+                name: Solar Forecast (D2)
+                float_precision: 3
+                extend_to: false
+                color: grey
+                opacity: 0.3
+                stroke_width: 0
+                yaxis_id: kWh
+                show:
+                  legend_value: false
+                  in_header: false
+                data_generator: |
+                  return entity.attributes.detailedForecast.map((entry) => {
+                        return [new Date(entry.period_start), entry.pv_estimate];
+                      });
+              - entity: sensor.solcast_pv_forecast_forecast_day_3
+                name: Solar Forecast (D3)
+                float_precision: 3
+                extend_to: false
+                color: grey
+                opacity: 0.3
+                stroke_width: 0
+                yaxis_id: kWh
+                show:
+                  legend_value: false
+                  in_header: false
+                data_generator: |
+                  return entity.attributes.detailedForecast.map((entry) => {
+                        return [new Date(entry.period_start), entry.pv_estimate];
+                      });
+              - entity: sensor.solcast_pv_forecast_forecast_today
+                yaxis_id: header_only
+                name: Solar Forecast (D1)
+                color: grey
+                show:
+                  legend_value: true
+                  in_header: true
+                  in_chart: false
+              - entity: sensor.solcast_pv_forecast_forecast_remaining_today
+                yaxis_id: header_only
+                name: Forecast (D1 Remaining)
+                color: grey
+                show:
+                  legend_value: true
+                  in_header: true
+                  in_chart: false
+              - entity: sensor.solcast_pv_forecast_forecast_tomorrow
+                yaxis_id: header_only
+                name: Forecast (D2)
+                color: grey
+                show:
+                  legend_value: true
+                  in_header: true
+                  in_chart: false
+              - entity: sensor.solcast_pv_forecast_forecast_day_3
+                yaxis_id: header_only
+                name: Solar Forecast (D3)
+                color: grey
+                show:
+                  legend_value: true
+                  in_header: true
+                  in_chart: false
+              - entity: sensor.solcast_pv_forecast_api_last_polled
+                yaxis_id: header_only
+                name: Forecast (Last Update)
+                color: grey
+                unit: ' min.'
+                transform: return ((Date.now()) - (new Date(x).getTime())) / 60 / 60 / 24
+                show:
+                  legend_value: true
+                  in_header: true
+                  in_chart: false
+            yaxis:
+              - id: capacity
+                show: true
+                opposite: true
+                decimals: 0
+                max: 100
+                min: 0
+                apex_config:
+                  tickAmount: 5
+              - id: kWh
+                show: true
+                min: 0
+                apex_config:
+                  tickAmount: 5
+              - id: header_only
+                show: false
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:plotly-graph
+            view_layout: null
+            entities:
+              - entity: sensor.deye_day_pv_energy
+                statistic: sum
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Solar" + "🔆"
+                period: month
+                type: bar
+                width: $fn() => 1000*60*60*130
+                offset: $fn() => -1000*60*60*325
+                texttemplate: '%{y}'
+                filters:
+                  - delta
+                marker:
+                  color: rgb(255, 155, 48)
+              - entity: sensor.deye_day_load_energy
+                statistic: sum
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Load" + "⚡"
+                period: month
+                type: bar
+                filters:
+                  - delta
+                width: $fn() => 1000*60*60*130
+                offset: $fn() => -1000*60*60*195
+                texttemplate: '%{y}'
+                marker:
+                  color: rgb(95, 182, 173)
+              - entity: sensor.deye_day_grid_import
+                statistic: sum
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Grid Import" + "💡"
+                period: month
+                type: bar
+                texttemplate: '%{y}'
+                width: $fn() => 1000*60*60*130
+                filters:
+                  - delta
+                marker:
+                  color: rgb(84, 144, 194)
+              - entity: sensor.deye_day_battery_discharge
+                statistic: sum
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Battery Discharge" + "🔋"
+                period: month
+                type: bar
+                width: $fn() => 1000*60*60*130
+                offset: $fn() => 1000*60*60*65
+                texttemplate: '%{y}'
+                filters:
+                  - delta
+                marker:
+                  color: rgb(151, 90, 182)
+              - entity: sensor.deye_day_battery_charge
+                statistic: sum
+                name: |
+                  $fn ({ ys,meta }) =>
+                    "Battery Charge" + "🔋"
+                period: month
+                type: bar
+                width: $fn() => 1000*60*60*130
+                offset: $fn() => 1000*60*60*195
+                texttemplate: '%{y}'
+                filters:
+                  - delta
+                marker:
+                  color: yellow
+            hours_to_show: 6M
+            title: Monthly Production
+            refresh_interval: 600
+            defaults:
+              yaxes:
+                fixedrange: true
+            layout:
+              legend:
+                bgcolor: rgba(0,0,0,0)
+                itemsizing: constant
+                font:
+                  size: 11
+              height: 750
+            config:
+              displayModeBar: false
+              scrollZoom: false
+            time_offset: 1M
+    type: custom:grid-layout
+  - title: Gráficos Bat
+    path: seplos
+    cards:
+      - type: custom:plotly-graph
+        cardstyle: lite
+        entities:
+          - entity: sensor.seplos_bms_cell_voltage_1
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 1 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(255, 155, 48)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_2
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 2 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(95, 182, 173)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_3
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 3 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(84, 144, 194)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_4
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 4 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(243, 179, 202)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_5
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 5 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(0, 128, 128)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_6
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 6 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(255, 99, 71)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_7
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 7 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(60, 179, 113)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_8
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 8 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(30, 144, 255)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_9
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 9 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(255, 165, 0)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_10
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 10 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(128, 0, 128)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_11
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 11 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(0, 0, 255)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_12
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 12 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(139, 69, 19)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_13
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 13 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(0, 255, 0)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_14
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 14 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(75, 0, 130)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_15
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 15 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(255, 20, 147)
+              shape: linear
+          - entity: sensor.seplos_bms_cell_voltage_16
+            name: |
+              $fn ({ ys,meta }) =>
+                `Celda 16 🔋 (${Number(ys[ys.length - 1]).toFixed(3)}V)`
+            line:
+              color: rgb(255, 69, 0)
+              shape: linear
+          - entity: sensor.seplos_bms_state_of_charge
+            name: |
+              $fn ({ ys,meta }) =>
+                `SOC 🔋 (${Number(ys[ys.length - 1]).toFixed(1)}%)`
+            yaxis: y2
+            line:
+              color: rgb(0, 0, 255)
+              shape: linear
+          - entity: sensor.seplos_bms_current
+            name: |
+              $fn ({ ys,meta }) =>
+                `Corriente 🔌 (${Number(ys[ys.length - 1]).toFixed(1)}A)`
+            yaxis: y2
+            line:
+              color: rgb(0, 255, 0)
+              shape: linear
+        hours_to_show: 24
+        refresh_interval: 60
+        title: >-
+          Variación de Voltaje de las Celdas, Porcentaje de Carga y Corriente de
+          la Batería
+        defaults:
+          entity:
+            show_value: false
+          yaxes:
+            fixedrange: true
+        layout:
+          legend:
+            bgcolor: rgba(0,0,0,0)
+            itemsizing: constant
+            font:
+              size: 11
+          height: 750
+          card_width: 100%
+          yaxis:
+            range:
+              - 3.2
+              - 3.53
+            tickmode: linear
+            dtick: 0.01
+            tickformat: .3f
+          yaxis2:
+            title: Porcentaje / Corriente
+            overlaying: 'y'
+            side: right
+            range:
+              - -50
+              - 100
+            tickvals:
+              - -40
+              - -20
+              - 20
+              - 40
+              - 60
+              - 80
+              - 100
+            tickmode: array
+        config:
+          scrollZoom: false
+      - type: custom:plotly-graph
+        cardstyle: lite
+        entities:
+          - entity: sensor.seplos_bms_power
+            name: |
+              $fn ({ ys,meta }) =>
+                "Power" + "🔋" + "(" +ys[ys.length - 1]+"W)"
+            fill: tozeroy
+            line:
+              color: rgb(255, 155, 48)
+              shape: spline
+          - entity: sensor.seplos_bms_state_of_charge
+            name: |
+              $fn ({ ys,meta }) =>
+                "SOC" + "⚠️" + "(" +ys[ys.length - 1]+"%)"
+            yaxis: y2
+            line:
+              color: red
+              width: 1
+              shape: spline
+            fill: none
+            filters:
+              - sliding_window_moving_average:
+                  window_size: 1
+                  extended: true
+        hours_to_show: 24
+        refresh_interval: 60
+        title: null
+        defaults:
+          entity:
+            show_value: false
+          yaxes:
+            fixedrange: true
+        layout:
+          legend:
+            bgcolor: rgba(0,0,0,0)
+            itemsizing: constant
+            font:
+              size: 11
+          height: 750
+          card_width: 100%
+          yaxis2:
+            range:
+              - 20
+              - 105
+            fixedrange: true
+          yaxis:
+            tickmode: linear
+            dtick: 1000
+        config:
+          scrollZoom: false
+    type: custom:grid-layout
+  - title: Inversor
+    path: v
+    cards:
+      - type: entities
+        entities:
+          - entity: number.deye_battery_max_charge_current
+            name: Corriente Máxima de Carga de Batería
+          - entity: number.deye_battery_max_discharge_current
+            name: Corriente Máxima de Descarga de Batería
+          - entity: select.deye_energy_pattern
+            name: Patrón de Energía
+          - entity: select.deye_generator_input
+            name: Entrada de Generador
+          - entity: number.deye_grid_charge_battery_current
+            name: Corriente de Carga de Batería de la Red
+          - entity: select.deye_grid_peak_shaving
+            name: Reducción de Picos de la Red
+          - entity: number.deye_grid_peak_shaving_power
+            name: Potencia de Reducción de Picos de la Red
+          - entity: number.deye_max_sell_power
+            name: Potencia Máxima de Venta
+          - entity: number.deye_prog1_capacity
+            name: Capacidad de Prog1
+          - entity: select.deye_prog1_charge_option
+            name: Opción de Carga de Prog1
+          - entity: switch.deye_prog1_grid_charge
+            name: Carga de Red de Prog1
+          - entity: number.deye_prog1_power
+            name: Potencia de Prog1
+          - entity: number.deye_prog1_voltage
+            name: Voltaje de Prog1
+          - entity: number.deye_prog2_capacity
+            name: Capacidad de Prog2
+          - entity: select.deye_prog2_charge_option
+            name: Opción de Carga de Prog2
+          - entity: switch.deye_prog2_grid_charge
+            name: Carga de Red de Prog2
+          - entity: number.deye_prog2_power
+            name: Potencia de Prog2
+          - entity: number.deye_prog2_voltage
+            name: Voltaje de Prog2
+          - entity: number.deye_prog3_capacity
+            name: Capacidad de Prog3
+          - entity: select.deye_prog3_charge_option
+            name: Opción de Carga de Prog3
+          - entity: switch.deye_prog3_grid_charge
+            name: Carga de Red de Prog3
+          - entity: number.deye_prog3_power
+            name: Potencia de Prog3
+          - entity: number.deye_prog3_voltage
+            name: Voltaje de Prog3
+          - entity: number.deye_prog4_capacity
+            name: Capacidad de Prog4
+          - entity: select.deye_prog4_charge_option
+            name: Opción de Carga de Prog4
+          - entity: switch.deye_prog4_grid_charge
+            name: Carga de Red de Prog4
+          - entity: number.deye_prog4_power
+            name: Potencia de Prog4
+          - entity: number.deye_prog4_voltage
+            name: Voltaje de Prog4
+          - entity: number.deye_prog5_capacity
+            name: Capacidad de Prog5
+          - entity: select.deye_prog5_charge_option
+            name: Opción de Carga de Prog5
+          - entity: switch.deye_prog5_grid_charge
+            name: Carga de Red de Prog5
+          - entity: number.deye_prog5_power
+            name: Potencia de Prog5
+          - entity: number.deye_prog5_voltage
+            name: Voltaje de Prog5
+          - entity: number.deye_prog6_capacity
+            name: Capacidad de Prog6
+          - entity: select.deye_prog6_charge_option
+            name: Opción de Carga de Prog6
+          - entity: switch.deye_prog6_grid_charge
+            name: Carga de Red de Prog6
+          - entity: number.deye_prog6_power
+            name: Potencia de Prog6
+          - entity: number.deye_prog6_voltage
+            name: Voltaje de Prog6
+          - entity: switch.deye_toggle_force_generator
+            name: Alternar Generador Forzado
+          - entity: switch.deye_toggle_generator_charge
+            name: Alternar Carga de Generador
+          - entity: switch.deye_toggle_grid_charge
+            name: Alternar Carga de Red
+          - entity: switch.deye_toggle_priority_load
+            name: Alternar Carga Prioritaria
+          - entity: switch.deye_toggle_solar_sell
+            name: Alternar Venta Solar
+          - entity: switch.deye_toggle_system_timer
+            name: Alternar Temporizador de Sistema
+          - entity: select.deye_work_mode
+            name: Modo de Trabajo
+        title: Deye
+      - type: entities
+        entities:
+          - entity: sensor.deye_grid_power
+            name: Potencia de la Red
+          - entity: sensor.deye_battery_soc
+            name: SOC de la Batería
+          - entity: sensor.deye_battery_current
+            name: Corriente de la Batería
+          - entity: sensor.deye_aux_power
+            name: Potencia AUX
+          - entity: sensor.deye_battery_absorption_voltage
+            name: Voltaje de Absorción de la Batería
+          - entity: sensor.deye_battery_capacity_shutdown
+            name: Capacidad de Apagado de la Batería
+          - entity: sensor.deye_battery_charge_limit_current
+            name: Corriente de Límite de Carga de la Batería
+          - entity: sensor.deye_battery_discharge_limit_current
+            name: Corriente de Límite de Descarga de la Batería
+          - entity: sensor.deye_battery_equalization_voltage
+            name: Voltaje de Equalización de la Batería
+          - entity: sensor.deye_battery_float_voltage
+            name: Voltaje de Flotación de la Batería
+          - entity: sensor.deye_battery_low_capacity
+            name: Capacidad Baja de la Batería
+          - entity: sensor.deye_battery_low_voltage
+            name: Voltaje Bajo de la Batería
+          - entity: sensor.deye_battery_power
+            name: Potencia de la Batería
+          - entity: sensor.deye_battery_restart_capacity
+            name: Capacidad de Reinicio de la Batería
+          - entity: sensor.deye_battery_restart_voltage
+            name: Voltaje de Reinicio de la Batería
+          - entity: sensor.deye_battery_shutdown_voltage
+            name: Voltaje de Apagado de la Batería
+          - entity: sensor.deye_battery_temperature
+            name: Temperatura de la Batería
+          - entity: sensor.deye_battery_voltage
+            name: Voltaje de la Batería
+          - entity: sensor.deye_day_battery_charge
+            name: Carga Diaria de la Batería
+          - entity: sensor.deye_day_battery_charge_energy_local
+            name: Energía de Carga Diaria de la Batería Local
+          - entity: sensor.deye_day_battery_discharge
+            name: Descarga Diaria de la Batería
+          - entity: sensor.deye_day_battery_discharge_energy_local
+            name: Energía de Descarga Diaria de la Batería Local
+          - entity: sensor.deye_day_grid_export
+            name: Exportación Diaria a la Red
+          - entity: sensor.deye_day_grid_export_energy_local
+            name: Energía de Exportación Diaria a la Red Local
+          - entity: sensor.deye_day_grid_import
+            name: Importación Diaria de la Red
+          - entity: sensor.deye_day_grid_import_energy_local
+            name: Energía de Importación Diaria de la Red Local
+          - entity: sensor.deye_day_load_energy
+            name: Energía de Carga Diaria
+          - entity: sensor.deye_day_load_energy_local
+            name: Energía de Carga Diaria Local
+          - entity: sensor.deye_day_pv_energy
+            name: Energía Solar Diaria
+          - entity: sensor.deye_day_pv_energy_local
+            name: Energía Solar Diaria Local
+          - entity: sensor.deye_dc_transformer_temperature
+            name: Temperatura del Transformador CC
+          - entity: sensor.deye_inverter_current
+            name: Corriente del Inversor Deye
+          - entity: sensor.deye_inverter_frequency
+            name: Frecuencia del Inversor Deye
+          - entity: sensor.deye_inverter_power
+            name: Potencia del Inversor Deye
+          - entity: sensor.deye_inverter_voltage
+            name: Voltaje del Inversor Deye
+          - entity: sensor.deye_essential_power
+            name: Potencia Esencial
+          - entity: sensor.deye_essential_power_1
+            name: Potencia Esencial 1
+          - entity: binary_sensor.deye_gen_peak_shaving_status
+            name: Estado de Reducción de Picos del Generador
+          - entity: binary_sensor.deye_grid_connected_status
+            name: Estado de Conexión a la Red
+          - entity: sensor.deye_grid_ct_power
+            name: Potencia CT de la Red
+          - entity: sensor.deye_grid_current
+            name: Corriente de la Red
+          - entity: sensor.deye_grid_frequency
+            name: Frecuencia de la Red
+          - entity: sensor.deye_grid_l2_power_168
+            name: Potencia L2 de la Red 168
+          - entity: sensor.deye_grid_ld_power_167
+            name: Potencia LD de la Red 167
+          - entity: binary_sensor.deye_grid_peak_shaving_status
+            name: Estado de Reducción de Picos de la Red
+          - entity: sensor.deye_grid_voltage
+            name: Voltaje de la Red
+          - entity: sensor.deye_load_frequency
+            name: Frecuencia de Carga
+          - entity: sensor.deye_load_l1_power
+            name: Potencia de Carga L1
+          - entity: sensor.deye_load_l2_power
+            name: Potencia de Carga L2
+          - entity: sensor.deye_load_power
+            name: Potencia de Carga
+          - entity: sensor.deye_nonessential_power
+            name: Potencia No Esencial
+          - entity: sensor.deye_nonessential_power_1
+            name: Potencia No Esencial 1
+          - entity: sensor.deye_overall_state
+            name: Estado General
+          - entity: sensor.deye_prog1_time
+      - type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: markdown
+            content: >-
+              {% set stage_sensor = "sensor.load_shedding_stage_eskom" %} {% set
+              area_sensor =
+              "sensor.load_shedding_area_jhbcitypower3_10_noordhangext49505154586778"
+              %} {% set area_schedule = state_attr(area_sensor, "forecast") %}
+              {% if area_schedule %}
+                {% set start_time = area_schedule[0].start_time %}
+                {% set end_time = area_schedule[0].end_time %}
+                {% if is_state(area_sensor, "off") %}
+                  {% set starts_in = timedelta(minutes=state_attr(area_sensor, "starts_in")).total_seconds() | int // 60 %}
+                  {% set mins = starts_in % 60 %}
+                  {% set hrs = starts_in // 60 % 24 %}
+                  {% set days = starts_in // 1440 %}
+                  {% set alert = "Load Shedding starts in {d}d {h}h {m}m ({next})".format(d=days, m=mins, h=hrs, next=as_timestamp(start_time) | timestamp_custom("%H:%M", True)) %}
+                  {% if starts_in > 1440 %}
+                    <ha-alert alert-type="success">{{ states(stage_sensor) }}</ha-alert>
+                  {% elif 60 < starts_in <= 1440 %}
+                    <ha-alert alert-type="warning">{{ alert }}</ha-alert>
+                  {% else %}
+                    <ha-alert alert-type="error">{{ alert }}</ha-alert>
+                  {% endif %}
+                {% else %}
+                  {% set ends_in = timedelta(minutes=state_attr(area_sensor, "ends_in")).total_seconds() | int // 60 %}
+                    {% set mins = ends_in % 60 %}
+                    {% set hrs = ends_in // 60 % 24 %}
+                    {% set days = ends_in // 1440 %}
+                    {% set alert = "Load Shedding ends in {d}d {h}h {m}m ({next})".format(d=days, m=mins, h=hrs, next=as_timestamp(end_time) | timestamp_custom("%H:%M", True)) %}
+                    <ha-alert alert-type="error">{{ alert }}</ha-alert>
+                {% endif %}
+              {% else %}
+                {% set stage = state_attr(stage_sensor, "next_stage") %}
+                {% set start_time = state_attr(stage_sensor, "next_start_time") %}
+                {% set end_time = state_attr(stage_sensor, "next_end_time") %}
+                {% set starts_in = timedelta(minutes=state_attr(stage_sensor, "starts_in")).total_seconds() | int // 60 %}
+                {% set mins = starts_in % 60 %}
+                {% set hrs = starts_in // 60 % 24 %}
+                {% set days = starts_in // 1440 %}
+                {% if (start_time == 0 or end_time == 0) %}
+                {% set alert = "No Load Shedding" %}
+                {% else %}
+                {% set alert = "Stage {stage} starts in {d}d {h}h {m}m ({next})".format(stage=stage, d=days, m=mins, h=hrs, next=as_timestamp(start_time) | timestamp_custom("%H:%M", True)) %}
+                {% endif %}
+                <ha-alert alert-type="success">{{ alert }}</ha-alert>
+              {% endif %}{% set area_forecast = state_attr(area_sensor,
+              "forecast" )%} {% if area_forecast %} <table width="100%" 
+              border=0>
+                <tbody>
+                {% for forecast in area_forecast[:3] %}
+                <tr>
+                  <td align="left">
+                  {{ as_timestamp(forecast.start_time) | timestamp_custom("%-d %B", True) }}
+                  </td>
+                  <td align="left">
+                  {{ as_timestamp(forecast.start_time) | timestamp_custom("%H:%M", True) }} - {{ as_timestamp(forecast.end_time) | timestamp_custom("%H:%M", True) }}
+                  </td>
+                  <td align="right">{{ forecast.stage }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+              </table> {% endif %}
+
+
+              {% set soc1 = states('sensor.soc_battery_time_left_friendly') %}
+
+              {% set load1 = states('sensor.deye_load_power') %}
+
+              {% set socsec1 = states('sensor.soc_battery_time_left') | int %}
+
+              {% set state = states('sensor.deye_battery_power') | int %}
+
+              {% if state <= 0 -%}
+                <ha-alert alert-type="success">{{ soc1 }} to {{states('sensor.markdown_battery_charge_time_left')}}%</ha-alert>
+              {% else %}
+                {% if socsec1 > 21601 %}
+                <ha-alert alert-type="success"> Battery runtime to {{states('sensor.battery_cap')}}% is {{ soc1 }} at current ({{state}} W) battery load. ETA@{{states('sensor.markdown_discharge_time')}}</ha-alert>
+                {% elif 10800 < socsec1 <= 21600 %}
+                <ha-alert alert-type="warning">Battery runtime to {{states('sensor.battery_cap')}}% is {{ soc1 }} at current ({{state}} W) battery load. ETA@{{states('sensor.markdown_discharge_time')}}</ha-alert>     
+                {% elif socsec1 <= 10800 %}
+                <ha-alert alert-type="error"> Battery runtime to {{states('sensor.battery_cap')}}% is {{ soc1 }} at current ({{state}} W) battery load. ETA@{{states('sensor.markdown_discharge_time')}}</ha-alert>
+                {% endif %}
+              {% endif %}
+  - title: Batería
+    path: g
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.seplos_bms_power
+            name: Potencia
+          - entity: sensor.seplos_bms_current
+            name: Corriente
+          - entity: sensor.seplos_bms_temperature_1
+            name: Temperatura 1
+          - entity: sensor.seplos_bms_temperature_2
+            name: Temperatura 2
+          - entity: sensor.seplos_bms_temperature_3
+            name: Temperatura 3
+          - entity: sensor.seplos_bms_temperature_4
+            name: Temperatura 4
+          - entity: sensor.seplos_bms_mosfet_temperature
+            name: Temperatura del mosfet
+          - entity: sensor.seplos_bms_max_voltage_cell
+            name: Celda de voltaje máximo
+          - entity: sensor.seplos_bms_max_cell_voltage
+            name: Voltaje máximo de la celda
+          - entity: sensor.seplos_bms_min_voltage_cell
+            name: Celda de voltaje mínimo
+          - entity: sensor.seplos_bms_delta_cell_voltage
+            name: Diferencia de voltaje entre celdas
+          - entity: sensor.seplos_bms_min_cell_voltage
+            name: Voltaje mínimo de la celda
+          - entity: sensor.seplos_bms_total_voltage
+            name: Voltaje total
+          - entity: sensor.seplos_bms_average_cell_voltage
+            name: Voltaje promedio
+          - entity: sensor.seplos_bms_cell_voltage_1
+            name: Voltaje de la celda 1
+          - entity: sensor.seplos_bms_cell_voltage_2
+            name: Voltaje de la celda 2
+          - entity: sensor.seplos_bms_cell_voltage_3
+            name: Voltaje de la celda 3
+          - entity: sensor.seplos_bms_cell_voltage_4
+            name: Voltaje de la celda 4
+          - entity: sensor.seplos_bms_cell_voltage_5
+            name: Voltaje de la celda 5
+          - entity: sensor.seplos_bms_cell_voltage_6
+            name: Voltaje de la celda 6
+          - entity: sensor.seplos_bms_cell_voltage_7
+            name: Voltaje de la celda 7
+          - entity: sensor.seplos_bms_cell_voltage_8
+            name: Voltaje de la celda 8
+          - entity: sensor.seplos_bms_cell_voltage_9
+            name: Voltaje de la celda 9
+          - entity: sensor.seplos_bms_cell_voltage_10
+            name: Voltaje de la celda 10
+          - entity: sensor.seplos_bms_cell_voltage_11
+            name: Voltaje de la celda 11
+          - entity: sensor.seplos_bms_cell_voltage_12
+            name: Voltaje de la celda 12
+          - entity: sensor.seplos_bms_cell_voltage_13
+            name: Voltaje de la celda 13
+          - entity: sensor.seplos_bms_cell_voltage_14
+            name: Voltaje de la celda 14
+          - entity: sensor.seplos_bms_cell_voltage_15
+            name: Voltaje de la celda 15
+          - entity: sensor.seplos_bms_cell_voltage_16
+            name: Voltaje de la celda 16
+          - entity: sensor.seplos_bms_battery_capacity
+            name: Capacidad de la batería
+          - entity: sensor.seplos_bms_charging_cycles
+            name: Ciclos de carga
+          - entity: sensor.seplos_bms_discharging_power
+            name: Potencia de descarga
+          - entity: sensor.seplos_bms_charging_power
+            name: Potencia de carga
+          - entity: sensor.seplos_bms_environment_temperature
+            name: Temperatura del ambiente
+          - entity: sensor.seplos_bms_port_voltage
+            name: Voltaje del puerto
+          - entity: sensor.seplos_bms_rated_capacity
+            name: Capacidad nominal
+          - entity: sensor.seplos_bms_residual_capacity
+            name: Capacidad residual
+          - entity: sensor.seplos_bms_state_of_charge
+            name: Estado de carga
+          - entity: sensor.seplos_bms_state_of_health
+            name: Estado de salud
+        title: Seplos-Bms
+        show_header_toggle: true
+    type: custom:masonry-layout
+  - title: Termo
+    path: termo
+    cards:
+      - type: entities
+        entities:
+          - switch.ariston_eco_mode
+          - switch.ariston_power
+          - water_heater.casa_gandia
+        title: Casa Gandia
+      - type: entities
+        entities:
+          - binary_sensor.ariston_anti_legionella_cycle
+          - sensor.ariston_average_showers
+          - binary_sensor.ariston_is_heating
+          - sensor.ariston_proc_req_temp
+          - sensor.ariston_remaining_time
+        title: Casa Gandia
+      - type: entities
+        entities:
+          - switch.ariston_anti_legionella
+          - number.ariston_max_setpoint_temperature
+        title: Casa Gandia
+      - type: entities
+        entities:
+          - sensor.ariston_domestic_hot_water_total_energy_consumption
+          - sensor.ariston_errors_count
+        title: Casa Gandia

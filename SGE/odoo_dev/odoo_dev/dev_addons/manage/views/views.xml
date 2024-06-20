@@ -1,0 +1,161 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="manage.task_list">
+      <field name="name">manage task list</field>
+      <field name="model">manage.task</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="project" />
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+          <!-- <field name="creation_date" /> -->
+          <field name="start_date" />
+          <field name="end_date" />
+          <field name="is_paused" />
+          <field name="history" />
+          <field name="sprint" />
+          <field name="technology" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.sprint_list">
+      <field name="name">manage sprint list</field>
+      <field name="model">manage.sprint</field>
+      <field name="arch" type="xml">
+        <tree>
+          <!-- <field name="project" /> -->
+          <field name="name" />
+          <field name="description" />
+          <field name="start_date" />
+          <field name="end_date" />
+          <field name="duration" />
+          <field name="task" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.project_list">
+      <field name="name">manage project list</field>
+      <field name="model">manage.project</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="description" />
+          <field name="histories" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manage.history_list">
+      <field name="name">manage history list</field>
+      <field name="model">manage.history</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="description" />
+          <field name="tasks" />
+          <field name="project" />
+          <field name="used_technologies" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_task_window">
+      <field name="name">manage task window</field>
+      <field name="res_model">manage.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_sprint_window">
+      <field name="name">manage sprint window</field>
+      <field name="res_model">manage.sprint</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_technology_window">
+      <field name="name">manage technology window</field>
+      <field name="res_model">manage.technology</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_project_window">
+      <field name="name">manage project window</field>
+      <field name="res_model">manage.project</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_history_window">
+      <field name="name">manage history window</field>
+      <field name="res_model">manage.history</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_developer_window">
+      <field name="name">Desarrolladores</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manage.action_bancos_window">
+      <field name="name">Bancos</field>
+      <field name="res_model">res.bank</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="manage.action_server">
+      <field name="name">manage server</field>
+      <field name="model_id" ref="model_manage_manage"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Manage" id="manage.menu_root" />
+
+    <!-- menu categories -->
+    <menuitem name="Management" id="manage.menu_1" parent="manage.menu_root" />
+    <!--
+    <menuitem name="Menu 2" id="manage.menu_2" parent="manage.menu_root"/>
+  -->
+    <!-- actions -->
+    <menuitem name="Tasks" id="manage.menu_1_task_list" parent="manage.menu_1"
+      action="manage.action_task_window" />
+
+    <menuitem name="Sprints" id="manage.menu_1_sprint_list" parent="manage.menu_1"
+      action="manage.action_sprint_window" />
+
+    <menuitem name="Projects" id="manage.menu_1_project_list" parent="manage.menu_1"
+      action="manage.action_project_window" />
+
+    <menuitem name="Histories" id="manage.menu_1_history_list" parent="manage.menu_1"
+      action="manage.action_history_window" />
+
+    <menuitem name="Technology" id="manage.menu_1_technology_list" parent="manage.menu_1"
+      action="manage.action_technology_window" />
+
+    <menuitem name="Devs" id="manage.menu_1_devs_list" parent="manage.menu_1"
+      action="manage.action_developer_window" />
+    
+    <menuitem name="Bancos" id="manage.menu_1_bancos_list" parent="manage.menu_1"
+      action="manage.action_bancos_window" />
+    <!--
+    <menuitem name="Server to list" id="manage" parent="manage.menu_2"
+              action="manage.action_server"/>
+-->
+  </data>
+</odoo>

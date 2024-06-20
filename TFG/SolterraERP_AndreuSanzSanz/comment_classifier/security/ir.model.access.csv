@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_comment,access_comment,model_comment_classifier_comment,,1,1,1,1
+access_tag,access_tag,model_comment_classifier_tag,,1,1,1,1
+access_dataset,access_dataset,model_comment_classifier_dataset,,1,1,1,1
+

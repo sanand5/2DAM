@@ -1,0 +1,13 @@
+<odoo>
+    <menuitem id="menu_dataset" parent="menu_comment_classifier_root" name="Datasets"
+        action="action_dataset" sequence="1" />
+    
+    <menuitem id="menu_tag" parent="menu_comment_classifier_root" name="Tags" action="action_tag"
+        sequence="2" />
+    
+    <menuitem id="menu_comment" parent="menu_comment_classifier_root" name="Comments"
+        action="action_comment" sequence="3" />
+    
+    <menuitem id="menu_analysis" parent="menu_comment_classifier_root" name="Analysis"
+        action="action_analysis" sequence="4" />
+</odoo>

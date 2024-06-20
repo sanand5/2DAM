@@ -1,0 +1,24 @@
+<odoo>
+  <record id="view_analysis_graph" model="ir.ui.view">
+    <field name="name">analysis.graph</field>
+    <field name="model">comment.classifier.comment</field>
+    <field name="arch" type="xml">
+      <graph string="Comment Analysis" type="bar">
+        <field name="dataset_id" type="col" />
+        <field name="tag_ids" type="row" />
+        <field name="id" type="measure" operator="count" />
+      </graph>
+    </field>
+  </record>
+
+  <record id="action_analysis" model="ir.actions.act_window">
+    <field name="name">Analysis</field>
+    <field name="res_model">comment.classifier.comment</field>
+    <field name="view_mode">graph</field>
+    <field name="view_id" ref="view_analysis_graph" />
+    <field name="context">{'group_by': ['dataset_id', 'tag_ids']}</field>
+  </record>
+
+  <menuitem id="menu_analysis" parent="menu_comment_classifier_root" name="Analysis"
+    action="action_analysis" />
+</odoo>

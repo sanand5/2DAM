@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fisioandreu_pacientes,fisioandreu.pacientes,model_fisioandreu_pacientes,base.group_user,1,1,1,1
+access_fisioandreu_recomendaciones,fisioandreu.recomendaciones,model_fisioandreu_recomendaciones,base.group_user,1,1,1,1

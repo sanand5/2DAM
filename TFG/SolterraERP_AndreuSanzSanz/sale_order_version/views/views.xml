@@ -1,0 +1,23 @@
+<odoo>
+  <record id="view_order_form_inherited" model="ir.ui.view">
+    <field name="name">sale.order.form.inherited</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//header" position="inside">
+        <button name="action_create_version" type="object" string="Create Version"
+          class="oe_highlight" />
+      </xpath>
+      <xpath expr="//notebook" position="inside">
+        <page string="Versions" name="versions">
+          <field name="version_ids">
+            <tree string="Sale Order Versions" editable="bottom" create="false" delete="false">
+              <field name="name" readonly="1" />
+              <field name="date_created" readonly="1" />
+            </tree>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

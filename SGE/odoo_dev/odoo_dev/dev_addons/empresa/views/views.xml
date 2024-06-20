@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="empresa.incidencia">
+      <field name="name">Incidencias</field>
+      <field name="model">empresa.incidencias</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="departamento"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empresa.departamento">
+      <field name="name">Departamentos</field>
+      <field name="model">empresa.departamentos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="empresa.action_incidencia_window">
+      <field name="name">Incidencias</field>
+      <field name="res_model">empresa.incidencias</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="empresa.action_departamento_window">
+      <field name="name">Departamentos</field>
+      <field name="res_model">empresa.departamentos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="empresa.action_server">
+      <field name="name">empresa server</field>
+      <field name="model_id" ref="model_empresa_empresa"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item / Menu principal / name es el nombre del modulo en aplicaciones-->
+
+    <menuitem name="Empresa" id="empresa.menu_root" />
+
+    <!-- menu categories / Submenus /  name es el nombre de arriba -->
+
+    <menuitem name="Gestión" id="empresa.menu_1" parent="empresa.menu_root" />
+    <!-- <menuitem name="Menu 2" id="empresa.menu_2" parent="empresa.menu_root"/> -->
+
+    <!-- actions -->
+
+    <menuitem name="Incidencias" id="empresa.menu_1_incidencia_list" parent="empresa.menu_1"
+      action="empresa.action_incidencia_window" />
+    
+    <menuitem name="Departamentos" id="empresa.menu_1_departamento_list" parent="empresa.menu_1"
+      action="empresa.action_departamento_window" />
+    
+    <!-- <menuitem name="Server to list" id="empresa" parent="empresa.menu_2"
+              action="empresa.action_server"/> -->
+
+  </data>
+</odoo>

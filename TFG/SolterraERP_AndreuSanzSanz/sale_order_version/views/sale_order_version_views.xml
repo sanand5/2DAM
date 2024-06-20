@@ -1,0 +1,15 @@
+<!-- sale_order_version/views/sale_order_version_views.xml -->
+<odoo>
+  <record id="view_sale_order_version_tree" model="ir.ui.view">
+    <field name="name">sale.order.version.tree</field>
+    <field name="model">sale.order.version</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="date_version" />
+        <button name="action_confirm_version" string="Confirm Version" type="object"
+          class="oe_highlight" />
+      </tree>
+    </field>
+  </record>
+</odoo>

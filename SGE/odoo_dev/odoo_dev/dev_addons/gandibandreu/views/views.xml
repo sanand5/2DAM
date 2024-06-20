@@ -1,0 +1,93 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="gandibandreu.coches_list">
+      <field name="name">Listado de coches</field>
+      <field name="model">gandibandreu.coches</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codigo" />
+          <field name="name" />
+          <field name="fecha" />
+          <field name="proveedor" />
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="gandibandreu.proveedores_list">
+      <field name="name">Listado de Proveedores</field>
+      <field name="model">gandibandreu.proveedores</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codigo" />
+          <field name="name" />
+          <field name="direccion" />
+          <field name="coches" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="gandibandreu.action_coches_window">
+      <field name="name">Coches</field>
+      <field name="res_model">gandibandreu.coches</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="gandibandreu.action_proveedores_window">
+      <field name="name">Proveedores</field>
+      <field name="res_model">gandibandreu.proveedores</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="gandibandreu.action_bancos_window">
+      <field name="name">Bancos</field>
+      <field name="res_model">res.bank</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="gandibandreu.action_server">
+      <field name="name">gandibandreu server</field>
+      <field name="model_id" ref="model_gandibandreu_gandibandreu"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="GandiBAndreu" id="gandibandreu.menu_root" />
+
+    <!-- menu categories -->
+
+    <menuitem name="Coches" id="gandibandreu.menu_1" parent="gandibandreu.menu_root"
+      action="gandibandreu.action_coches_window" />
+    <menuitem name="Proveedores" id="gandibandreu.menu_2" parent="gandibandreu.menu_root"
+      action="gandibandreu.action_proveedores_window" />
+    <menuitem name="Bancos" id="gandibandreu.menu_3" parent="gandibandreu.menu_root"
+      action="gandibandreu.action_bancos_window" />
+    <!-- <menuitem name="Menu 2" id="gandibandreu.menu_2" parent="gandibandreu.menu_root"/> -->
+
+    <!-- actions -->
+    <!--     
+    <menuitem name="Coches" id="gandibandreu.menu_1_coches_list" parent="gandibandreu.menu_1"
+      action="gandibandreu.action_coches_window" />
+    
+    <menuitem name="Proveedores" id="gandibandreu.menu_2_proveedores_list"
+      parent="gandibandreu.menu_2"
+      action="gandibandreu.action_proveedores_window" /> -->
+
+    <!-- <menuitem name="Server to list" id="gandibandreu" parent="gandibandreu.menu_2"
+              action="gandibandreu.action_server"/> -->
+
+  </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_octo_tech_castellon,octo_tech.castellon,model_octo_tech_castellon,base.group_user,1,1,1,1
+access_octo_tech_proyecto,octo_tech.proyecto,model_octo_tech_proyecto,base.group_user,1,1,1,1
+access_octo_tech_trabajador,octo_tech.trabajador,model_octo_tech_trabajador,base.group_user,1,1,1,1
