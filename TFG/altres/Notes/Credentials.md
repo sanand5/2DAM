@@ -13,5 +13,3 @@
 #### pruebas
 - **user**: a.sanzsolterra@gmail.com
 - **password**: solterra
-
-barrancdemaneSSa22IeZ#1WOZy8L!k(7ZNx
